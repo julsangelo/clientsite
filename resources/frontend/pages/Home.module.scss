@@ -1,0 +1,12 @@
+@import "../assets/css/main.module.scss";
+
+.heroSection {
+    background-color: $b_primary;
+    padding: 165px 0;
+
+    .heroSectionTitle {
+        font-size: 32px !important;
+        color: $t_red;
+        font-weight: bolder !important;
+    }
+}
