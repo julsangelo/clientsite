@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
+$b_primary: #121212;
+$b_secondary: #373737;
+$b_darker: #ebebeb;
+
+$c_primary: #373737;
+$c_secondary: #ffffff;
+$c_gray: #d7d7d7;
+$c_mediumgray: #989898;
+$c_darkgray: #737373;
+$c_dark: #3f3f3f;
+body {
+    margin: 0;
+    font-family: "Manrope", sans-serif;
+    background-color: #F8F8F8;
+}
+
+p {
+    margin: 0;
+}
