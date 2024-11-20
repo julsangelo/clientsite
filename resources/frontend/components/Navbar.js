@@ -19,7 +19,7 @@ const pages = ["Home", "Shop", "About", "Contact"];
 
 const Search = styled("div")(({ theme }) => ({
     position: "relative",
-    borderRadius: theme.shape.borderRadius,
+    borderRadius: "0",
     backgroundColor: alpha(theme.palette.common.white, 0.15),
     "&:hover": {
         backgroundColor: alpha(theme.palette.common.white, 0.25),
@@ -64,10 +64,7 @@ export default function Navbar() {
     };
 
     return (
-        <AppBar
-            position="static"
-            sx={{ backgroundColor: "background.default", px: 2 }}
-        >
+        <AppBar position="static" sx={{ backgroundColor: "#373737", px: 2 }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     {/* Logo */}
@@ -79,8 +76,8 @@ export default function Navbar() {
                         sx={{
                             mr: 2,
                             display: { xs: "none", md: "flex" },
-                            fontWeight: "bold",
-                            color: "primary.main",
+                            fontWeight: "800",
+                            color: "#D62828",
                             textDecoration: "none",
                         }}
                     >
@@ -145,13 +142,19 @@ export default function Navbar() {
                             <Button
                                 key={page}
                                 onClick={handleCloseNavMenu}
-                                sx={{ my: 2 }}
+                                sx={{
+                                    my: 2,
+                                    color: "#FFFFFF",
+                                    textTransform: "none",
+                                    textDecoration: "none",
+                                    fontWeight: "400",
+                                }}
                             >
                                 {page}
                             </Button>
                         ))}
 
-                        <Search>
+                        <Search sx={{ mr: 4 }}>
                             <SearchIconWrapper>
                                 <SearchIcon />
                             </SearchIconWrapper>
@@ -164,7 +167,20 @@ export default function Navbar() {
 
                     {/* Login Button */}
                     <Box>
-                        <Button variant="contained">Login</Button>
+                        <Button
+                            variant="contained"
+                            sx={{
+                                backgroundColor: "#D62828",
+                                textTransform: "none",
+                                textDecoration: "none",
+                                border: "none",
+                                borderRadius: 0,
+                                boxShadow: "none",
+                                px: 2,
+                            }}
+                        >
+                            Login
+                        </Button>
                     </Box>
                 </Toolbar>
             </Container>
