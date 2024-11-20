@@ -1,12 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { ThemeProvider, CssBaseline } from "@mui/material/styles";
-import theme from "./theme/index";
-import Main from "./pages/Main";
+
+import Home from "./pages/Home";
+import Theme from "./index/ThemeProvider";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-    <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Main />
-    </ThemeProvider>,
+    <Theme>
+        <Home />
+    </Theme>,
 );
