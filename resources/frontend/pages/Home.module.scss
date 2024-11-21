@@ -4,9 +4,215 @@
     background-color: $b_primary;
     padding: 165px 0;
 
-    .heroSectionTitle {
-        font-size: 32px !important;
-        color: $t_red;
-        font-weight: bolder !important;
+    .heroSectionContainer {
+        justify-content: center;
+
+        .heroSectionTitle {
+            width: 100%;
+            font-size: 32px !important;
+            color: $t_red;
+            font-weight: 900 !important;
+        }
+
+        .heroSectionHeading {
+            width: 100%;
+            font-size: 64px !important;
+            color: $t_black;
+            font-weight: bolder !important;
+            line-height: 1;
+        }
+
+        .heroSectionSubheading {
+            font-size: 18px !important;
+            color: $t_lightBlack;
+            font-weight: normal !important;
+            line-height: 1.5;
+        }
+
+        .heroSectionImageContainer {
+            max-height: 350px;
+            max-width: 100%;
+            justify-content: center;
+
+            .heroSectionImage {
+                height: 100%;
+                width: 100%;
+                object-fit: contain;
+            }
+        }
+    }
+}
+
+.categoriesSection {
+    background-color: $b_red;
+    padding: 50px 0;
+
+    .categoriesSectionContainer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .categoriesSectionHeading {
+            font-size: 32px;
+            font-weight: bold;
+            color: $t_white;
+        }
+
+        .categoriesSectionSubheading {
+            font-size: 18px;
+            font-weight: normal;
+            color: $t_white;
+        }
+
+        .categoriesSectionGridContainer {
+            justify-content: end;
+
+            .categoriesSectionGrid {
+                width: 200px;
+
+                .categoriesSectionCard {
+                    background-color: transparent;
+                    text-align: center;
+                    color: white;
+                    box-shadow: none;
+                    border-radius: 0;
+
+                    .categoriesSectionCardContent {
+                        font-size: 18px;
+                        padding: 16px 0 0 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.productSection {
+    padding: 160px 0 50px 0;
+
+    .productSectionHeader {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+
+        .productSectionHeading {
+            font-size: 32px;
+            font-weight: bold;
+            color: $t_black;
+        }
+    }
+
+    .productSectionCard {
+        .productSectionCardImage {
+            object-fit: contain;
+        }
+
+        .productSectionCardTitle {
+            color: $t_black;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .productSectionCardRating {
+            display: flex;
+            column-gap: 15px;
+            align-items: center;
+            margin-bottom: 20px;
+
+            .productSectionCardRatingText {
+                font-size: 15px;
+                color: $t_lightBlack;
+                white-space: nowrap;
+            }
+        }
+
+        .productSectionCardPrice {
+            color: $t_red;
+            font-size: 21px;
+            font-weight: bold;
+        }
+    }
+}
+
+.featureSection {
+    padding: 50px 0;
+
+    .featureSectionCard {
+        padding: 20px;
+        background-color: $b_gray;
+        box-shadow: none;
+        border-radius: 0;
+        display: flex;
+        column-gap: 15px;
+        align-items: center;
+
+        .featureSectionCardIconBox {
+            background-color: $b_red;
+            padding: 15px;
+            width: fit-content;
+            height: fit-content;
+            color: $t_white;
+            display: flex;
+            align-items: center;
+        }
+        .featureSectionCardContent {
+            padding: 0;
+
+            .featureSectionCardHeading {
+                font-size: 16px;
+                font-weight: bolder;
+            }
+
+            .featureSectionCardSubheading {
+                font-size: 16px;
+                color: $t_lighterBlack;
+            }
+        }
+    }
+}
+
+@media (max-width: 1535px) {
+    .heroSection {
+        padding: 50px 0;
+
+        .heroSectionTitle,
+        .heroSectionHeading,
+        .heroSectionSubheading {
+            text-align: center;
+        }
+    }
+
+    .categoriesSectionContainer {
+        flex-direction: column;
+        row-gap: 20px;
+
+        .categoriesSectionHeading {
+            text-align: center;
+        }
+
+        .categoriesSectionSubheading {
+            text-align: center;
+        }
+    }
+
+    .categoriesSectionGridContainer {
+        justify-content: center !important;
+    }
+
+    .productSection {
+        padding: 50px 0 0 0;
+    }
+}
+
+@media (max-width: 1030px) {
+    .productSectionCardRating {
+        display: block !important;
+    }
+}
+
+@media (max-width: 540px) {
+    .productSectionHeader {
+        display: block !important;
     }
 }

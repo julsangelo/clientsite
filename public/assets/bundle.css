@@ -18,8 +18,181 @@ p {
   background-color: #eeeeee;
   padding: 165px 0;
 }
-.Home-module-heroSection-Xhl_d .Home-module-heroSectionTitle-VTfA3 {
+.Home-module-heroSection-Xhl_d .Home-module-heroSectionContainer-Tk9C5 {
+  justify-content: center;
+}
+.Home-module-heroSection-Xhl_d .Home-module-heroSectionContainer-Tk9C5 .Home-module-heroSectionTitle-VTfA3 {
+  width: 100%;
   font-size: 32px !important;
   color: #d62828;
+  font-weight: 900 !important;
+}
+.Home-module-heroSection-Xhl_d .Home-module-heroSectionContainer-Tk9C5 .Home-module-heroSectionHeading-HmmpK {
+  width: 100%;
+  font-size: 64px !important;
+  color: #121212;
   font-weight: bolder !important;
+  line-height: 1;
+}
+.Home-module-heroSection-Xhl_d .Home-module-heroSectionContainer-Tk9C5 .Home-module-heroSectionSubheading-FkIM_ {
+  font-size: 18px !important;
+  color: #373737;
+  font-weight: normal !important;
+  line-height: 1.5;
+}
+.Home-module-heroSection-Xhl_d .Home-module-heroSectionContainer-Tk9C5 .Home-module-heroSectionImageContainer-z6f9h {
+  max-height: 350px;
+  max-width: 100%;
+  justify-content: center;
+}
+.Home-module-heroSection-Xhl_d .Home-module-heroSectionContainer-Tk9C5 .Home-module-heroSectionImageContainer-z6f9h .Home-module-heroSectionImage-shHfX {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.Home-module-categoriesSection-Vy8T9 {
+  background-color: #d62828;
+  padding: 50px 0;
+}
+.Home-module-categoriesSection-Vy8T9 .Home-module-categoriesSectionContainer-C6oFt {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.Home-module-categoriesSection-Vy8T9 .Home-module-categoriesSectionContainer-C6oFt .Home-module-categoriesSectionHeading-jFzzp {
+  font-size: 32px;
+  font-weight: bold;
+  color: #ffffff;
+}
+.Home-module-categoriesSection-Vy8T9 .Home-module-categoriesSectionContainer-C6oFt .Home-module-categoriesSectionSubheading-gdCfN {
+  font-size: 18px;
+  font-weight: normal;
+  color: #ffffff;
+}
+.Home-module-categoriesSection-Vy8T9 .Home-module-categoriesSectionContainer-C6oFt .Home-module-categoriesSectionGridContainer-paUPM {
+  justify-content: end;
+}
+.Home-module-categoriesSection-Vy8T9 .Home-module-categoriesSectionContainer-C6oFt .Home-module-categoriesSectionGridContainer-paUPM .Home-module-categoriesSectionGrid-LxAZE {
+  width: 200px;
+}
+.Home-module-categoriesSection-Vy8T9 .Home-module-categoriesSectionContainer-C6oFt .Home-module-categoriesSectionGridContainer-paUPM .Home-module-categoriesSectionGrid-LxAZE .Home-module-categoriesSectionCard-f7SGq {
+  background-color: transparent;
+  text-align: center;
+  color: white;
+  box-shadow: none;
+  border-radius: 0;
+}
+.Home-module-categoriesSection-Vy8T9 .Home-module-categoriesSectionContainer-C6oFt .Home-module-categoriesSectionGridContainer-paUPM .Home-module-categoriesSectionGrid-LxAZE .Home-module-categoriesSectionCard-f7SGq .Home-module-categoriesSectionCardContent-eQH57 {
+  font-size: 18px;
+  padding: 16px 0 0 0;
+}
+
+.Home-module-productSection-OLEYl {
+  padding: 160px 0 50px 0;
+}
+.Home-module-productSection-OLEYl .Home-module-productSectionHeader-uInRL {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.Home-module-productSection-OLEYl .Home-module-productSectionHeader-uInRL .Home-module-productSectionHeading-M1pwp {
+  font-size: 32px;
+  font-weight: bold;
+  color: #121212;
+}
+.Home-module-productSection-OLEYl .Home-module-productSectionCard-S8Cjp .Home-module-productSectionCardImage-jPZFW {
+  object-fit: contain;
+}
+.Home-module-productSection-OLEYl .Home-module-productSectionCard-S8Cjp .Home-module-productSectionCardTitle-fn4iV {
+  color: #121212;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.Home-module-productSection-OLEYl .Home-module-productSectionCard-S8Cjp .Home-module-productSectionCardRating-yR0HN {
+  display: flex;
+  column-gap: 15px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.Home-module-productSection-OLEYl .Home-module-productSectionCard-S8Cjp .Home-module-productSectionCardRating-yR0HN .Home-module-productSectionCardRatingText-mq0TS {
+  font-size: 15px;
+  color: #373737;
+  white-space: nowrap;
+}
+.Home-module-productSection-OLEYl .Home-module-productSectionCard-S8Cjp .Home-module-productSectionCardPrice-HeSGF {
+  color: #d62828;
+  font-size: 21px;
+  font-weight: bold;
+}
+
+.Home-module-featureSection-eBcwV {
+  padding: 50px 0;
+}
+.Home-module-featureSection-eBcwV .Home-module-featureSectionCard-GXANa {
+  padding: 20px;
+  background-color: #dbdbdb;
+  box-shadow: none;
+  border-radius: 0;
+  display: flex;
+  column-gap: 15px;
+  align-items: center;
+}
+.Home-module-featureSection-eBcwV .Home-module-featureSectionCard-GXANa .Home-module-featureSectionCardIconBox-TiZ43 {
+  background-color: #d62828;
+  padding: 15px;
+  width: fit-content;
+  height: fit-content;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+}
+.Home-module-featureSection-eBcwV .Home-module-featureSectionCard-GXANa .Home-module-featureSectionCardContent-Zq6Rb {
+  padding: 0;
+}
+.Home-module-featureSection-eBcwV .Home-module-featureSectionCard-GXANa .Home-module-featureSectionCardContent-Zq6Rb .Home-module-featureSectionCardHeading-lc1hU {
+  font-size: 16px;
+  font-weight: bolder;
+}
+.Home-module-featureSection-eBcwV .Home-module-featureSectionCard-GXANa .Home-module-featureSectionCardContent-Zq6Rb .Home-module-featureSectionCardSubheading-ucOLq {
+  font-size: 16px;
+  color: #585858;
+}
+
+@media (max-width: 1535px) {
+  .Home-module-heroSection-Xhl_d {
+    padding: 50px 0;
+  }
+  .Home-module-heroSection-Xhl_d .Home-module-heroSectionTitle-VTfA3,
+  .Home-module-heroSection-Xhl_d .Home-module-heroSectionHeading-HmmpK,
+  .Home-module-heroSection-Xhl_d .Home-module-heroSectionSubheading-FkIM_ {
+    text-align: center;
+  }
+  .Home-module-categoriesSectionContainer-C6oFt {
+    flex-direction: column;
+    row-gap: 20px;
+  }
+  .Home-module-categoriesSectionContainer-C6oFt .Home-module-categoriesSectionHeading-jFzzp {
+    text-align: center;
+  }
+  .Home-module-categoriesSectionContainer-C6oFt .Home-module-categoriesSectionSubheading-gdCfN {
+    text-align: center;
+  }
+  .Home-module-categoriesSectionGridContainer-paUPM {
+    justify-content: center !important;
+  }
+  .Home-module-productSection-OLEYl {
+    padding: 50px 0 0 0;
+  }
+}
+@media (max-width: 1030px) {
+  .Home-module-productSectionCardRating-yR0HN {
+    display: block !important;
+  }
+}
+@media (max-width: 540px) {
+  .Home-module-productSectionHeader-uInRL {
+    display: block !important;
+  }
 }
