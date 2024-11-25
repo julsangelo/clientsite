@@ -1,6 +1,5 @@
 import React from "react";
 import { styled, alpha } from "@mui/material/styles";
-import { InputBase } from "@mui/material";
 import {
     AppBar,
     Box,
@@ -11,11 +10,21 @@ import {
     Container,
     Button,
     MenuItem,
+    InputBase,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const pages = ["Home", "Shop", "About", "Contact"];
+const shopOptions = [
+    "Interior Car Accessories",
+    "Car Care Detailing",
+    "Automotive Parts",
+    "Car Electronics",
+    "Tools and Garage ",
+];
 
 const Search = styled("div")(({ theme }) => ({
     position: "relative",
@@ -24,11 +33,8 @@ const Search = styled("div")(({ theme }) => ({
     "&:hover": {
         backgroundColor: alpha(theme.palette.common.white, 0.25),
     },
-    marginLeft: theme.spacing(2),
+    margin: theme.spacing(1, 0),
     width: "100%",
-    [theme.breakpoints.up("md")]: {
-        width: "40%",
-    },
 }));
 
 const SearchIconWrapper = styled("div")(({ theme }) => ({
@@ -47,13 +53,14 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     "& .MuiInputBase-input": {
         padding: theme.spacing(1, 1, 1, 0),
         paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-        transition: theme.transitions.create("width"),
         width: "100%",
     },
 }));
 
 export default function Navbar() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
+    const [anchorElShop, setAnchorElShop] = React.useState(null);
+    const [mobileShopView, setMobileShopView] = React.useState(false);
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -61,29 +68,22 @@ export default function Navbar() {
 
     const handleCloseNavMenu = () => {
         setAnchorElNav(null);
+        setAnchorElShop(null);
+    };
+
+    const handleToggleShopDropdown = (event) => {
+        setAnchorElShop(event.currentTarget);
+    };
+
+    const handleBackToMenu = () => {
+        setMobileShopView(false);
+        setAnchorElNav(null);
     };
 
     return (
         <AppBar position="static" sx={{ backgroundColor: "#373737", px: 2 }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    {/* Logo */}
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="a"
-                        href="#"
-                        sx={{
-                            mr: 2,
-                            display: { xs: "none", md: "flex" },
-                            fontWeight: "800",
-                            color: "#D62828",
-                            textDecoration: "none",
-                        }}
-                    >
-                        MUX
-                    </Typography>
-
                     {/* Mobile Menu Icon */}
                     <Box
                         sx={{
@@ -101,33 +101,177 @@ export default function Navbar() {
                         >
                             <MenuIcon />
                         </IconButton>
+                    </Box>
+
+                    {/* Logo (Desktop) */}
+                    <Typography
+                        variant="h6"
+                        noWrap
+                        component="a"
+                        href="#"
+                        sx={{
+                            mr: 2,
+                            display: { xs: "none", md: "flex" },
+                            fontWeight: "800",
+                            color: "#D62828",
+                            textDecoration: "none",
+                        }}
+                    >
+                        MUX
+                    </Typography>
+
+                    {/* Logo (Mobile) */}
+                    <Typography
+                        variant="h6"
+                        noWrap
+                        component="a"
+                        href="#"
+                        sx={{
+                            mr: 2,
+                            display: { xs: "flex", md: "none" },
+                            fontWeight: "800",
+                            color: "#D62828",
+                            textDecoration: "none",
+                            width: "100%",
+                            justifyContent: "center", // Center on small screens
+                        }}
+                    >
+                        MUX
+                    </Typography>
+
+                    {/* Mobile Menu */}
+                    <Box
+                        sx={{
+                            flexGrow: 1,
+                            display: { xs: "flex", md: "none" },
+                        }}
+                    >
                         <Menu
                             id="menu-appbar"
                             anchorEl={anchorElNav}
                             anchorOrigin={{
-                                vertical: "bottom",
-                                horizontal: "left",
+                                vertical: "top",
+                                horizontal: "center",
                             }}
                             keepMounted
                             transformOrigin={{
                                 vertical: "top",
-                                horizontal: "left",
+                                horizontal: "center",
                             }}
-                            open={Boolean(anchorElNav)}
+                            open={Boolean(anchorElNav) && !mobileShopView}
                             onClose={handleCloseNavMenu}
-                            sx={{ display: { xs: "block", md: "none" } }}
+                            PaperProps={{
+                                sx: {
+                                    width: "100vw",
+                                    maxWidth: "none",
+                                    top: "64px !important",
+                                    left: "0 !important",
+                                    right: "0 !important",
+                                    backgroundColor: "#373737",
+                                    boxShadow: "none",
+                                    borderRadius: 0,
+                                    px: 2,
+                                },
+                            }}
                         >
                             {pages.map((page) => (
                                 <MenuItem
                                     key={page}
-                                    onClick={handleCloseNavMenu}
+                                    onClick={
+                                        page === "Shop"
+                                            ? () => setMobileShopView(true)
+                                            : handleCloseNavMenu
+                                    }
+                                    sx={{
+                                        justifyContent: "center",
+                                        color: "#FFFFFF",
+                                        fontWeight: "400",
+                                        textAlign: "center",
+                                        py: 2,
+                                    }}
                                 >
-                                    <Typography textAlign="center">
+                                    <Typography
+                                        sx={{
+                                            display: "flex",
+                                            alignItems: "center",
+                                            gap: 1,
+                                        }}
+                                    >
                                         {page}
                                     </Typography>
                                 </MenuItem>
                             ))}
+
+                            {/* Search Bar */}
+                            <Search>
+                                <SearchIconWrapper>
+                                    <SearchIcon />
+                                </SearchIconWrapper>
+                                <StyledInputBase
+                                    placeholder="Search…"
+                                    inputProps={{ "aria-label": "search" }}
+                                />
+                            </Search>
                         </Menu>
+
+                        {/* Mobile Shop Menu */}
+                        {mobileShopView && (
+                            <Menu
+                                id="mobile-shop-menu"
+                                anchorOrigin={{
+                                    vertical: "top",
+                                    horizontal: "center",
+                                }}
+                                keepMounted
+                                transformOrigin={{
+                                    vertical: "top",
+                                    horizontal: "center",
+                                }}
+                                open={mobileShopView}
+                                onClose={handleBackToMenu}
+                                PaperProps={{
+                                    sx: {
+                                        width: "100vw",
+                                        maxWidth: "none",
+                                        top: "64px !important",
+                                        left: "0 !important",
+                                        right: "0 !important",
+                                        backgroundColor: "#373737",
+                                        boxShadow: "none",
+                                        borderRadius: 0,
+                                        px: 2,
+                                    },
+                                }}
+                            >
+                                <MenuItem
+                                    onClick={handleBackToMenu}
+                                    sx={{
+                                        display: "flex",
+                                        alignItems: "center",
+                                        color: "#FFFFFF",
+                                        py: 2,
+                                    }}
+                                >
+                                    <ArrowBackIcon sx={{ mr: 1 }} />
+                                    <Typography>Back</Typography>
+                                </MenuItem>
+                                {shopOptions.map((shop) => (
+                                    <MenuItem
+                                        key={shop}
+                                        onClick={handleCloseNavMenu}
+                                        sx={{
+                                            justifyContent: "center",
+                                            color: "#FFFFFF",
+                                            fontWeight: "400",
+                                            textAlign: "center",
+                                            py: 2,
+                                        }}
+                                    >
+                                        <Typography>{shop}</Typography>
+                                    </MenuItem>
+                                ))}
+                            </Menu>
+                        )}
                     </Box>
 
                     {/* Menu Items and Search Bar */}
@@ -141,20 +285,62 @@ export default function Navbar() {
                         {pages.map((page) => (
                             <Button
                                 key={page}
-                                onClick={handleCloseNavMenu}
+                                onClick={
+                                    page === "Shop"
+                                        ? handleToggleShopDropdown
+                                        : handleCloseNavMenu
+                                }
                                 sx={{
-                                    my: 2,
+                                    m: 2,
                                     color: "#FFFFFF",
                                     textTransform: "none",
                                     textDecoration: "none",
                                     fontWeight: "400",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    gap: 1,
                                 }}
                             >
                                 {page}
+                                {page === "Shop" && <ExpandMoreIcon />}
                             </Button>
                         ))}
+                        {/* Desktop Shop Dropdown */}
+                        <Menu
+                            anchorEl={anchorElShop}
+                            open={Boolean(anchorElShop)}
+                            onClose={handleCloseNavMenu}
+                            PaperProps={{
+                                sx: {
+                                    backgroundColor: "#373737",
+                                    color: "#FFFFFF",
+                                    borderRadius: "4px",
+                                    mt: 1,
+                                    p: 0,
+                                    width: "auto",
+                                    minWidth: "160px",
+                                    textAlign: "center",
+                                    left: "50%",
+                                    transform: "translateX(-50%)",
+                                },
+                            }}
+                        >
+                            {shopOptions.map((shop) => (
+                                <MenuItem
+                                    key={shop}
+                                    onClick={handleCloseNavMenu}
+                                    sx={{
+                                        justifyContent: "center",
+                                        py: 1,
+                                    }}
+                                >
+                                    {shop}
+                                </MenuItem>
+                            ))}
+                        </Menu>
 
-                        <Search sx={{ mr: 4 }}>
+                        {/* Search Bar */}
+                        <Search>
                             <SearchIconWrapper>
                                 <SearchIcon />
                             </SearchIconWrapper>
@@ -166,13 +352,16 @@ export default function Navbar() {
                     </Box>
 
                     {/* Login Button */}
-                    <Box>
+                    <Box
+                        sx={{
+                            ml: 2,
+                        }}
+                    >
                         <Button
                             variant="contained"
                             sx={{
                                 backgroundColor: "#D62828",
                                 textTransform: "none",
-                                textDecoration: "none",
                                 border: "none",
                                 borderRadius: 0,
                                 boxShadow: "none",
