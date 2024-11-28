@@ -2,6 +2,10 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/pages/Home.module.scss ***!
   \******************************************************************************************************************************************************************************************************************************************************************/
 @import url(https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap);
+/*!*******************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/pages/About.module.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************/
+@import url(https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap);
 /*!**********************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/pages/Home.module.scss (1) ***!
   \**********************************************************************************************************************************************************************************************************************************************************************/
@@ -194,5 +198,68 @@ p {
 @media (max-width: 540px) {
   .Home-module-productSectionHeader-uInRL {
     display: block !important;
+  }
+}
+/*!***********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/pages/About.module.scss (1) ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************/
+body {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+}
+
+p {
+  margin: 0;
+}
+
+.About-module-aboutSection-W8cV3 {
+  background-color: #f8f8f8;
+  padding: 110px 0;
+}
+.About-module-aboutSection-W8cV3 .About-module-aboutSectionLBox-sxjsk {
+  background-color: #eeeeee;
+  padding: 40px;
+  height: 100%;
+  align-content: center;
+}
+.About-module-aboutSection-W8cV3 .About-module-aboutSectionLBox-sxjsk .About-module-aboutSectionLBoxHeading-hOR1v {
+  font-size: 24px;
+  font-weight: 1000;
+  margin-bottom: 10px;
+  color: #121212;
+}
+.About-module-aboutSection-W8cV3 .About-module-aboutSectionLBox-sxjsk .About-module-aboutSectionLBoxSubheadingContainer-R_pZF {
+  display: grid;
+  row-gap: 25px;
+}
+.About-module-aboutSection-W8cV3 .About-module-aboutSectionLBox-sxjsk .About-module-aboutSectionLBoxSubheadingContainer-R_pZF .About-module-aboutSectionLBoxSubheading-oKEXy {
+  font-size: 16px;
+  color: #373737;
+}
+.About-module-aboutSection-W8cV3 .About-module-aboutSectionRBox-MD7cR {
+  background-color: #dbdbdb;
+  padding: 35px;
+  height: 100%;
+}
+.About-module-aboutSection-W8cV3 .About-module-aboutSectionRBox-MD7cR .About-module-aboutSectionRBoxLine-qmhj5 {
+  width: 25%;
+  height: 4px;
+  background-color: #d62828;
+  margin: auto 0 auto 20px;
+}
+.About-module-aboutSection-W8cV3 .About-module-aboutSectionRBox-MD7cR .About-module-aboutSectionRBoxHeading-NTof8 {
+  font-size: 18px;
+  font-weight: bold;
+  width: 68px;
+  color: #121212;
+}
+.About-module-aboutSection-W8cV3 .About-module-aboutSectionRBox-MD7cR .About-module-aboutSectionRBoxSubheading-_26RU {
+  margin-top: 10px;
+  color: #373737;
+}
+
+@media (max-width: 900px) {
+  .About-module-aboutSection-W8cV3 {
+    padding: 50px 0;
   }
 }

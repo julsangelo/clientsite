@@ -1,0 +1,60 @@
+@import "../assets/scss/main.module.scss";
+
+.aboutSection {
+    background-color: $b_gLight;
+    padding: 110px 0;
+
+    .aboutSectionLBox {
+        background-color: $b_primary;
+        padding: 40px;
+        height: 100%;
+        align-content: center;
+
+        .aboutSectionLBoxHeading {
+            font-size: 24px;
+            font-weight: 1000;
+            margin-bottom: 10px;
+            color: $t_black;
+        }
+
+        .aboutSectionLBoxSubheadingContainer {
+            display: grid;
+            row-gap: 25px;
+
+            .aboutSectionLBoxSubheading {
+                font-size: 16px;
+                color: $t_lightBlack;
+            }
+        }
+    }
+
+    .aboutSectionRBox {
+        background-color: $b_gray;
+        padding: 35px;
+        height: 100%;
+
+        .aboutSectionRBoxLine {
+            width: 25%;
+            height: 4px;
+            background-color: $t_red;
+            margin: auto 0 auto 20px;
+        }
+        .aboutSectionRBoxHeading {
+            font-size: 18px;
+            font-weight: bold;
+            width: 68px;
+            color: $t_black;
+        }
+
+        .aboutSectionRBoxSubheading {
+            margin-top: 10px;
+            color: $t_lightBlack;
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    .aboutSection {
+        padding: 50px 0;
+    }
+}
