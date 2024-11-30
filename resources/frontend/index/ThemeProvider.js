@@ -10,6 +10,17 @@ const theme = createTheme({
             styleOverrides: {
                 root: {
                     fontFamily: "'Manrope', sans-serif",
+                    fontWeight: "bolder",
+                    "&.Mui-selected": {
+                        color: "#d62828",
+                    },
+                },
+            },
+        },
+        MuiTabs: {
+            styleOverrides: {
+                indicator: {
+                    backgroundColor: "#d62828",
                 },
             },
         },

@@ -1,0 +1,32 @@
+@import "../assets/scss/main.module.scss";
+
+.contactInfoSection {
+    background-color: $b_gLight;
+    padding: 110px 0;
+
+    .contactInfoSectionBox {
+        background-color: $b_red;
+        color: $t_white;
+
+        .contactInfoSectionBoxContent {
+            padding: 20px 30px;
+            display: flex;
+            flex-direction: column;
+            row-gap: 20px;
+            font-size: 18px;
+            font-weight: 900;
+
+            .contactInfoSectionBoxDetails {
+                display: flex;
+                column-gap: 10px;
+                font-size: 16px;
+                font-weight: normal;
+            }
+        }
+
+        .contactInfoSectionBoxMap {
+            height: 400px;
+            color: $t_red;
+        }
+    }
+}
