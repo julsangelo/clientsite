@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Home.module";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import {
     Box,
     Button,
@@ -678,6 +679,7 @@ export default function Main() {
                     </Grid2>
                 </Container>
             </div>
+            <Footer />
         </>
     );
 }
