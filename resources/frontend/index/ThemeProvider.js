@@ -1,5 +1,6 @@
 import React from "react";
 import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
+import { margin, minHeight } from "@mui/system";
 
 const theme = createTheme({
     typography: {
@@ -21,6 +22,39 @@ const theme = createTheme({
             styleOverrides: {
                 indicator: {
                     backgroundColor: "#d62828",
+                },
+            },
+        },
+        MuiAccordionSummary: {
+            styleOverrides: {
+                root: {
+                    minHeight: "0",
+                    "&.Mui-expanded": {
+                        minHeight: "0",
+                    },
+                },
+                content: {
+                    margin: "0",
+                    "&.Mui-expanded": {
+                        minHeight: "0",
+                        margin: "0",
+                    },
+                },
+            },
+        },
+        MuiAccordion: {
+            styleOverrides: {
+                root: {
+                    "&.Mui-expanded": {
+                        margin: "0",
+                    },
+                },
+            },
+        },
+        MuiList: {
+            styleOverrides: {
+                root: {
+                    padding: "0",
                 },
             },
         },

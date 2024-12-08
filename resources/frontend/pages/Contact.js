@@ -10,6 +10,7 @@ import {
     PhoneIphone,
 } from "@mui/icons-material";
 import GoogleMapReact from "google-map-react";
+import Footer from "../components/Footer";
 
 export default function Contact() {
     document.title = "MUX Moto Shop | Contact";
@@ -122,6 +123,7 @@ export default function Contact() {
                     </TabContext>
                 </Container>
             </div>
+            <Footer />
         </>
     );
 }

@@ -2,6 +2,7 @@ import { Box, Container, Grid2, Typography } from "@mui/material";
 import React from "react";
 import Navbar from "../components/Navbar";
 import styles from "./About.module";
+import Footer from "../components/Footer";
 
 export default function About() {
     document.title = "MUX Moto Shop | About";
@@ -124,6 +125,7 @@ export default function About() {
                     </Grid2>
                 </Container>
             </div>
+            <Footer />
         </>
     );
 }

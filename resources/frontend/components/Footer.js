@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./Footer.module";
 import {
     Box,
     Typography,
@@ -12,7 +13,8 @@ import {
     ListItemIcon,
     ListItemText,
     Link,
-    Grid,
+    Grid2,
+    Container,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
@@ -23,24 +25,17 @@ import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 
 const Section = ({ title, content }) => (
     <Box>
-        <Typography
-            variant="h6"
-            fontWeight="bold"
-            gutterBottom
-            sx={{ color: "#D62828" }}
-        >
-            {title}
-        </Typography>
+        <Typography className={styles.footerSectionTitle}>{title}</Typography>
         {content}
     </Box>
 );
 
 const CustomList = ({ items }) => (
     <List>
-        {items.map(({ icon, text, href, hoverColor }) => (
-            <ListItem disableGutters sx={{ mb: 0 }}>
+        {items.map(({ icon, text, href }, index) => (
+            <ListItem className={styles.footerSectionListItem} key={index}>
                 {icon && (
-                    <ListItemIcon sx={{ minWidth: "36px", color: hoverColor }}>
+                    <ListItemIcon className={styles.footerSectionListItemIcon}>
                         {icon}
                     </ListItemIcon>
                 )}
@@ -50,17 +45,18 @@ const CustomList = ({ items }) => (
                             <Link
                                 href={href}
                                 underline="none"
-                                target="_blank"
+                                target="_self"
                                 rel="noopener noreferrer"
-                                sx={{
-                                    color: "#FFFFFF",
-                                    "&:hover": { color: hoverColor },
-                                }}
+                                className={styles.footerSectionListItemText}
                             >
                                 {text}
                             </Link>
                         ) : (
-                            text
+                            <Typography
+                                className={styles.footerSectionListItemText}
+                            >
+                                {text}
+                            </Typography>
                         )
                     }
                 />
@@ -73,22 +69,27 @@ export default function Footer() {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
-    // Static data for sections
     const contactItems = [
         {
-            icon: <EmailOutlinedIcon />,
+            icon: (
+                <EmailOutlinedIcon className={styles.footerSectionBrandIcon} />
+            ),
             text: "mux@automotive.ph",
             href: "mailto:mux@automotive.ph",
             hoverColor: "#D62828",
         },
         {
-            icon: <FacebookOutlinedIcon />,
+            icon: (
+                <FacebookOutlinedIcon
+                    className={styles.footerSectionBrandIcon}
+                />
+            ),
             text: "MUX Automotive PH",
             href: "https://facebook.com/muxautomotiveph",
             hoverColor: "#D62828",
         },
         {
-            icon: <XIcon />,
+            icon: <XIcon className={styles.footerSectionBrandIcon} />,
             text: "@muxautomotiveph",
             href: "https://twitter.com/muxautomotiveph",
             hoverColor: "#D62828",
@@ -104,123 +105,168 @@ export default function Footer() {
     ];
 
     const quickLinks = [
-        { text: "About Us", href: "#", hoverColor: "#D62828" },
-        { text: "Contact Us", href: "#", hoverColor: "#D62828" },
+        { text: "About Us", href: "/about", hoverColor: "#D62828" },
+        { text: "Contact Us", href: "/contact", hoverColor: "#D62828" },
         { text: "Terms of Service", href: "#", hoverColor: "#D62828" },
         { text: "Refund Policy", href: "#", hoverColor: "#D62828" },
     ];
 
     const contactDetails = [
         {
-            icon: <PhoneOutlinedIcon />,
+            icon: <PhoneOutlinedIcon fontSize="small" />,
             text: "0929 387 4453 / 8-8618609",
             hoverColor: "#D62828",
         },
         {
-            icon: <LocationOnOutlinedIcon />,
+            icon: <LocationOnOutlinedIcon fontSize="small" />,
             text: "23D BMA Street, Barangay Tatalon, Quezon City",
             hoverColor: "#D62828",
         },
     ];
 
     return (
-        <Box
-            component="footer"
-            sx={{ backgroundColor: "#121212", color: "#FFFFFF", p: 4 }}
-        >
-            {isMobile ? (
-                <>
-                    <Section
-                        title="MUX"
-                        content={<CustomList items={contactItems} />}
-                    />
-                    <Accordion
-                        sx={{
-                            backgroundColor: "inherit",
-                            color: "inherit",
-                            boxShadow: "none",
-                            "&:before": { display: "none" },
-                        }}
-                    >
-                        <AccordionSummary
-                            expandIcon={
-                                <ExpandMoreIcon sx={{ color: "#FFFFFF" }} />
-                            }
-                            sx={{ p: 0 }}
-                        >
-                            <Typography
-                                fontWeight="bold"
-                                sx={{ color: "#D62828" }}
-                                variant="h6"
-                            >
-                                Collections
+        <div className={styles.footerSection}>
+            <Container maxWidth="xl">
+                {isMobile ? (
+                    <>
+                        <Box>
+                            <Typography className={styles.footerSectionBrand}>
+                                MUX
                             </Typography>
-                        </AccordionSummary>
-                        <AccordionDetails sx={{ p: 0 }}>
-                            <CustomList items={collections} />
-                        </AccordionDetails>
-                    </Accordion>
-                    <Accordion
-                        sx={{
-                            backgroundColor: "inherit",
-                            color: "inherit",
-                            boxShadow: "none",
-                            "&:before": { display: "none" },
-                            mb: 2,
-                        }}
-                    >
-                        <AccordionSummary
-                            expandIcon={
-                                <ExpandMoreIcon sx={{ color: "#FFFFFF" }} />
-                            }
-                            sx={{ p: 0 }}
-                        >
-                            <Typography
-                                fontWeight="bold"
-                                sx={{ color: "#D62828" }}
-                                variant="h6"
+                            <div className={styles.footerSectionIconContainer}>
+                                {contactItems.map((item, index) => (
+                                    <a
+                                        key={index}
+                                        href={item.href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className={
+                                            styles.footerSectionBrandIconLink
+                                        }
+                                    >
+                                        {item.icon}
+                                    </a>
+                                ))}
+                            </div>
+                        </Box>
+                        <div className={styles.footerSectionAccordionContainer}>
+                            <Accordion
+                                className={styles.footerSectionAccordion}
+                                sx={{
+                                    backgroundColor: "inherit",
+                                    color: "inherit",
+                                    boxShadow: "none",
+                                    "&:before": { display: "none" },
+                                }}
                             >
-                                Quick Links
-                            </Typography>
-                        </AccordionSummary>
-                        <AccordionDetails sx={{ p: 0 }}>
-                            <CustomList items={quickLinks} />
-                        </AccordionDetails>
-                    </Accordion>
-                    <Section
-                        title="Contact"
-                        content={<CustomList items={contactDetails} />}
-                        sx={{ mb: 0 }}
-                    />
-                </>
-            ) : (
-                <Grid container spacing={4} justifyContent="space-between">
-                    <Grid item xs={12} sm={6} md={3}>
-                        <Section
-                            title="MUX"
-                            content={<CustomList items={contactItems} />}
-                        />
-                    </Grid>
-                    <Grid item xs={12} sm={6} md={3}>
-                        <Section
-                            title="Collections"
-                            content={<CustomList items={collections} />}
-                        />
-                    </Grid>
-                    <Grid item xs={12} sm={6} md={3}>
-                        <Section
-                            title="Quick Links"
-                            content={<CustomList items={quickLinks} />}
-                        />
-                    </Grid>
-                    <Grid item xs={12} sm={6} md={3}>
+                                <AccordionSummary
+                                    expandIcon={
+                                        <ExpandMoreIcon
+                                            className={
+                                                styles.footerSectionAccordionIcon
+                                            }
+                                        />
+                                    }
+                                    sx={{ p: 0 }}
+                                >
+                                    <Typography
+                                        className={styles.footerSectionTitle}
+                                    >
+                                        Collections
+                                    </Typography>
+                                </AccordionSummary>
+                                <AccordionDetails sx={{ p: 0 }}>
+                                    <CustomList items={collections} />
+                                </AccordionDetails>
+                            </Accordion>
+                            <Accordion
+                                className={styles.footerSectionAccordion}
+                                sx={{
+                                    backgroundColor: "inherit",
+                                    color: "inherit",
+                                    boxShadow: "none",
+                                    "&:before": { display: "none" },
+                                }}
+                            >
+                                <AccordionSummary
+                                    expandIcon={
+                                        <ExpandMoreIcon
+                                            className={
+                                                styles.footerSectionAccordionIcon
+                                            }
+                                        />
+                                    }
+                                    sx={{ p: 0 }}
+                                >
+                                    <Typography
+                                        className={styles.footerSectionTitle}
+                                    >
+                                        Quick Links
+                                    </Typography>
+                                </AccordionSummary>
+                                <AccordionDetails sx={{ p: 0 }}>
+                                    <CustomList items={quickLinks} />
+                                </AccordionDetails>
+                            </Accordion>
+                        </div>
+
                         <Section
                             title="Contact"
                             content={<CustomList items={contactDetails} />}
+                            sx={{ mb: 0 }}
                         />
-                    </Grid>
-                </Grid>
-            )}
-        </Box>
+                    </>
+                ) : (
+                    <Grid2 container spacing={4}>
+                        <Grid2 size={{ md: 3, lg: 4, xl: 5 }}>
+                            <Box>
+                                <Typography
+                                    className={styles.footerSectionBrand}
+                                >
+                                    MUX
+                                </Typography>
+                                <div
+                                    className={
+                                        styles.footerSectionIconContainer
+                                    }
+                                >
+                                    {contactItems.map((item, index) => (
+                                        <a
+                                            key={index}
+                                            href={item.href}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className={
+                                                styles.footerSectionBrandIconLink
+                                            }
+                                        >
+                                            {item.icon}
+                                        </a>
+                                    ))}
+                                </div>
+                            </Box>
+                        </Grid2>
+                        <Grid2
+                            container
+                            size={{ md: 9, lg: 8, xl: 7 }}
+                            className={styles.footerSectionDesktopInfo}
+                        >
+                            <Section
+                                title="Collections"
+                                content={<CustomList items={collections} />}
+                            />
+                            <Section
+                                title="Quick Links"
+                                content={<CustomList items={quickLinks} />}
+                            />
+                            <Section
+                                title="Contact"
+                                content={<CustomList items={contactDetails} />}
+                            />
+                        </Grid2>
+                    </Grid2>
+                )}
+            </Container>
+        </div>
     );
 }
