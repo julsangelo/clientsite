@@ -3,8 +3,16 @@
   \******************************************************************************************************************************************************************************************************************************************************************/
 @import url(https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap);
 /*!*************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/Navbar.module.scss ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************/
+@import url(https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap);
+/*!*************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/Footer.module.scss ***!
   \*************************************************************************************************************************************************************************************************************************************************************************/
+@import url(https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap);
+/*!******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/ProductCard.module.scss ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************/
 @import url(https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap);
 /*!*******************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/pages/About.module.scss ***!
@@ -101,7 +109,7 @@ p {
 }
 
 .Home-module-productSection-OLEYl {
-  padding: 160px 0 50px 0;
+  padding: 70px 0px;
 }
 .Home-module-productSection-OLEYl .Home-module-productSectionHeader-uInRL {
   display: flex;
@@ -113,30 +121,16 @@ p {
   font-weight: bold;
   color: #121212;
 }
-.Home-module-productSection-OLEYl .Home-module-productSectionCard-S8Cjp .Home-module-productSectionCardImage-jPZFW {
-  object-fit: contain;
-}
-.Home-module-productSection-OLEYl .Home-module-productSectionCard-S8Cjp .Home-module-productSectionCardTitle-fn4iV {
-  color: #121212;
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-.Home-module-productSection-OLEYl .Home-module-productSectionCard-S8Cjp .Home-module-productSectionCardRating-yR0HN {
+.Home-module-productSection-OLEYl .Home-module-productNoProduct-Sss5I {
+  height: 100px;
   display: flex;
-  column-gap: 15px;
+  justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
 }
-.Home-module-productSection-OLEYl .Home-module-productSectionCard-S8Cjp .Home-module-productSectionCardRating-yR0HN .Home-module-productSectionCardRatingText-mq0TS {
-  font-size: 15px;
-  color: #373737;
-  white-space: nowrap;
-}
-.Home-module-productSection-OLEYl .Home-module-productSectionCard-S8Cjp .Home-module-productSectionCardPrice-HeSGF {
-  color: #d62828;
-  font-size: 21px;
-  font-weight: bold;
+.Home-module-productSection-OLEYl .Home-module-productPagination-WiDtC {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .Home-module-featureSection-eBcwV {
@@ -198,15 +192,298 @@ p {
     padding: 50px 0 0 0;
   }
 }
-@media (max-width: 1030px) {
-  .Home-module-productSectionCardRating-yR0HN {
-    display: block !important;
-  }
-}
 @media (max-width: 540px) {
   .Home-module-productSectionHeader-uInRL {
     display: block !important;
   }
+  .Home-module-productSectionHeader-uInRL .Home-module-productSectionHeading-M1pwp {
+    margin-bottom: 10px;
+  }
+}
+/*!*****************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/Navbar.module.scss (1) ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************/
+body {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+}
+
+p {
+  margin: 0;
+}
+
+.Navbar-module-navbar-CnXQ1 {
+  padding: 15px 0;
+  background-color: #373737 !important;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC {
+  display: flex;
+  justify-content: space-between;
+  column-gap: 10px;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-mobileNavbarButton-Xwm0u {
+  color: #ffffff;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-menuPopover-nJnmZ {
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: #121212;
+  z-index: 100;
+  height: 100dvh;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-menuPopover-nJnmZ .Navbar-module-popoverContainer-lXNaB {
+  background-color: rgba(18, 18, 18, 0.5);
+  height: 100dvh;
+  width: 100dvw;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-menuPopover-nJnmZ .Navbar-module-menuPopoverBox-gAl7X {
+  width: fit-content;
+  height: 100dvh;
+  background-color: #ffffff;
+  padding: 15px 16px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-menuPopover-nJnmZ .Navbar-module-menuPopoverBox-gAl7X .Navbar-module-closeButton-GS23X {
+  width: fit-content;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-menuPopover-nJnmZ .Navbar-module-menuPopoverBox-gAl7X .Navbar-module-mobileNavLinkButton-Y7pBT {
+  border-radius: 5px;
+  color: #121212;
+  font-weight: 400;
+  font-size: 15px;
+  padding: 8px 16px;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-menuPopover-nJnmZ .Navbar-module-menuPopoverBox-gAl7X .Navbar-module-mobileAccordion-bJQMw {
+  margin: 11px 0;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-menuPopover-nJnmZ .Navbar-module-menuPopoverBox-gAl7X .Navbar-module-mobileAccordion-bJQMw .Navbar-module-mobileAccordionDetails-L5s_6 {
+  padding-bottom: 0;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-menuPopover-nJnmZ .Navbar-module-menuPopoverBox-gAl7X .Navbar-module-mobileNavbarSearchContainer-nMwmF {
+  background-color: #dbdbdb;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  width: 100%;
+  font-size: 15px;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-menuPopover-nJnmZ .Navbar-module-menuPopoverBox-gAl7X .Navbar-module-mobileNavbarLoginButton-atb4A {
+  width: 250px;
+  background-color: #d62828;
+  font-size: 15px;
+  color: #ffffff;
+  border-radius: 0;
+  padding: 10px 35px;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cartPopover-XxlEM {
+  position: fixed;
+  top: 0;
+  right: 0;
+  color: #121212;
+  z-index: 100;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cartPopover-XxlEM .Navbar-module-closeButton-GS23X {
+  width: fit-content;
+  align-self: end;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cartPopover-XxlEM .Navbar-module-popoverContainer-lXNaB {
+  background-color: rgba(18, 18, 18, 0.5);
+  height: 100dvh;
+  width: 100dvw;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cartPopover-XxlEM .Navbar-module-mobileCartInfo-o9u__ {
+  width: fit-content;
+  height: 100dvh;
+  background-color: #ffffff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cartPopover-XxlEM .Navbar-module-mobileCartInfo-o9u__ .Navbar-module-mobileCartList-kJk5I {
+  font-size: 14px;
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cartPopover-XxlEM .Navbar-module-mobileCartInfo-o9u__ .Navbar-module-mobileCartList-kJk5I .Navbar-module-mobileCartListImage-SwroQ {
+  height: 70px;
+  width: 70px;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cartPopover-XxlEM .Navbar-module-mobileCartInfo-o9u__ .Navbar-module-mobileCartList-kJk5I .Navbar-module-mobileCartDetails-Qie4b {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 100px;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cartPopover-XxlEM .Navbar-module-mobileCartInfo-o9u__ .Navbar-module-mobileCartList-kJk5I .Navbar-module-mobileCartDetails-Qie4b .Navbar-module-mobileCartDetailsName-fDfQb {
+  color: #121212;
+  font-weight: bold;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cartPopover-XxlEM .Navbar-module-mobileCartInfo-o9u__ .Navbar-module-mobileCartList-kJk5I .Navbar-module-mobileCartDetails-Qie4b .Navbar-module-mobileCartDetailsPrice-MqkgE {
+  color: #d62828;
+  font-weight: bold;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cartPopover-XxlEM .Navbar-module-mobileCartInfo-o9u__ .Navbar-module-mobileCartList-kJk5I .Navbar-module-mobileCartQuantity-C25Mc {
+  display: flex;
+  color: #585858;
+  height: fit-content;
+  font-size: 14px;
+  align-items: center;
+  column-gap: 5px;
+  border: 1px solid #dbdbdb;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cartPopover-XxlEM .Navbar-module-mobileCartInfo-o9u__ .Navbar-module-mobileCartTotal-V12jl {
+  display: flex;
+  justify-content: space-between;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cartPopover-XxlEM .Navbar-module-mobileCartInfo-o9u__ .Navbar-module-mobileCartTotal-V12jl .Navbar-module-mobileCartTotalText-Qtof2 {
+  color: #121212;
+  font-weight: bold;
+  font-size: 16px;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cartPopover-XxlEM .Navbar-module-mobileCartInfo-o9u__ .Navbar-module-mobileCartButtons-K5Y73 {
+  display: flex;
+  column-gap: 10px;
+  width: 100%;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cartPopover-XxlEM .Navbar-module-mobileCartInfo-o9u__ .Navbar-module-mobileCartButtons-K5Y73 .Navbar-module-mobileCartView-V6Ne1 {
+  width: 50%;
+  background-color: #121212;
+  color: #ffffff;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cartPopover-XxlEM .Navbar-module-mobileCartInfo-o9u__ .Navbar-module-mobileCartButtons-K5Y73 .Navbar-module-mobileCartCheckout-ue_uS {
+  width: 50%;
+  background-color: #d62828;
+  color: #ffffff;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-navbarBrand-Q0P_x {
+  color: #d62828;
+  font-size: 32px;
+  font-weight: 900;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-navLinkContainer-iWSe0 {
+  display: flex;
+  margin-left: 20px;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-navLinkContainer-iWSe0 .Navbar-module-navLinkButton-QLmrK {
+  border-radius: 5px;
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 15px;
+  padding: 8px 16px;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-navLinkContainer-iWSe0 .Navbar-module-navLinkShop-V02RV {
+  display: flex;
+  position: relative;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-navLinkContainer-iWSe0 .Navbar-module-navLinkShop-V02RV .Navbar-module-shopMenu-LR2Br {
+  position: absolute;
+  top: 63px;
+  background-color: #373737;
+  font-size: 14px;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-navbarSearchContainer-CP2qC {
+  background-color: #5f5f5f;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  width: 100%;
+  font-size: 15px;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-navbarSearchContainer-CP2qC .Navbar-module-navbarSearchInput-AH7_c {
+  height: 100%;
+  color: #ffffff;
+  width: 100%;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cart-H90Ha {
+  display: flex;
+  position: relative;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cart-H90Ha .Navbar-module-cartButton-wDZOH {
+  color: white;
+  font-size: 15px;
+  min-width: 146px;
+  text-wrap: nowrap;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cart-H90Ha .Navbar-module-cartInfo-_ol9z {
+  position: absolute;
+  top: 65px;
+  right: 0;
+  background-color: #ffffff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cart-H90Ha .Navbar-module-cartInfo-_ol9z .Navbar-module-cartList-tDBGI {
+  font-size: 14px;
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cart-H90Ha .Navbar-module-cartInfo-_ol9z .Navbar-module-cartList-tDBGI .Navbar-module-cartListImage-SipZ4 {
+  height: 70px;
+  width: 70px;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cart-H90Ha .Navbar-module-cartInfo-_ol9z .Navbar-module-cartList-tDBGI .Navbar-module-cartDetails-GF4kj {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 220px;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cart-H90Ha .Navbar-module-cartInfo-_ol9z .Navbar-module-cartList-tDBGI .Navbar-module-cartDetails-GF4kj .Navbar-module-cartDetailsName-IuCcn {
+  color: #121212;
+  font-weight: bold;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cart-H90Ha .Navbar-module-cartInfo-_ol9z .Navbar-module-cartList-tDBGI .Navbar-module-cartDetails-GF4kj .Navbar-module-cartDetailsPrice-fnWk4 {
+  color: #d62828;
+  font-weight: bold;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cart-H90Ha .Navbar-module-cartInfo-_ol9z .Navbar-module-cartList-tDBGI .Navbar-module-cartQuantity-tQSjb {
+  display: flex;
+  color: #585858;
+  height: fit-content;
+  font-size: 14px;
+  align-items: center;
+  column-gap: 5px;
+  border: 1px solid #dbdbdb;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cart-H90Ha .Navbar-module-cartInfo-_ol9z .Navbar-module-cartTotal-AFx1s {
+  display: flex;
+  justify-content: space-between;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cart-H90Ha .Navbar-module-cartInfo-_ol9z .Navbar-module-cartTotal-AFx1s .Navbar-module-cartTotalText-NjoA7 {
+  color: #121212;
+  font-weight: bold;
+  font-size: 16px;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cart-H90Ha .Navbar-module-cartInfo-_ol9z .Navbar-module-cartButtons-RvFWi {
+  display: flex;
+  column-gap: 10px;
+  width: 100%;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cart-H90Ha .Navbar-module-cartInfo-_ol9z .Navbar-module-cartButtons-RvFWi .Navbar-module-cartView-gyOHR {
+  width: 50%;
+  background-color: #121212;
+  color: #ffffff;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cart-H90Ha .Navbar-module-cartInfo-_ol9z .Navbar-module-cartButtons-RvFWi .Navbar-module-cartCheckout-nQDdb {
+  width: 50%;
+  background-color: #d62828;
+  color: #ffffff;
+}
+.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-navbarLoginButton-Cggmr {
+  background-color: #d62828;
+  font-size: 16px;
+  color: #ffffff;
+  border-radius: 0;
+  padding: 10px 35px;
 }
 /*!*****************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/Footer.module.scss (1) ***!
@@ -238,6 +515,7 @@ p {
 .Footer-module-footerSectionListItem-CQMrE {
   padding: 3px 0 !important;
   column-gap: 10px;
+  height: 38px;
 }
 .Footer-module-footerSectionListItem-CQMrE .Footer-module-footerSectionListItemIcon-rI6bP {
   color: #d62828;
@@ -284,6 +562,70 @@ p {
 }
 .Footer-module-footerSectionAccordionContainer-fohZQ .Footer-module-footerSectionAccordion-eSgQi .Footer-module-footerSectionAccordionIcon-s3BHB {
   color: #ffffff;
+}
+/*!**********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/ProductCard.module.scss (1) ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************/
+body {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+}
+
+p {
+  margin: 0;
+}
+
+.ProductCard-module-productCard-toEsL {
+  height: 100%;
+}
+.ProductCard-module-productCard-toEsL .ProductCard-module-productCardButton-TlPFJ {
+  height: 100%;
+}
+.ProductCard-module-productCard-toEsL .ProductCard-module-productCardButton-TlPFJ .ProductCard-module-productCardButtonContent-TORio {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
+.ProductCard-module-productCard-toEsL .ProductCard-module-productCardButton-TlPFJ .ProductCard-module-productCardButtonContent-TORio .ProductCard-module-productCardImage-n8uq4 {
+  object-fit: contain;
+  height: 250px;
+  width: 250px;
+}
+.ProductCard-module-productCard-toEsL .ProductCard-module-productCardButton-TlPFJ .ProductCard-module-productCardButtonContent-TORio .ProductCard-module-productCardContent-TKF_M {
+  flex-grow: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.ProductCard-module-productCard-toEsL .ProductCard-module-productCardButton-TlPFJ .ProductCard-module-productCardButtonContent-TORio .ProductCard-module-productCardContent-TKF_M .ProductCard-module-productCardTitle-Ppwvc {
+  color: #121212;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.ProductCard-module-productCard-toEsL .ProductCard-module-productCardButton-TlPFJ .ProductCard-module-productCardButtonContent-TORio .ProductCard-module-productCardContent-TKF_M .ProductCard-module-productCardRating-eQMFw {
+  display: flex;
+  column-gap: 15px;
+  align-items: center;
+  margin-bottom: 5px;
+}
+.ProductCard-module-productCard-toEsL .ProductCard-module-productCardButton-TlPFJ .ProductCard-module-productCardButtonContent-TORio .ProductCard-module-productCardContent-TKF_M .ProductCard-module-productCardRating-eQMFw .ProductCard-module-productCardRatingText-tPRil {
+  font-size: 15px;
+  color: #373737;
+  white-space: nowrap;
+}
+.ProductCard-module-productCard-toEsL .ProductCard-module-productCardButton-TlPFJ .ProductCard-module-productCardButtonContent-TORio .ProductCard-module-productCardContent-TKF_M .ProductCard-module-productCardPrice-mUSoH {
+  color: #d62828;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+@media (max-width: 1030px) {
+  .ProductCard-module-productCardRating-eQMFw {
+    display: block !important;
+  }
 }
 /*!***********************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/pages/About.module.scss (1) ***!

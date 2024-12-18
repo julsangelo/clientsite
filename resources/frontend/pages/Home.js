@@ -1,17 +1,18 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./Home.module";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import {
     Box,
-    Button,
     Card,
     CardActionArea,
     CardContent,
     CardMedia,
     Container,
     Grid2,
-    Rating,
+    MenuItem,
+    Pagination,
+    Select,
     Typography,
 } from "@mui/material";
 import {
@@ -19,9 +20,42 @@ import {
     MessageOutlined,
     ShoppingCartOutlined,
 } from "@mui/icons-material";
+import ProductCard from "../components/ProductCard";
+import { ReferenceContext } from "../context/ReferenceProvider";
+import { getProducts } from "../ajax/backend";
 
 export default function Main() {
     document.title = "MUX Moto Shop";
+    const { references } = useContext(ReferenceContext);
+    const [products, setProducts] = useState();
+    const [selectedProducts, setSelectedProducts] = useState();
+    const [currentPage, setCurrentPage] = useState(1);
+    const productsPerPage = 6;
+
+    useEffect(() => {
+        getProducts((data) => {
+            setProducts(data);
+            setSelectedProducts(data.allProducts);
+        });
+    }, []);
+
+    const selectChange = (option) => {
+        setCurrentPage(1);
+        if (option === 0) {
+            setSelectedProducts(products?.allProducts);
+        } else {
+            setSelectedProducts(products?.categorized[option] || []);
+        }
+    };
+
+    const handlePageChange = (event, value) => {
+        setCurrentPage(value);
+    };
+
+    const paginatedProducts = selectedProducts?.slice(
+        (currentPage - 1) * productsPerPage,
+        currentPage * productsPerPage,
+    );
 
     return (
         <>
@@ -86,116 +120,33 @@ export default function Main() {
                             spacing={5}
                             className={styles.categoriesSectionGridContainer}
                         >
-                            <Grid2
-                                size={2}
-                                className={styles.categoriesSectionGrid}
-                            >
-                                <Card className={styles.categoriesSectionCard}>
-                                    <CardActionArea>
-                                        <CardMedia
-                                            component="img"
-                                            image="/fjmoto/images/PAANO, JULIUS ANGELO A b-min.JPG"
-                                            height="200"
-                                            width="200"
-                                        />
-                                        <CardContent
-                                            className={
-                                                styles.categoriesSectionCardContent
-                                            }
-                                        >
-                                            Interior Car Accessories
-                                        </CardContent>
-                                    </CardActionArea>
-                                </Card>
-                            </Grid2>
-                            <Grid2
-                                size={2}
-                                className={styles.categoriesSectionGrid}
-                            >
-                                <Card className={styles.categoriesSectionCard}>
-                                    <CardActionArea>
-                                        <CardMedia
-                                            component="img"
-                                            image="/fjmoto/images/PAANO, JULIUS ANGELO A b-min.JPG"
-                                            height="200"
-                                            width="200"
-                                        />
-                                        <CardContent
-                                            className={
-                                                styles.categoriesSectionCardContent
-                                            }
-                                        >
-                                            Car Care & Detailing
-                                        </CardContent>
-                                    </CardActionArea>
-                                </Card>
-                            </Grid2>
-                            <Grid2
-                                size={2}
-                                className={styles.categoriesSectionGrid}
-                            >
-                                <Card className={styles.categoriesSectionCard}>
-                                    <CardActionArea>
-                                        <CardMedia
-                                            component="img"
-                                            image="/fjmoto/images/PAANO, JULIUS ANGELO A b-min.JPG"
-                                            height="200"
-                                            width="200"
-                                        />
-                                        <CardContent
-                                            className={
-                                                styles.categoriesSectionCardContent
-                                            }
-                                        >
-                                            Automotive Parts
-                                        </CardContent>
-                                    </CardActionArea>
-                                </Card>
-                            </Grid2>
-                            <Grid2
-                                size={2}
-                                className={styles.categoriesSectionGrid}
-                            >
-                                <Card className={styles.categoriesSectionCard}>
-                                    <CardActionArea>
-                                        <CardMedia
-                                            component="img"
-                                            image="/fjmoto/images/PAANO, JULIUS ANGELO A b-min.JPG"
-                                            height="200"
-                                            width="200"
-                                        />
-                                        <CardContent
-                                            className={
-                                                styles.categoriesSectionCardContent
-                                            }
-                                        >
-                                            Car Electronics
-                                        </CardContent>
-                                    </CardActionArea>
-                                </Card>
-                            </Grid2>
-                            <Grid2
-                                size={2}
-                                className={styles.categoriesSectionGrid}
-                            >
-                                <Card className={styles.categoriesSectionCard}>
-                                    <CardActionArea>
-                                        <CardMedia
-                                            component="img"
-                                            image="/fjmoto/images/PAANO, JULIUS ANGELO A b-min.JPG"
-                                            height="200"
-                                            width="200"
-                                        />
-                                        <CardContent
-                                            className={
-                                                styles.categoriesSectionCardContent
-                                            }
-                                        >
-                                            Tools and Garage
-                                        </CardContent>
-                                    </CardActionArea>
-                                </Card>
-                            </Grid2>
+                            {references?.productCategory?.map((item, index) => (
+                                <Grid2
+                                    key={index}
+                                    size={2}
+                                    className={styles.categoriesSectionGrid}
+                                >
+                                    <Card
+                                        className={styles.categoriesSectionCard}
+                                    >
+                                        <CardActionArea>
+                                            <CardMedia
+                                                component="img"
+                                                image="/fjmoto/images/PAANO, JULIUS ANGELO A b-min.JPG"
+                                                height="200"
+                                                width="200"
+                                            />
+                                            <CardContent
+                                                className={
+                                                    styles.categoriesSectionCardContent
+                                                }
+                                            >
+                                                {item.productCategoryName}
+                                            </CardContent>
+                                        </CardActionArea>
+                                    </Card>
+                                </Grid2>
+                            ))}
                         </Grid2>
                     </Grid2>
                 </Container>
@@ -206,359 +157,61 @@ export default function Main() {
                         <Typography className={styles.productSectionHeading}>
                             Featured Products
                         </Typography>
+                        <Select
+                            defaultValue={0}
+                            className={styles.productSelect}
+                        >
+                            <MenuItem
+                                value={0}
+                                className={styles.productOption}
+                                onClick={() => selectChange(0)}
+                            >
+                                All Products
+                            </MenuItem>
+                            {references?.productCategory?.map((item, index) => (
+                                <MenuItem
+                                    key={index}
+                                    value={index + 1}
+                                    className={styles.productOption}
+                                    onClick={() => selectChange(index + 1)}
+                                >
+                                    {item.productCategoryName}
+                                </MenuItem>
+                            ))}
+                        </Select>
                     </div>
-                    <Grid2 container size={12} spacing={2}>
-                        <Grid2 size={{ xs: 6, sm: 4, md: 3, lg: 2.4, xl: 2 }}>
-                            <Card className={styles.productSectionCard}>
-                                <CardActionArea>
-                                    <CardMedia
-                                        component="img"
-                                        image="/fjmoto/images/PAANO, JULIUS ANGELO A b-min.JPG"
-                                        height="250"
-                                        className={
-                                            styles.productSectionCardImage
-                                        }
-                                    />
-                                    <CardContent>
-                                        <Typography
-                                            className={
-                                                styles.productSectionCardTitle
-                                            }
-                                        >
-                                            Ponyan Pentair TY-564 (Toyota Hiace)
-                                        </Typography>
-                                        <div
-                                            className={
-                                                styles.productSectionCardRating
-                                            }
-                                        >
-                                            <Rating
-                                                defaultValue={2.5}
-                                                precision={0.5}
-                                                readOnly
-                                            />
-                                            <Typography
-                                                className={
-                                                    styles.productSectionCardRatingText
-                                                }
-                                            >
-                                                1 review
-                                            </Typography>
-                                        </div>
-                                        <div>
-                                            <Typography
-                                                className={
-                                                    styles.productSectionCardPrice
-                                                }
-                                            >
-                                                ₱ 2,500.00
-                                            </Typography>
-                                        </div>
-                                    </CardContent>
-                                </CardActionArea>
-                            </Card>
-                        </Grid2>
-                        <Grid2 size={{ xs: 6, sm: 4, md: 3, lg: 2.4, xl: 2 }}>
-                            <Card className={styles.productSectionCard}>
-                                <CardActionArea>
-                                    <CardMedia
-                                        component="img"
-                                        image="/fjmoto/images/PAANO, JULIUS ANGELO A b-min.JPG"
-                                        height="250"
-                                        className={
-                                            styles.productSectionCardImage
-                                        }
-                                    />
-                                    <CardContent>
-                                        <Typography
-                                            className={
-                                                styles.productSectionCardTitle
-                                            }
-                                        >
-                                            Ponyan Pentair TY-564 (Toyota Hiace)
-                                        </Typography>
-                                        <div
-                                            className={
-                                                styles.productSectionCardRating
-                                            }
-                                        >
-                                            <Rating
-                                                defaultValue={2.5}
-                                                precision={0.5}
-                                                readOnly
-                                            />
-                                            <Typography
-                                                className={
-                                                    styles.productSectionCardRatingText
-                                                }
-                                            >
-                                                1 review
-                                            </Typography>
-                                        </div>
-                                        <div>
-                                            <Typography
-                                                className={
-                                                    styles.productSectionCardPrice
-                                                }
-                                            >
-                                                ₱ 2,500.00
-                                            </Typography>
-                                        </div>
-                                    </CardContent>
-                                </CardActionArea>
-                            </Card>
-                        </Grid2>
-                        <Grid2 size={{ xs: 6, sm: 4, md: 3, lg: 2.4, xl: 2 }}>
-                            <Card className={styles.productSectionCard}>
-                                <CardActionArea>
-                                    <CardMedia
-                                        component="img"
-                                        image="/fjmoto/images/PAANO, JULIUS ANGELO A b-min.JPG"
-                                        height="250"
-                                        className={
-                                            styles.productSectionCardImage
-                                        }
-                                    />
-                                    <CardContent>
-                                        <Typography
-                                            className={
-                                                styles.productSectionCardTitle
-                                            }
-                                        >
-                                            Ponyan Pentair TY-564 (Toyota Hiace)
-                                        </Typography>
-                                        <div
-                                            className={
-                                                styles.productSectionCardRating
-                                            }
-                                        >
-                                            <Rating
-                                                defaultValue={2.5}
-                                                precision={0.5}
-                                                readOnly
-                                            />
-                                            <Typography
-                                                className={
-                                                    styles.productSectionCardRatingText
-                                                }
-                                            >
-                                                1 review
-                                            </Typography>
-                                        </div>
-                                        <div>
-                                            <Typography
-                                                className={
-                                                    styles.productSectionCardPrice
-                                                }
-                                            >
-                                                ₱ 2,500.00
-                                            </Typography>
-                                        </div>
-                                    </CardContent>
-                                </CardActionArea>
-                            </Card>
-                        </Grid2>
-                        <Grid2 size={{ xs: 6, sm: 4, md: 3, lg: 2.4, xl: 2 }}>
-                            <Card className={styles.productSectionCard}>
-                                <CardActionArea>
-                                    <CardMedia
-                                        component="img"
-                                        image="/fjmoto/images/PAANO, JULIUS ANGELO A b-min.JPG"
-                                        height="250"
-                                        className={
-                                            styles.productSectionCardImage
-                                        }
-                                    />
-                                    <CardContent>
-                                        <Typography
-                                            className={
-                                                styles.productSectionCardTitle
-                                            }
-                                        >
-                                            Ponyan Pentair TY-564 (Toyota Hiace)
-                                        </Typography>
-                                        <div
-                                            className={
-                                                styles.productSectionCardRating
-                                            }
-                                        >
-                                            <Rating
-                                                defaultValue={2.5}
-                                                precision={0.5}
-                                                readOnly
-                                            />
-                                            <Typography
-                                                className={
-                                                    styles.productSectionCardRatingText
-                                                }
-                                            >
-                                                1 review
-                                            </Typography>
-                                        </div>
-                                        <div>
-                                            <Typography
-                                                className={
-                                                    styles.productSectionCardPrice
-                                                }
-                                            >
-                                                ₱ 2,500.00
-                                            </Typography>
-                                        </div>
-                                    </CardContent>
-                                </CardActionArea>
-                            </Card>
-                        </Grid2>
-                        <Grid2 size={{ xs: 6, sm: 4, md: 3, lg: 2.4, xl: 2 }}>
-                            <Card className={styles.productSectionCard}>
-                                <CardActionArea>
-                                    <CardMedia
-                                        component="img"
-                                        image="/fjmoto/images/PAANO, JULIUS ANGELO A b-min.JPG"
-                                        height="250"
-                                        className={
-                                            styles.productSectionCardImage
-                                        }
-                                    />
-                                    <CardContent>
-                                        <Typography
-                                            className={
-                                                styles.productSectionCardTitle
-                                            }
-                                        >
-                                            Ponyan Pentair TY-564 (Toyota Hiace)
-                                        </Typography>
-                                        <div
-                                            className={
-                                                styles.productSectionCardRating
-                                            }
-                                        >
-                                            <Rating
-                                                defaultValue={2.5}
-                                                precision={0.5}
-                                                readOnly
-                                            />
-                                            <Typography
-                                                className={
-                                                    styles.productSectionCardRatingText
-                                                }
-                                            >
-                                                1 review
-                                            </Typography>
-                                        </div>
-                                        <div>
-                                            <Typography
-                                                className={
-                                                    styles.productSectionCardPrice
-                                                }
-                                            >
-                                                ₱ 2,500.00
-                                            </Typography>
-                                        </div>
-                                    </CardContent>
-                                </CardActionArea>
-                            </Card>
-                        </Grid2>
-                        <Grid2 size={{ xs: 6, sm: 4, md: 3, lg: 2.4, xl: 2 }}>
-                            <Card className={styles.productSectionCard}>
-                                <CardActionArea>
-                                    <CardMedia
-                                        component="img"
-                                        image="/fjmoto/images/PAANO, JULIUS ANGELO A b-min.JPG"
-                                        height="250"
-                                        className={
-                                            styles.productSectionCardImage
-                                        }
-                                    />
-                                    <CardContent>
-                                        <Typography
-                                            className={
-                                                styles.productSectionCardTitle
-                                            }
-                                        >
-                                            Ponyan Pentair TY-564 (Toyota Hiace)
-                                        </Typography>
-                                        <div
-                                            className={
-                                                styles.productSectionCardRating
-                                            }
-                                        >
-                                            <Rating
-                                                defaultValue={2.5}
-                                                precision={0.5}
-                                                readOnly
-                                            />
-                                            <Typography
-                                                className={
-                                                    styles.productSectionCardRatingText
-                                                }
-                                            >
-                                                1 review
-                                            </Typography>
-                                        </div>
-                                        <div>
-                                            <Typography
-                                                className={
-                                                    styles.productSectionCardPrice
-                                                }
-                                            >
-                                                ₱ 2,500.00
-                                            </Typography>
-                                        </div>
-                                    </CardContent>
-                                </CardActionArea>
-                            </Card>
-                        </Grid2>
-                        <Grid2 size={{ xs: 6, sm: 4, md: 3, lg: 2.4, xl: 2 }}>
-                            <Card className={styles.productSectionCard}>
-                                <CardActionArea>
-                                    <CardMedia
-                                        component="img"
-                                        image="/fjmoto/images/PAANO, JULIUS ANGELO A b-min.JPG"
-                                        height="250"
-                                        className={
-                                            styles.productSectionCardImage
-                                        }
-                                    />
-                                    <CardContent>
-                                        <Typography
-                                            className={
-                                                styles.productSectionCardTitle
-                                            }
-                                        >
-                                            Ponyan Pentair TY-564 (Toyota Hiace)
-                                        </Typography>
-                                        <div
-                                            className={
-                                                styles.productSectionCardRating
-                                            }
-                                        >
-                                            <Rating
-                                                defaultValue={2.5}
-                                                precision={0.5}
-                                                readOnly
-                                            />
-                                            <Typography
-                                                className={
-                                                    styles.productSectionCardRatingText
-                                                }
-                                            >
-                                                1 review
-                                            </Typography>
-                                        </div>
-                                        <div>
-                                            <Typography
-                                                className={
-                                                    styles.productSectionCardPrice
-                                                }
-                                            >
-                                                ₱ 2,500.00
-                                            </Typography>
-                                        </div>
-                                    </CardContent>
-                                </CardActionArea>
-                            </Card>
-                        </Grid2>
-                    </Grid2>
+                    {paginatedProducts?.length > 0 ? (
+                        <>
+                            <Grid2 container size={12} spacing={2}>
+                                {paginatedProducts.map((item, index) => (
+                                    <Grid2
+                                        size={{
+                                            xs: 6,
+                                            sm: 4,
+                                            md: 3,
+                                            lg: 2.4,
+                                            xl: 2,
+                                        }}
+                                        key={index}
+                                    >
+                                        <ProductCard product={item} />
+                                    </Grid2>
+                                ))}
+                            </Grid2>
+                            <Pagination
+                                count={Math.ceil(
+                                    selectedProducts.length / productsPerPage,
+                                )}
+                                page={currentPage}
+                                onChange={handlePageChange}
+                                className={styles.productPagination}
+                            />
+                        </>
+                    ) : (
+                        <div className={styles.productNoProduct}>
+                            <Typography>No products found.</Typography>
+                        </div>
+                    )}
                 </Container>
             </div>
             <div className={styles.featureSection}>

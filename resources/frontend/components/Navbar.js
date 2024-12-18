@@ -1,377 +1,422 @@
-import React from "react";
-import { styled, alpha } from "@mui/material/styles";
+import React, { useContext, useState } from "react";
+import styles from "./Navbar.module";
 import {
     AppBar,
-    Box,
-    Toolbar,
-    IconButton,
-    Typography,
-    Menu,
-    Container,
+    List,
     Button,
-    MenuItem,
+    Container,
+    Typography,
+    ListItemButton,
+    ListItemText,
     InputBase,
+    Box,
+    IconButton,
+    Collapse,
+    CardMedia,
+    Accordion,
+    AccordionSummary,
+    AccordionDetails,
 } from "@mui/material";
+import {
+    Add,
+    Close,
+    ExpandMore,
+    Remove,
+    Search,
+    ShoppingCart,
+} from "@mui/icons-material";
 import MenuIcon from "@mui/icons-material/Menu";
-import SearchIcon from "@mui/icons-material/Search";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-
-const pages = ["Home", "Shop", "About", "Contact"];
-const shopOptions = [
-    "Interior Car Accessories",
-    "Car Care Detailing",
-    "Automotive Parts",
-    "Car Electronics",
-    "Tools and Garage ",
-];
-
-const Search = styled("div")(({ theme }) => ({
-    position: "relative",
-    borderRadius: "0",
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
-    "&:hover": {
-        backgroundColor: alpha(theme.palette.common.white, 0.25),
-    },
-    margin: theme.spacing(1, 0),
-    width: "100%",
-}));
-
-const SearchIconWrapper = styled("div")(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-    color: "inherit",
-    width: "100%",
-    "& .MuiInputBase-input": {
-        padding: theme.spacing(1, 1, 1, 0),
-        paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-        width: "100%",
-    },
-}));
+import { ReferenceContext } from "../context/ReferenceProvider";
 
 export default function Navbar() {
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
-    const [anchorElShop, setAnchorElShop] = React.useState(null);
-    const [mobileShopView, setMobileShopView] = React.useState(false);
+    const isMobile = window.innerWidth < 900;
+    const [menu, setMenu] = useState(null);
+    const [cart, setCart] = useState(null);
+    const [shop, setShop] = useState(null);
+    const { references } = useContext(ReferenceContext);
 
-    const handleOpenNavMenu = (event) => {
-        setAnchorElNav(event.currentTarget);
+    const handleMenu = (event) => {
+        setMenu((prev) => (prev ? null : event.currentTarget));
+        setCart(null);
+        setShop(null);
     };
 
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
-        setAnchorElShop(null);
+    const handleShop = (event) => {
+        setShop((prev) => (prev ? null : event.currentTarget));
+        setCart(null);
+        setMenu(null);
     };
 
-    const handleToggleShopDropdown = (event) => {
-        setAnchorElShop(event.currentTarget);
+    const handleCart = (event) => {
+        setCart((prev) => (prev ? null : event.currentTarget));
+        setMenu(null);
+        setShop(null);
     };
 
-    const handleBackToMenu = () => {
-        setMobileShopView(false);
-        setAnchorElNav(null);
-    };
+    const menuOpen = Boolean(menu);
+    const shopOpen = Boolean(shop);
+    const cartOpen = Boolean(cart);
 
     return (
-        <AppBar position="static" sx={{ backgroundColor: "#373737", px: 2 }}>
-            <Container maxWidth="xl">
-                <Toolbar disableGutters>
-                    {/* Mobile Menu Icon */}
-                    <Box
-                        sx={{
-                            flexGrow: 1,
-                            display: { xs: "flex", md: "none" },
-                        }}
-                    >
+        <AppBar position="static" className={styles.navbar}>
+            <Container maxWidth="xl" className={styles.navbarContainer}>
+                {isMobile ? (
+                    <>
                         <IconButton
-                            size="large"
-                            aria-label="Open navigation menu"
-                            aria-controls="menu-appbar"
-                            aria-haspopup="true"
-                            onClick={handleOpenNavMenu}
-                            color="inherit"
+                            className={styles.mobileNavbarButton}
+                            onClick={handleMenu}
                         >
                             <MenuIcon />
                         </IconButton>
-                    </Box>
-
-                    {/* Logo (Desktop) */}
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="a"
-                        href="#"
-                        sx={{
-                            mr: 2,
-                            display: { xs: "none", md: "flex" },
-                            fontWeight: "800",
-                            color: "#D62828",
-                            textDecoration: "none",
-                        }}
-                    >
-                        MUX
-                    </Typography>
-
-                    {/* Logo (Mobile) */}
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="a"
-                        href="#"
-                        sx={{
-                            mr: 2,
-                            display: { xs: "flex", md: "none" },
-                            fontWeight: "800",
-                            color: "#D62828",
-                            textDecoration: "none",
-                            width: "100%",
-                            justifyContent: "center", // Center on small screens
-                        }}
-                    >
-                        MUX
-                    </Typography>
-
-                    {/* Mobile Menu */}
-                    <Box
-                        sx={{
-                            flexGrow: 1,
-                            display: { xs: "flex", md: "none" },
-                        }}
-                    >
-                        <Menu
-                            id="menu-appbar"
-                            anchorEl={anchorElNav}
-                            anchorOrigin={{
-                                vertical: "top",
-                                horizontal: "center",
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: "top",
-                                horizontal: "center",
-                            }}
-                            open={Boolean(anchorElNav) && !mobileShopView}
-                            onClose={handleCloseNavMenu}
-                            PaperProps={{
-                                sx: {
-                                    width: "100vw",
-                                    maxWidth: "none",
-                                    top: "64px !important",
-                                    left: "0 !important",
-                                    right: "0 !important",
-                                    backgroundColor: "#373737",
-                                    boxShadow: "none",
-                                    borderRadius: 0,
-                                    px: 2,
-                                },
-                            }}
-                        >
-                            {pages.map((page) => (
-                                <MenuItem
-                                    key={page}
-                                    onClick={
-                                        page === "Shop"
-                                            ? () => setMobileShopView(true)
-                                            : handleCloseNavMenu
-                                    }
-                                    sx={{
-                                        justifyContent: "center",
-                                        color: "#FFFFFF",
-                                        fontWeight: "400",
-                                        textAlign: "center",
-                                        py: 2,
-                                    }}
-                                >
-                                    <Typography
-                                        sx={{
-                                            display: "flex",
-                                            alignItems: "center",
-                                            gap: 1,
-                                        }}
-                                    >
-                                        {page}
-                                    </Typography>
-                                </MenuItem>
-                            ))}
-
-                            {/* Search Bar */}
-                            <Search>
-                                <SearchIconWrapper>
-                                    <SearchIcon />
-                                </SearchIconWrapper>
-                                <StyledInputBase
-                                    placeholder="Search…"
-                                    inputProps={{ "aria-label": "search" }}
-                                />
-                            </Search>
-                        </Menu>
-
-                        {/* Mobile Shop Menu */}
-                        {mobileShopView && (
-                            <Menu
-                                id="mobile-shop-menu"
-                                anchorOrigin={{
-                                    vertical: "top",
-                                    horizontal: "center",
-                                }}
-                                keepMounted
-                                transformOrigin={{
-                                    vertical: "top",
-                                    horizontal: "center",
-                                }}
-                                open={mobileShopView}
-                                onClose={handleBackToMenu}
-                                PaperProps={{
-                                    sx: {
-                                        width: "100vw",
-                                        maxWidth: "none",
-                                        top: "64px !important",
-                                        left: "0 !important",
-                                        right: "0 !important",
-                                        backgroundColor: "#373737",
-                                        boxShadow: "none",
-                                        borderRadius: 0,
-                                        px: 2,
-                                    },
-                                }}
+                        <Box className={styles.menuPopover}>
+                            <Collapse
+                                in={menuOpen}
+                                orientation="horizontal"
+                                collapsedSize="0px"
                             >
-                                <MenuItem
-                                    onClick={handleBackToMenu}
-                                    sx={{
-                                        display: "flex",
-                                        alignItems: "center",
-                                        color: "#FFFFFF",
-                                        py: 2,
-                                    }}
-                                >
-                                    <ArrowBackIcon sx={{ mr: 1 }} />
-                                    <Typography>Back</Typography>
-                                </MenuItem>
-                                {shopOptions.map((shop) => (
-                                    <MenuItem
-                                        key={shop}
-                                        onClick={handleCloseNavMenu}
-                                        sx={{
-                                            justifyContent: "center",
-                                            color: "#FFFFFF",
-                                            fontWeight: "400",
-                                            textAlign: "center",
-                                            py: 2,
-                                        }}
-                                    >
-                                        <Typography>{shop}</Typography>
-                                    </MenuItem>
-                                ))}
-                            </Menu>
-                        )}
-                    </Box>
-
-                    {/* Menu Items and Search Bar */}
-                    <Box
-                        sx={{
-                            flexGrow: 1,
-                            display: { xs: "none", md: "flex" },
-                            alignItems: "center",
-                        }}
-                    >
-                        {pages.map((page) => (
-                            <Button
-                                key={page}
-                                onClick={
-                                    page === "Shop"
-                                        ? handleToggleShopDropdown
-                                        : handleCloseNavMenu
-                                }
-                                sx={{
-                                    m: 2,
-                                    color: "#FFFFFF",
-                                    textTransform: "none",
-                                    textDecoration: "none",
-                                    fontWeight: "400",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    gap: 1,
-                                }}
+                                <Box className={styles.popoverContainer}></Box>
+                            </Collapse>
+                        </Box>
+                        <Box className={styles.menuPopover}>
+                            <Collapse
+                                orientation="horizontal"
+                                in={menuOpen}
+                                collapsedSize="0px"
                             >
-                                {page}
-                                {page === "Shop" && <ExpandMoreIcon />}
-                            </Button>
-                        ))}
-                        {/* Desktop Shop Dropdown */}
-                        <Menu
-                            anchorEl={anchorElShop}
-                            open={Boolean(anchorElShop)}
-                            onClose={handleCloseNavMenu}
-                            PaperProps={{
-                                sx: {
-                                    backgroundColor: "#373737",
-                                    color: "#FFFFFF",
-                                    borderRadius: "4px",
-                                    mt: 1,
-                                    p: 0,
-                                    width: "auto",
-                                    minWidth: "160px",
-                                    textAlign: "center",
-                                    left: "50%",
-                                    transform: "translateX(-50%)",
-                                },
-                            }}
+                                <Box className={styles.menuPopoverBox}>
+                                    <IconButton
+                                        onClick={handleMenu}
+                                        className={styles.closeButton}
+                                    >
+                                        <Close />
+                                    </IconButton>
+                                    <List>
+                                        <ListItemButton
+                                            to="/"
+                                            className={
+                                                styles.mobileNavLinkButton
+                                            }
+                                        >
+                                            <ListItemText>Home</ListItemText>
+                                        </ListItemButton>
+                                        <Box className={styles.mobileAccordion}>
+                                            <Accordion
+                                                sx={{
+                                                    backgroundColor: "inherit",
+                                                    color: "inherit",
+                                                    boxShadow: "none",
+                                                    "&:before": {
+                                                        display: "none",
+                                                    },
+                                                }}
+                                            >
+                                                <AccordionSummary
+                                                    expandIcon={<ExpandMore />}
+                                                >
+                                                    <Typography>
+                                                        Shop
+                                                    </Typography>
+                                                </AccordionSummary>
+                                                <AccordionDetails
+                                                    className={
+                                                        styles.mobileAccordionDetails
+                                                    }
+                                                >
+                                                    <List>
+                                                        {references?.productCategory?.map(
+                                                            (item, index) => (
+                                                                <ListItemButton
+                                                                    key={index}
+                                                                >
+                                                                    <ListItemText>
+                                                                        {
+                                                                            item.productCategoryName
+                                                                        }
+                                                                    </ListItemText>
+                                                                </ListItemButton>
+                                                            ),
+                                                        )}
+                                                    </List>
+                                                </AccordionDetails>
+                                            </Accordion>
+                                        </Box>
+                                        <ListItemButton
+                                            to="/about"
+                                            className={
+                                                styles.mobileNavLinkButton
+                                            }
+                                        >
+                                            <ListItemText>About</ListItemText>
+                                        </ListItemButton>
+                                        <ListItemButton
+                                            to="/contact"
+                                            className={
+                                                styles.mobileNavLinkButton
+                                            }
+                                        >
+                                            <ListItemText>Contact</ListItemText>
+                                        </ListItemButton>
+                                    </List>
+                                    <Box
+                                        className={
+                                            styles.mobileNavbarSearchContainer
+                                        }
+                                    >
+                                        <Search />
+                                        <InputBase
+                                            placeholder="Search products"
+                                            className={
+                                                styles.mobileNavbarSearchInput
+                                            }
+                                        />
+                                    </Box>
+                                    <Button
+                                        className={
+                                            styles.mobileNavbarLoginButton
+                                        }
+                                    >
+                                        Login
+                                    </Button>
+                                </Box>
+                            </Collapse>
+                        </Box>
+                        <Typography className={styles.navbarBrand}>
+                            MUX
+                        </Typography>
+                        <IconButton
+                            className={styles.mobileNavbarButton}
+                            onClick={handleCart}
                         >
-                            {shopOptions.map((shop) => (
-                                <MenuItem
-                                    key={shop}
-                                    onClick={handleCloseNavMenu}
-                                    sx={{
-                                        justifyContent: "center",
-                                        py: 1,
-                                    }}
+                            <ShoppingCart />
+                        </IconButton>
+                        <Box className={styles.cartPopover}>
+                            <Collapse
+                                in={cartOpen}
+                                orientation="horizontal"
+                                collapsedSize="0px"
+                            >
+                                <Box className={styles.popoverContainer}></Box>
+                            </Collapse>
+                        </Box>
+                        <Box className={styles.cartPopover}>
+                            <Collapse
+                                in={cartOpen}
+                                orientation="horizontal"
+                                collapsedSize="0px"
+                            >
+                                <Box className={styles.mobileCartInfo}>
+                                    <IconButton
+                                        onClick={handleCart}
+                                        className={styles.closeButton}
+                                    >
+                                        <Close />
+                                    </IconButton>
+                                    <Box className={styles.mobileCartList}>
+                                        <CardMedia
+                                            component="img"
+                                            image="/fjmoto/images/PAANO, JULIUS ANGELO A b-min.JPG"
+                                            className={
+                                                styles.mobileCartListImage
+                                            }
+                                        />
+                                        <Box
+                                            className={styles.mobileCartDetails}
+                                        >
+                                            <Typography
+                                                className={
+                                                    styles.mobileCartDetailsName
+                                                }
+                                            >
+                                                Ponyan Pentair TY-564 (Toyota
+                                                Hiace)
+                                            </Typography>
+                                            <Typography
+                                                className={
+                                                    styles.mobileCartDetailsPrice
+                                                }
+                                            >
+                                                ₱ 2,500.00
+                                            </Typography>
+                                        </Box>
+                                        <Box
+                                            className={
+                                                styles.mobileCartQuantity
+                                            }
+                                        >
+                                            <IconButton>
+                                                <Add />
+                                            </IconButton>
+                                            <Typography>1</Typography>
+                                            <IconButton>
+                                                <Remove />
+                                            </IconButton>
+                                        </Box>
+                                    </Box>
+                                    <Box className={styles.mobileCartTotal}>
+                                        <Typography
+                                            className={
+                                                styles.mobileCartTotalText
+                                            }
+                                        >
+                                            Total
+                                        </Typography>
+                                        <Typography
+                                            className={
+                                                styles.mobileCartTotalText
+                                            }
+                                        >
+                                            ₱ 2,500.00
+                                        </Typography>
+                                    </Box>
+                                    <Box className={styles.mobileCartButtons}>
+                                        <Button
+                                            className={styles.mobileCartView}
+                                        >
+                                            View Cart
+                                        </Button>
+                                        <Button
+                                            className={
+                                                styles.mobileCartCheckout
+                                            }
+                                        >
+                                            Checkout
+                                        </Button>
+                                    </Box>
+                                </Box>
+                            </Collapse>
+                        </Box>
+                    </>
+                ) : (
+                    <>
+                        <Typography className={styles.navbarBrand}>
+                            MUX
+                        </Typography>
+                        <List className={styles.navLinkContainer}>
+                            <ListItemButton
+                                to="/"
+                                className={styles.navLinkButton}
+                            >
+                                <ListItemText>Home</ListItemText>
+                            </ListItemButton>
+                            <div className={styles.navLinkShop}>
+                                <Button
+                                    className={styles.navLinkButton}
+                                    endIcon={<ExpandMore />}
+                                    onClick={handleShop}
                                 >
-                                    {shop}
-                                </MenuItem>
-                            ))}
-                        </Menu>
-
-                        {/* Search Bar */}
-                        <Search>
-                            <SearchIconWrapper>
-                                <SearchIcon />
-                            </SearchIconWrapper>
-                            <StyledInputBase
-                                placeholder="Search…"
-                                inputProps={{ "aria-label": "search" }}
+                                    Shop
+                                </Button>
+                                {shopOpen && (
+                                    <Box className={styles.shopMenu}>
+                                        <List>
+                                            {references?.productCategory?.map(
+                                                (item, index) => (
+                                                    <ListItemButton key={index}>
+                                                        <ListItemText>
+                                                            {
+                                                                item.productCategoryName
+                                                            }
+                                                        </ListItemText>
+                                                    </ListItemButton>
+                                                ),
+                                            )}
+                                        </List>
+                                    </Box>
+                                )}
+                            </div>
+                            <ListItemButton
+                                to="/about"
+                                className={styles.navLinkButton}
+                            >
+                                <ListItemText>About</ListItemText>
+                            </ListItemButton>
+                            <ListItemButton
+                                to="/contact"
+                                className={styles.navLinkButton}
+                            >
+                                <ListItemText>Contact</ListItemText>
+                            </ListItemButton>
+                        </List>
+                        <Box className={styles.navbarSearchContainer}>
+                            <Search />
+                            <InputBase
+                                placeholder="Search products"
+                                className={styles.navbarSearchInput}
                             />
-                        </Search>
-                    </Box>
+                        </Box>
+                        <div className={styles.cart}>
+                            <Button
+                                startIcon={<ShoppingCart />}
+                                endIcon={<ExpandMore />}
+                                className={styles.cartButton}
+                                onClick={handleCart}
+                            >
+                                Cart (0)
+                            </Button>
+                            {cartOpen && (
+                                <Box className={styles.cartInfo}>
+                                    <Box className={styles.cartList}>
+                                        <CardMedia
+                                            component="img"
+                                            image="/fjmoto/images/PAANO, JULIUS ANGELO A b-min.JPG"
+                                            className={styles.cartListImage}
+                                        />
+                                        <Box className={styles.cartDetails}>
+                                            <Typography
+                                                className={
+                                                    styles.cartDetailsName
+                                                }
+                                            >
+                                                Ponyan Pentair TY-564 (Toyota
+                                                Hiace)
+                                            </Typography>
+                                            <Typography
+                                                className={
+                                                    styles.cartDetailsPrice
+                                                }
+                                            >
+                                                ₱ 2,500.00
+                                            </Typography>
+                                        </Box>
+                                        <Box className={styles.cartQuantity}>
+                                            <IconButton>
+                                                <Add />
+                                            </IconButton>
+                                            <Typography>1</Typography>
+                                            <IconButton>
+                                                <Remove />
+                                            </IconButton>
+                                        </Box>
+                                    </Box>
+                                    <Box className={styles.cartTotal}>
+                                        <Typography
+                                            className={styles.cartTotalText}
+                                        >
+                                            Total
+                                        </Typography>
+                                        <Typography
+                                            className={styles.cartTotalText}
+                                        >
+                                            ₱ 2,500.00
+                                        </Typography>
+                                    </Box>
+                                    <Box className={styles.cartButtons}>
+                                        <Button className={styles.cartView}>
+                                            View Cart
+                                        </Button>
+                                        <Button className={styles.cartCheckout}>
+                                            Checkout
+                                        </Button>
+                                    </Box>
+                                </Box>
+                            )}
+                        </div>
 
-                    {/* Login Button */}
-                    <Box
-                        sx={{
-                            ml: 2,
-                        }}
-                    >
-                        <Button
-                            variant="contained"
-                            sx={{
-                                backgroundColor: "#D62828",
-                                textTransform: "none",
-                                border: "none",
-                                borderRadius: 0,
-                                boxShadow: "none",
-                                px: 2,
-                            }}
-                        >
+                        <Button className={styles.navbarLoginButton}>
                             Login
                         </Button>
-                    </Box>
-                </Toolbar>
+                    </>
+                )}
             </Container>
         </AppBar>
     );

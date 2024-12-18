@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./Footer.module";
 import {
     Box,
@@ -22,106 +22,66 @@ import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import XIcon from "@mui/icons-material/X";
 import PhoneOutlinedIcon from "@mui/icons-material/PhoneOutlined";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
+import { ReferenceContext } from "../context/ReferenceProvider";
+import ContactIcon from "./ContactIcon";
 
-const Section = ({ title, content }) => (
+const FooterSection = ({ title, data, prefix }) => (
     <Box>
         <Typography className={styles.footerSectionTitle}>{title}</Typography>
-        {content}
+        <FooterList data={data} prefix={prefix} />
     </Box>
 );
 
-const CustomList = ({ items }) => (
-    <List>
-        {items.map(({ icon, text, href }, index) => (
-            <ListItem className={styles.footerSectionListItem} key={index}>
-                {icon && (
-                    <ListItemIcon className={styles.footerSectionListItemIcon}>
-                        {icon}
-                    </ListItemIcon>
-                )}
-                <ListItemText
-                    primary={
-                        href ? (
+const FooterList = ({ data, prefix }) => {
+    return (
+        <List>
+            {data?.map((item, index) => (
+                <ListItem className={styles.footerSectionListItem} key={index}>
+                    {item[`${prefix}Type`] && (
+                        <ListItemIcon
+                            className={styles.footerSectionListItemIcon}
+                        >
+                            <ContactIcon iconType={item[`${prefix}Type`]} />
+                        </ListItemIcon>
+                    )}
+                    <ListItemText>
+                        {item[`${prefix}Value`] ? (
                             <Link
-                                href={href}
+                                href={item[`${prefix}Value`]}
                                 underline="none"
                                 target="_self"
                                 rel="noopener noreferrer"
                                 className={styles.footerSectionListItemText}
                             >
-                                {text}
+                                {item[`${prefix}Text`] || item[`${prefix}Name`]}
                             </Link>
                         ) : (
                             <Typography
                                 className={styles.footerSectionListItemText}
                             >
-                                {text}
+                                {item[`${prefix}Text`] || item[`${prefix}Name`]}
                             </Typography>
-                        )
-                    }
-                />
-            </ListItem>
-        ))}
-    </List>
-);
+                        )}
+                    </ListItemText>
+                </ListItem>
+            ))}
+        </List>
+    );
+};
 
 export default function Footer() {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+    const { references } = useContext(ReferenceContext);
 
-    const contactItems = [
+    const link = [
+        { linkText: "About Us", linkValue: "/about" },
         {
-            icon: (
-                <EmailOutlinedIcon className={styles.footerSectionBrandIcon} />
-            ),
-            text: "mux@automotive.ph",
-            href: "mailto:mux@automotive.ph",
-            hoverColor: "#D62828",
+            linkText: "Contact Us",
+            linkValue: "/contact",
         },
-        {
-            icon: (
-                <FacebookOutlinedIcon
-                    className={styles.footerSectionBrandIcon}
-                />
-            ),
-            text: "MUX Automotive PH",
-            href: "https://facebook.com/muxautomotiveph",
-            hoverColor: "#D62828",
-        },
-        {
-            icon: <XIcon className={styles.footerSectionBrandIcon} />,
-            text: "@muxautomotiveph",
-            href: "https://twitter.com/muxautomotiveph",
-            hoverColor: "#D62828",
-        },
-    ];
-
-    const collections = [
-        { text: "Interior Car Accessories", href: "#", hoverColor: "#D62828" },
-        { text: "Car Care and Detailing", href: "#", hoverColor: "#D62828" },
-        { text: "Automotive Parts", href: "#", hoverColor: "#D62828" },
-        { text: "Car Electronics", href: "#", hoverColor: "#D62828" },
-        { text: "Tools and Garage", href: "#", hoverColor: "#D62828" },
-    ];
-
-    const quickLinks = [
-        { text: "About Us", href: "/about", hoverColor: "#D62828" },
-        { text: "Contact Us", href: "/contact", hoverColor: "#D62828" },
-        { text: "Terms of Service", href: "#", hoverColor: "#D62828" },
-        { text: "Refund Policy", href: "#", hoverColor: "#D62828" },
-    ];
-
-    const contactDetails = [
-        {
-            icon: <PhoneOutlinedIcon fontSize="small" />,
-            text: "0929 387 4453 / 8-8618609",
-            hoverColor: "#D62828",
-        },
-        {
-            icon: <LocationOnOutlinedIcon fontSize="small" />,
-            text: "23D BMA Street, Barangay Tatalon, Quezon City",
-            hoverColor: "#D62828",
-        },
+        { linkText: "Terms of Service", linkValue: "#" },
+        { linkText: "Refund Policy", linkValue: "#" },
     ];
 
     return (
@@ -134,17 +94,21 @@ export default function Footer() {
                                 MUX
                             </Typography>
                             <div className={styles.footerSectionIconContainer}>
-                                {contactItems.map((item, index) => (
+                                {references?.socialMedia?.map((item, index) => (
                                     <a
                                         key={index}
-                                        href={item.href}
+                                        href={item.branchSocialMediaValue}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className={
                                             styles.footerSectionBrandIconLink
                                         }
                                     >
-                                        {item.icon}
+                                        <ContactIcon
+                                            iconType={
+                                                item.branchSocialMediaType
+                                            }
+                                        />
                                     </a>
                                 ))}
                             </div>
@@ -172,11 +136,14 @@ export default function Footer() {
                                     <Typography
                                         className={styles.footerSectionTitle}
                                     >
-                                        Collections
+                                        Product Categories
                                     </Typography>
                                 </AccordionSummary>
                                 <AccordionDetails sx={{ p: 0 }}>
-                                    <CustomList items={collections} />
+                                    <FooterList
+                                        data={references.productCategory}
+                                        prefix="productCategory"
+                                    />
                                 </AccordionDetails>
                             </Accordion>
                             <Accordion
@@ -205,15 +172,14 @@ export default function Footer() {
                                     </Typography>
                                 </AccordionSummary>
                                 <AccordionDetails sx={{ p: 0 }}>
-                                    <CustomList items={quickLinks} />
+                                    <FooterList data={link} prefix="link" />
                                 </AccordionDetails>
                             </Accordion>
                         </div>
-
-                        <Section
+                        <FooterSection
                             title="Contact"
-                            content={<CustomList items={contactDetails} />}
-                            sx={{ mb: 0 }}
+                            data={references.contact}
+                            prefix="branchContact"
                         />
                     </>
                 ) : (
@@ -230,19 +196,27 @@ export default function Footer() {
                                         styles.footerSectionIconContainer
                                     }
                                 >
-                                    {contactItems.map((item, index) => (
-                                        <a
-                                            key={index}
-                                            href={item.href}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className={
-                                                styles.footerSectionBrandIconLink
-                                            }
-                                        >
-                                            {item.icon}
-                                        </a>
-                                    ))}
+                                    {references?.socialMedia?.map(
+                                        (item, index) => (
+                                            <a
+                                                key={index}
+                                                href={
+                                                    item.branchSocialMediaValue
+                                                }
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className={
+                                                    styles.footerSectionBrandIconLink
+                                                }
+                                            >
+                                                <ContactIcon
+                                                    iconType={
+                                                        item.branchSocialMediaType
+                                                    }
+                                                />
+                                            </a>
+                                        ),
+                                    )}
                                 </div>
                             </Box>
                         </Grid2>
@@ -251,17 +225,20 @@ export default function Footer() {
                             size={{ md: 9, lg: 8, xl: 7 }}
                             className={styles.footerSectionDesktopInfo}
                         >
-                            <Section
-                                title="Collections"
-                                content={<CustomList items={collections} />}
+                            <FooterSection
+                                title="Product Categories"
+                                data={references.productCategory}
+                                prefix="productCategory"
                             />
-                            <Section
+                            <FooterSection
                                 title="Quick Links"
-                                content={<CustomList items={quickLinks} />}
+                                data={link}
+                                prefix="link"
                             />
-                            <Section
+                            <FooterSection
                                 title="Contact"
-                                content={<CustomList items={contactDetails} />}
+                                data={references.contact}
+                                prefix="branchContact"
                             />
                         </Grid2>
                     </Grid2>

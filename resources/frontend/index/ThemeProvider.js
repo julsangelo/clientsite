@@ -7,6 +7,13 @@ const theme = createTheme({
         fontFamily: "'Manrope', sans-serif",
     },
     components: {
+        MuiTypography: {
+            styleOverrides: {
+                root: {
+                    fontSize: "inherit",
+                },
+            },
+        },
         MuiTab: {
             styleOverrides: {
                 root: {
@@ -55,6 +62,41 @@ const theme = createTheme({
             styleOverrides: {
                 root: {
                     padding: "0",
+                },
+            },
+        },
+        MuiButton: {
+            styleOverrides: {
+                root: {
+                    textTransform: "none",
+                },
+            },
+        },
+        MuiInputBase: {
+            styleOverrides: {
+                root: {
+                    fontSize: "inherit",
+                },
+            },
+        },
+        MuiMenuItem: {
+            styleOverrides: {
+                root: {
+                    "&.Mui-selected": {
+                        backgroundColor: "rgba(220, 39, 46, 0.08) !important",
+                    },
+                    "&.Mui-selected:hover": {
+                        backgroundColor: "rgba(220, 39, 46, 0.15) !important",
+                    },
+                },
+            },
+        },
+        MuiOutlinedInput: {
+            styleOverrides: {
+                root: {
+                    "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                        borderColor: "rgba(220, 39, 46, 1)",
+                    },
                 },
             },
         },
