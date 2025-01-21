@@ -1,0 +1,55 @@
+@import "../assets/scss/main.module.scss";
+
+.page {
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+
+    .shop {
+        background-color: $b_gLight;
+        padding: 60px 0px;
+        flex-grow: 1;
+
+        .shopContainer {
+            display: flex;
+            flex-direction: column;
+            row-gap: 20px;
+
+            .shopPageInfo {
+                font-size: 14px;
+                font-weight: 600;
+                color: $t_lighterBlack;
+                display: flex;
+                align-items: center;
+
+                .shopPageInfoArrow {
+                    font-size: 20px;
+                }
+            }
+
+            .shopPageTitle {
+                color: $t_lightBlack;
+                font-size: 25px;
+                font-weight: 900;
+            }
+
+            .shopPaginationInfo {
+                color: $t_lightBlack;
+                font-size: 16px;
+                font-weight: 600;
+            }
+
+            .shopPagination {
+                display: flex;
+                justify-content: end;
+            }
+
+            .shopNoProduct {
+                height: 200px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+}

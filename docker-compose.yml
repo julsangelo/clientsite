@@ -4,6 +4,7 @@ services:
         container_name: client-site
         volumes:
             - ./:/var/www/html
+            - ../storage/hydrogen:/var/www/html/public/hydrogen
         ports:
             - "2304:80"
         networks:

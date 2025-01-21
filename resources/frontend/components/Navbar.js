@@ -27,6 +27,7 @@ import {
 } from "@mui/icons-material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { ReferenceContext } from "../context/ReferenceProvider";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
     const isMobile = window.innerWidth < 900;
@@ -244,11 +245,11 @@ export default function Navbar() {
                                             }
                                         >
                                             <IconButton>
-                                                <Add />
+                                                <Remove />
                                             </IconButton>
                                             <Typography>1</Typography>
                                             <IconButton>
-                                                <Remove />
+                                                <Add />
                                             </IconButton>
                                         </Box>
                                     </Box>
@@ -309,9 +310,32 @@ export default function Navbar() {
                                 {shopOpen && (
                                     <Box className={styles.shopMenu}>
                                         <List>
+                                            <ListItemButton
+                                                to="/shop"
+                                                component={Link}
+                                                state={{
+                                                    categoryID: 0,
+                                                    categoryName:
+                                                        "All Products",
+                                                }}
+                                            >
+                                                <ListItemText>
+                                                    All Products
+                                                </ListItemText>
+                                            </ListItemButton>
                                             {references?.productCategory?.map(
                                                 (item, index) => (
-                                                    <ListItemButton key={index}>
+                                                    <ListItemButton
+                                                        key={index}
+                                                        component={Link}
+                                                        to={`/shop/${item.productCategoryName.toLowerCase()}`}
+                                                        state={{
+                                                            categoryID:
+                                                                item.productCategoryID,
+                                                            categoryName:
+                                                                item.productCategoryName,
+                                                        }}
+                                                    >
                                                         <ListItemText>
                                                             {
                                                                 item.productCategoryName
@@ -380,11 +404,11 @@ export default function Navbar() {
                                         </Box>
                                         <Box className={styles.cartQuantity}>
                                             <IconButton>
-                                                <Add />
+                                                <Remove />
                                             </IconButton>
                                             <Typography>1</Typography>
                                             <IconButton>
-                                                <Remove />
+                                                <Add />
                                             </IconButton>
                                         </Box>
                                     </Box>

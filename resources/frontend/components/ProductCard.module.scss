@@ -1,7 +1,9 @@
 @import "../assets/scss/main.module.scss";
 
 .productCard {
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 
     .productCardButton {
         height: 100%;
@@ -14,8 +16,8 @@
 
             .productCardImage {
                 object-fit: contain;
-                height: 250px;
-                width: 250px;
+                height: 200px;
+                width: 100%;
             }
 
             .productCardContent {

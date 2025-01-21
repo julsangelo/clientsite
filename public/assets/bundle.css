@@ -14,12 +14,20 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/ProductCard.module.scss ***!
   \******************************************************************************************************************************************************************************************************************************************************************************/
 @import url(https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap);
+/*!******************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/pages/Shop.module.scss ***!
+  \******************************************************************************************************************************************************************************************************************************************************************/
+@import url(https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap);
 /*!*******************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/pages/About.module.scss ***!
   \*******************************************************************************************************************************************************************************************************************************************************************/
 @import url(https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap);
 /*!*********************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/pages/Contact.module.scss ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************/
+@import url(https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap);
+/*!*********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/pages/Product.module.scss ***!
   \*********************************************************************************************************************************************************************************************************************************************************************/
 @import url(https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap);
 /*!**********************************************************************************************************************************************************************************************************************************************************************!*\
@@ -44,7 +52,7 @@ p {
 .Home-module-heroSection-Xhl_d .Home-module-heroSectionContainer-Tk9C5 .Home-module-heroSectionTitle-VTfA3 {
   width: 100%;
   font-size: 32px !important;
-  color: #d62828;
+  color: #1ea1d7;
   font-weight: 900 !important;
 }
 .Home-module-heroSection-Xhl_d .Home-module-heroSectionContainer-Tk9C5 .Home-module-heroSectionHeading-HmmpK {
@@ -72,7 +80,7 @@ p {
 }
 
 .Home-module-categoriesSection-Vy8T9 {
-  background-color: #d62828;
+  background-color: #1ea1d7;
   padding: 50px 0;
 }
 .Home-module-categoriesSection-Vy8T9 .Home-module-categoriesSectionContainer-C6oFt {
@@ -121,6 +129,9 @@ p {
   font-weight: bold;
   color: #121212;
 }
+.Home-module-productSection-OLEYl .Home-module-productGrid-I09yy {
+  display: flex;
+}
 .Home-module-productSection-OLEYl .Home-module-productNoProduct-Sss5I {
   height: 100px;
   display: flex;
@@ -146,7 +157,7 @@ p {
   align-items: center;
 }
 .Home-module-featureSection-eBcwV .Home-module-featureSectionCard-GXANa .Home-module-featureSectionCardIconBox-TiZ43 {
-  background-color: #d62828;
+  background-color: #1ea1d7;
   padding: 15px;
   width: fit-content;
   height: fit-content;
@@ -273,7 +284,7 @@ p {
 }
 .Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-menuPopover-nJnmZ .Navbar-module-menuPopoverBox-gAl7X .Navbar-module-mobileNavbarLoginButton-atb4A {
   width: 250px;
-  background-color: #d62828;
+  background-color: #1ea1d7;
   font-size: 15px;
   color: #ffffff;
   border-radius: 0;
@@ -325,7 +336,7 @@ p {
   font-weight: bold;
 }
 .Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cartPopover-XxlEM .Navbar-module-mobileCartInfo-o9u__ .Navbar-module-mobileCartList-kJk5I .Navbar-module-mobileCartDetails-Qie4b .Navbar-module-mobileCartDetailsPrice-MqkgE {
-  color: #d62828;
+  color: #1ea1d7;
   font-weight: bold;
 }
 .Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cartPopover-XxlEM .Navbar-module-mobileCartInfo-o9u__ .Navbar-module-mobileCartList-kJk5I .Navbar-module-mobileCartQuantity-C25Mc {
@@ -358,11 +369,11 @@ p {
 }
 .Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cartPopover-XxlEM .Navbar-module-mobileCartInfo-o9u__ .Navbar-module-mobileCartButtons-K5Y73 .Navbar-module-mobileCartCheckout-ue_uS {
   width: 50%;
-  background-color: #d62828;
+  background-color: #1ea1d7;
   color: #ffffff;
 }
 .Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-navbarBrand-Q0P_x {
-  color: #d62828;
+  color: #1ea1d7;
   font-size: 32px;
   font-weight: 900;
 }
@@ -386,6 +397,7 @@ p {
   top: 63px;
   background-color: #373737;
   font-size: 14px;
+  z-index: 100;
 }
 .Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-navbarSearchContainer-CP2qC {
   background-color: #5f5f5f;
@@ -420,6 +432,7 @@ p {
   display: flex;
   flex-direction: column;
   row-gap: 15px;
+  z-index: 100;
 }
 .Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cart-H90Ha .Navbar-module-cartInfo-_ol9z .Navbar-module-cartList-tDBGI {
   font-size: 14px;
@@ -442,7 +455,7 @@ p {
   font-weight: bold;
 }
 .Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cart-H90Ha .Navbar-module-cartInfo-_ol9z .Navbar-module-cartList-tDBGI .Navbar-module-cartDetails-GF4kj .Navbar-module-cartDetailsPrice-fnWk4 {
-  color: #d62828;
+  color: #1ea1d7;
   font-weight: bold;
 }
 .Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cart-H90Ha .Navbar-module-cartInfo-_ol9z .Navbar-module-cartList-tDBGI .Navbar-module-cartQuantity-tQSjb {
@@ -475,11 +488,11 @@ p {
 }
 .Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cart-H90Ha .Navbar-module-cartInfo-_ol9z .Navbar-module-cartButtons-RvFWi .Navbar-module-cartCheckout-nQDdb {
   width: 50%;
-  background-color: #d62828;
+  background-color: #1ea1d7;
   color: #ffffff;
 }
 .Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-navbarLoginButton-Cggmr {
-  background-color: #d62828;
+  background-color: #1ea1d7;
   font-size: 16px;
   color: #ffffff;
   border-radius: 0;
@@ -509,7 +522,7 @@ p {
 .Footer-module-footerSectionTitle-U0svB {
   font-size: 15px !important;
   font-weight: 900 !important;
-  color: #d62828;
+  color: #1ea1d7;
 }
 
 .Footer-module-footerSectionListItem-CQMrE {
@@ -518,7 +531,7 @@ p {
   height: 38px;
 }
 .Footer-module-footerSectionListItem-CQMrE .Footer-module-footerSectionListItemIcon-rI6bP {
-  color: #d62828;
+  color: #1ea1d7;
   min-width: 0;
   width: fit-content;
 }
@@ -528,7 +541,7 @@ p {
 }
 
 .Footer-module-footerSectionBrand-oGXXN {
-  color: #d62828;
+  color: #1ea1d7;
   font-size: 40px !important;
   font-weight: 900 !important;
   line-height: 0.9 !important;
@@ -545,7 +558,7 @@ p {
 }
 
 .Footer-module-footerSectionBrandIconLink-P4A0K {
-  color: #d62828;
+  color: #1ea1d7;
   text-decoration: none;
 }
 
@@ -557,7 +570,7 @@ p {
 }
 .Footer-module-footerSectionAccordionContainer-fohZQ .Footer-module-footerSectionAccordion-eSgQi {
   background-color: inherit;
-  color: #d62828;
+  color: #1ea1d7;
   box-shadow: none;
 }
 .Footer-module-footerSectionAccordionContainer-fohZQ .Footer-module-footerSectionAccordion-eSgQi .Footer-module-footerSectionAccordionIcon-s3BHB {
@@ -576,7 +589,9 @@ p {
 }
 
 .ProductCard-module-productCard-toEsL {
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 .ProductCard-module-productCard-toEsL .ProductCard-module-productCardButton-TlPFJ {
   height: 100%;
@@ -589,8 +604,8 @@ p {
 }
 .ProductCard-module-productCard-toEsL .ProductCard-module-productCardButton-TlPFJ .ProductCard-module-productCardButtonContent-TORio .ProductCard-module-productCardImage-n8uq4 {
   object-fit: contain;
-  height: 250px;
-  width: 250px;
+  height: 200px;
+  width: 100%;
 }
 .ProductCard-module-productCard-toEsL .ProductCard-module-productCardButton-TlPFJ .ProductCard-module-productCardButtonContent-TORio .ProductCard-module-productCardContent-TKF_M {
   flex-grow: 1;
@@ -617,7 +632,7 @@ p {
   white-space: nowrap;
 }
 .ProductCard-module-productCard-toEsL .ProductCard-module-productCardButton-TlPFJ .ProductCard-module-productCardButtonContent-TORio .ProductCard-module-productCardContent-TKF_M .ProductCard-module-productCardPrice-mUSoH {
-  color: #d62828;
+  color: #1ea1d7;
   font-size: 16px;
   font-weight: bold;
 }
@@ -626,6 +641,63 @@ p {
   .ProductCard-module-productCardRating-eQMFw {
     display: block !important;
   }
+}
+/*!**********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/pages/Shop.module.scss (1) ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************/
+body {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+}
+
+p {
+  margin: 0;
+}
+
+.Shop-module-page-FvQs8 {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+}
+.Shop-module-page-FvQs8 .Shop-module-shop-N06Sp {
+  background-color: #f8f8f8;
+  padding: 60px 0px;
+  flex-grow: 1;
+}
+.Shop-module-page-FvQs8 .Shop-module-shop-N06Sp .Shop-module-shopContainer-h72wD {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.Shop-module-page-FvQs8 .Shop-module-shop-N06Sp .Shop-module-shopContainer-h72wD .Shop-module-shopPageInfo-idfjL {
+  font-size: 14px;
+  font-weight: 600;
+  color: #585858;
+  display: flex;
+  align-items: center;
+}
+.Shop-module-page-FvQs8 .Shop-module-shop-N06Sp .Shop-module-shopContainer-h72wD .Shop-module-shopPageInfo-idfjL .Shop-module-shopPageInfoArrow-IYAvM {
+  font-size: 20px;
+}
+.Shop-module-page-FvQs8 .Shop-module-shop-N06Sp .Shop-module-shopContainer-h72wD .Shop-module-shopPageTitle-mp8GJ {
+  color: #373737;
+  font-size: 25px;
+  font-weight: 900;
+}
+.Shop-module-page-FvQs8 .Shop-module-shop-N06Sp .Shop-module-shopContainer-h72wD .Shop-module-shopPaginationInfo-esSEe {
+  color: #373737;
+  font-size: 16px;
+  font-weight: 600;
+}
+.Shop-module-page-FvQs8 .Shop-module-shop-N06Sp .Shop-module-shopContainer-h72wD .Shop-module-shopPagination-mVsGQ {
+  display: flex;
+  justify-content: end;
+}
+.Shop-module-page-FvQs8 .Shop-module-shop-N06Sp .Shop-module-shopContainer-h72wD .Shop-module-shopNoProduct-icok3 {
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 /*!***********************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/pages/About.module.scss (1) ***!
@@ -671,7 +743,7 @@ p {
 .About-module-aboutSection-W8cV3 .About-module-aboutSectionRBox-MD7cR .About-module-aboutSectionRBoxLine-qmhj5 {
   width: 25%;
   height: 4px;
-  background-color: #d62828;
+  background-color: #1ea1d7;
   margin: auto 0 auto 20px;
 }
 .About-module-aboutSection-W8cV3 .About-module-aboutSectionRBox-MD7cR .About-module-aboutSectionRBoxHeading-NTof8 {
@@ -707,7 +779,7 @@ p {
   padding: 110px 0;
 }
 .Contact-module-contactInfoSection-VLXr2 .Contact-module-contactInfoSectionBox-d3KYM {
-  background-color: #d62828;
+  background-color: #1ea1d7;
   color: #ffffff;
 }
 .Contact-module-contactInfoSection-VLXr2 .Contact-module-contactInfoSectionBox-d3KYM .Contact-module-contactInfoSectionBoxContent-KihT3 {
@@ -726,5 +798,107 @@ p {
 }
 .Contact-module-contactInfoSection-VLXr2 .Contact-module-contactInfoSectionBox-d3KYM .Contact-module-contactInfoSectionBoxMap-JagER {
   height: 400px;
-  color: #d62828;
+  color: #1ea1d7;
+}
+/*!*************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/pages/Product.module.scss (1) ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************/
+body {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+}
+
+p {
+  margin: 0;
+}
+
+.Product-module-page-pHfJ0 {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+}
+.Product-module-page-pHfJ0 .Product-module-productContainer-K9CiQ {
+  background-color: #eeeeee;
+  flex-grow: 1;
+  padding: 50px 0px;
+}
+.Product-module-page-pHfJ0 .Product-module-productContainer-K9CiQ .Product-module-productGridBox-lbddt {
+  background-color: #ffffff;
+  height: fit-content;
+  border: 1px solid #dbdbdb;
+  display: flex;
+}
+.Product-module-page-pHfJ0 .Product-module-productContainer-K9CiQ .Product-module-productGridBox-lbddt .Product-module-productImageSelector-nLJnc .Product-module-imageSelectorContainer-xG32T {
+  padding: 15px;
+}
+.Product-module-page-pHfJ0 .Product-module-productContainer-K9CiQ .Product-module-productGridBox-lbddt .Product-module-productImageSelector-nLJnc .Product-module-imageSelectorContainer-xG32T .Product-module-imageSelectorImage-PjTzI {
+  height: 60px;
+  width: 60px;
+}
+.Product-module-page-pHfJ0 .Product-module-productContainer-K9CiQ .Product-module-productGridBox-lbddt .Product-module-productImageContainer-DafPg {
+  padding: 30px;
+  width: 100%;
+}
+.Product-module-page-pHfJ0 .Product-module-productContainer-K9CiQ .Product-module-productGridBox-lbddt .Product-module-productImageContainer-DafPg .Product-module-productImage-wHMhQ {
+  height: 500px;
+  width: 100%;
+  object-fit: contain;
+}
+.Product-module-page-pHfJ0 .Product-module-productContainer-K9CiQ .Product-module-productGridBox-lbddt .Product-module-verticalDivider-VGEPL {
+  color: #585858;
+  height: 560px;
+}
+.Product-module-page-pHfJ0 .Product-module-productContainer-K9CiQ .Product-module-productGridBox-lbddt .Product-module-productDetails-VJa9i {
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  width: 100%;
+}
+.Product-module-page-pHfJ0 .Product-module-productContainer-K9CiQ .Product-module-productGridBox-lbddt .Product-module-productDetails-VJa9i .Product-module-productName-O0xXd {
+  font-size: 20px;
+  font-weight: 900;
+  color: #121212;
+}
+.Product-module-page-pHfJ0 .Product-module-productContainer-K9CiQ .Product-module-productGridBox-lbddt .Product-module-productDetails-VJa9i .Product-module-horizontalDivider-tQQsf {
+  color: #585858;
+}
+.Product-module-page-pHfJ0 .Product-module-productContainer-K9CiQ .Product-module-productGridBox-lbddt .Product-module-productDetails-VJa9i .Product-module-productInfo-E8RFG {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+.Product-module-page-pHfJ0 .Product-module-productContainer-K9CiQ .Product-module-productGridBox-lbddt .Product-module-productDetails-VJa9i .Product-module-productInfo-E8RFG .Product-module-productInfoRow-tcZ35 {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  justify-content: space-between;
+}
+.Product-module-page-pHfJ0 .Product-module-productContainer-K9CiQ .Product-module-productGridBox-lbddt .Product-module-productDetails-VJa9i .Product-module-productInfo-E8RFG .Product-module-productInfoRow-tcZ35 .Product-module-productInfoText-rGy0d {
+  font-weight: 600;
+}
+.Product-module-page-pHfJ0 .Product-module-productContainer-K9CiQ .Product-module-productGridBox-lbddt .Product-module-productDetails-VJa9i .Product-module-productInfo-E8RFG .Product-module-quantity-T55vo {
+  display: flex;
+  color: #585858;
+  height: fit-content;
+  font-size: 14px;
+  align-items: center;
+  column-gap: 5px;
+  border: 1px solid #dbdbdb;
+  width: fit-content;
+}
+.Product-module-page-pHfJ0 .Product-module-productContainer-K9CiQ .Product-module-productGridBox-lbddt .Product-module-productDetails-VJa9i .Product-module-buttonContainer-C6wv2 {
+  display: flex;
+  column-gap: 10px;
+  width: 100%;
+}
+.Product-module-page-pHfJ0 .Product-module-productContainer-K9CiQ .Product-module-productGridBox-lbddt .Product-module-productDetails-VJa9i .Product-module-buttonContainer-C6wv2 .Product-module-addToCartButton-sZdXi {
+  color: #ffffff;
+  background-color: #121212;
+  width: 50%;
+}
+.Product-module-page-pHfJ0 .Product-module-productContainer-K9CiQ .Product-module-productGridBox-lbddt .Product-module-productDetails-VJa9i .Product-module-buttonContainer-C6wv2 .Product-module-checkoutButton-eyzX4 {
+  color: #ffffff;
+  background-color: #1ea1d7;
+  width: 50%;
 }

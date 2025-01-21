@@ -193,6 +193,7 @@ export default function Main() {
                                             xl: 2,
                                         }}
                                         key={index}
+                                        className={styles.productGrid}
                                     >
                                         <ProductCard product={item} />
                                     </Grid2>

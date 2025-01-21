@@ -1,0 +1,110 @@
+@import "../assets/scss/main.module.scss";
+
+.page {
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+
+    .productContainer {
+        background-color: $b_primary;
+        flex-grow: 1;
+        padding: 50px 0px;
+
+        .productGridBox {
+            background-color: $b_white;
+            height: fit-content;
+            border: 1px solid $b_gray;
+            display: flex;
+
+            .productImageSelector {
+                .imageSelectorContainer {
+                    padding: 15px;
+
+                    .imageSelectorImage {
+                        height: 60px;
+                        width: 60px;
+                    }
+                }
+            }
+            .productImageContainer {
+                padding: 30px;
+                width: 100%;
+
+                .productImage {
+                    height: 500px;
+                    width: 100%;
+                    object-fit: contain;
+                }
+            }
+
+            .verticalDivider {
+                color: $t_lighterBlack;
+                height: 560px;
+            }
+
+            .productDetails {
+                padding: 30px 20px;
+                display: flex;
+                flex-direction: column;
+                row-gap: 20px;
+                width: 100%;
+
+                .productName {
+                    font-size: 20px;
+                    font-weight: 900;
+                    color: $t_black;
+                }
+
+                .horizontalDivider {
+                    color: $t_lighterBlack;
+                }
+
+                .productInfo {
+                    display: flex;
+                    flex-direction: column;
+                    row-gap: 10px;
+
+                    .productInfoRow {
+                        display: flex;
+                        align-items: center;
+                        height: 32px;
+                        justify-content: space-between;
+
+                        .productInfoText {
+                            font-weight: 600;
+                        }
+                    }
+
+                    .quantity {
+                        display: flex;
+                        color: $t_lighterBlack;
+                        height: fit-content;
+                        font-size: 14px;
+                        align-items: center;
+                        column-gap: 5px;
+                        border: 1px solid $b_gray;
+                        width: fit-content;
+                    }
+                }
+
+                .buttonContainer {
+                    display: flex;
+                    column-gap: 10px;
+                    width: 100%;
+
+                    .addToCartButton {
+                        color: $t_white;
+                        background-color: $b_secondary;
+                        width: 50%;
+                    }
+
+                    .checkoutButton {
+                        color: $t_white;
+                        background-color: $b_red;
+                        width: 50%;
+                    }
+                }
+            }
+        }
+    }
+}

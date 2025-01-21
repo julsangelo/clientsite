@@ -1,22 +1,29 @@
 import React from "react";
 import styles from "./ProductCard.module";
 import {
+    Button,
     Card,
     CardActionArea,
+    CardActions,
     CardContent,
     CardMedia,
     Rating,
     Typography,
 } from "@mui/material";
+import { Link } from "react-router-dom";
 
 export default function ProductCard({ product }) {
     return (
-        <Card className={styles.productCard}>
-            <CardActionArea className={styles.productCardButton}>
+        <Card variant="outlined" className={styles.productCard}>
+            <CardActionArea
+                component={Link}
+                to={`/shop/product/${product.productCode}`}
+                className={styles.productCardButton}
+            >
                 <div className={styles.productCardButtonContent}>
                     <CardMedia
                         component="img"
-                        image="/fjmoto/images/PAANO, JULIUS ANGELO A b-min.JPG"
+                        image={`/hydrogen/${product.productImage}`}
                         className={styles.productCardImage}
                     />
                     <CardContent className={styles.productCardContent}>
