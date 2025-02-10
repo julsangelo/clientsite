@@ -20,7 +20,7 @@ const theme = createTheme({
                     fontFamily: "'Manrope', sans-serif",
                     fontWeight: "bolder",
                     "&.Mui-selected": {
-                        color: "#d62828",
+                        color: "#1ea1d7",
                     },
                 },
             },
@@ -28,7 +28,7 @@ const theme = createTheme({
         MuiTabs: {
             styleOverrides: {
                 indicator: {
-                    backgroundColor: "#d62828",
+                    backgroundColor: "#1ea1d7",
                 },
             },
         },
@@ -83,10 +83,10 @@ const theme = createTheme({
             styleOverrides: {
                 root: {
                     "&.Mui-selected": {
-                        backgroundColor: "rgba(220, 39, 46, 0.08) !important",
+                        backgroundColor: "#1ea1d7 !important",
                     },
                     "&.Mui-selected:hover": {
-                        backgroundColor: "rgba(220, 39, 46, 0.15) !important",
+                        backgroundColor: "#1ea1d7 !important",
                     },
                 },
             },
@@ -95,7 +95,7 @@ const theme = createTheme({
             styleOverrides: {
                 root: {
                     "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "rgba(220, 39, 46, 1)",
+                        borderColor: "#1ea1d7",
                     },
                 },
             },

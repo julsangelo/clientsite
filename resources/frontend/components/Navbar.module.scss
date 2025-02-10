@@ -109,6 +109,7 @@
                     display: flex;
                     column-gap: 10px;
                     align-items: center;
+                    justify-content: space-between;
 
                     .mobileCartListImage {
                         height: 70px;
@@ -170,6 +171,23 @@
                         background-color: $b_red;
                         color: $t_white;
                     }
+                }
+
+                .cartNoItemsText {
+                    width: fit-content;
+                    color: $t_black;
+                    margin: 10px 83.515px;
+                    text-wrap: nowrap;
+                    font-weight: 600;
+                }
+
+                .mobileItemPrice {
+                    color: $t_black;
+                    text-wrap: nowrap;
+                    font-weight: 700;
+                    width: 100%;
+                    text-align: end;
+                    font-size: 14px;
                 }
             }
         }
@@ -243,12 +261,14 @@
                 flex-direction: column;
                 row-gap: 15px;
                 z-index: 100;
+                width: 550px;
 
                 .cartList {
                     font-size: 14px;
                     display: flex;
                     column-gap: 10px;
                     align-items: center;
+                    justify-content: space-between;
 
                     .cartListImage {
                         height: 70px;
@@ -259,7 +279,7 @@
                         display: flex;
                         flex-direction: column;
                         justify-content: space-evenly;
-                        width: 220px;
+                        width: 210px;
 
                         .cartDetailsName {
                             color: $t_black;
@@ -280,6 +300,14 @@
                         align-items: center;
                         column-gap: 5px;
                         border: 1px solid $b_gray;
+                    }
+
+                    .cartItemPrice {
+                        color: $t_black;
+                        text-wrap: nowrap;
+                        font-weight: 700;
+                        width: 90px;
+                        text-align: end;
                     }
                 }
 
@@ -310,6 +338,15 @@
                         background-color: $b_red;
                         color: $t_white;
                     }
+                }
+
+                .cartNoItemsText {
+                    width: 100%;
+                    color: $t_black;
+                    margin: 10px 0;
+                    text-wrap: nowrap;
+                    font-weight: 600;
+                    text-align: center;
                 }
             }
         }

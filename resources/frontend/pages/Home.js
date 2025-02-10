@@ -17,6 +17,7 @@ import {
 } from "@mui/material";
 import {
     CheckBoxOutlined,
+    GppGoodOutlined,
     MessageOutlined,
     ShoppingCartOutlined,
 } from "@mui/icons-material";
@@ -251,7 +252,7 @@ export default function Main() {
                                 <Box
                                     className={styles.featureSectionCardIconBox}
                                 >
-                                    <ShoppingCartOutlined fontSize="large" />
+                                    <GppGoodOutlined fontSize="large" />
                                 </Box>
                                 <CardContent
                                     className={styles.featureSectionCardContent}

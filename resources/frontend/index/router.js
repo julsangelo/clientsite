@@ -5,6 +5,7 @@ import Shop from "../pages/Shop";
 import About from "../pages/About";
 import Contact from "../pages/Contact";
 import Product from "../pages/Product";
+import Cart from "../pages/Cart";
 
 let router = createBrowserRouter([
     {
@@ -30,6 +31,10 @@ let router = createBrowserRouter([
     {
         path: "/shop/product/:productCode",
         element: <Product />,
+    },
+    {
+        path: "/cart",
+        element: <Cart />,
     },
 ]);
 

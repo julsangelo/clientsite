@@ -12,5 +12,7 @@ Route::get('/getAllProducts', [ShopController::class, 'getAllProducts']);
 Route::post('/getCategorizedProducts', [ShopController::class, 'getCategorizedProducts']);
 Route::post('/getProductDetail', [ShopController::class, 'getProductDetail']);
 Route::post('/addToCart', [CartController::class, 'addToCart']);
+Route::get('/getCart', [CartController::class, 'getCart']);
+Route::post('/updateItemQuantity', [CartController::class, 'updateItemQuantity']);
 
 Route::view('/{path?}', 'index')->where('path', '.*');

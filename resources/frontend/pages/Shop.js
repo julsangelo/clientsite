@@ -31,7 +31,7 @@ export default function Shop() {
                 setProducts(data);
             });
         }
-    }, [category]);
+    }, [category, productCategoryID]);
 
     const handlePageChange = (event, value) => {
         setCurrentPage(value);

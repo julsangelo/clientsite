@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./Navbar.module";
 import {
     AppBar,
@@ -16,10 +16,14 @@ import {
     Accordion,
     AccordionSummary,
     AccordionDetails,
+    useMediaQuery,
+    useTheme,
+    Divider,
 } from "@mui/material";
 import {
     Add,
     Close,
+    DeleteOutline,
     ExpandMore,
     Remove,
     Search,
@@ -28,13 +32,16 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import { ReferenceContext } from "../context/ReferenceProvider";
 import { Link } from "react-router-dom";
+import { getCart, updateItemQuantity } from "../ajax/backend";
 
 export default function Navbar() {
-    const isMobile = window.innerWidth < 900;
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down("md"));
     const [menu, setMenu] = useState(null);
     const [cart, setCart] = useState(null);
     const [shop, setShop] = useState(null);
     const { references } = useContext(ReferenceContext);
+    const [cartItem, setCartItem] = useState(null);
 
     const handleMenu = (event) => {
         setMenu((prev) => (prev ? null : event.currentTarget));
@@ -57,6 +64,47 @@ export default function Navbar() {
     const menuOpen = Boolean(menu);
     const shopOpen = Boolean(shop);
     const cartOpen = Boolean(cart);
+
+    useEffect(() => {
+        if (cartOpen) {
+            getCart((data) => {
+                setCartItem(data);
+            });
+        }
+    }, [cartOpen, handleMinus]);
+
+    const handleAdd = (productCode) => {
+        const updatedCart = cartItem.map((item) =>
+            item.productCode === productCode
+                ? { ...item, quantity: item.quantity + 1 }
+                : item,
+        );
+        setCartItem(updatedCart);
+        updateItemQuantity(productCode, "increment");
+    };
+
+    const handleMinus = (productCode) => {
+        setCartItem((prevCart) => {
+            const updatedCart = prevCart
+                .map((item) =>
+                    item.productCode === productCode
+                        ? { ...item, quantity: item.quantity - 1 }
+                        : item,
+                )
+                .filter((item) => item.quantity > 0);
+
+            return [...updatedCart];
+        });
+
+        updateItemQuantity(productCode, "decrement");
+    };
+
+    const total = (cartItem || [])
+        .reduce(
+            (sum, item) => sum + parseFloat(item.productPrice) * item.quantity,
+            0,
+        )
+        .toFixed(2);
 
     return (
         <AppBar position="static" className={styles.navbar}>
@@ -124,10 +172,33 @@ export default function Navbar() {
                                                     }
                                                 >
                                                     <List>
+                                                        <ListItemButton
+                                                            to="/shop"
+                                                            component={Link}
+                                                            state={{
+                                                                categoryID: 0,
+                                                                categoryName:
+                                                                    "All Products",
+                                                            }}
+                                                        >
+                                                            <ListItemText>
+                                                                All Products
+                                                            </ListItemText>
+                                                        </ListItemButton>
                                                         {references?.productCategory?.map(
                                                             (item, index) => (
                                                                 <ListItemButton
                                                                     key={index}
+                                                                    component={
+                                                                        Link
+                                                                    }
+                                                                    to={`/shop/${item.productCategoryName.toLowerCase()}`}
+                                                                    state={{
+                                                                        categoryID:
+                                                                            item.productCategoryID,
+                                                                        categoryName:
+                                                                            item.productCategoryName,
+                                                                    }}
                                                                 >
                                                                     <ListItemText>
                                                                         {
@@ -212,77 +283,155 @@ export default function Navbar() {
                                     >
                                         <Close />
                                     </IconButton>
-                                    <Box className={styles.mobileCartList}>
-                                        <CardMedia
-                                            component="img"
-                                            image="/fjmoto/images/PAANO, JULIUS ANGELO A b-min.JPG"
-                                            className={
-                                                styles.mobileCartListImage
-                                            }
-                                        />
-                                        <Box
-                                            className={styles.mobileCartDetails}
-                                        >
-                                            <Typography
+                                    {cartItem && cartItem.length > 0 ? (
+                                        <>
+                                            {cartItem?.map((item, index) => (
+                                                <>
+                                                    <Box
+                                                        className={
+                                                            styles.mobileCartList
+                                                        }
+                                                        key={index}
+                                                    >
+                                                        <CardMedia
+                                                            component="img"
+                                                            image={`/hydrogen/${item.productImage}`}
+                                                            className={
+                                                                styles.mobileCartListImage
+                                                            }
+                                                        />
+                                                        <Box
+                                                            className={
+                                                                styles.mobileCartDetails
+                                                            }
+                                                        >
+                                                            <Typography
+                                                                className={
+                                                                    styles.mobileCartDetailsName
+                                                                }
+                                                            >
+                                                                {
+                                                                    item.productName
+                                                                }
+                                                            </Typography>
+                                                            <Typography
+                                                                className={
+                                                                    styles.mobileCartDetailsPrice
+                                                                }
+                                                            >
+                                                                ₱{" "}
+                                                                {
+                                                                    item.productPrice
+                                                                }
+                                                            </Typography>
+                                                        </Box>
+                                                        <Box
+                                                            className={
+                                                                styles.mobileCartQuantity
+                                                            }
+                                                        >
+                                                            {item.quantity ===
+                                                            1 ? (
+                                                                <IconButton
+                                                                    onClick={() =>
+                                                                        handleMinus(
+                                                                            item.productCode,
+                                                                        )
+                                                                    }
+                                                                >
+                                                                    <DeleteOutline />
+                                                                </IconButton>
+                                                            ) : (
+                                                                <IconButton
+                                                                    onClick={() =>
+                                                                        handleMinus(
+                                                                            item.productCode,
+                                                                        )
+                                                                    }
+                                                                >
+                                                                    <Remove />
+                                                                </IconButton>
+                                                            )}
+                                                            <Typography>
+                                                                {item.quantity}
+                                                            </Typography>
+                                                            <IconButton
+                                                                onClick={() =>
+                                                                    handleAdd(
+                                                                        item.productCode,
+                                                                    )
+                                                                }
+                                                            >
+                                                                <Add />
+                                                            </IconButton>
+                                                        </Box>
+                                                    </Box>
+                                                    <Box>
+                                                        <Typography
+                                                            className={
+                                                                styles.mobileItemPrice
+                                                            }
+                                                        >
+                                                            ₱{" "}
+                                                            {(
+                                                                item.productPrice *
+                                                                item.quantity
+                                                            ).toFixed(2)}
+                                                        </Typography>
+                                                    </Box>
+                                                </>
+                                            ))}
+                                            <Divider orientation="horizontal" />
+                                            <Box
                                                 className={
-                                                    styles.mobileCartDetailsName
+                                                    styles.mobileCartTotal
                                                 }
                                             >
-                                                Ponyan Pentair TY-564 (Toyota
-                                                Hiace)
-                                            </Typography>
-                                            <Typography
+                                                <Typography
+                                                    className={
+                                                        styles.mobileCartTotalText
+                                                    }
+                                                >
+                                                    Total
+                                                </Typography>
+                                                <Typography
+                                                    className={
+                                                        styles.mobileCartTotalText
+                                                    }
+                                                >
+                                                    ₱ {total}
+                                                </Typography>
+                                            </Box>
+                                            <Box
                                                 className={
-                                                    styles.mobileCartDetailsPrice
+                                                    styles.mobileCartButtons
                                                 }
                                             >
-                                                ₱ 2,500.00
-                                            </Typography>
-                                        </Box>
-                                        <Box
-                                            className={
-                                                styles.mobileCartQuantity
-                                            }
-                                        >
-                                            <IconButton>
-                                                <Remove />
-                                            </IconButton>
-                                            <Typography>1</Typography>
-                                            <IconButton>
-                                                <Add />
-                                            </IconButton>
-                                        </Box>
-                                    </Box>
-                                    <Box className={styles.mobileCartTotal}>
+                                                <Button
+                                                    className={
+                                                        styles.mobileCartView
+                                                    }
+                                                    component={Link}
+                                                    to="/cart"
+                                                >
+                                                    View Cart
+                                                </Button>
+                                                <Button
+                                                    className={
+                                                        styles.mobileCartCheckout
+                                                    }
+                                                >
+                                                    Checkout
+                                                </Button>
+                                            </Box>
+                                        </>
+                                    ) : (
                                         <Typography
-                                            className={
-                                                styles.mobileCartTotalText
-                                            }
+                                            className={styles.cartNoItemsText}
                                         >
-                                            Total
+                                            No items in cart.
                                         </Typography>
-                                        <Typography
-                                            className={
-                                                styles.mobileCartTotalText
-                                            }
-                                        >
-                                            ₱ 2,500.00
-                                        </Typography>
-                                    </Box>
-                                    <Box className={styles.mobileCartButtons}>
-                                        <Button
-                                            className={styles.mobileCartView}
-                                        >
-                                            View Cart
-                                        </Button>
-                                        <Button
-                                            className={
-                                                styles.mobileCartCheckout
-                                            }
-                                        >
-                                            Checkout
-                                        </Button>
-                                    </Box>
+                                    )}
                                 </Box>
                             </Collapse>
                         </Box>
@@ -375,63 +524,140 @@ export default function Navbar() {
                                 className={styles.cartButton}
                                 onClick={handleCart}
                             >
-                                Cart (0)
+                                Cart
                             </Button>
                             {cartOpen && (
                                 <Box className={styles.cartInfo}>
-                                    <Box className={styles.cartList}>
-                                        <CardMedia
-                                            component="img"
-                                            image="/fjmoto/images/PAANO, JULIUS ANGELO A b-min.JPG"
-                                            className={styles.cartListImage}
-                                        />
-                                        <Box className={styles.cartDetails}>
-                                            <Typography
-                                                className={
-                                                    styles.cartDetailsName
-                                                }
-                                            >
-                                                Ponyan Pentair TY-564 (Toyota
-                                                Hiace)
-                                            </Typography>
-                                            <Typography
-                                                className={
-                                                    styles.cartDetailsPrice
-                                                }
-                                            >
-                                                ₱ 2,500.00
-                                            </Typography>
-                                        </Box>
-                                        <Box className={styles.cartQuantity}>
-                                            <IconButton>
-                                                <Remove />
-                                            </IconButton>
-                                            <Typography>1</Typography>
-                                            <IconButton>
-                                                <Add />
-                                            </IconButton>
-                                        </Box>
-                                    </Box>
-                                    <Box className={styles.cartTotal}>
+                                    {cartItem && cartItem.length > 0 ? (
+                                        <>
+                                            {cartItem?.map((item, index) => (
+                                                <Box
+                                                    className={styles.cartList}
+                                                    key={index}
+                                                >
+                                                    <CardMedia
+                                                        component="img"
+                                                        image={`/hydrogen/${item.productImage}`}
+                                                        className={
+                                                            styles.cartListImage
+                                                        }
+                                                    />
+                                                    <Box
+                                                        className={
+                                                            styles.cartDetails
+                                                        }
+                                                    >
+                                                        <Typography
+                                                            className={
+                                                                styles.cartDetailsName
+                                                            }
+                                                        >
+                                                            {item.productName}
+                                                        </Typography>
+                                                        <Typography
+                                                            className={
+                                                                styles.cartDetailsPrice
+                                                            }
+                                                        >
+                                                            ₱{" "}
+                                                            {item.productPrice}
+                                                        </Typography>
+                                                    </Box>
+                                                    <Box
+                                                        className={
+                                                            styles.cartQuantity
+                                                        }
+                                                    >
+                                                        {item.quantity === 1 ? (
+                                                            <IconButton
+                                                                onClick={() =>
+                                                                    handleMinus(
+                                                                        item.productCode,
+                                                                    )
+                                                                }
+                                                            >
+                                                                <DeleteOutline />
+                                                            </IconButton>
+                                                        ) : (
+                                                            <IconButton
+                                                                onClick={() =>
+                                                                    handleMinus(
+                                                                        item.productCode,
+                                                                    )
+                                                                }
+                                                            >
+                                                                <Remove />
+                                                            </IconButton>
+                                                        )}
+                                                        <Typography>
+                                                            {item.quantity}
+                                                        </Typography>
+                                                        <IconButton
+                                                            onClick={() =>
+                                                                handleAdd(
+                                                                    item.productCode,
+                                                                )
+                                                            }
+                                                        >
+                                                            <Add />
+                                                        </IconButton>
+                                                    </Box>
+                                                    <Box>
+                                                        <Typography
+                                                            className={
+                                                                styles.cartItemPrice
+                                                            }
+                                                        >
+                                                            ₱{" "}
+                                                            {(
+                                                                item.productPrice *
+                                                                item.quantity
+                                                            ).toFixed(2)}
+                                                        </Typography>
+                                                    </Box>
+                                                </Box>
+                                            ))}
+                                            <Divider orientation="horizontal" />
+                                            <Box className={styles.cartTotal}>
+                                                <Typography
+                                                    className={
+                                                        styles.cartTotalText
+                                                    }
+                                                >
+                                                    Total
+                                                </Typography>
+                                                <Typography
+                                                    className={
+                                                        styles.cartTotalText
+                                                    }
+                                                >
+                                                    ₱ {total}
+                                                </Typography>
+                                            </Box>
+                                            <Box className={styles.cartButtons}>
+                                                <Button
+                                                    className={styles.cartView}
+                                                    component={Link}
+                                                    to="/cart"
+                                                >
+                                                    View Cart
+                                                </Button>
+                                                <Button
+                                                    className={
+                                                        styles.cartCheckout
+                                                    }
+                                                >
+                                                    Checkout
+                                                </Button>
+                                            </Box>
+                                        </>
+                                    ) : (
                                         <Typography
-                                            className={styles.cartTotalText}
+                                            className={styles.cartNoItemsText}
                                         >
-                                            Total
+                                            No items in cart.
                                         </Typography>
-                                        <Typography
-                                            className={styles.cartTotalText}
-                                        >
-                                            ₱ 2,500.00
-                                        </Typography>
-                                    </Box>
-                                    <Box className={styles.cartButtons}>
-                                        <Button className={styles.cartView}>
-                                            View Cart
-                                        </Button>
-                                        <Button className={styles.cartCheckout}>
-                                            Checkout
-                                        </Button>
-                                    </Box>
+                                    )}
                                 </Box>
                             )}
                         </div>

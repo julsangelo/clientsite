@@ -15,13 +15,9 @@ import {
     Link,
     Grid2,
     Container,
+    ListItemButton,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
-import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
-import XIcon from "@mui/icons-material/X";
-import PhoneOutlinedIcon from "@mui/icons-material/PhoneOutlined";
-import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import { ReferenceContext } from "../context/ReferenceProvider";
 import ContactIcon from "./ContactIcon";
 
@@ -54,6 +50,20 @@ const FooterList = ({ data, prefix }) => {
                                 className={styles.footerSectionListItemText}
                             >
                                 {item[`${prefix}Text`] || item[`${prefix}Name`]}
+                            </Link>
+                        ) : prefix === "productCategory" ? (
+                            <Link
+                                href={`/shop/${item.productCategoryName.toLowerCase()}`}
+                                state={{
+                                    categoryID: item.productCategoryID,
+                                    categoryName: item.productCategoryName,
+                                }}
+                                underline="none"
+                                target="_self"
+                                rel="noopener noreferrer"
+                                className={styles.footerSectionListItemText}
+                            >
+                                {item[`${prefix}Name`]}
                             </Link>
                         ) : (
                             <Typography

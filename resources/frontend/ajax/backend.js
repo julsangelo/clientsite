@@ -38,6 +38,16 @@ export function addToCart(productCode, quantity, callback) {
     axios
         .post("/addToCart", { code: productCode, quantity: quantity })
         .then((response) => {
-            callback(response.data.products);
+            callback(response);
         });
+}
+
+export function getCart(callback) {
+    axios.get("/getCart").then((response) => {
+        callback(response.data);
+    });
+}
+
+export function updateItemQuantity(productCode, action) {
+    axios.post("/updateItemQuantity", { code: productCode, action: action });
 }
