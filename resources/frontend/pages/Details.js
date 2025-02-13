@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from "./Cart.module";
+import styles from "./Details.module";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import {
@@ -17,6 +17,7 @@ import {
 } from "@mui/material";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import { getCart, updateItemQuantity } from "../ajax/backend";
+import { Link } from "react-router-dom";
 import { Add, DeleteOutline, Remove } from "@mui/icons-material";
 
 export default function Cart() {
@@ -355,6 +356,8 @@ export default function Cart() {
                                                         className={
                                                             styles.cartCheckout
                                                         }
+                                                        component={Link}
+                                                        to="/checkout"
                                                     >
                                                         Checkout
                                                     </Button>

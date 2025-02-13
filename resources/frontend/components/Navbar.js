@@ -412,7 +412,7 @@ export default function Navbar() {
                                                         styles.mobileCartView
                                                     }
                                                     component={Link}
-                                                    to="/cart"
+                                                    to="/details"
                                                 >
                                                     View Cart
                                                 </Button>
@@ -420,6 +420,8 @@ export default function Navbar() {
                                                     className={
                                                         styles.mobileCartCheckout
                                                     }
+                                                    component={Link}
+                                                    to="/checkout"
                                                 >
                                                     Checkout
                                                 </Button>
@@ -638,7 +640,7 @@ export default function Navbar() {
                                                 <Button
                                                     className={styles.cartView}
                                                     component={Link}
-                                                    to="/cart"
+                                                    to="/details"
                                                 >
                                                     View Cart
                                                 </Button>
@@ -646,6 +648,8 @@ export default function Navbar() {
                                                     className={
                                                         styles.cartCheckout
                                                     }
+                                                    component={Link}
+                                                    to="/checkout"
                                                 >
                                                     Checkout
                                                 </Button>

@@ -30,9 +30,13 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/pages/Product.module.scss ***!
   \*********************************************************************************************************************************************************************************************************************************************************************/
 @import url(https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap);
-/*!******************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/pages/Cart.module.scss ***!
-  \******************************************************************************************************************************************************************************************************************************************************************/
+/*!*********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/pages/Details.module.scss ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************/
+@import url(https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap);
+/*!**********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/pages/CheckOut.module.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************/
 @import url(https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap);
 /*!**********************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/pages/Home.module.scss (1) ***!
@@ -939,9 +943,9 @@ p {
   background-color: #1ea1d7;
   width: 50%;
 }
-/*!**********************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/pages/Cart.module.scss (1) ***!
-  \**********************************************************************************************************************************************************************************************************************************************************************/
+/*!*************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/pages/Details.module.scss (1) ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************/
 body {
   margin: 0;
   font-family: "Manrope", sans-serif;
@@ -951,21 +955,21 @@ p {
   margin: 0;
 }
 
-.Cart-module-page-iyRVJ {
+.Details-module-page-moxKJ {
   height: 100dvh;
   display: flex;
   flex-direction: column;
 }
-.Cart-module-page-iyRVJ .Cart-module-cart-wTNyF {
+.Details-module-page-moxKJ .Details-module-cart-iZgj6 {
   padding: 60px 0px;
   flex-grow: 1;
   background-color: #f8f8f8;
 }
-.Cart-module-page-iyRVJ .Cart-module-cart-wTNyF .Cart-module-tabTitle-Cjq1R {
+.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-tabTitle-eWWPO {
   font-weight: 800;
   font-size: 32px;
 }
-.Cart-module-page-iyRVJ .Cart-module-cart-wTNyF .Cart-module-cartItemDetails-V6DxJ {
+.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-cartItemDetails-QHGu7 {
   background-color: #ffffff;
   width: 100%;
   height: fit-content;
@@ -975,38 +979,38 @@ p {
   flex-direction: column;
   row-gap: 20px;
 }
-.Cart-module-page-iyRVJ .Cart-module-cart-wTNyF .Cart-module-cartItemDetails-V6DxJ .Cart-module-cartList-Zfx76 {
+.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-cartItemDetails-QHGu7 .Details-module-cartList-NYC12 {
   font-size: 14px;
   display: flex;
   column-gap: 10px;
   align-items: center;
   justify-content: space-between;
 }
-.Cart-module-page-iyRVJ .Cart-module-cart-wTNyF .Cart-module-cartItemDetails-V6DxJ .Cart-module-cartList-Zfx76 .Cart-module-cartItemContainer-Dq3_u {
+.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-cartItemDetails-QHGu7 .Details-module-cartList-NYC12 .Details-module-cartItemContainer-oNqwQ {
   display: flex;
   width: 100%;
   column-gap: 10px;
 }
-.Cart-module-page-iyRVJ .Cart-module-cart-wTNyF .Cart-module-cartItemDetails-V6DxJ .Cart-module-cartList-Zfx76 .Cart-module-cartItemContainer-Dq3_u .Cart-module-cartListImage-vkVhX {
+.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-cartItemDetails-QHGu7 .Details-module-cartList-NYC12 .Details-module-cartItemContainer-oNqwQ .Details-module-cartListImage-yL77A {
   height: 70px;
   min-width: 70px;
   width: 70px;
 }
-.Cart-module-page-iyRVJ .Cart-module-cart-wTNyF .Cart-module-cartItemDetails-V6DxJ .Cart-module-cartList-Zfx76 .Cart-module-cartItemContainer-Dq3_u .Cart-module-cartDetails-DGqqS {
+.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-cartItemDetails-QHGu7 .Details-module-cartList-NYC12 .Details-module-cartItemContainer-oNqwQ .Details-module-cartDetails-_sVqL {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   width: 80%;
 }
-.Cart-module-page-iyRVJ .Cart-module-cart-wTNyF .Cart-module-cartItemDetails-V6DxJ .Cart-module-cartList-Zfx76 .Cart-module-cartItemContainer-Dq3_u .Cart-module-cartDetails-DGqqS .Cart-module-cartDetailsName-z_lLU {
+.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-cartItemDetails-QHGu7 .Details-module-cartList-NYC12 .Details-module-cartItemContainer-oNqwQ .Details-module-cartDetails-_sVqL .Details-module-cartDetailsName-x428E {
   color: #121212;
   font-weight: bold;
 }
-.Cart-module-page-iyRVJ .Cart-module-cart-wTNyF .Cart-module-cartItemDetails-V6DxJ .Cart-module-cartList-Zfx76 .Cart-module-cartItemContainer-Dq3_u .Cart-module-cartDetails-DGqqS .Cart-module-cartDetailsPrice-JpxXb {
+.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-cartItemDetails-QHGu7 .Details-module-cartList-NYC12 .Details-module-cartItemContainer-oNqwQ .Details-module-cartDetails-_sVqL .Details-module-cartDetailsPrice-i0C9m {
   color: #1ea1d7;
   font-weight: bold;
 }
-.Cart-module-page-iyRVJ .Cart-module-cart-wTNyF .Cart-module-cartItemDetails-V6DxJ .Cart-module-cartList-Zfx76 .Cart-module-cartQuantity-Slj7j {
+.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-cartItemDetails-QHGu7 .Details-module-cartList-NYC12 .Details-module-cartQuantity-dIvqj {
   display: flex;
   color: #585858;
   height: fit-content;
@@ -1015,7 +1019,7 @@ p {
   column-gap: 5px;
   border: 1px solid #dbdbdb;
 }
-.Cart-module-page-iyRVJ .Cart-module-cart-wTNyF .Cart-module-cartItemDetails-V6DxJ .Cart-module-cartList-Zfx76 .Cart-module-cardRemoveButton-SQKgQ {
+.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-cartItemDetails-QHGu7 .Details-module-cartList-NYC12 .Details-module-cardRemoveButton-puPdX {
   width: 100%;
   display: block;
   text-align: center;
@@ -1023,24 +1027,24 @@ p {
   cursor: pointer;
   color: #585858;
 }
-.Cart-module-page-iyRVJ .Cart-module-cart-wTNyF .Cart-module-cartItemDetails-V6DxJ .Cart-module-cartList-Zfx76 .Cart-module-cardRemoveButton-SQKgQ:hover {
+.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-cartItemDetails-QHGu7 .Details-module-cartList-NYC12 .Details-module-cardRemoveButton-puPdX:hover {
   color: #1ea1d7;
 }
-.Cart-module-page-iyRVJ .Cart-module-cart-wTNyF .Cart-module-cartItemDetails-V6DxJ .Cart-module-cartList-Zfx76 .Cart-module-cartItemPrice-A469s {
+.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-cartItemDetails-QHGu7 .Details-module-cartList-NYC12 .Details-module-cartItemPrice-j42pk {
   color: #121212;
   text-wrap: nowrap;
   font-weight: 700;
   width: 90px;
   text-align: end;
 }
-.Cart-module-page-iyRVJ .Cart-module-cart-wTNyF .Cart-module-cartItemDetails-V6DxJ .Cart-module-cartDetailsBottom-IHI59 {
+.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-cartItemDetails-QHGu7 .Details-module-cartDetailsBottom-MD4mS {
   display: flex;
   width: 100%;
   margin-top: 10px;
   justify-content: space-between;
   align-items: center;
 }
-.Cart-module-page-iyRVJ .Cart-module-cart-wTNyF .Cart-module-cartItemDetails-V6DxJ .Cart-module-cartDetailsBottom-IHI59 .Cart-module-cartQuantity-Slj7j {
+.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-cartItemDetails-QHGu7 .Details-module-cartDetailsBottom-MD4mS .Details-module-cartQuantity-dIvqj {
   display: flex;
   color: #585858;
   height: fit-content;
@@ -1049,13 +1053,13 @@ p {
   column-gap: 5px;
   border: 1px solid #dbdbdb;
 }
-.Cart-module-page-iyRVJ .Cart-module-cart-wTNyF .Cart-module-cartItemDetails-V6DxJ .Cart-module-cartDetailsBottom-IHI59 .Cart-module-cartItemPriceSmall-jQ_Fk {
+.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-cartItemDetails-QHGu7 .Details-module-cartDetailsBottom-MD4mS .Details-module-cartItemPriceSmall-mea_z {
   color: #121212;
   text-wrap: nowrap;
   font-weight: 700;
   font-size: 14px;
 }
-.Cart-module-page-iyRVJ .Cart-module-cart-wTNyF .Cart-module-totalContainer-QqftA {
+.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-totalContainer-RiqBh {
   background-color: #ffffff;
   width: 100%;
   height: fit-content;
@@ -1065,30 +1069,30 @@ p {
   flex-direction: column;
   row-gap: 20px;
 }
-.Cart-module-page-iyRVJ .Cart-module-cart-wTNyF .Cart-module-totalContainer-QqftA .Cart-module-cartTotal-jsj7f {
+.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-totalContainer-RiqBh .Details-module-cartTotal-I2Ibx {
   display: flex;
   justify-content: space-between;
 }
-.Cart-module-page-iyRVJ .Cart-module-cart-wTNyF .Cart-module-totalContainer-QqftA .Cart-module-cartTotal-jsj7f .Cart-module-cartTotalText-u4Mvd {
+.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-totalContainer-RiqBh .Details-module-cartTotal-I2Ibx .Details-module-cartTotalText-Kq8c8 {
   color: #121212;
   font-weight: bold;
   font-size: 16px;
 }
-.Cart-module-page-iyRVJ .Cart-module-cart-wTNyF .Cart-module-totalContainer-QqftA .Cart-module-cartMessage-ho6D6 {
+.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-totalContainer-RiqBh .Details-module-cartMessage-SuAVd {
   width: 100%;
   text-align: center;
 }
-.Cart-module-page-iyRVJ .Cart-module-cart-wTNyF .Cart-module-totalContainer-QqftA .Cart-module-cartButtons-XO4nC {
+.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-totalContainer-RiqBh .Details-module-cartButtons-XoWHA {
   display: flex;
   column-gap: 10px;
   width: 100%;
 }
-.Cart-module-page-iyRVJ .Cart-module-cart-wTNyF .Cart-module-totalContainer-QqftA .Cart-module-cartButtons-XO4nC .Cart-module-cartCheckout-OLQyt {
+.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-totalContainer-RiqBh .Details-module-cartButtons-XoWHA .Details-module-cartCheckout-z6obA {
   width: 100%;
   background-color: #1ea1d7;
   color: #ffffff;
 }
-.Cart-module-page-iyRVJ .Cart-module-cart-wTNyF .Cart-module-totalContainer-QqftA .Cart-module-cartNoItemsText-Mjsvz {
+.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-totalContainer-RiqBh .Details-module-cartNoItemsText-wgKyM {
   width: 100%;
   color: #121212;
   margin: 10px 0;
@@ -1098,7 +1102,138 @@ p {
 }
 
 @media (max-width: 1199px) {
-  .Cart-module-totalContainer-QqftA {
+  .Details-module-totalContainer-RiqBh {
     margin-top: 0 !important;
   }
+}
+/*!**************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/pages/CheckOut.module.scss (1) ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************/
+body {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+}
+
+p {
+  margin: 0;
+}
+
+.CheckOut-module-page-mEjhO {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k {
+  flex-grow: 1;
+  padding: 60px 0px;
+  background-color: #f8f8f8;
+}
+.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-brandContainer-CHgpI {
+  display: flex;
+  column-gap: 15px;
+}
+.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-brandContainer-CHgpI .CheckOut-module-brandTitle-zItt6 {
+  font-size: 40px;
+  font-weight: 900;
+  color: #1ea1d7;
+  line-height: 1;
+}
+.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-brandContainer-CHgpI .CheckOut-module-brandSubtitle-Uq4Ov {
+  font-size: 18px;
+  font-weight: 500;
+  color: #373737;
+  line-height: 1;
+  width: 130px;
+}
+.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutForm-CBsOt {
+  background-color: #ffffff;
+  padding: 20px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+}
+.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutForm-CBsOt .CheckOut-module-formTitle-RSg8r {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutForm-CBsOt .CheckOut-module-formInput-rDl4v {
+  width: 100%;
+}
+.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutForm-CBsOt .CheckOut-module-radioButton-hcd8F {
+  width: 100%;
+  border: 1px solid #dbdbdb;
+  margin: 0;
+  padding: 8px 10px;
+}
+.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutForm-CBsOt .CheckOut-module-radioButtonSelected-oq7rn {
+  width: 100%;
+  border: 1px solid #1ea1d7;
+  background-color: rgba(30, 161, 215, 0.2);
+  margin: 0;
+  padding: 8px 10px;
+}
+.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutForm-CBsOt .CheckOut-module-placeOrderButton-oCUdr {
+  font-size: 18px;
+  font-weight: 600;
+  background-color: #1ea1d7;
+  color: #ffffff;
+  padding: 12px;
+}
+.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutItems-g4dvg {
+  background-color: #ffffff;
+  padding: 20px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutItems-g4dvg .CheckOut-module-cartListContainer-zNIP9 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutItems-g4dvg .CheckOut-module-cartListContainer-zNIP9 .CheckOut-module-cartImageDetails-i9fXD {
+  display: flex;
+  column-gap: 10px;
+}
+.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutItems-g4dvg .CheckOut-module-cartListContainer-zNIP9 .CheckOut-module-cartImageDetails-i9fXD .CheckOut-module-cartListImage-gri12 {
+  height: 70px;
+  min-width: 70px;
+  width: 70px;
+}
+.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutItems-g4dvg .CheckOut-module-cartListContainer-zNIP9 .CheckOut-module-cartImageDetails-i9fXD .CheckOut-module-cartDetails-w4v0z {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 80%;
+}
+.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutItems-g4dvg .CheckOut-module-cartListContainer-zNIP9 .CheckOut-module-cartImageDetails-i9fXD .CheckOut-module-cartDetails-w4v0z .CheckOut-module-cartDetailsName-SZ4RP {
+  color: #121212;
+  font-weight: bold;
+}
+.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutItems-g4dvg .CheckOut-module-cartListContainer-zNIP9 .CheckOut-module-cartImageDetails-i9fXD .CheckOut-module-cartDetails-w4v0z .CheckOut-module-cartDetailsPrice-hk1ZQ {
+  color: #1ea1d7;
+  font-weight: bold;
+}
+.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutItems-g4dvg .CheckOut-module-cartListContainer-zNIP9 .CheckOut-module-cartDetailsTotal-nfd8q {
+  color: #121212;
+  font-weight: bold;
+}
+.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutItems-g4dvg .CheckOut-module-totalContainer-kgTRY {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutItems-g4dvg .CheckOut-module-totalContainer-kgTRY .CheckOut-module-total-q_EkO {
+  display: flex;
+  justify-content: space-between;
+}
+.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutItems-g4dvg .CheckOut-module-totalContainer-kgTRY .CheckOut-module-total-q_EkO .CheckOut-module-totaltext-u6ptY {
+  font-weight: bold;
+}
+.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutItems-g4dvg .CheckOut-module-totalContainer-kgTRY .CheckOut-module-total-q_EkO .CheckOut-module-totalTextBold-l201t {
+  font-size: 18px;
+  font-weight: bold;
 }

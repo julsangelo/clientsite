@@ -1,0 +1,143 @@
+@import "../assets/scss/main.module.scss";
+
+.page {
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+
+    .checkOut {
+        flex-grow: 1;
+        padding: 60px 0px;
+        background-color: $b_gLight;
+
+        .brandContainer {
+            display: flex;
+            column-gap: 15px;
+
+            .brandTitle {
+                font-size: 40px;
+                font-weight: 900;
+                color: $t_red;
+                line-height: 1;
+            }
+
+            .brandSubtitle {
+                font-size: 18px;
+                font-weight: 500;
+                color: $t_lightBlack;
+                line-height: 1;
+                width: 130px;
+            }
+        }
+
+        .checkOutForm {
+            background-color: $b_white;
+            padding: 20px;
+            height: fit-content;
+            display: flex;
+            flex-direction: column;
+            row-gap: 30px;
+
+            .formTitle {
+                font-size: 20px;
+                font-weight: bold;
+                margin-bottom: 15px;
+            }
+
+            .formInput {
+                width: 100%;
+            }
+
+            .radioButton {
+                width: 100%;
+                border: 1px solid $b_gray;
+                margin: 0;
+                padding: 8px 10px;
+            }
+
+            .radioButtonSelected {
+                width: 100%;
+                border: 1px solid $b_red;
+                background-color: rgba($b_red, 0.2);
+                margin: 0;
+                padding: 8px 10px;
+            }
+
+            .placeOrderButton {
+                font-size: 18px;
+                font-weight: 600;
+                background-color: $b_red;
+                color: $t_white;
+                padding: 12px;
+            }
+        }
+
+        .checkOutItems {
+            background-color: $b_white;
+            padding: 20px;
+            height: fit-content;
+            display: flex;
+            flex-direction: column;
+            row-gap: 20px;
+
+            .cartListContainer {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .cartImageDetails {
+                    display: flex;
+                    column-gap: 10px;
+
+                    .cartListImage {
+                        height: 70px;
+                        min-width: 70px;
+                        width: 70px;
+                    }
+
+                    .cartDetails {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-evenly;
+                        width: 80%;
+
+                        .cartDetailsName {
+                            color: $t_black;
+                            font-weight: bold;
+                        }
+
+                        .cartDetailsPrice {
+                            color: $t_red;
+                            font-weight: bold;
+                        }
+                    }
+                }
+
+                .cartDetailsTotal {
+                    color: $t_black;
+                    font-weight: bold;
+                }
+            }
+
+            .totalContainer {
+                display: flex;
+                flex-direction: column;
+                row-gap: 10px;
+
+                .total {
+                    display: flex;
+                    justify-content: space-between;
+
+                    .totaltext {
+                        font-weight: bold;
+                    }
+
+                    .totalTextBold {
+                        font-size: 18px;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+}
