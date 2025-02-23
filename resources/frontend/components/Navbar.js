@@ -33,6 +33,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { ReferenceContext } from "../context/ReferenceProvider";
 import { Link } from "react-router-dom";
 import { getCart, updateItemQuantity } from "../ajax/backend";
+import AuthModal from "./AuthModal";
 
 export default function Navbar() {
     const theme = useTheme();
@@ -40,6 +41,7 @@ export default function Navbar() {
     const [menu, setMenu] = useState(null);
     const [cart, setCart] = useState(null);
     const [shop, setShop] = useState(null);
+    const [modalOpen, setModalOpen] = useState(false);
     const { references } = useContext(ReferenceContext);
     const [cartItem, setCartItem] = useState(null);
 
@@ -60,6 +62,8 @@ export default function Navbar() {
         setMenu(null);
         setShop(null);
     };
+
+    const handleModalOpen = () => setModalOpen(true);
 
     const menuOpen = Boolean(menu);
     const shopOpen = Boolean(shop);
@@ -246,14 +250,15 @@ export default function Navbar() {
                                         className={
                                             styles.mobileNavbarLoginButton
                                         }
+                                        onClick={handleModalOpen}
                                     >
-                                        Login
+                                        Sign In
                                     </Button>
                                 </Box>
                             </Collapse>
                         </Box>
                         <Typography className={styles.navbarBrand}>
-                            MUX
+                            Cliff
                         </Typography>
                         <IconButton
                             className={styles.mobileNavbarButton}
@@ -441,7 +446,7 @@ export default function Navbar() {
                 ) : (
                     <>
                         <Typography className={styles.navbarBrand}>
-                            MUX
+                            Cliff
                         </Typography>
                         <List className={styles.navLinkContainer}>
                             <ListItemButton
@@ -666,12 +671,16 @@ export default function Navbar() {
                             )}
                         </div>
 
-                        <Button className={styles.navbarLoginButton}>
-                            Login
+                        <Button
+                            className={styles.navbarLoginButton}
+                            onClick={handleModalOpen}
+                        >
+                            Sign In
                         </Button>
                     </>
                 )}
             </Container>
+            <AuthModal isOpen={modalOpen} setModalOpen={setModalOpen} />
         </AppBar>
     );
 }

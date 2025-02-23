@@ -70,7 +70,7 @@ export default function Main() {
                     >
                         <Grid2 container size={{ lg: 12, xl: 5 }} spacing={4}>
                             <Typography className={styles.heroSectionTitle}>
-                                MUX Automotive Part Trading
+                                Cliff Automotive Part Trading
                             </Typography>
                             <Typography className={styles.heroSectionHeading}>
                                 COIDO VACUUM CLEANER DC 12V

@@ -1,0 +1,61 @@
+@import "../assets/scss/main.module.scss";
+
+.modalContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .form {
+        max-width: 530px;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 40px 25px;
+        margin: 20px 20px;
+        background-color: $b_white;
+        position: relative;
+
+        .modalCloseButton {
+            width: fit-content;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .formTitle {
+            font-size: 32px;
+            font-weight: 900;
+            color: $t_red;
+        }
+
+        .formSubtext {
+            font-size: 16px;
+            font-weight: 500;
+            color: $t_lightBlack;
+        }
+
+        .formButton {
+            width: 100%;
+            color: $t_white;
+            background-color: $b_red;
+            padding: 10px 0;
+            margin-bottom: 5px;
+
+            .progress {
+                color: $b_gray;
+            }
+        }
+
+        .formLink {
+            font-size: 14px;
+
+            .formLinkButton {
+                text-decoration: none;
+                color: $t_red;
+                font-weight: bold;
+                cursor: pointer;
+            }
+        }
+    }
+}

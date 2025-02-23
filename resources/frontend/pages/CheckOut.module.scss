@@ -64,11 +64,29 @@
             }
 
             .placeOrderButton {
-                font-size: 18px;
+                font-size: 16px;
                 font-weight: 600;
                 background-color: $b_red;
                 color: $t_white;
                 padding: 12px;
+            }
+            .paymentAccordion {
+                border: 1px solid $b_gray;
+
+                .paymentOptions {
+                    width: 100%;
+                    justify-content: start;
+                    display: flex;
+                    column-gap: 10px;
+                    height: 45px;
+                    padding-left: 20px;
+                }
+
+                .paymentText {
+                    font-size: 15px;
+                    padding: 10px 40px;
+                    text-align: center;
+                }
             }
         }
 

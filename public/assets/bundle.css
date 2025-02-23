@@ -6,6 +6,14 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/Navbar.module.scss ***!
   \*************************************************************************************************************************************************************************************************************************************************************************/
 @import url(https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap);
+/*!****************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/AuthModal.module.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************/
+@import url(https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap);
+/*!**************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/Message.module.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************/
+@import url(https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap);
 /*!*************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/Footer.module.scss ***!
   \*************************************************************************************************************************************************************************************************************************************************************************/
@@ -536,8 +544,145 @@ p {
   background-color: #1ea1d7;
   font-size: 16px;
   color: #ffffff;
-  border-radius: 0;
   padding: 10px 35px;
+  text-wrap: nowrap;
+}
+/*!********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/AuthModal.module.scss (1) ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************/
+body {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+}
+
+p {
+  margin: 0;
+}
+
+.AuthModal-module-modalContainer-GaZtW {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.AuthModal-module-modalContainer-GaZtW .AuthModal-module-form-tQLO4 {
+  max-width: 530px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px 25px;
+  margin: 20px 20px;
+  background-color: #ffffff;
+  position: relative;
+}
+.AuthModal-module-modalContainer-GaZtW .AuthModal-module-form-tQLO4 .AuthModal-module-modalCloseButton-fpPm5 {
+  width: fit-content;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.AuthModal-module-modalContainer-GaZtW .AuthModal-module-form-tQLO4 .AuthModal-module-formTitle-UD8BY {
+  font-size: 32px;
+  font-weight: 900;
+  color: #1ea1d7;
+}
+.AuthModal-module-modalContainer-GaZtW .AuthModal-module-form-tQLO4 .AuthModal-module-formSubtext-AQ4qf {
+  font-size: 16px;
+  font-weight: 500;
+  color: #373737;
+}
+.AuthModal-module-modalContainer-GaZtW .AuthModal-module-form-tQLO4 .AuthModal-module-formButton-uVVU3 {
+  width: 100%;
+  color: #ffffff;
+  background-color: #1ea1d7;
+  padding: 10px 0;
+  margin-bottom: 5px;
+}
+.AuthModal-module-modalContainer-GaZtW .AuthModal-module-form-tQLO4 .AuthModal-module-formButton-uVVU3 .AuthModal-module-progress-VonM4 {
+  color: #dbdbdb;
+}
+.AuthModal-module-modalContainer-GaZtW .AuthModal-module-form-tQLO4 .AuthModal-module-formLink-Nc1Mf {
+  font-size: 14px;
+}
+.AuthModal-module-modalContainer-GaZtW .AuthModal-module-form-tQLO4 .AuthModal-module-formLink-Nc1Mf .AuthModal-module-formLinkButton-wbNsc {
+  text-decoration: none;
+  color: #1ea1d7;
+  font-weight: bold;
+  cursor: pointer;
+}
+/*!******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/Message.module.scss (1) ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************/
+body {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+}
+
+p {
+  margin: 0;
+}
+
+.Message-module-messageContainer-zk_6k {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2000;
+  background-color: #eeeeee;
+  border: 0.5px solid #dbdbdb;
+  color: #373737;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: opacity 0.3s ease-in-out;
+  animation: Message-module-fadeIn-jyHIg 0.5s ease-out, Message-module-fadeOut-RpmHA 0.5s ease-in 4.5s;
+}
+
+@keyframes Message-module-fadeIn-jyHIg {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+@keyframes Message-module-fadeOut-RpmHA {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+}
+.Message-module-successIcon-I5r2q {
+  background-color: #4caf50;
+  border-radius: 20px;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Message-module-errorIcon-zcEob {
+  background-color: #f44336;
+  border-radius: 20px;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Message-module-icon-bKq1G {
+  color: #ffffff;
 }
 /*!*****************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/Footer.module.scss (1) ***!
@@ -1175,11 +1320,27 @@ p {
   padding: 8px 10px;
 }
 .CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutForm-CBsOt .CheckOut-module-placeOrderButton-oCUdr {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   background-color: #1ea1d7;
   color: #ffffff;
   padding: 12px;
+}
+.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutForm-CBsOt .CheckOut-module-paymentAccordion-rw88i {
+  border: 1px solid #dbdbdb;
+}
+.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutForm-CBsOt .CheckOut-module-paymentAccordion-rw88i .CheckOut-module-paymentOptions-S7AOr {
+  width: 100%;
+  justify-content: start;
+  display: flex;
+  column-gap: 10px;
+  height: 45px;
+  padding-left: 20px;
+}
+.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutForm-CBsOt .CheckOut-module-paymentAccordion-rw88i .CheckOut-module-paymentText-WXtl2 {
+  font-size: 15px;
+  padding: 10px 40px;
+  text-align: center;
 }
 .CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutItems-g4dvg {
   background-color: #ffffff;

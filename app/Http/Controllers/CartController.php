@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Redis;
 
 class CartController extends Controller
 {
@@ -12,23 +14,46 @@ class CartController extends Controller
         $code = $request->input('code');
         $quantity = $request->input('quantity');
         
-        $cart = json_decode($request->cookie('cart'), true) ?? [];
-
-        $found = false;
-        foreach ($cart as &$item) {
-            if ($item['productCode'] === $code) {
-                $item['quantity'] += $quantity;
-                $found = true;
-                break;
+        if (Auth::check()) {
+            $customerID = Auth::id();
+            $cartKey = "cart:$customerID";
+            
+            $cart = json_decode(Redis::get($cartKey), true) ?? [];
+    
+            $found = false;
+            foreach ($cart as &$item) {
+                if ($item['productCode'] === $code) {
+                    $item['quantity'] += $quantity;
+                    $found = true;
+                    break;
+                }
             }
+    
+            if (!$found) {
+                $cart[] = ['productCode' => $code, 'quantity' => $quantity];
+            }
+            Redis::select(1);
+            Redis::set($cartKey, json_encode($cart));
+    
+        } else {
+            $cart = json_decode($request->cookie('cart'), true) ?? [];
+    
+            $found = false;
+            foreach ($cart as &$item) {
+                if ($item['productCode'] === $code) {
+                    $item['quantity'] += $quantity;
+                    $found = true;
+                    break;
+                }
+            }
+    
+            if (!$found) {
+                $cart[] = ['productCode' => $code, 'quantity' => $quantity];
+            }
+    
+            Cookie::queue('cart', json_encode($cart), 525600);
         }
-
-        if (!$found) {
-            $cart[] = ['productCode' => $code, 'quantity' => $quantity];
-        }
-        
-        Cookie::queue('cart', json_encode($cart), 525600);
-
+    
         return response()->json([
             'status' => 'success',
             'message' => 'Added to cart.'
@@ -36,8 +61,16 @@ class CartController extends Controller
     }
 
     public function getCart(Request $request) {
-        $cart = json_decode($request->cookie('cart'), true) ?? [];
-
+        if (Auth::check()) {
+            $customerID = Auth::id();
+            Redis::select(1);
+            $cartKey = "cart:$customerID";
+            $cart = json_decode(Redis::get($cartKey), true) ?? [];
+        } else {
+            $cart = json_decode($request->cookie('cart'), true) ?? [];
+        }
+    
+        // Fetch product details
         $cartItems = array_map(function ($item) {
             $product = Product::where('productCode', $item['productCode'])
                 ->select('productCode', 'productName', 'productImage', 'productPrice')
@@ -59,8 +92,15 @@ class CartController extends Controller
         $code = $request->input('code');
         $action = $request->input('action');
 
-        $cart = json_decode($request->cookie('cart'), true) ?? [];
-
+        if (Auth::check()) {
+            $customerID = Auth::id();
+            Redis::select(1);
+            $cartKey = "cart:$customerID";
+            $cart = json_decode(Redis::get($cartKey), true) ?? [];
+        } else {
+            $cart = json_decode($request->cookie('cart'), true) ?? [];
+        }
+    
         foreach ($cart as &$item) {
             if ($item['productCode'] === $code) {
                 if ($action === 'increment') {
@@ -74,7 +114,11 @@ class CartController extends Controller
                 break;
             }
         }
-
-        Cookie::queue('cart', json_encode(array_values($cart)), 525600);
+    
+        if (Auth::check()) {
+            Redis::set($cartKey, json_encode(array_values($cart)));
+        } else {
+            Cookie::queue('cart', json_encode(array_values($cart)), 525600);
+        }
     }
 }

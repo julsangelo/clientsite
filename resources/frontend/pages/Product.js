@@ -15,11 +15,14 @@ import {
     Typography,
 } from "@mui/material";
 import { Add, Remove } from "@mui/icons-material";
+import { Link } from "react-router-dom";
+import { useFlashMessage } from "../context/FlashMessage";
 
 export default function Product() {
     const [productDetail, setProductDetail] = useState(null);
     const [quantity, setQuantity] = useState(1);
     const { productCode } = useParams();
+    const { setFlashMessage, setFlashStatus } = useFlashMessage();
 
     useEffect(() => {
         getProductDetail(productCode, (data) => {
@@ -38,7 +41,19 @@ export default function Product() {
     };
 
     const handleAddToCart = () => {
-        addToCart(productDetail?.productCode, quantity);
+        addToCart(productDetail?.productCode, quantity, (response) => {
+            setFlashMessage(response.message);
+            setFlashStatus(response.status);
+        });
+    };
+
+    const handleCheckout = () => {
+        const item = JSON.stringify({
+            productCode: productDetail?.productCode,
+            quantity: quantity,
+        });
+
+        localStorage.setItem("item", item);
     };
 
     return (
@@ -157,6 +172,9 @@ export default function Product() {
                                         </Button>
                                         <Button
                                             className={styles.checkoutButton}
+                                            onClick={handleCheckout}
+                                            component={Link}
+                                            to="/checkout"
                                         >
                                             Checkout
                                         </Button>

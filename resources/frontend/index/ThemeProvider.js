@@ -100,6 +100,32 @@ const theme = createTheme({
                 },
             },
         },
+        MuiTextField: {
+            styleOverrides: {
+                root: {
+                    "& .MuiOutlinedInput-root": {
+                        "&.Mui-focused fieldset": {
+                            borderColor: "#1ea1d7",
+                        },
+                    },
+                },
+            },
+        },
+        MuiMenuItem: {
+            styleOverrides: {
+                root: {
+                    "&.Mui-selected": {
+                        "&:hover": {
+                            color: "black",
+                        },
+                    },
+                    "&:hover": {
+                        backgroundColor: "#1ea1d7",
+                        color: "white",
+                    },
+                },
+            },
+        },
     },
 });
 

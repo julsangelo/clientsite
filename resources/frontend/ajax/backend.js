@@ -38,7 +38,7 @@ export function addToCart(productCode, quantity, callback) {
     axios
         .post("/addToCart", { code: productCode, quantity: quantity })
         .then((response) => {
-            callback(response);
+            callback(response.data);
         });
 }
 
@@ -50,4 +50,39 @@ export function getCart(callback) {
 
 export function updateItemQuantity(productCode, action) {
     axios.post("/updateItemQuantity", { code: productCode, action: action });
+}
+
+export function getClientIntent(amount, callback) {
+    axios.post("/paymentIntent", { amount }).then((response) => {
+        callback(response.data);
+    });
+}
+
+export function placeOrder(data) {
+    axios.post("/placeOrder", data).then((response) => {
+        callback(response.data);
+    });
+}
+
+export function signIn(data, callback) {
+    axios.post("/signIn", data).then((response) => {
+        callback(response.data);
+    });
+}
+
+export function signUp(data, callback) {
+    axios
+        .post("/signUp", data)
+        .then((response) => {
+            callback(response.data);
+        })
+        .catch((error) => {
+            callback(error.response.data);
+        });
+}
+
+export function authCheck(callback) {
+    axios.get("/authCheck").then((response) => {
+        callback(response.data);
+    });
 }
