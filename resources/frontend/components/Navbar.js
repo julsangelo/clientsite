@@ -21,6 +21,7 @@ import {
     Divider,
 } from "@mui/material";
 import {
+    AccountCircle,
     Add,
     Close,
     DeleteOutline,
@@ -34,6 +35,7 @@ import { ReferenceContext } from "../context/ReferenceProvider";
 import { Link } from "react-router-dom";
 import { getCart, updateItemQuantity } from "../ajax/backend";
 import AuthModal from "./AuthModal";
+import { useAuth } from "../context/AuthContext";
 
 export default function Navbar() {
     const theme = useTheme();
@@ -44,6 +46,7 @@ export default function Navbar() {
     const [modalOpen, setModalOpen] = useState(false);
     const { references } = useContext(ReferenceContext);
     const [cartItem, setCartItem] = useState(null);
+    const { isLoggedIn, user } = useAuth();
 
     const handleMenu = (event) => {
         setMenu((prev) => (prev ? null : event.currentTarget));
@@ -671,12 +674,18 @@ export default function Navbar() {
                             )}
                         </div>
 
-                        <Button
-                            className={styles.navbarLoginButton}
-                            onClick={handleModalOpen}
-                        >
-                            Sign In
-                        </Button>
+                        {isLoggedIn ? (
+                            <Box>
+                                <AccountCircle />
+                            </Box>
+                        ) : (
+                            <Button
+                                className={styles.navbarLoginButton}
+                                onClick={handleModalOpen}
+                            >
+                                Sign In
+                            </Button>
+                        )}
                     </>
                 )}
             </Container>

@@ -7,17 +7,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Redis;
+use Laravel\Sanctum\PersonalAccessToken;
 
 class CartController extends Controller
 {
-    public function addToCart (Request $request) {
+    public function addToCart(Request $request) {
         $code = $request->input('code');
         $quantity = $request->input('quantity');
-        
+    
         if (Auth::check()) {
             $customerID = Auth::id();
             $cartKey = "cart:$customerID";
             
+            Redis::select(1);
             $cart = json_decode(Redis::get($cartKey), true) ?? [];
     
             $found = false;
@@ -32,7 +34,7 @@ class CartController extends Controller
             if (!$found) {
                 $cart[] = ['productCode' => $code, 'quantity' => $quantity];
             }
-            Redis::select(1);
+    
             Redis::set($cartKey, json_encode($cart));
     
         } else {
@@ -61,21 +63,30 @@ class CartController extends Controller
     }
 
     public function getCart(Request $request) {
-        if (Auth::check()) {
-            $customerID = Auth::id();
-            Redis::select(1);
-            $cartKey = "cart:$customerID";
-            $cart = json_decode(Redis::get($cartKey), true) ?? [];
+        $token = $request->cookie('auth_token');
+
+        if ($token) {
+            $accessToken = PersonalAccessToken::findToken($token);
+
+            if ($accessToken) {
+                $customer = $accessToken->tokenable;
+                $customerID = $customer->customerID;
+
+                Redis::select(1);
+                $cartKey = "cart:$customerID";
+                $cart = json_decode(Redis::get($cartKey), true) ?? [];
+            } else {
+                $cart = json_decode($request->cookie('cart'), true) ?? [];
+            }
         } else {
             $cart = json_decode($request->cookie('cart'), true) ?? [];
         }
-    
-        // Fetch product details
+
         $cartItems = array_map(function ($item) {
             $product = Product::where('productCode', $item['productCode'])
                 ->select('productCode', 'productName', 'productImage', 'productPrice')
                 ->first();
-    
+
             return [
                 'productCode' => $item['productCode'],
                 'quantity' => $item['quantity'],
@@ -84,16 +95,21 @@ class CartController extends Controller
                 'productPrice' => $product ? $product->productPrice : null
             ];
         }, $cart);
-    
+
         return response()->json($cartItems);
     }
 
     public function updateItemQuantity(Request $request) {
         $code = $request->input('code');
         $action = $request->input('action');
+        $token = $request->cookie('auth_token');
+        
 
-        if (Auth::check()) {
-            $customerID = Auth::id();
+        if ($token) {
+            $accessToken = PersonalAccessToken::findToken($token);
+            $customer = $accessToken->tokenable;
+            $customerID = $customer->customerID;
+
             Redis::select(1);
             $cartKey = "cart:$customerID";
             $cart = json_decode(Redis::get($cartKey), true) ?? [];
@@ -115,7 +131,7 @@ class CartController extends Controller
             }
         }
     
-        if (Auth::check()) {
+        if ($token) {
             Redis::set($cartKey, json_encode(array_values($cart)));
         } else {
             Cookie::queue('cart', json_encode(array_values($cart)), 525600);

@@ -9,7 +9,8 @@ export function AuthProvider({ children }) {
 
     useEffect(() => {
         authCheck((response) => {
-            console.log(response);
+            setIsLoggedIn(response.loggedIn);
+            setUser(response.user)
         });
     }, []);
 

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redis;
+use Laravel\Sanctum\PersonalAccessToken;
 
 class AuthController extends Controller
 {
@@ -18,18 +19,43 @@ class AuthController extends Controller
         ]);
         
         if (Auth::attempt(['customerEmail' => $validatedForm['email'], 'password' => $validatedForm['password']])) {
-            // $customer = Auth::user();
-            // $token = $customer->createToken('authToken')->plainTextToken;
+            $customer = Auth::user();
+            $token = $customer->createToken('clientAuth')->plainTextToken;
 
-            // Redis::select(5);
-            // Redis::setex("sanctum:token:{$customer->customerID}", 86400, $token);
-    
-            // Cookie::queue(Cookie::make('auth_token', $token, 60 * 24 * 7, null, null, false, true));
+            $customerID = $customer->customerID;
+            $cartKey = "cart:$customerID";
 
+            Redis::select(1);
+
+            $redisCart = json_decode(Redis::get($cartKey), true) ?? [];
+
+            $cookieCart = json_decode($request->cookie('cart'), true) ?? [];
+
+            foreach ($cookieCart as $cookieItem) {
+                $found = false;
+                foreach ($redisCart as &$redisItem) {
+                    if ($redisItem['productCode'] === $cookieItem['productCode']) {
+                        $redisItem['quantity'] += $cookieItem['quantity'];
+                        $found = true;
+                        break;
+                    }
+                }
+
+                if (!$found) {
+                    $redisCart[] = $cookieItem;
+                }
+            }
+
+            // Save merged cart in Redis
+            Redis::set($cartKey, json_encode($redisCart));
+
+            // Clear the cart cookie after merging
+            Cookie::queue(Cookie::forget('cart'));
+            
             return response()->json([
                 'message' => 'Login successful!',
                 'status' => 'success',
-            ]);
+            ])->cookie('auth_token', $token, 60 * 24, '/', null, false, true);
         } else {
             return response()->json([
                 'message' => "Email or password is incorrect.",
@@ -38,8 +64,7 @@ class AuthController extends Controller
         }
     }
 
-    public function signUp(Request $request)
-    {
+    public function signUp(Request $request) {
         $validatedData = $request->validate([
             'firstName' => 'required|string|max:255',
             'lastName' => 'required|string|max:255',
@@ -73,43 +98,37 @@ class AuthController extends Controller
         }
     }
 
-    // public function authCheck(Request $request)
-    // {
-    //     $token = $request->cookie('auth_token');
+    public function authCheck(Request $request) {
+        $token = $request->cookie('auth_token');
 
-    //     if (!$token) {
-    //         return response()->json(['loggedIn' => false]);
-    //     }
+        if (!$token) {
+            return response()->json(['loggedIn' => false]);
+        }
+    
+        $accessToken = PersonalAccessToken::findToken($token);
+    
+        if (!$accessToken) {
+            return response()->json(['loggedIn' => false]);
+        }
+    
+        $customer = $accessToken->tokenable;
+    
+        return response()->json([
+            'loggedIn' => true,
+            'user' => $customer,
+        ]);    
+    }
 
-    //     $customer = Auth::user();
-    //     if (!$customer) {
-    //         return response()->json(['loggedIn' => false]);
-    //     }
+    public function logout() {
+        $customer = Auth::user();
 
-    //     Redis::select(5);
-    //     $storedToken = Redis::get("sanctum:token:{$customer->customerID}");
+        if ($customer) {
+            Redis::select(5);
+            Redis::del("sanctum:token:{$customer->customerID}");
+        }
 
-    //     if (!$storedToken || $storedToken !== $token) {
-    //         return response()->json(['loggedIn' => false]);
-    //     }
+        Cookie::queue(Cookie::forget('auth_token'));
 
-    //     return response()->json([
-    //         'loggedIn' => true,
-    //         'user' => $customer,
-    //     ]);
-    // }
-
-    // public function logout()
-    // {
-    //     $customer = Auth::user();
-
-    //     if ($customer) {
-    //         Redis::select(5);
-    //         Redis::del("sanctum:token:{$customer->customerID}");
-    //     }
-
-    //     Cookie::queue(Cookie::forget('auth_token'));
-
-    //     return response()->json(['message' => 'Logged out']);
-    // }
+        return response()->json(['message' => 'Logged out']);
+    }
 }
