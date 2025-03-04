@@ -14,7 +14,6 @@ export let FlashMessage = ({ children }) => {
 
     let setFlashMessage = (flashMessage) => {
         setMessage(flashMessage);
-        console.log(message);
         setTimeout(() => {
             setMessage(null);
         }, 5000);
@@ -22,7 +21,6 @@ export let FlashMessage = ({ children }) => {
 
     let setFlashStatus = (flashStatus) => {
         setStatus(flashStatus);
-        console.log(flashStatus);
         setTimeout(() => {
             setStatus(null);
         }, 5000);

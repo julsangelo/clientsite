@@ -49,6 +49,8 @@
 
         .formLink {
             font-size: 14px;
+            display: flex;
+            column-gap: 5px;
 
             .formLinkButton {
                 text-decoration: none;

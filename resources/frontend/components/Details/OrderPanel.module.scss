@@ -1,0 +1,103 @@
+@import "../../assets/scss/main.module.scss";
+
+.tabTitle {
+    font-weight: 800 !important;
+    font-size: 32px !important;
+}
+
+.ordersContainer {
+    .orderSummary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 20px 10px;
+
+        .orderSummaryTitle {
+            font-weight: 900;
+        }
+    }
+
+    .orderDescription {
+        padding: 10px 20px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+
+        .productList {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+
+            .productItemContainer {
+                display: flex;
+                width: 65%;
+                column-gap: 10px;
+
+                .productListImage {
+                    height: 70px;
+                    min-width: 70px;
+                    width: 70px;
+                }
+
+                .productDetails {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-evenly;
+                    width: 50%;
+
+                    .productDetailsName {
+                        color: $t_black;
+                        font-weight: bold;
+                    }
+
+                    .productDetailsPrice {
+                        color: $t_red;
+                        font-weight: bold;
+                    }
+                }
+            }
+
+            .productDetailsContainer {
+                display: flex;
+                align-items: center;
+
+                .productItemPrice {
+                    color: $t_black;
+                    text-wrap: nowrap;
+                    font-weight: 700;
+                    width: 90px;
+                    text-align: end;
+                }
+            }
+        }
+    }
+
+    .orderDetailsBox {
+        background-color: $b_gLight;
+        padding: 10px;
+
+        .orderDetailsDivider {
+            margin: 10px 0;
+        }
+
+        .orderDetailsTotal {
+            font-weight: 700;
+        }
+    }
+
+    .orderDetailsRight {
+        display: flex;
+        flex-direction: column;
+        row-gap: 24px;
+    }
+}
+
+.orderNoItemsText {
+    width: 100%;
+    color: $t_black;
+    margin: 30px 0 !important;
+    text-wrap: nowrap;
+    font-weight: 600 !important;
+    text-align: center;
+}

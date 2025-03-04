@@ -8,17 +8,28 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Session;
 use Laravel\Sanctum\PersonalAccessToken;
 
 class AuthController extends Controller
 {
     public function signIn (Request $request) {
         $validatedForm = $request->validate([
-            'email' => 'required|email',
+            'emailUsername' => 'required|string',
             'password' => 'required|string|min:8',
         ]);
+
+        $credentials = [
+            'password' => $validatedForm['password']
+        ];
+    
+        if (filter_var($validatedForm['emailUsername'], FILTER_VALIDATE_EMAIL)) {
+            $credentials['customerEmail'] = $validatedForm['emailUsername'];
+        } else {
+            $credentials['customerUsername'] = $validatedForm['emailUsername'];
+        }
         
-        if (Auth::attempt(['customerEmail' => $validatedForm['email'], 'password' => $validatedForm['password']])) {
+        if (Auth::attempt($credentials)) {
             $customer = Auth::user();
             $token = $customer->createToken('clientAuth')->plainTextToken;
 
@@ -55,6 +66,7 @@ class AuthController extends Controller
             return response()->json([
                 'message' => 'Login successful!',
                 'status' => 'success',
+                'user' => $customer,
             ])->cookie('auth_token', $token, 60 * 24, '/', null, false, true);
         } else {
             return response()->json([
@@ -66,16 +78,14 @@ class AuthController extends Controller
 
     public function signUp(Request $request) {
         $validatedData = $request->validate([
-            'firstName' => 'required|string|max:255',
-            'lastName' => 'required|string|max:255',
+            'username' => 'required|string|max:15|unique:customer,customerUsername',
             'email' => 'required|email|unique:customer,customerEmail',
             'phoneNumber' => 'required|digits:11',
             'password' => 'required|string|min:8',
         ]);
 
         $signUp = Customer::create([
-            'customerFirstName' => $validatedData['firstName'],
-            'customerLastName' => $validatedData['lastName'],
+            'customerUsername' => $validatedData['username'],
             'customerEmail' => $validatedData['email'],
             'customerContactNo' => $validatedData['phoneNumber'],
             'customerPassword' => Hash::make($validatedData['password']),
@@ -119,16 +129,23 @@ class AuthController extends Controller
         ]);    
     }
 
-    public function logout() {
-        $customer = Auth::user();
-
-        if ($customer) {
-            Redis::select(5);
-            Redis::del("sanctum:token:{$customer->customerID}");
+    public function signOut(Request $request) {
+        $token = $request->cookie('auth_token');
+    
+        if ($token) {
+            $accessToken = PersonalAccessToken::findToken($token);
+    
+            if ($accessToken) {
+                $accessToken->delete();
+            }
         }
-
+    
         Cookie::queue(Cookie::forget('auth_token'));
-
-        return response()->json(['message' => 'Logged out']);
+        Session::flush();
+    
+        return response()->json([
+            'message' => 'Logged out', 
+            'status' => 'success'
+        ]);
     }
 }

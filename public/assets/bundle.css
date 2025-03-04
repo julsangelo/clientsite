@@ -14,6 +14,14 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/Message.module.scss ***!
   \**************************************************************************************************************************************************************************************************************************************************************************/
 @import url(https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap);
+/*!**************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/Navbar/MobileNavbar.module.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************/
+@import url(https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap);
+/*!***************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/Navbar/DesktopNavbar.module.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************/
+@import url(https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap);
 /*!*************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/Footer.module.scss ***!
   \*************************************************************************************************************************************************************************************************************************************************************************/
@@ -42,9 +50,21 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/pages/Details.module.scss ***!
   \*********************************************************************************************************************************************************************************************************************************************************************/
 @import url(https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap);
+/*!*************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/Details/OrderPanel.module.scss ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************/
+@import url(https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap);
+/*!************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/Details/CartPanel.module.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************/
+@import url(https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap);
 /*!**********************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/pages/CheckOut.module.scss ***!
   \**********************************************************************************************************************************************************************************************************************************************************************/
+@import url(https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap);
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/Checkout/CheckOutSummary.module.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************/
 @import url(https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap);
 /*!**********************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/pages/Home.module.scss (1) ***!
@@ -248,305 +268,6 @@ p {
   justify-content: space-between;
   column-gap: 10px;
 }
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-mobileNavbarButton-Xwm0u {
-  color: #ffffff;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-menuPopover-nJnmZ {
-  position: fixed;
-  top: 0;
-  left: 0;
-  color: #121212;
-  z-index: 100;
-  height: 100dvh;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-menuPopover-nJnmZ .Navbar-module-popoverContainer-lXNaB {
-  background-color: rgba(18, 18, 18, 0.5);
-  height: 100dvh;
-  width: 100dvw;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-menuPopover-nJnmZ .Navbar-module-menuPopoverBox-gAl7X {
-  width: fit-content;
-  height: 100dvh;
-  background-color: #ffffff;
-  padding: 15px 16px;
-  display: flex;
-  flex-direction: column;
-  row-gap: 10px;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-menuPopover-nJnmZ .Navbar-module-menuPopoverBox-gAl7X .Navbar-module-closeButton-GS23X {
-  width: fit-content;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-menuPopover-nJnmZ .Navbar-module-menuPopoverBox-gAl7X .Navbar-module-mobileNavLinkButton-Y7pBT {
-  border-radius: 5px;
-  color: #121212;
-  font-weight: 400;
-  font-size: 15px;
-  padding: 8px 16px;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-menuPopover-nJnmZ .Navbar-module-menuPopoverBox-gAl7X .Navbar-module-mobileAccordion-bJQMw {
-  margin: 11px 0;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-menuPopover-nJnmZ .Navbar-module-menuPopoverBox-gAl7X .Navbar-module-mobileAccordion-bJQMw .Navbar-module-mobileAccordionDetails-L5s_6 {
-  padding-bottom: 0;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-menuPopover-nJnmZ .Navbar-module-menuPopoverBox-gAl7X .Navbar-module-mobileNavbarSearchContainer-nMwmF {
-  background-color: #dbdbdb;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  column-gap: 10px;
-  width: 100%;
-  font-size: 15px;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-menuPopover-nJnmZ .Navbar-module-menuPopoverBox-gAl7X .Navbar-module-mobileNavbarLoginButton-atb4A {
-  width: 250px;
-  background-color: #1ea1d7;
-  font-size: 15px;
-  color: #ffffff;
-  border-radius: 0;
-  padding: 10px 35px;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cartPopover-XxlEM {
-  position: fixed;
-  top: 0;
-  right: 0;
-  color: #121212;
-  z-index: 100;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cartPopover-XxlEM .Navbar-module-closeButton-GS23X {
-  width: fit-content;
-  align-self: end;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cartPopover-XxlEM .Navbar-module-popoverContainer-lXNaB {
-  background-color: rgba(18, 18, 18, 0.5);
-  height: 100dvh;
-  width: 100dvw;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cartPopover-XxlEM .Navbar-module-mobileCartInfo-o9u__ {
-  width: fit-content;
-  height: 100dvh;
-  background-color: #ffffff;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  row-gap: 15px;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cartPopover-XxlEM .Navbar-module-mobileCartInfo-o9u__ .Navbar-module-mobileCartList-kJk5I {
-  font-size: 14px;
-  display: flex;
-  column-gap: 10px;
-  align-items: center;
-  justify-content: space-between;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cartPopover-XxlEM .Navbar-module-mobileCartInfo-o9u__ .Navbar-module-mobileCartList-kJk5I .Navbar-module-mobileCartListImage-SwroQ {
-  height: 70px;
-  width: 70px;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cartPopover-XxlEM .Navbar-module-mobileCartInfo-o9u__ .Navbar-module-mobileCartList-kJk5I .Navbar-module-mobileCartDetails-Qie4b {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  width: 100px;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cartPopover-XxlEM .Navbar-module-mobileCartInfo-o9u__ .Navbar-module-mobileCartList-kJk5I .Navbar-module-mobileCartDetails-Qie4b .Navbar-module-mobileCartDetailsName-fDfQb {
-  color: #121212;
-  font-weight: bold;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cartPopover-XxlEM .Navbar-module-mobileCartInfo-o9u__ .Navbar-module-mobileCartList-kJk5I .Navbar-module-mobileCartDetails-Qie4b .Navbar-module-mobileCartDetailsPrice-MqkgE {
-  color: #1ea1d7;
-  font-weight: bold;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cartPopover-XxlEM .Navbar-module-mobileCartInfo-o9u__ .Navbar-module-mobileCartList-kJk5I .Navbar-module-mobileCartQuantity-C25Mc {
-  display: flex;
-  color: #585858;
-  height: fit-content;
-  font-size: 14px;
-  align-items: center;
-  column-gap: 5px;
-  border: 1px solid #dbdbdb;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cartPopover-XxlEM .Navbar-module-mobileCartInfo-o9u__ .Navbar-module-mobileCartTotal-V12jl {
-  display: flex;
-  justify-content: space-between;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cartPopover-XxlEM .Navbar-module-mobileCartInfo-o9u__ .Navbar-module-mobileCartTotal-V12jl .Navbar-module-mobileCartTotalText-Qtof2 {
-  color: #121212;
-  font-weight: bold;
-  font-size: 16px;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cartPopover-XxlEM .Navbar-module-mobileCartInfo-o9u__ .Navbar-module-mobileCartButtons-K5Y73 {
-  display: flex;
-  column-gap: 10px;
-  width: 100%;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cartPopover-XxlEM .Navbar-module-mobileCartInfo-o9u__ .Navbar-module-mobileCartButtons-K5Y73 .Navbar-module-mobileCartView-V6Ne1 {
-  width: 50%;
-  background-color: #121212;
-  color: #ffffff;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cartPopover-XxlEM .Navbar-module-mobileCartInfo-o9u__ .Navbar-module-mobileCartButtons-K5Y73 .Navbar-module-mobileCartCheckout-ue_uS {
-  width: 50%;
-  background-color: #1ea1d7;
-  color: #ffffff;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cartPopover-XxlEM .Navbar-module-mobileCartInfo-o9u__ .Navbar-module-cartNoItemsText-H8fSZ {
-  width: fit-content;
-  color: #121212;
-  margin: 10px 83.515px;
-  text-wrap: nowrap;
-  font-weight: 600;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cartPopover-XxlEM .Navbar-module-mobileCartInfo-o9u__ .Navbar-module-mobileItemPrice-fRI_8 {
-  color: #121212;
-  text-wrap: nowrap;
-  font-weight: 700;
-  width: 100%;
-  text-align: end;
-  font-size: 14px;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-navbarBrand-Q0P_x {
-  color: #1ea1d7;
-  font-size: 32px;
-  font-weight: 900;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-navLinkContainer-iWSe0 {
-  display: flex;
-  margin-left: 20px;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-navLinkContainer-iWSe0 .Navbar-module-navLinkButton-QLmrK {
-  border-radius: 5px;
-  color: #ffffff;
-  font-weight: 400;
-  font-size: 15px;
-  padding: 8px 16px;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-navLinkContainer-iWSe0 .Navbar-module-navLinkShop-V02RV {
-  display: flex;
-  position: relative;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-navLinkContainer-iWSe0 .Navbar-module-navLinkShop-V02RV .Navbar-module-shopMenu-LR2Br {
-  position: absolute;
-  top: 63px;
-  background-color: #373737;
-  font-size: 14px;
-  z-index: 100;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-navbarSearchContainer-CP2qC {
-  background-color: #5f5f5f;
-  padding: 0 20px;
-  display: flex;
-  align-items: center;
-  column-gap: 10px;
-  width: 100%;
-  font-size: 15px;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-navbarSearchContainer-CP2qC .Navbar-module-navbarSearchInput-AH7_c {
-  height: 100%;
-  color: #ffffff;
-  width: 100%;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cart-H90Ha {
-  display: flex;
-  position: relative;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cart-H90Ha .Navbar-module-cartButton-wDZOH {
-  color: white;
-  font-size: 15px;
-  min-width: 146px;
-  text-wrap: nowrap;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cart-H90Ha .Navbar-module-cartInfo-_ol9z {
-  position: absolute;
-  top: 65px;
-  right: 0;
-  background-color: #ffffff;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  row-gap: 15px;
-  z-index: 100;
-  width: 550px;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cart-H90Ha .Navbar-module-cartInfo-_ol9z .Navbar-module-cartList-tDBGI {
-  font-size: 14px;
-  display: flex;
-  column-gap: 10px;
-  align-items: center;
-  justify-content: space-between;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cart-H90Ha .Navbar-module-cartInfo-_ol9z .Navbar-module-cartList-tDBGI .Navbar-module-cartListImage-SipZ4 {
-  height: 70px;
-  width: 70px;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cart-H90Ha .Navbar-module-cartInfo-_ol9z .Navbar-module-cartList-tDBGI .Navbar-module-cartDetails-GF4kj {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  width: 210px;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cart-H90Ha .Navbar-module-cartInfo-_ol9z .Navbar-module-cartList-tDBGI .Navbar-module-cartDetails-GF4kj .Navbar-module-cartDetailsName-IuCcn {
-  color: #121212;
-  font-weight: bold;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cart-H90Ha .Navbar-module-cartInfo-_ol9z .Navbar-module-cartList-tDBGI .Navbar-module-cartDetails-GF4kj .Navbar-module-cartDetailsPrice-fnWk4 {
-  color: #1ea1d7;
-  font-weight: bold;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cart-H90Ha .Navbar-module-cartInfo-_ol9z .Navbar-module-cartList-tDBGI .Navbar-module-cartQuantity-tQSjb {
-  display: flex;
-  color: #585858;
-  height: fit-content;
-  font-size: 14px;
-  align-items: center;
-  column-gap: 5px;
-  border: 1px solid #dbdbdb;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cart-H90Ha .Navbar-module-cartInfo-_ol9z .Navbar-module-cartList-tDBGI .Navbar-module-cartItemPrice-WaeBR {
-  color: #121212;
-  text-wrap: nowrap;
-  font-weight: 700;
-  width: 90px;
-  text-align: end;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cart-H90Ha .Navbar-module-cartInfo-_ol9z .Navbar-module-cartTotal-AFx1s {
-  display: flex;
-  justify-content: space-between;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cart-H90Ha .Navbar-module-cartInfo-_ol9z .Navbar-module-cartTotal-AFx1s .Navbar-module-cartTotalText-NjoA7 {
-  color: #121212;
-  font-weight: bold;
-  font-size: 16px;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cart-H90Ha .Navbar-module-cartInfo-_ol9z .Navbar-module-cartButtons-RvFWi {
-  display: flex;
-  column-gap: 10px;
-  width: 100%;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cart-H90Ha .Navbar-module-cartInfo-_ol9z .Navbar-module-cartButtons-RvFWi .Navbar-module-cartView-gyOHR {
-  width: 50%;
-  background-color: #121212;
-  color: #ffffff;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cart-H90Ha .Navbar-module-cartInfo-_ol9z .Navbar-module-cartButtons-RvFWi .Navbar-module-cartCheckout-nQDdb {
-  width: 50%;
-  background-color: #1ea1d7;
-  color: #ffffff;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-cart-H90Ha .Navbar-module-cartInfo-_ol9z .Navbar-module-cartNoItemsText-H8fSZ {
-  width: 100%;
-  color: #121212;
-  margin: 10px 0;
-  text-wrap: nowrap;
-  font-weight: 600;
-  text-align: center;
-}
-.Navbar-module-navbar-CnXQ1 .Navbar-module-navbarContainer-n5BzC .Navbar-module-navbarLoginButton-Cggmr {
-  background-color: #1ea1d7;
-  font-size: 16px;
-  color: #ffffff;
-  padding: 10px 35px;
-  text-wrap: nowrap;
-}
 /*!********************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/AuthModal.module.scss (1) ***!
   \********************************************************************************************************************************************************************************************************************************************************************************/
@@ -603,6 +324,8 @@ p {
 }
 .AuthModal-module-modalContainer-GaZtW .AuthModal-module-form-tQLO4 .AuthModal-module-formLink-Nc1Mf {
   font-size: 14px;
+  display: flex;
+  column-gap: 5px;
 }
 .AuthModal-module-modalContainer-GaZtW .AuthModal-module-form-tQLO4 .AuthModal-module-formLink-Nc1Mf .AuthModal-module-formLinkButton-wbNsc {
   text-decoration: none;
@@ -683,6 +406,382 @@ p {
 
 .Message-module-icon-bKq1G {
   color: #ffffff;
+}
+/*!******************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/Navbar/MobileNavbar.module.scss (1) ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************/
+body {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+}
+
+p {
+  margin: 0;
+}
+
+.MobileNavbar-module-mobileNavbarButton-TDokH {
+  color: #ffffff;
+}
+
+.MobileNavbar-module-menuPopover-OeQP2 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: #121212;
+  z-index: 100;
+  height: 100dvh;
+}
+.MobileNavbar-module-menuPopover-OeQP2 .MobileNavbar-module-popoverContainer-zEwns {
+  background-color: rgba(18, 18, 18, 0.5);
+  height: 100dvh;
+  width: 100dvw;
+}
+.MobileNavbar-module-menuPopover-OeQP2 .MobileNavbar-module-menuPopoverBox-kuetJ {
+  width: fit-content;
+  height: 100dvh;
+  background-color: #ffffff;
+  padding: 15px 16px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+.MobileNavbar-module-menuPopover-OeQP2 .MobileNavbar-module-menuPopoverBox-kuetJ .MobileNavbar-module-closeButton-H8itY {
+  width: fit-content;
+}
+.MobileNavbar-module-menuPopover-OeQP2 .MobileNavbar-module-menuPopoverBox-kuetJ .MobileNavbar-module-mobileNavLinkButton-guhUG {
+  border-radius: 5px;
+  color: #121212;
+  font-weight: 400;
+  font-size: 15px;
+  padding: 8px 16px;
+}
+.MobileNavbar-module-menuPopover-OeQP2 .MobileNavbar-module-menuPopoverBox-kuetJ .MobileNavbar-module-mobileAccordion-EXcF5 {
+  margin: 11px 0;
+}
+.MobileNavbar-module-menuPopover-OeQP2 .MobileNavbar-module-menuPopoverBox-kuetJ .MobileNavbar-module-mobileAccordion-EXcF5 .MobileNavbar-module-mobileAccordionDetails-vpYY6 {
+  padding-bottom: 0;
+}
+.MobileNavbar-module-menuPopover-OeQP2 .MobileNavbar-module-menuPopoverBox-kuetJ .MobileNavbar-module-mobileAccordion-EXcF5 .MobileNavbar-module-mobileAccordionDetails-vpYY6 .MobileNavbar-module-settingsInfo-z5nWi {
+  display: flex;
+  flex-direction: column;
+}
+.MobileNavbar-module-menuPopover-OeQP2 .MobileNavbar-module-menuPopoverBox-kuetJ .MobileNavbar-module-mobileAccordion-EXcF5 .MobileNavbar-module-mobileAccordionDetails-vpYY6 .MobileNavbar-module-settingsInfo-z5nWi .MobileNavbar-module-settingsOption-DMPZa {
+  color: #1ea1d7;
+}
+.MobileNavbar-module-menuPopover-OeQP2 .MobileNavbar-module-menuPopoverBox-kuetJ .MobileNavbar-module-mobileAccordion-EXcF5 .MobileNavbar-module-settingsAccordion-C3xNt {
+  color: #1ea1d7;
+}
+.MobileNavbar-module-menuPopover-OeQP2 .MobileNavbar-module-menuPopoverBox-kuetJ .MobileNavbar-module-mobileAccordion-EXcF5 .MobileNavbar-module-settingsAccordion-C3xNt .MobileNavbar-module-startIcon-xGwLQ {
+  margin-right: 10px;
+}
+.MobileNavbar-module-menuPopover-OeQP2 .MobileNavbar-module-menuPopoverBox-kuetJ .MobileNavbar-module-mobileAccordion-EXcF5 .MobileNavbar-module-expandIcon-aANJw {
+  color: #1ea1d7;
+}
+.MobileNavbar-module-menuPopover-OeQP2 .MobileNavbar-module-menuPopoverBox-kuetJ .MobileNavbar-module-mobileNavbarSearchContainer-iAZg5 {
+  background-color: #dbdbdb;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  width: 100%;
+  font-size: 15px;
+}
+.MobileNavbar-module-menuPopover-OeQP2 .MobileNavbar-module-menuPopoverBox-kuetJ .MobileNavbar-module-mobileNavbarLoginButton-dqNyt {
+  width: 250px;
+  background-color: #1ea1d7;
+  font-size: 15px;
+  color: #ffffff;
+  border-radius: 0;
+  padding: 10px 35px;
+}
+
+.MobileNavbar-module-cartPopover-hvU67 {
+  position: fixed;
+  top: 0;
+  right: 0;
+  color: #121212;
+  z-index: 100;
+}
+.MobileNavbar-module-cartPopover-hvU67 .MobileNavbar-module-closeButton-H8itY {
+  width: fit-content;
+  align-self: end;
+}
+.MobileNavbar-module-cartPopover-hvU67 .MobileNavbar-module-popoverContainer-zEwns {
+  background-color: rgba(18, 18, 18, 0.5);
+  height: 100dvh;
+  width: 100dvw;
+}
+.MobileNavbar-module-cartPopover-hvU67 .MobileNavbar-module-mobileCartInfo-nAing {
+  width: fit-content;
+  height: 100dvh;
+  background-color: #ffffff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}
+.MobileNavbar-module-cartPopover-hvU67 .MobileNavbar-module-mobileCartInfo-nAing .MobileNavbar-module-mobileCartList-AalJG {
+  font-size: 14px;
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+.MobileNavbar-module-cartPopover-hvU67 .MobileNavbar-module-mobileCartInfo-nAing .MobileNavbar-module-mobileCartList-AalJG .MobileNavbar-module-mobileCartListImage-J6GSH {
+  height: 70px;
+  width: 70px;
+}
+.MobileNavbar-module-cartPopover-hvU67 .MobileNavbar-module-mobileCartInfo-nAing .MobileNavbar-module-mobileCartList-AalJG .MobileNavbar-module-mobileCartDetails-OemVa {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 100px;
+}
+.MobileNavbar-module-cartPopover-hvU67 .MobileNavbar-module-mobileCartInfo-nAing .MobileNavbar-module-mobileCartList-AalJG .MobileNavbar-module-mobileCartDetails-OemVa .MobileNavbar-module-mobileCartDetailsName-TdBM8 {
+  color: #121212;
+  font-weight: bold;
+}
+.MobileNavbar-module-cartPopover-hvU67 .MobileNavbar-module-mobileCartInfo-nAing .MobileNavbar-module-mobileCartList-AalJG .MobileNavbar-module-mobileCartDetails-OemVa .MobileNavbar-module-mobileCartDetailsPrice-jmzUg {
+  color: #1ea1d7;
+  font-weight: bold;
+}
+.MobileNavbar-module-cartPopover-hvU67 .MobileNavbar-module-mobileCartInfo-nAing .MobileNavbar-module-mobileCartList-AalJG .MobileNavbar-module-mobileCartQuantity-Iu5BD {
+  display: flex;
+  color: #585858;
+  height: fit-content;
+  font-size: 14px;
+  align-items: center;
+  column-gap: 5px;
+  border: 1px solid #dbdbdb;
+}
+.MobileNavbar-module-cartPopover-hvU67 .MobileNavbar-module-mobileCartInfo-nAing .MobileNavbar-module-mobileCartTotal-mkTqD {
+  display: flex;
+  justify-content: space-between;
+}
+.MobileNavbar-module-cartPopover-hvU67 .MobileNavbar-module-mobileCartInfo-nAing .MobileNavbar-module-mobileCartTotal-mkTqD .MobileNavbar-module-mobileCartTotalText-OE3_Q {
+  color: #121212;
+  font-weight: bold;
+  font-size: 16px;
+}
+.MobileNavbar-module-cartPopover-hvU67 .MobileNavbar-module-mobileCartInfo-nAing .MobileNavbar-module-mobileCartButtons-d1Dmp {
+  display: flex;
+  column-gap: 10px;
+  width: 100%;
+}
+.MobileNavbar-module-cartPopover-hvU67 .MobileNavbar-module-mobileCartInfo-nAing .MobileNavbar-module-mobileCartButtons-d1Dmp .MobileNavbar-module-mobileCartView-lllgH {
+  width: 50%;
+  background-color: #121212;
+  color: #ffffff;
+}
+.MobileNavbar-module-cartPopover-hvU67 .MobileNavbar-module-mobileCartInfo-nAing .MobileNavbar-module-mobileCartButtons-d1Dmp .MobileNavbar-module-mobileCartCheckout-R4P81 {
+  width: 50%;
+  background-color: #1ea1d7;
+  color: #ffffff;
+}
+.MobileNavbar-module-cartPopover-hvU67 .MobileNavbar-module-mobileCartInfo-nAing .MobileNavbar-module-cartNoItemsText-76UqG {
+  width: fit-content;
+  color: #121212;
+  margin: 10px 83.515px;
+  text-wrap: nowrap;
+  font-weight: 600;
+}
+.MobileNavbar-module-cartPopover-hvU67 .MobileNavbar-module-mobileCartInfo-nAing .MobileNavbar-module-mobileItemPrice-jHWdY {
+  color: #121212;
+  text-wrap: nowrap;
+  font-weight: 700;
+  width: 100%;
+  text-align: end;
+  font-size: 14px;
+}
+
+.MobileNavbar-module-navbarBrand-jkeJB {
+  color: #1ea1d7;
+  font-size: 32px !important;
+  font-weight: 900 !important;
+}
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/Navbar/DesktopNavbar.module.scss (1) ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************/
+body {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+}
+
+p {
+  margin: 0;
+}
+
+.DesktopNavbar-module-navbarBrand-OFmbe {
+  color: #1ea1d7;
+  font-size: 32px !important;
+  font-weight: 900 !important;
+}
+
+.DesktopNavbar-module-navLinkContainer-WCOvc {
+  display: flex;
+  margin-left: 20px;
+}
+.DesktopNavbar-module-navLinkContainer-WCOvc .DesktopNavbar-module-navLinkButton-mjhoA {
+  border-radius: 5px;
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 15px;
+  padding: 8px 16px;
+}
+.DesktopNavbar-module-navLinkContainer-WCOvc .DesktopNavbar-module-navLinkShop-jTRhs {
+  display: flex;
+  position: relative;
+}
+.DesktopNavbar-module-navLinkContainer-WCOvc .DesktopNavbar-module-navLinkShop-jTRhs .DesktopNavbar-module-shopMenu-on9NX {
+  position: absolute;
+  top: 63px;
+  background-color: #373737;
+  font-size: 14px;
+  z-index: 100;
+}
+
+.DesktopNavbar-module-navbarSearchContainer-TxeAL {
+  background-color: #5f5f5f;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  width: 100%;
+  font-size: 15px;
+}
+.DesktopNavbar-module-navbarSearchContainer-TxeAL .DesktopNavbar-module-navbarSearchInput-VA9tQ {
+  height: 100%;
+  color: #ffffff;
+  width: 100%;
+}
+
+.DesktopNavbar-module-cart-Quu5D {
+  display: flex;
+  position: relative;
+}
+.DesktopNavbar-module-cart-Quu5D .DesktopNavbar-module-cartButton-JZT2g {
+  color: white;
+  font-size: 15px;
+  width: fit-content;
+  text-wrap: nowrap;
+  padding: 5px 20px;
+}
+.DesktopNavbar-module-cart-Quu5D .DesktopNavbar-module-cartInfo-VKnzv {
+  position: absolute;
+  top: 65px;
+  right: 0;
+  background-color: #ffffff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+  z-index: 100;
+  width: 550px;
+}
+.DesktopNavbar-module-cart-Quu5D .DesktopNavbar-module-cartInfo-VKnzv .DesktopNavbar-module-cartList-qGx5C {
+  font-size: 14px;
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+.DesktopNavbar-module-cart-Quu5D .DesktopNavbar-module-cartInfo-VKnzv .DesktopNavbar-module-cartList-qGx5C .DesktopNavbar-module-cartListImage-ouP2t {
+  height: 70px;
+  width: 70px;
+}
+.DesktopNavbar-module-cart-Quu5D .DesktopNavbar-module-cartInfo-VKnzv .DesktopNavbar-module-cartList-qGx5C .DesktopNavbar-module-cartDetails-R5le6 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 210px;
+}
+.DesktopNavbar-module-cart-Quu5D .DesktopNavbar-module-cartInfo-VKnzv .DesktopNavbar-module-cartList-qGx5C .DesktopNavbar-module-cartDetails-R5le6 .DesktopNavbar-module-cartDetailsName-GIdOI {
+  color: #121212;
+  font-weight: bold;
+}
+.DesktopNavbar-module-cart-Quu5D .DesktopNavbar-module-cartInfo-VKnzv .DesktopNavbar-module-cartList-qGx5C .DesktopNavbar-module-cartDetails-R5le6 .DesktopNavbar-module-cartDetailsPrice-_230t {
+  color: #1ea1d7;
+  font-weight: bold;
+}
+.DesktopNavbar-module-cart-Quu5D .DesktopNavbar-module-cartInfo-VKnzv .DesktopNavbar-module-cartList-qGx5C .DesktopNavbar-module-cartQuantity-WzdkD {
+  display: flex;
+  color: #585858;
+  height: fit-content;
+  font-size: 14px;
+  align-items: center;
+  column-gap: 5px;
+  border: 1px solid #dbdbdb;
+}
+.DesktopNavbar-module-cart-Quu5D .DesktopNavbar-module-cartInfo-VKnzv .DesktopNavbar-module-cartList-qGx5C .DesktopNavbar-module-cartItemPrice-Z3B75 {
+  color: #121212;
+  text-wrap: nowrap;
+  font-weight: 700;
+  width: 90px;
+  text-align: end;
+}
+.DesktopNavbar-module-cart-Quu5D .DesktopNavbar-module-cartInfo-VKnzv .DesktopNavbar-module-cartTotal-vZLQS {
+  display: flex;
+  justify-content: space-between;
+}
+.DesktopNavbar-module-cart-Quu5D .DesktopNavbar-module-cartInfo-VKnzv .DesktopNavbar-module-cartTotal-vZLQS .DesktopNavbar-module-cartTotalText-j5vZo {
+  color: #121212;
+  font-weight: bold;
+  font-size: 16px;
+}
+.DesktopNavbar-module-cart-Quu5D .DesktopNavbar-module-cartInfo-VKnzv .DesktopNavbar-module-cartButtons-BRH9o {
+  display: flex;
+  column-gap: 10px;
+  width: 100%;
+}
+.DesktopNavbar-module-cart-Quu5D .DesktopNavbar-module-cartInfo-VKnzv .DesktopNavbar-module-cartButtons-BRH9o .DesktopNavbar-module-cartView-zkRvY {
+  width: 50%;
+  background-color: #121212;
+  color: #ffffff;
+}
+.DesktopNavbar-module-cart-Quu5D .DesktopNavbar-module-cartInfo-VKnzv .DesktopNavbar-module-cartButtons-BRH9o .DesktopNavbar-module-cartCheckout-Btrmu {
+  width: 50%;
+  background-color: #1ea1d7;
+  color: #ffffff;
+}
+.DesktopNavbar-module-cart-Quu5D .DesktopNavbar-module-cartInfo-VKnzv .DesktopNavbar-module-cartNoItemsText-Iefut {
+  width: 100%;
+  color: #121212;
+  margin: 10px 0;
+  text-wrap: nowrap;
+  font-weight: 600;
+  text-align: center;
+}
+
+.DesktopNavbar-module-navbarLoginButton-UOU9p {
+  background-color: #1ea1d7 !important;
+  font-size: 16px !important;
+  color: #ffffff !important;
+  padding: 10px 35px !important;
+  text-wrap: nowrap;
+}
+
+.DesktopNavbar-module-settings-F0hU4 {
+  display: flex;
+  position: relative;
+}
+.DesktopNavbar-module-settings-F0hU4 .DesktopNavbar-module-settingsButton-PCTie {
+  color: white;
+  font-size: 15px;
+  width: fit-content;
+  text-wrap: nowrap;
+  padding: 5px 20px;
+}
+.DesktopNavbar-module-settings-F0hU4 .DesktopNavbar-module-settingsInfo-iQZbU {
+  position: absolute;
+  top: 65px;
+  right: 0;
+  background-color: #ffffff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+  z-index: 100;
+  width: 250px;
 }
 /*!*****************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/Footer.module.scss (1) ***!
@@ -1110,52 +1209,210 @@ p {
   flex-grow: 1;
   background-color: #f8f8f8;
 }
-.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-tabTitle-eWWPO {
-  font-weight: 800;
-  font-size: 32px;
+
+.Details-module-removeModal-k1ugV {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-cartItemDetails-QHGu7 {
+.Details-module-removeModal-k1ugV .Details-module-removeContainer-eg1YS {
+  max-width: 530px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px 25px;
+  margin: 20px 20px;
+  background-color: #ffffff;
+  position: relative;
+}
+.Details-module-removeModal-k1ugV .Details-module-removeContainer-eg1YS .Details-module-modalCloseButton-ik8c5 {
+  width: fit-content;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.Details-module-removeModal-k1ugV .Details-module-removeContainer-eg1YS .Details-module-removeModalText-Yhkmz {
+  margin: 20px 0;
+  font-weight: 600;
+}
+.Details-module-removeModal-k1ugV .Details-module-removeContainer-eg1YS .Details-module-removeModalButtons-ZeaF5 {
+  display: flex;
+  column-gap: 10px;
+  justify-content: end;
+}
+.Details-module-removeModal-k1ugV .Details-module-removeContainer-eg1YS .Details-module-removeModalButtons-ZeaF5 .Details-module-removeRemove-gAgQa {
+  font-size: 14px;
+  font-weight: 600;
+  background-color: #1ea1d7;
+  color: #ffffff;
+  width: 80px;
+  height: fit-content;
+}
+.Details-module-removeModal-k1ugV .Details-module-removeContainer-eg1YS .Details-module-removeModalButtons-ZeaF5 .Details-module-removeCancel-idHuh {
+  font-size: 14px;
+  font-weight: 600;
+  background-color: #ffffff;
+  color: #1ea1d7;
+  border: 1px solid #1ea1d7;
+  width: 80px;
+  height: fit-content;
+}
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/Details/OrderPanel.module.scss (1) ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************/
+body {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+}
+
+p {
+  margin: 0;
+}
+
+.OrderPanel-module-tabTitle-MDufv {
+  font-weight: 800 !important;
+  font-size: 32px !important;
+}
+
+.OrderPanel-module-ordersContainer-fRvWx .OrderPanel-module-orderSummary-aLK3r {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px 10px;
+}
+.OrderPanel-module-ordersContainer-fRvWx .OrderPanel-module-orderSummary-aLK3r .OrderPanel-module-orderSummaryTitle-lv0zm {
+  font-weight: 900;
+}
+.OrderPanel-module-ordersContainer-fRvWx .OrderPanel-module-orderDescription-JNuLn {
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+.OrderPanel-module-ordersContainer-fRvWx .OrderPanel-module-orderDescription-JNuLn .OrderPanel-module-productList-xZ_Kc {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+.OrderPanel-module-ordersContainer-fRvWx .OrderPanel-module-orderDescription-JNuLn .OrderPanel-module-productList-xZ_Kc .OrderPanel-module-productItemContainer-koNtO {
+  display: flex;
+  width: 65%;
+  column-gap: 10px;
+}
+.OrderPanel-module-ordersContainer-fRvWx .OrderPanel-module-orderDescription-JNuLn .OrderPanel-module-productList-xZ_Kc .OrderPanel-module-productItemContainer-koNtO .OrderPanel-module-productListImage-PlNR6 {
+  height: 70px;
+  min-width: 70px;
+  width: 70px;
+}
+.OrderPanel-module-ordersContainer-fRvWx .OrderPanel-module-orderDescription-JNuLn .OrderPanel-module-productList-xZ_Kc .OrderPanel-module-productItemContainer-koNtO .OrderPanel-module-productDetails-FdhD1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 50%;
+}
+.OrderPanel-module-ordersContainer-fRvWx .OrderPanel-module-orderDescription-JNuLn .OrderPanel-module-productList-xZ_Kc .OrderPanel-module-productItemContainer-koNtO .OrderPanel-module-productDetails-FdhD1 .OrderPanel-module-productDetailsName-PzRDp {
+  color: #121212;
+  font-weight: bold;
+}
+.OrderPanel-module-ordersContainer-fRvWx .OrderPanel-module-orderDescription-JNuLn .OrderPanel-module-productList-xZ_Kc .OrderPanel-module-productItemContainer-koNtO .OrderPanel-module-productDetails-FdhD1 .OrderPanel-module-productDetailsPrice-XkzPY {
+  color: #1ea1d7;
+  font-weight: bold;
+}
+.OrderPanel-module-ordersContainer-fRvWx .OrderPanel-module-orderDescription-JNuLn .OrderPanel-module-productList-xZ_Kc .OrderPanel-module-productDetailsContainer-MUfAG {
+  display: flex;
+  align-items: center;
+}
+.OrderPanel-module-ordersContainer-fRvWx .OrderPanel-module-orderDescription-JNuLn .OrderPanel-module-productList-xZ_Kc .OrderPanel-module-productDetailsContainer-MUfAG .OrderPanel-module-productItemPrice-lxJPv {
+  color: #121212;
+  text-wrap: nowrap;
+  font-weight: 700;
+  width: 90px;
+  text-align: end;
+}
+.OrderPanel-module-ordersContainer-fRvWx .OrderPanel-module-orderDetailsBox-nLv_l {
+  background-color: #f8f8f8;
+  padding: 10px;
+}
+.OrderPanel-module-ordersContainer-fRvWx .OrderPanel-module-orderDetailsBox-nLv_l .OrderPanel-module-orderDetailsDivider-ztg1f {
+  margin: 10px 0;
+}
+.OrderPanel-module-ordersContainer-fRvWx .OrderPanel-module-orderDetailsBox-nLv_l .OrderPanel-module-orderDetailsTotal-PEkEy {
+  font-weight: 700;
+}
+.OrderPanel-module-ordersContainer-fRvWx .OrderPanel-module-orderDetailsRight-GoVHg {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+}
+
+.OrderPanel-module-orderNoItemsText-zSwtp {
+  width: 100%;
+  color: #121212;
+  margin: 30px 0 !important;
+  text-wrap: nowrap;
+  font-weight: 600 !important;
+  text-align: center;
+}
+/*!****************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/Details/CartPanel.module.scss (1) ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************/
+body {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+}
+
+p {
+  margin: 0;
+}
+
+.CartPanel-module-tabTitle-Z8jHT {
+  font-weight: 800 !important;
+  font-size: 32px !important;
+}
+
+.CartPanel-module-cartItemDetails-WK3fI {
   background-color: #ffffff;
   width: 100%;
   height: fit-content;
   padding: 20px;
-  margin-top: 20px;
   display: flex;
   flex-direction: column;
   row-gap: 20px;
 }
-.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-cartItemDetails-QHGu7 .Details-module-cartList-NYC12 {
+.CartPanel-module-cartItemDetails-WK3fI .CartPanel-module-cartList-UJxww {
   font-size: 14px;
   display: flex;
   column-gap: 10px;
   align-items: center;
   justify-content: space-between;
 }
-.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-cartItemDetails-QHGu7 .Details-module-cartList-NYC12 .Details-module-cartItemContainer-oNqwQ {
+.CartPanel-module-cartItemDetails-WK3fI .CartPanel-module-cartList-UJxww .CartPanel-module-cartItemContainer-E109j {
   display: flex;
   width: 100%;
   column-gap: 10px;
 }
-.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-cartItemDetails-QHGu7 .Details-module-cartList-NYC12 .Details-module-cartItemContainer-oNqwQ .Details-module-cartListImage-yL77A {
+.CartPanel-module-cartItemDetails-WK3fI .CartPanel-module-cartList-UJxww .CartPanel-module-cartItemContainer-E109j .CartPanel-module-cartListImage-lL340 {
   height: 70px;
   min-width: 70px;
   width: 70px;
 }
-.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-cartItemDetails-QHGu7 .Details-module-cartList-NYC12 .Details-module-cartItemContainer-oNqwQ .Details-module-cartDetails-_sVqL {
+.CartPanel-module-cartItemDetails-WK3fI .CartPanel-module-cartList-UJxww .CartPanel-module-cartItemContainer-E109j .CartPanel-module-cartDetails-YS_sr {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   width: 80%;
 }
-.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-cartItemDetails-QHGu7 .Details-module-cartList-NYC12 .Details-module-cartItemContainer-oNqwQ .Details-module-cartDetails-_sVqL .Details-module-cartDetailsName-x428E {
+.CartPanel-module-cartItemDetails-WK3fI .CartPanel-module-cartList-UJxww .CartPanel-module-cartItemContainer-E109j .CartPanel-module-cartDetails-YS_sr .CartPanel-module-cartDetailsName-xl7GZ {
   color: #121212;
   font-weight: bold;
 }
-.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-cartItemDetails-QHGu7 .Details-module-cartList-NYC12 .Details-module-cartItemContainer-oNqwQ .Details-module-cartDetails-_sVqL .Details-module-cartDetailsPrice-i0C9m {
+.CartPanel-module-cartItemDetails-WK3fI .CartPanel-module-cartList-UJxww .CartPanel-module-cartItemContainer-E109j .CartPanel-module-cartDetails-YS_sr .CartPanel-module-cartDetailsPrice-LYqTc {
   color: #1ea1d7;
   font-weight: bold;
 }
-.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-cartItemDetails-QHGu7 .Details-module-cartList-NYC12 .Details-module-cartQuantity-dIvqj {
+.CartPanel-module-cartItemDetails-WK3fI .CartPanel-module-cartList-UJxww .CartPanel-module-cartQuantity-Tchij {
   display: flex;
   color: #585858;
   height: fit-content;
@@ -1164,7 +1421,7 @@ p {
   column-gap: 5px;
   border: 1px solid #dbdbdb;
 }
-.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-cartItemDetails-QHGu7 .Details-module-cartList-NYC12 .Details-module-cardRemoveButton-puPdX {
+.CartPanel-module-cartItemDetails-WK3fI .CartPanel-module-cartList-UJxww .CartPanel-module-cardRemoveButton-veTfG {
   width: 100%;
   display: block;
   text-align: center;
@@ -1172,24 +1429,24 @@ p {
   cursor: pointer;
   color: #585858;
 }
-.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-cartItemDetails-QHGu7 .Details-module-cartList-NYC12 .Details-module-cardRemoveButton-puPdX:hover {
+.CartPanel-module-cartItemDetails-WK3fI .CartPanel-module-cartList-UJxww .CartPanel-module-cardRemoveButton-veTfG:hover {
   color: #1ea1d7;
 }
-.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-cartItemDetails-QHGu7 .Details-module-cartList-NYC12 .Details-module-cartItemPrice-j42pk {
+.CartPanel-module-cartItemDetails-WK3fI .CartPanel-module-cartList-UJxww .CartPanel-module-cartItemPrice-agn2_ {
   color: #121212;
   text-wrap: nowrap;
   font-weight: 700;
   width: 90px;
   text-align: end;
 }
-.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-cartItemDetails-QHGu7 .Details-module-cartDetailsBottom-MD4mS {
+.CartPanel-module-cartItemDetails-WK3fI .CartPanel-module-cartDetailsBottom-t93LR {
   display: flex;
   width: 100%;
   margin-top: 10px;
   justify-content: space-between;
   align-items: center;
 }
-.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-cartItemDetails-QHGu7 .Details-module-cartDetailsBottom-MD4mS .Details-module-cartQuantity-dIvqj {
+.CartPanel-module-cartItemDetails-WK3fI .CartPanel-module-cartDetailsBottom-t93LR .CartPanel-module-cartQuantity-Tchij {
   display: flex;
   color: #585858;
   height: fit-content;
@@ -1198,56 +1455,57 @@ p {
   column-gap: 5px;
   border: 1px solid #dbdbdb;
 }
-.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-cartItemDetails-QHGu7 .Details-module-cartDetailsBottom-MD4mS .Details-module-cartItemPriceSmall-mea_z {
+.CartPanel-module-cartItemDetails-WK3fI .CartPanel-module-cartDetailsBottom-t93LR .CartPanel-module-cartItemPriceSmall-NysUN {
   color: #121212;
   text-wrap: nowrap;
   font-weight: 700;
   font-size: 14px;
 }
-.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-totalContainer-RiqBh {
+
+.CartPanel-module-totalContainer-EYEvq {
   background-color: #ffffff;
   width: 100%;
   height: fit-content;
   padding: 20px;
-  margin-top: 68px;
   display: flex;
   flex-direction: column;
   row-gap: 20px;
 }
-.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-totalContainer-RiqBh .Details-module-cartTotal-I2Ibx {
+.CartPanel-module-totalContainer-EYEvq .CartPanel-module-cartTotal-u1KUS {
   display: flex;
   justify-content: space-between;
 }
-.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-totalContainer-RiqBh .Details-module-cartTotal-I2Ibx .Details-module-cartTotalText-Kq8c8 {
+.CartPanel-module-totalContainer-EYEvq .CartPanel-module-cartTotal-u1KUS .CartPanel-module-cartTotalText-se_we {
   color: #121212;
   font-weight: bold;
   font-size: 16px;
 }
-.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-totalContainer-RiqBh .Details-module-cartMessage-SuAVd {
+.CartPanel-module-totalContainer-EYEvq .CartPanel-module-cartMessage-Wiz_g {
   width: 100%;
   text-align: center;
 }
-.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-totalContainer-RiqBh .Details-module-cartButtons-XoWHA {
+.CartPanel-module-totalContainer-EYEvq .CartPanel-module-cartButtons-JjEUt {
   display: flex;
   column-gap: 10px;
   width: 100%;
 }
-.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-totalContainer-RiqBh .Details-module-cartButtons-XoWHA .Details-module-cartCheckout-z6obA {
+.CartPanel-module-totalContainer-EYEvq .CartPanel-module-cartButtons-JjEUt .CartPanel-module-cartCheckout-iqIjI {
   width: 100%;
   background-color: #1ea1d7;
   color: #ffffff;
 }
-.Details-module-page-moxKJ .Details-module-cart-iZgj6 .Details-module-totalContainer-RiqBh .Details-module-cartNoItemsText-wgKyM {
+
+.CartPanel-module-cartNoItemsText-_dxeC {
   width: 100%;
   color: #121212;
-  margin: 10px 0;
+  margin: 30px 0 !important;
   text-wrap: nowrap;
-  font-weight: 600;
+  font-weight: 600 !important;
   text-align: center;
 }
 
 @media (max-width: 1199px) {
-  .Details-module-totalContainer-RiqBh {
+  .CartPanel-module-totalContainer-EYEvq {
     margin-top: 0 !important;
   }
 }
@@ -1342,7 +1600,80 @@ p {
   padding: 10px 40px;
   text-align: center;
 }
-.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutItems-g4dvg {
+.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutForm-CBsOt .CheckOut-module-deliveryAccordionSummary-v1BLG {
+  font-size: 16px;
+  padding: 18px 5px;
+}
+.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutForm-CBsOt .CheckOut-module-selectedAddress-Jv9Ot {
+  padding: 15px;
+  border: 1px solid #1ea1d7;
+  border-radius: 10px;
+  background-color: rgba(30, 161, 215, 0.2);
+}
+.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutForm-CBsOt .CheckOut-module-selectedAddress-Jv9Ot .CheckOut-module-selectedAddressDetails-NPOb2 {
+  font-size: 14px;
+}
+.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutForm-CBsOt .CheckOut-module-addressOptionContainer-liUjV {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutForm-CBsOt .CheckOut-module-addressOptionContainer-liUjV .CheckOut-module-addressOption-DpV6f {
+  border: 1px solid #d2d2d2;
+  border-radius: 10px;
+  padding: 5px 15px;
+}
+.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutForm-CBsOt .CheckOut-module-addressOptionContainer-liUjV .CheckOut-module-addressOption-DpV6f .CheckOut-module-addressOptionDetails-wSPwT {
+  font-size: 14px;
+}
+.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutForm-CBsOt .CheckOut-module-addAddressButton-bOqQY {
+  margin-top: 10px;
+  width: 100%;
+}
+.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutForm-CBsOt .CheckOut-module-addAddressContainer-ZqKXx {
+  padding: 15px;
+  border: 1px solid #dbdbdb;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  margin-top: 10px;
+}
+.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutForm-CBsOt .CheckOut-module-addAddressContainer-ZqKXx .CheckOut-module-addAddressButtonContainer-z6Sol {
+  display: flex;
+  column-gap: 10px;
+  justify-content: end;
+}
+.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutForm-CBsOt .CheckOut-module-addAddressContainer-ZqKXx .CheckOut-module-addAddressButtonContainer-z6Sol .CheckOut-module-addAddressCancel-GaMkM {
+  font-size: 14px;
+  font-weight: 600;
+  background-color: #ffffff;
+  color: #1ea1d7;
+  border: 1px solid #1ea1d7;
+  width: 80px;
+  height: fit-content;
+}
+.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutForm-CBsOt .CheckOut-module-addAddressContainer-ZqKXx .CheckOut-module-addAddressButtonContainer-z6Sol .CheckOut-module-addAddressSave-be6O9 {
+  font-size: 14px;
+  font-weight: 600;
+  background-color: #1ea1d7;
+  color: #ffffff;
+  width: 80px;
+  height: fit-content;
+}
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/Checkout/CheckOutSummary.module.scss (1) ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************/
+body {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+}
+
+p {
+  margin: 0;
+}
+
+.CheckOutSummary-module-checkOutItems-cZE4W {
   background-color: #ffffff;
   padding: 20px;
   height: fit-content;
@@ -1350,51 +1681,51 @@ p {
   flex-direction: column;
   row-gap: 20px;
 }
-.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutItems-g4dvg .CheckOut-module-cartListContainer-zNIP9 {
+.CheckOutSummary-module-checkOutItems-cZE4W .CheckOutSummary-module-cartListContainer-XtV87 {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutItems-g4dvg .CheckOut-module-cartListContainer-zNIP9 .CheckOut-module-cartImageDetails-i9fXD {
+.CheckOutSummary-module-checkOutItems-cZE4W .CheckOutSummary-module-cartListContainer-XtV87 .CheckOutSummary-module-cartImageDetails-achxa {
   display: flex;
   column-gap: 10px;
 }
-.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutItems-g4dvg .CheckOut-module-cartListContainer-zNIP9 .CheckOut-module-cartImageDetails-i9fXD .CheckOut-module-cartListImage-gri12 {
+.CheckOutSummary-module-checkOutItems-cZE4W .CheckOutSummary-module-cartListContainer-XtV87 .CheckOutSummary-module-cartImageDetails-achxa .CheckOutSummary-module-cartListImage-a_zVY {
   height: 70px;
   min-width: 70px;
   width: 70px;
 }
-.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutItems-g4dvg .CheckOut-module-cartListContainer-zNIP9 .CheckOut-module-cartImageDetails-i9fXD .CheckOut-module-cartDetails-w4v0z {
+.CheckOutSummary-module-checkOutItems-cZE4W .CheckOutSummary-module-cartListContainer-XtV87 .CheckOutSummary-module-cartImageDetails-achxa .CheckOutSummary-module-cartDetails-n80SF {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   width: 80%;
 }
-.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutItems-g4dvg .CheckOut-module-cartListContainer-zNIP9 .CheckOut-module-cartImageDetails-i9fXD .CheckOut-module-cartDetails-w4v0z .CheckOut-module-cartDetailsName-SZ4RP {
+.CheckOutSummary-module-checkOutItems-cZE4W .CheckOutSummary-module-cartListContainer-XtV87 .CheckOutSummary-module-cartImageDetails-achxa .CheckOutSummary-module-cartDetails-n80SF .CheckOutSummary-module-cartDetailsName-wv3g1 {
   color: #121212;
   font-weight: bold;
 }
-.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutItems-g4dvg .CheckOut-module-cartListContainer-zNIP9 .CheckOut-module-cartImageDetails-i9fXD .CheckOut-module-cartDetails-w4v0z .CheckOut-module-cartDetailsPrice-hk1ZQ {
+.CheckOutSummary-module-checkOutItems-cZE4W .CheckOutSummary-module-cartListContainer-XtV87 .CheckOutSummary-module-cartImageDetails-achxa .CheckOutSummary-module-cartDetails-n80SF .CheckOutSummary-module-cartDetailsPrice-Z1ldb {
   color: #1ea1d7;
   font-weight: bold;
 }
-.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutItems-g4dvg .CheckOut-module-cartListContainer-zNIP9 .CheckOut-module-cartDetailsTotal-nfd8q {
+.CheckOutSummary-module-checkOutItems-cZE4W .CheckOutSummary-module-cartListContainer-XtV87 .CheckOutSummary-module-cartDetailsTotal-H84jJ {
   color: #121212;
   font-weight: bold;
 }
-.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutItems-g4dvg .CheckOut-module-totalContainer-kgTRY {
+.CheckOutSummary-module-checkOutItems-cZE4W .CheckOutSummary-module-totalContainer-UTHOt {
   display: flex;
   flex-direction: column;
   row-gap: 10px;
 }
-.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutItems-g4dvg .CheckOut-module-totalContainer-kgTRY .CheckOut-module-total-q_EkO {
+.CheckOutSummary-module-checkOutItems-cZE4W .CheckOutSummary-module-totalContainer-UTHOt .CheckOutSummary-module-total-W1ORK {
   display: flex;
   justify-content: space-between;
 }
-.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutItems-g4dvg .CheckOut-module-totalContainer-kgTRY .CheckOut-module-total-q_EkO .CheckOut-module-totaltext-u6ptY {
+.CheckOutSummary-module-checkOutItems-cZE4W .CheckOutSummary-module-totalContainer-UTHOt .CheckOutSummary-module-total-W1ORK .CheckOutSummary-module-totaltext-gr6bt {
   font-weight: bold;
 }
-.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutItems-g4dvg .CheckOut-module-totalContainer-kgTRY .CheckOut-module-total-q_EkO .CheckOut-module-totalTextBold-l201t {
+.CheckOutSummary-module-checkOutItems-cZE4W .CheckOutSummary-module-totalContainer-UTHOt .CheckOutSummary-module-total-W1ORK .CheckOutSummary-module-totalTextBold-xp6Ej {
   font-size: 18px;
   font-weight: bold;
 }

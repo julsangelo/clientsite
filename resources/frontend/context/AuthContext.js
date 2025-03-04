@@ -10,12 +10,14 @@ export function AuthProvider({ children }) {
     useEffect(() => {
         authCheck((response) => {
             setIsLoggedIn(response.loggedIn);
-            setUser(response.user)
+            setUser(response.user);
         });
     }, []);
 
     return (
-        <AuthContext.Provider value={{ isLoggedIn }}>
+        <AuthContext.Provider
+            value={{ isLoggedIn, user, setIsLoggedIn, setUser }}
+        >
             {children}
         </AuthContext.Provider>
     );

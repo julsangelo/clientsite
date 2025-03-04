@@ -14,9 +14,12 @@ class CartController extends Controller
     public function addToCart(Request $request) {
         $code = $request->input('code');
         $quantity = $request->input('quantity');
-    
-        if (Auth::check()) {
-            $customerID = Auth::id();
+        $token = $request->cookie('auth_token');
+
+        if ($token) {
+            $accessToken = PersonalAccessToken::findToken($token);
+            $customer = $accessToken->tokenable;
+            $customerID = $customer->customerID;
             $cartKey = "cart:$customerID";
             
             Redis::select(1);
@@ -104,7 +107,6 @@ class CartController extends Controller
         $action = $request->input('action');
         $token = $request->cookie('auth_token');
         
-
         if ($token) {
             $accessToken = PersonalAccessToken::findToken($token);
             $customer = $accessToken->tokenable;
@@ -136,5 +138,30 @@ class CartController extends Controller
         } else {
             Cookie::queue('cart', json_encode(array_values($cart)), 525600);
         }
+    }
+
+    public function removeItem(Request $request) {
+        $code = $request->input('code');
+        $token = $request->cookie('auth_token');
+        $accessToken = PersonalAccessToken::findToken($token);
+        $customer = $accessToken->tokenable;
+        $customerID = $customer->customerID;
+
+        Redis::select(1);
+        $cartKey = "cart:$customerID";
+        $cart = json_decode(Redis::get($cartKey), true) ?? [];
+
+        $cart = array_filter($cart, function ($item) use ($code) {
+            return !isset($item['productCode']) || $item['productCode'] !== $code;
+        });
+    
+        $cart = array_values($cart);
+    
+        Redis::set($cartKey, json_encode($cart));
+    
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Item removed from cart.'
+        ]);
     }
 }

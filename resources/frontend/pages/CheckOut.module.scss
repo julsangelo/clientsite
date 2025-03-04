@@ -88,71 +88,73 @@
                     text-align: center;
                 }
             }
-        }
 
-        .checkOutItems {
-            background-color: $b_white;
-            padding: 20px;
-            height: fit-content;
-            display: flex;
-            flex-direction: column;
-            row-gap: 20px;
+            .deliveryAccordionSummary {
+                font-size: 16px;
+                padding: 18px 5px;
+            }
+            .selectedAddress {
+                padding: 15px;
+                border: 1px solid $b_red;
+                border-radius: 10px;
+                background-color: rgba($b_red, 0.2);
 
-            .cartListContainer {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-
-                .cartImageDetails {
-                    display: flex;
-                    column-gap: 10px;
-
-                    .cartListImage {
-                        height: 70px;
-                        min-width: 70px;
-                        width: 70px;
-                    }
-
-                    .cartDetails {
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: space-evenly;
-                        width: 80%;
-
-                        .cartDetailsName {
-                            color: $t_black;
-                            font-weight: bold;
-                        }
-
-                        .cartDetailsPrice {
-                            color: $t_red;
-                            font-weight: bold;
-                        }
-                    }
-                }
-
-                .cartDetailsTotal {
-                    color: $t_black;
-                    font-weight: bold;
+                .selectedAddressDetails {
+                    font-size: 14px;
                 }
             }
-
-            .totalContainer {
+            .addressOptionContainer {
                 display: flex;
                 flex-direction: column;
                 row-gap: 10px;
 
-                .total {
-                    display: flex;
-                    justify-content: space-between;
+                .addressOption {
+                    border: 1px solid #d2d2d2;
+                    border-radius: 10px;
+                    padding: 5px 15px;
 
-                    .totaltext {
-                        font-weight: bold;
+                    .addressOptionDetails {
+                        font-size: 14px;
+                    }
+                }
+            }
+
+            .addAddressButton {
+                margin-top: 10px;
+                width: 100%;
+            }
+
+            .addAddressContainer {
+                padding: 15px;
+                border: 1px solid $b_gray;
+                border-radius: 5px;
+                display: flex;
+                flex-direction: column;
+                row-gap: 10px;
+                margin-top: 10px;
+
+                .addAddressButtonContainer {
+                    display: flex;
+                    column-gap: 10px;
+                    justify-content: end;
+
+                    .addAddressCancel {
+                        font-size: 14px;
+                        font-weight: 600;
+                        background-color: $t_white;
+                        color: $b_red;
+                        border: 1px solid $b_red;
+                        width: 80px;
+                        height: fit-content;
                     }
 
-                    .totalTextBold {
-                        font-size: 18px;
-                        font-weight: bold;
+                    .addAddressSave {
+                        font-size: 14px;
+                        font-weight: 600;
+                        background-color: $b_red;
+                        color: $t_white;
+                        width: 80px;
+                        height: fit-content;
                     }
                 }
             }

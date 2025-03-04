@@ -5,31 +5,55 @@ import Footer from "../components/Footer";
 import {
     Box,
     Button,
-    CardMedia,
     Container,
-    Divider,
     Grid2,
     IconButton,
+    Modal,
     Tab,
     Typography,
     useMediaQuery,
     useTheme,
 } from "@mui/material";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
-import { getCart, updateItemQuantity } from "../ajax/backend";
-import { Link } from "react-router-dom";
-import { Add, DeleteOutline, Remove } from "@mui/icons-material";
+import {
+    getCart,
+    getOrders,
+    removeItem,
+    updateItemQuantity,
+} from "../ajax/backend";
+import { useLocation } from "react-router-dom";
+import { Close } from "@mui/icons-material";
+import OrdersPanel from "../components/Details/OrderPanel";
+import CartPanel from "../components/Details/CartPanel";
+import { useFlashMessage } from "../context/FlashMessage";
 
 export default function Cart() {
+    const location = useLocation();
     const [value, setValue] = useState("0");
+    const [orderItem, setOrderItem] = useState();
     const [cartItem, setCartItem] = useState();
+    const [removeItemCode, setRemoveItemCode] = useState();
+    const [isRemoveOpen, setIsRemoveOpen] = useState(false);
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
     const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+    const { setFlashMessage, setFlashStatus } = useFlashMessage();
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+
+    useEffect(() => {
+        if (location.state?.value !== undefined) {
+            setValue(String(location.state.value));
+        }
+    }, [location.state]);
+
+    useEffect(() => {
+        getOrders((response) => {
+            setOrderItem(response);
+        });
+    }, []);
 
     useEffect(() => {
         getCart((data) => {
@@ -63,6 +87,19 @@ export default function Cart() {
         updateItemQuantity(productCode, "decrement");
     };
 
+    const handleRemoveItem = () => {
+        removeItem(removeItemCode, (response) => {
+            setFlashMessage(response.message);
+            setFlashStatus(response.status);
+            if (response.status === "success") {
+                setIsRemoveOpen(false);
+                getCart((data) => {
+                    setCartItem(data);
+                });
+            }
+        });
+    };
+
     const total = (cartItem || [])
         .reduce(
             (sum, item) => sum + parseFloat(item.productPrice) * item.quantity,
@@ -86,293 +123,64 @@ export default function Cart() {
                                             : "vertical"
                                     }
                                 >
-                                    <Tab label="My cart" value="0" />
-                                    <Tab label="My Addresses" value="1" />
+                                    <Tab label="My Orders" value="0" />
+                                    <Tab label="My Cart" value="1" />
+                                    <Tab label="My Addresses" value="2" />
                                 </TabList>
                             </Grid2>
                             <Grid2 size={{ xs: 12, md: 10 }}>
                                 <TabPanel value="0">
-                                    <Grid2 container spacing={3}>
-                                        <Grid2 size={{ xs: 12, lg: 8 }}>
-                                            <Typography
-                                                className={styles.tabTitle}
-                                            >
-                                                My cart
-                                            </Typography>
-                                            <Box
-                                                className={
-                                                    styles.cartItemDetails
-                                                }
-                                            >
-                                                {cartItem &&
-                                                cartItem.length > 0 ? (
-                                                    <>
-                                                        {cartItem?.map(
-                                                            (item, index) => (
-                                                                <Box>
-                                                                    <Box
-                                                                        className={
-                                                                            styles.cartList
-                                                                        }
-                                                                        key={
-                                                                            index
-                                                                        }
-                                                                    >
-                                                                        <Box
-                                                                            className={
-                                                                                styles.cartItemContainer
-                                                                            }
-                                                                        >
-                                                                            <CardMedia
-                                                                                component="img"
-                                                                                image={`/hydrogen/${item.productImage}`}
-                                                                                className={
-                                                                                    styles.cartListImage
-                                                                                }
-                                                                            />
-                                                                            <Box
-                                                                                className={
-                                                                                    styles.cartDetails
-                                                                                }
-                                                                            >
-                                                                                <Typography
-                                                                                    className={
-                                                                                        styles.cartDetailsName
-                                                                                    }
-                                                                                >
-                                                                                    {
-                                                                                        item.productName
-                                                                                    }
-                                                                                </Typography>
-                                                                                <Typography
-                                                                                    className={
-                                                                                        styles.cartDetailsPrice
-                                                                                    }
-                                                                                >
-                                                                                    ₱{" "}
-                                                                                    {
-                                                                                        item.productPrice
-                                                                                    }
-                                                                                </Typography>
-                                                                            </Box>
-                                                                        </Box>
-
-                                                                        {isMobile ? null : (
-                                                                            <>
-                                                                                <Box>
-                                                                                    <Box
-                                                                                        className={
-                                                                                            styles.cartQuantity
-                                                                                        }
-                                                                                    >
-                                                                                        {item.quantity ===
-                                                                                        1 ? (
-                                                                                            <IconButton
-                                                                                                onClick={() =>
-                                                                                                    handleMinus(
-                                                                                                        item.productCode,
-                                                                                                    )
-                                                                                                }
-                                                                                            >
-                                                                                                <DeleteOutline />
-                                                                                            </IconButton>
-                                                                                        ) : (
-                                                                                            <IconButton
-                                                                                                onClick={() =>
-                                                                                                    handleMinus(
-                                                                                                        item.productCode,
-                                                                                                    )
-                                                                                                }
-                                                                                            >
-                                                                                                <Remove />
-                                                                                            </IconButton>
-                                                                                        )}
-                                                                                        <Typography>
-                                                                                            {
-                                                                                                item.quantity
-                                                                                            }
-                                                                                        </Typography>
-                                                                                        <IconButton
-                                                                                            onClick={() =>
-                                                                                                handleAdd(
-                                                                                                    item.productCode,
-                                                                                                )
-                                                                                            }
-                                                                                        >
-                                                                                            <Add />
-                                                                                        </IconButton>
-                                                                                    </Box>
-                                                                                    <div
-                                                                                        className={
-                                                                                            styles.cardRemoveButton
-                                                                                        }
-                                                                                    >
-                                                                                        Remove
-                                                                                    </div>
-                                                                                </Box>
-                                                                                <Box>
-                                                                                    <Typography
-                                                                                        className={
-                                                                                            styles.cartItemPrice
-                                                                                        }
-                                                                                    >
-                                                                                        ₱{" "}
-                                                                                        {(
-                                                                                            item.productPrice *
-                                                                                            item.quantity
-                                                                                        ).toFixed(
-                                                                                            2,
-                                                                                        )}
-                                                                                    </Typography>
-                                                                                </Box>
-                                                                            </>
-                                                                        )}
-                                                                    </Box>
-                                                                    {isMobile ? (
-                                                                        <Box
-                                                                            className={
-                                                                                styles.cartDetailsBottom
-                                                                            }
-                                                                        >
-                                                                            <Box>
-                                                                                <Box
-                                                                                    className={
-                                                                                        styles.cartQuantity
-                                                                                    }
-                                                                                >
-                                                                                    {item.quantity ===
-                                                                                    1 ? (
-                                                                                        <IconButton
-                                                                                            onClick={() =>
-                                                                                                handleMinus(
-                                                                                                    item.productCode,
-                                                                                                )
-                                                                                            }
-                                                                                        >
-                                                                                            <DeleteOutline />
-                                                                                        </IconButton>
-                                                                                    ) : (
-                                                                                        <IconButton
-                                                                                            onClick={() =>
-                                                                                                handleMinus(
-                                                                                                    item.productCode,
-                                                                                                )
-                                                                                            }
-                                                                                        >
-                                                                                            <Remove />
-                                                                                        </IconButton>
-                                                                                    )}
-                                                                                    <Typography>
-                                                                                        {
-                                                                                            item.quantity
-                                                                                        }
-                                                                                    </Typography>
-                                                                                    <IconButton
-                                                                                        onClick={() =>
-                                                                                            handleAdd(
-                                                                                                item.productCode,
-                                                                                            )
-                                                                                        }
-                                                                                    >
-                                                                                        <Add />
-                                                                                    </IconButton>
-                                                                                </Box>
-                                                                            </Box>
-                                                                            <Typography
-                                                                                className={
-                                                                                    styles.cartItemPriceSmall
-                                                                                }
-                                                                            >
-                                                                                ₱{" "}
-                                                                                {(
-                                                                                    item.productPrice *
-                                                                                    item.quantity
-                                                                                ).toFixed(
-                                                                                    2,
-                                                                                )}
-                                                                            </Typography>
-                                                                        </Box>
-                                                                    ) : null}
-                                                                </Box>
-                                                            ),
-                                                        )}
-                                                    </>
-                                                ) : (
-                                                    <Typography
-                                                        className={
-                                                            styles.cartNoItemsText
-                                                        }
-                                                    >
-                                                        No items in cart.
-                                                    </Typography>
-                                                )}
-                                            </Box>
-                                        </Grid2>
-                                        <Grid2 size={{ xs: 12, lg: 4 }}>
-                                            <Box
-                                                className={
-                                                    styles.totalContainer
-                                                }
-                                            >
-                                                <Box
-                                                    className={styles.cartTotal}
-                                                >
-                                                    <Typography
-                                                        className={
-                                                            styles.cartTotalText
-                                                        }
-                                                    >
-                                                        Total
-                                                    </Typography>
-                                                    <Typography
-                                                        className={
-                                                            styles.cartTotalText
-                                                        }
-                                                    >
-                                                        ₱ {total}
-                                                    </Typography>
-                                                </Box>
-                                                <Divider orientation="horizontal" />
-                                                <Box
-                                                    className={
-                                                        styles.cartMessage
-                                                    }
-                                                >
-                                                    <Typography
-                                                        className={
-                                                            styles.cartMessageText
-                                                        }
-                                                    >
-                                                        Tax included. Shipping
-                                                        calculated at checkout.
-                                                    </Typography>
-                                                </Box>
-                                                <Box
-                                                    className={
-                                                        styles.cartButtons
-                                                    }
-                                                >
-                                                    <Button
-                                                        className={
-                                                            styles.cartCheckout
-                                                        }
-                                                        component={Link}
-                                                        to="/checkout"
-                                                    >
-                                                        Checkout
-                                                    </Button>
-                                                </Box>
-                                            </Box>
-                                        </Grid2>
-                                    </Grid2>
+                                    <OrdersPanel orderItem={orderItem} />
                                 </TabPanel>
-                                <TabPanel value="1"></TabPanel>
+                                <TabPanel value="1">
+                                    <CartPanel
+                                        cartItem={cartItem}
+                                        total={total}
+                                        isMobile={isMobile}
+                                        handleAdd={handleAdd}
+                                        handleMinus={handleMinus}
+                                        setIsRemoveOpen={setIsRemoveOpen}
+                                        setRemoveItemCode={setRemoveItemCode}
+                                    />
+                                </TabPanel>
+                                <TabPanel value="2"></TabPanel>
                             </Grid2>
                         </Grid2>
                     </TabContext>
                 </Container>
             </div>
             <Footer />
+            <Modal open={isRemoveOpen} className={styles.removeModal}>
+                <Box className={styles.removeContainer}>
+                    <IconButton
+                        className={styles.modalCloseButton}
+                        onClick={() => {
+                            setIsRemoveOpen(false);
+                        }}
+                    >
+                        <Close />
+                    </IconButton>
+                    <Typography className={styles.removeModalText}>
+                        Are you sure to remove this product?
+                    </Typography>
+                    <Box className={styles.removeModalButtons}>
+                        <Button
+                            className={styles.removeCancel}
+                            onClick={() => {
+                                setIsRemoveOpen(false);
+                            }}
+                        >
+                            Cancel
+                        </Button>
+                        <Button
+                            className={styles.removeRemove}
+                            onClick={handleRemoveItem}
+                        >
+                            Remove
+                        </Button>
+                    </Box>
+                </Box>
+            </Modal>
         </div>
     );
 }

@@ -21,9 +21,25 @@ import { useFlashMessage } from "../context/FlashMessage";
 
 const validationSchema = (isLogin) =>
     Yup.object().shape({
-        email: Yup.string()
-            .email("Invalid email")
-            .required("Email is required"),
+        emailUsername: isLogin
+            ? Yup.string()
+                  .required("Email or username is required")
+                  .test(
+                      "email-or-username",
+                      "Invalid email or username",
+                      (value) => {
+                          if (!value) return false;
+                          const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
+                              value,
+                          );
+                          const isUsername = /^[a-zA-Z0-9_]{3,15}$/.test(value);
+                          return isEmail || isUsername;
+                      },
+                  )
+            : Yup.string(),
+        email: isLogin
+            ? Yup.string()
+            : Yup.string().email("Invalid email").required("Email is required"),
         password: isLogin
             ? Yup.string()
                   .min(8, "Password must be at least 8 characters")
@@ -44,12 +60,12 @@ const validationSchema = (isLogin) =>
                       "Password must contain at least one special character",
                   )
                   .required("Password is required"),
-        firstName: isLogin
+        username: isLogin
             ? Yup.string()
-            : Yup.string().required("First name is required"),
-        lastName: isLogin
-            ? Yup.string()
-            : Yup.string().required("Last name is required"),
+            : Yup.string()
+                  .required("Username is required")
+                  .min(3, "Username must be at least 3 characters long")
+                  .max(15, "Username must be at most 15 characters long"),
         phoneNumber: isLogin
             ? Yup.string()
             : Yup.string()
@@ -63,7 +79,13 @@ const validationSchema = (isLogin) =>
                   .required("Confirm password is required"),
     });
 
-export default function AuthModal({ isOpen, setModalOpen }) {
+export default function AuthModal({
+    isOpen,
+    setModalOpen,
+    setIsLoggedIn,
+    setUser,
+    setMenu,
+}) {
     const [isLogin, setIsLogin] = useState(true);
     const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -80,10 +102,10 @@ export default function AuthModal({ isOpen, setModalOpen }) {
         defaultValues: {
             email: "",
             password: "",
-            firstName: "",
-            lastName: "",
+            username: "",
             phoneNumber: "",
             confirmPassword: "",
+            emailUsername: "",
         },
     });
 
@@ -96,8 +118,14 @@ export default function AuthModal({ isOpen, setModalOpen }) {
             if (!response?.errors) {
                 setFlashMessage(response.message);
                 setFlashStatus(response.status);
-                if (!isLogin) {
+                if (!isLogin && response.status == "success") {
                     setIsLogin(true);
+                } else if (isLogin && response.status == "success") {
+                    setModalOpen(false);
+                    setMenu(false);
+                    setIsLoggedIn(true);
+                    setUser(response.user);
+                    reset();
                 }
             } else {
                 Object.keys(response.errors).forEach((key) => {
@@ -118,10 +146,10 @@ export default function AuthModal({ isOpen, setModalOpen }) {
         setIsLogin((prev) => !prev);
         reset(
             {
+                emailUsername: "",
                 email: "",
                 password: "",
-                firstName: "",
-                lastName: "",
+                username: "",
                 phoneNumber: "",
                 confirmPassword: "",
             },
@@ -160,151 +188,199 @@ export default function AuthModal({ isOpen, setModalOpen }) {
                     <Grid2 container spacing={2}>
                         {!isLogin && (
                             <>
-                                <Grid2 size={{ xs: 12, md: 6 }}>
+                                <Grid2 size={{ xs: 12, md: 12 }}>
                                     <Controller
-                                        name="firstName"
+                                        name="username"
                                         control={control}
                                         render={({ field }) => (
                                             <TextField
                                                 {...field}
-                                                label="First Name"
+                                                label="Username"
                                                 fullWidth
-                                                error={!!errors.firstName}
+                                                error={!!errors.username}
                                                 helperText={
-                                                    errors.firstName?.message
+                                                    errors.username?.message
                                                 }
                                             />
                                         )}
                                     />
                                 </Grid2>
-                                <Grid2 size={{ xs: 12, md: 6 }}>
+                                <Grid2 size={{ xs: 12 }}>
                                     <Controller
-                                        name="lastName"
+                                        name="email"
                                         control={control}
                                         render={({ field }) => (
                                             <TextField
                                                 {...field}
-                                                label="Last Name"
+                                                label="Email"
                                                 fullWidth
-                                                error={!!errors.lastName}
+                                                error={!!errors.email}
                                                 helperText={
-                                                    errors.lastName?.message
+                                                    errors.email?.message
                                                 }
+                                            />
+                                        )}
+                                    />
+                                </Grid2>
+                                <Grid2 size={{ xs: 12 }}>
+                                    <Controller
+                                        name="phoneNumber"
+                                        control={control}
+                                        render={({ field }) => (
+                                            <TextField
+                                                {...field}
+                                                label="Phone Number"
+                                                fullWidth
+                                                error={!!errors.phoneNumber}
+                                                helperText={
+                                                    errors.phoneNumber?.message
+                                                }
+                                            />
+                                        )}
+                                    />
+                                </Grid2>
+                                <Grid2 size={{ xs: 12 }}>
+                                    <Controller
+                                        name="password"
+                                        control={control}
+                                        render={({ field }) => (
+                                            <TextField
+                                                {...field}
+                                                label="Password"
+                                                type={
+                                                    showPassword
+                                                        ? "text"
+                                                        : "password"
+                                                }
+                                                fullWidth
+                                                error={!!errors.password}
+                                                helperText={
+                                                    errors.password?.message
+                                                }
+                                                InputProps={{
+                                                    endAdornment: (
+                                                        <InputAdornment position="end">
+                                                            <IconButton
+                                                                onClick={
+                                                                    handleClickShowPassword
+                                                                }
+                                                            >
+                                                                {showPassword ? (
+                                                                    <VisibilityOff />
+                                                                ) : (
+                                                                    <Visibility />
+                                                                )}
+                                                            </IconButton>
+                                                        </InputAdornment>
+                                                    ),
+                                                }}
+                                            />
+                                        )}
+                                    />
+                                </Grid2>
+                                <Grid2 size={{ xs: 12 }}>
+                                    <Controller
+                                        name="confirmPassword"
+                                        control={control}
+                                        render={({ field }) => (
+                                            <TextField
+                                                {...field}
+                                                label="Confirm Password"
+                                                type={
+                                                    showPassword
+                                                        ? "text"
+                                                        : "password"
+                                                }
+                                                fullWidth
+                                                error={!!errors.confirmPassword}
+                                                helperText={
+                                                    errors.confirmPassword
+                                                        ?.message
+                                                }
+                                                InputProps={{
+                                                    endAdornment: (
+                                                        <InputAdornment position="end">
+                                                            <IconButton
+                                                                onClick={
+                                                                    handleClickShowPassword
+                                                                }
+                                                            >
+                                                                {showPassword ? (
+                                                                    <VisibilityOff />
+                                                                ) : (
+                                                                    <Visibility />
+                                                                )}
+                                                            </IconButton>
+                                                        </InputAdornment>
+                                                    ),
+                                                }}
                                             />
                                         )}
                                     />
                                 </Grid2>
                             </>
                         )}
-                        <Grid2 size={{ xs: 12 }}>
-                            <Controller
-                                name="email"
-                                control={control}
-                                render={({ field }) => (
-                                    <TextField
-                                        {...field}
-                                        label="Email"
-                                        fullWidth
-                                        error={!!errors.email}
-                                        helperText={errors.email?.message}
+
+                        {isLogin && (
+                            <>
+                                <Grid2 size={{ xs: 12 }}>
+                                    <Controller
+                                        name="emailUsername"
+                                        control={control}
+                                        render={({ field }) => (
+                                            <TextField
+                                                {...field}
+                                                label="Email or Username"
+                                                fullWidth
+                                                error={!!errors.emailUsername}
+                                                helperText={
+                                                    errors.emailUsername
+                                                        ?.message
+                                                }
+                                            />
+                                        )}
                                     />
-                                )}
-                            />
-                        </Grid2>
-                        {!isLogin && (
-                            <Grid2 size={{ xs: 12 }}>
-                                <Controller
-                                    name="phoneNumber"
-                                    control={control}
-                                    render={({ field }) => (
-                                        <TextField
-                                            {...field}
-                                            label="Phone Number"
-                                            fullWidth
-                                            error={!!errors.phoneNumber}
-                                            helperText={
-                                                errors.phoneNumber?.message
-                                            }
-                                        />
-                                    )}
-                                />
-                            </Grid2>
-                        )}
-                        <Grid2 size={{ xs: 12 }}>
-                            <Controller
-                                name="password"
-                                control={control}
-                                render={({ field }) => (
-                                    <TextField
-                                        {...field}
-                                        label="Password"
-                                        type={
-                                            showPassword ? "text" : "password"
-                                        }
-                                        fullWidth
-                                        error={!!errors.password}
-                                        helperText={errors.password?.message}
-                                        InputProps={{
-                                            endAdornment: (
-                                                <InputAdornment position="end">
-                                                    <IconButton
-                                                        onClick={
-                                                            handleClickShowPassword
-                                                        }
-                                                    >
-                                                        {showPassword ? (
-                                                            <VisibilityOff />
-                                                        ) : (
-                                                            <Visibility />
-                                                        )}
-                                                    </IconButton>
-                                                </InputAdornment>
-                                            ),
-                                        }}
+                                </Grid2>
+                                <Grid2 size={{ xs: 12 }}>
+                                    <Controller
+                                        name="password"
+                                        control={control}
+                                        render={({ field }) => (
+                                            <TextField
+                                                {...field}
+                                                label="Password"
+                                                type={
+                                                    showPassword
+                                                        ? "text"
+                                                        : "password"
+                                                }
+                                                fullWidth
+                                                error={!!errors.password}
+                                                helperText={
+                                                    errors.password?.message
+                                                }
+                                                InputProps={{
+                                                    endAdornment: (
+                                                        <InputAdornment position="end">
+                                                            <IconButton
+                                                                onClick={
+                                                                    handleClickShowPassword
+                                                                }
+                                                            >
+                                                                {showPassword ? (
+                                                                    <VisibilityOff />
+                                                                ) : (
+                                                                    <Visibility />
+                                                                )}
+                                                            </IconButton>
+                                                        </InputAdornment>
+                                                    ),
+                                                }}
+                                            />
+                                        )}
                                     />
-                                )}
-                            />
-                        </Grid2>
-                        {!isLogin && (
-                            <Grid2 size={{ xs: 12 }}>
-                                <Controller
-                                    name="confirmPassword"
-                                    control={control}
-                                    render={({ field }) => (
-                                        <TextField
-                                            {...field}
-                                            label="Confirm Password"
-                                            type={
-                                                showPassword
-                                                    ? "text"
-                                                    : "password"
-                                            }
-                                            fullWidth
-                                            error={!!errors.confirmPassword}
-                                            helperText={
-                                                errors.confirmPassword?.message
-                                            }
-                                            InputProps={{
-                                                endAdornment: (
-                                                    <InputAdornment position="end">
-                                                        <IconButton
-                                                            onClick={
-                                                                handleClickShowPassword
-                                                            }
-                                                        >
-                                                            {showPassword ? (
-                                                                <VisibilityOff />
-                                                            ) : (
-                                                                <Visibility />
-                                                            )}
-                                                        </IconButton>
-                                                    </InputAdornment>
-                                                ),
-                                            }}
-                                        />
-                                    )}
-                                />
-                            </Grid2>
+                                </Grid2>
+                            </>
                         )}
                     </Grid2>
                 </Box>

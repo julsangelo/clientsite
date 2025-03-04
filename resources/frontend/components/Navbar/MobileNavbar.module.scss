@@ -1,0 +1,211 @@
+@import "../../assets/scss/main.module.scss";
+
+.mobileNavbarButton {
+    color: $t_white;
+}
+
+.menuPopover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: $t_black;
+    z-index: 100;
+    height: 100dvh;
+
+    .popoverContainer {
+        background-color: rgba($b_secondary, 0.5);
+        height: 100dvh;
+        width: 100dvw;
+    }
+
+    .menuPopoverBox {
+        width: fit-content;
+        height: 100dvh;
+        background-color: $b_white;
+        padding: 15px 16px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+
+        .closeButton {
+            width: fit-content;
+        }
+
+        .mobileNavLinkButton {
+            border-radius: 5px;
+            color: $t_black;
+            font-weight: 400;
+            font-size: 15px;
+            padding: 8px 16px;
+        }
+
+        .mobileAccordion {
+            margin: 11px 0;
+
+            .mobileAccordionDetails {
+                padding-bottom: 0;
+
+                .settingsInfo {
+                    display: flex;
+                    flex-direction: column;
+
+                    .settingsOption {
+                        color: $t_red;
+                    }
+                }
+            }
+
+            .settingsAccordion {
+                color: $t_red;
+
+                .startIcon {
+                    margin-right: 10px;
+                }
+            }
+
+            .expandIcon {
+                color: $t_red;
+            }
+        }
+
+        .mobileNavbarSearchContainer {
+            background-color: $b_gray;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            column-gap: 10px;
+            width: 100%;
+            font-size: 15px;
+        }
+
+        .mobileNavbarLoginButton {
+            width: 250px;
+            background-color: $t_red;
+            font-size: 15px;
+            color: $t_white;
+            border-radius: 0;
+            padding: 10px 35px;
+        }
+    }
+}
+
+.cartPopover {
+    position: fixed;
+    top: 0;
+    right: 0;
+    color: $t_black;
+    z-index: 100;
+
+    .closeButton {
+        width: fit-content;
+        align-self: end;
+    }
+
+    .popoverContainer {
+        background-color: rgba($b_secondary, 0.5);
+        height: 100dvh;
+        width: 100dvw;
+    }
+
+    .mobileCartInfo {
+        width: fit-content;
+        height: 100dvh;
+        background-color: $b_white;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 15px;
+
+        .mobileCartList {
+            font-size: 14px;
+            display: flex;
+            column-gap: 10px;
+            align-items: center;
+            justify-content: space-between;
+
+            .mobileCartListImage {
+                height: 70px;
+                width: 70px;
+            }
+
+            .mobileCartDetails {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                width: 100px;
+
+                .mobileCartDetailsName {
+                    color: $t_black;
+                    font-weight: bold;
+                }
+
+                .mobileCartDetailsPrice {
+                    color: $t_red;
+                    font-weight: bold;
+                }
+            }
+
+            .mobileCartQuantity {
+                display: flex;
+                color: $t_lighterBlack;
+                height: fit-content;
+                font-size: 14px;
+                align-items: center;
+                column-gap: 5px;
+                border: 1px solid $b_gray;
+            }
+        }
+
+        .mobileCartTotal {
+            display: flex;
+            justify-content: space-between;
+
+            .mobileCartTotalText {
+                color: $t_black;
+                font-weight: bold;
+                font-size: 16px;
+            }
+        }
+
+        .mobileCartButtons {
+            display: flex;
+            column-gap: 10px;
+            width: 100%;
+
+            .mobileCartView {
+                width: 50%;
+                background-color: $b_secondary;
+                color: $t_white;
+            }
+
+            .mobileCartCheckout {
+                width: 50%;
+                background-color: $b_red;
+                color: $t_white;
+            }
+        }
+
+        .cartNoItemsText {
+            width: fit-content;
+            color: $t_black;
+            margin: 10px 83.515px;
+            text-wrap: nowrap;
+            font-weight: 600;
+        }
+
+        .mobileItemPrice {
+            color: $t_black;
+            text-wrap: nowrap;
+            font-weight: 700;
+            width: 100%;
+            text-align: end;
+            font-size: 14px;
+        }
+    }
+}
+
+.navbarBrand {
+    color: $t_red;
+    font-size: 32px !important;
+    font-weight: 900 !important;
+}

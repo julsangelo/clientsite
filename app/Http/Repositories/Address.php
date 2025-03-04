@@ -3,6 +3,7 @@
 namespace App\Http\Repositories;
 
 use App\Models\Branch;
+use App\Models\OrderDelivery;
 use App\Models\ProductCategory;
 use Illuminate\Support\Facades\DB;
 
@@ -34,6 +35,22 @@ class Address
             'province' => $province,
             'municipality' => $municipality,
             'barangay' => $barangay
+        ];
+    }
+
+    public function getAllAddress($customerID) {
+        $allAddress = OrderDelivery::select()
+            ->where('customerID', $customerID)
+            ->get();
+
+        $defaultAddress = OrderDelivery::select('orderDeliveryID')
+        ->where('customerID', $customerID)
+        ->where('deliveryIsDefault', '1')
+        ->get();
+
+        return [
+            'allAddress' => $allAddress,
+            'defaultAddress' => $defaultAddress
         ];
     }
 }

@@ -58,7 +58,7 @@ export function getClientIntent(amount, callback) {
     });
 }
 
-export function placeOrder(data) {
+export function placeOrder(data, callback) {
     axios.post("/placeOrder", data).then((response) => {
         callback(response.data);
     });
@@ -81,8 +81,38 @@ export function signUp(data, callback) {
         });
 }
 
+export function signOut(callback) {
+    axios.get("/signOut").then((response) => {
+        callback(response.data);
+    });
+}
+
 export function authCheck(callback) {
     axios.get("/authCheck").then((response) => {
+        callback(response.data);
+    });
+}
+
+export function getOrders(callback) {
+    axios.get("/getOrders").then((response) => {
+        callback(response.data.order);
+    });
+}
+
+export function addAddress(data, callback) {
+    axios.post("/addAddress", data).then((response) => {
+        callback(response.data);
+    });
+}
+
+export function getAddress(callback) {
+    axios.get("/getAddress").then((response) => {
+        callback(response.data);
+    });
+}
+
+export function removeItem(productCode, callback) {
+    axios.post("/removeItem", { code: productCode }).then((response) => {
         callback(response.data);
     });
 }
