@@ -54,8 +54,6 @@ class CheckoutController extends Controller
             'total' => 'required|numeric'
         ]);
 
-        $addressInfo = $this->address->getAddress($validatedData['region'], $validatedData['province'], $validatedData['municipality'],$validatedData['barangay']);
-
         // $address = ;
 
         // $placeOrder = DB::table('order')->insert([
@@ -74,6 +72,6 @@ class CheckoutController extends Controller
         //     'orderDateTime' => now(),
         // ]);
 
-        return $addressInfo;
+        return $validatedData;
     }
 }

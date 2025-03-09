@@ -7,11 +7,11 @@ import { getCategorizedProducts, getAllProducts } from "../ajax/backend";
 import { Container, Grid2, Pagination, Typography } from "@mui/material";
 import { ChevronRight } from "@mui/icons-material";
 import ProductCard from "../components/ProductCard";
-import { ReferenceContext } from "../context/ReferenceProvider";
+import { useReference } from "../context/ReferenceProvider";
 
 export default function Shop() {
     const { category } = useParams();
-    const { references } = useContext(ReferenceContext);
+    const { references } = useReference();
     const [products, setProducts] = useState();
     const [currentPage, setCurrentPage] = useState(1);
     const productsPerPage = 12;

@@ -16,6 +16,8 @@ import {
 } from "@mui/material";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import {
+    deleteAddress,
+    getAllAddress,
     getCart,
     getOrders,
     removeItem,
@@ -26,14 +28,19 @@ import { Close } from "@mui/icons-material";
 import OrdersPanel from "../components/Details/OrderPanel";
 import CartPanel from "../components/Details/CartPanel";
 import { useFlashMessage } from "../context/FlashMessage";
+import AddressPanel from "../components/Details/AddressPanel";
 
 export default function Cart() {
     const location = useLocation();
     const [value, setValue] = useState("0");
     const [orderItem, setOrderItem] = useState();
     const [cartItem, setCartItem] = useState();
+    const [addressItem, setAddressItem] = useState();
+    const [addressUpdated, setAddressUpdated] = useState(false);
     const [removeItemCode, setRemoveItemCode] = useState();
+    const [deleteAddressID, setDeleteAddressID] = useState();
     const [isRemoveOpen, setIsRemoveOpen] = useState(false);
+    const [removeItemType, setRemoveItemType] = useState("");
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
     const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -60,6 +67,12 @@ export default function Cart() {
             setCartItem(data);
         });
     }, [handleMinus]);
+
+    useEffect(() => {
+        getAllAddress((response) => {
+            setAddressItem(response.allAddress);
+        });
+    }, [addressUpdated]);
 
     const handleAdd = (productCode) => {
         const updatedcart = cartItem.map((item) =>
@@ -88,16 +101,29 @@ export default function Cart() {
     };
 
     const handleRemoveItem = () => {
-        removeItem(removeItemCode, (response) => {
-            setFlashMessage(response.message);
-            setFlashStatus(response.status);
-            if (response.status === "success") {
-                setIsRemoveOpen(false);
-                getCart((data) => {
-                    setCartItem(data);
-                });
-            }
-        });
+        if (removeItemType === "cart") {
+            removeItem(removeItemCode, (response) => {
+                setFlashMessage(response.message);
+                setFlashStatus(response.status);
+                if (response.status === "success") {
+                    setIsRemoveOpen(false);
+                    getCart((data) => {
+                        setCartItem(data);
+                    });
+                }
+            });
+        } else if (removeItemType === "address") {
+            deleteAddress(deleteAddressID, (response) => {
+                setFlashMessage(response.message);
+                setFlashStatus(response.status);
+                if (response.status === "success") {
+                    setIsRemoveOpen(false);
+                    getAllAddress((data) => {
+                        setAddressItem(data.allAddress);
+                    });
+                }
+            });
+        }
     };
 
     const total = (cartItem || [])
@@ -141,9 +167,18 @@ export default function Cart() {
                                         handleMinus={handleMinus}
                                         setIsRemoveOpen={setIsRemoveOpen}
                                         setRemoveItemCode={setRemoveItemCode}
+                                        setRemoveItemType={setRemoveItemType}
                                     />
                                 </TabPanel>
-                                <TabPanel value="2"></TabPanel>
+                                <TabPanel value="2">
+                                    <AddressPanel
+                                        addressItem={addressItem}
+                                        setAddressUpdated={setAddressUpdated}
+                                        setIsRemoveOpen={setIsRemoveOpen}
+                                        setDeleteAddressID={setDeleteAddressID}
+                                        setRemoveItemType={setRemoveItemType}
+                                    />
+                                </TabPanel>
                             </Grid2>
                         </Grid2>
                     </TabContext>
@@ -160,9 +195,17 @@ export default function Cart() {
                     >
                         <Close />
                     </IconButton>
-                    <Typography className={styles.removeModalText}>
-                        Are you sure to remove this product?
-                    </Typography>
+
+                    {removeItemType == "cart" ? (
+                        <Typography className={styles.removeModalText}>
+                            Are you sure to remove this item?
+                        </Typography>
+                    ) : (
+                        <Typography className={styles.removeModalText}>
+                            Are you sure to remove this address?
+                        </Typography>
+                    )}
+
                     <Box className={styles.removeModalButtons}>
                         <Button
                             className={styles.removeCancel}

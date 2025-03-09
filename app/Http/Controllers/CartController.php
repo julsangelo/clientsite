@@ -61,7 +61,7 @@ class CartController extends Controller
     
         return response()->json([
             'status' => 'success',
-            'message' => 'Added to cart.'
+            'message' => 'Added to cart'
         ]);
     }
 
@@ -161,7 +161,7 @@ class CartController extends Controller
     
         return response()->json([
             'status' => 'success',
-            'message' => 'Item removed from cart.'
+            'message' => 'Item removed from cart'
         ]);
     }
 }

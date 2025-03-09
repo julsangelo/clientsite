@@ -18,7 +18,7 @@ import {
     ListItemButton,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { ReferenceContext } from "../context/ReferenceProvider";
+import { useReference } from "../context/ReferenceProvider";
 import ContactIcon from "./ContactIcon";
 
 const FooterSection = ({ title, data, prefix }) => (
@@ -82,7 +82,7 @@ const FooterList = ({ data, prefix }) => {
 export default function Footer() {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-    const { references } = useContext(ReferenceContext);
+    const { references } = useReference();
 
     const link = [
         { linkText: "About Us", linkValue: "/about" },

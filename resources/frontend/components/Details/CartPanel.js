@@ -20,6 +20,7 @@ export default function CartPanel({
     handleMinus,
     setIsRemoveOpen,
     setRemoveItemCode,
+    setRemoveItemType,
 }) {
     return (
         <Grid2 container spacing={3}>
@@ -116,6 +117,9 @@ export default function CartPanel({
                                                             onClick={() => {
                                                                 setIsRemoveOpen(
                                                                     true,
+                                                                );
+                                                                setRemoveItemType(
+                                                                    "cart",
                                                                 );
                                                                 setRemoveItemCode(
                                                                     item.productCode,

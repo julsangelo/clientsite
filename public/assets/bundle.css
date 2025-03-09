@@ -58,6 +58,18 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/Details/CartPanel.module.scss ***!
   \************************************************************************************************************************************************************************************************************************************************************************************/
 @import url(https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap);
+/*!***************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/Details/AddressPanel.module.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************/
+@import url(https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap);
+/*!*********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/AddAddressForm.module.scss ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************/
+@import url(https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap);
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/Details/AddressPanel/EditAddressForm.module.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************/
+@import url(https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap);
 /*!**********************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/pages/CheckOut.module.scss ***!
   \**********************************************************************************************************************************************************************************************************************************************************************/
@@ -1509,6 +1521,185 @@ p {
     margin-top: 0 !important;
   }
 }
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/Details/AddressPanel.module.scss (1) ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************/
+body {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+}
+
+p {
+  margin: 0;
+}
+
+.AddressPanel-module-tabTitle-XR7nm {
+  font-weight: 800 !important;
+  font-size: 32px !important;
+}
+
+.AddressPanel-module-addressesContainer-rLe1C {
+  background-color: #ffffff;
+  height: fit-content;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+.AddressPanel-module-addressesContainer-rLe1C .AddressPanel-module-addressOptionContainer-X6wVB {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+.AddressPanel-module-addressesContainer-rLe1C .AddressPanel-module-addressOptionContainer-X6wVB .AddressPanel-module-addressOption-DaanF, .AddressPanel-module-addressesContainer-rLe1C .AddressPanel-module-addressOptionContainer-X6wVB .AddressPanel-module-addressOptionNotSelected-Ub4Go, .AddressPanel-module-addressesContainer-rLe1C .AddressPanel-module-addressOptionContainer-X6wVB .AddressPanel-module-addressOptionSelected-HEp7f {
+  border-radius: 10px;
+  padding: 5px 15px 5px 26px;
+}
+.AddressPanel-module-addressesContainer-rLe1C .AddressPanel-module-addressOptionContainer-X6wVB .AddressPanel-module-addressOption-DaanF .AddressPanel-module-addressOptionBox-FP29q, .AddressPanel-module-addressesContainer-rLe1C .AddressPanel-module-addressOptionContainer-X6wVB .AddressPanel-module-addressOptionNotSelected-Ub4Go .AddressPanel-module-addressOptionBox-FP29q, .AddressPanel-module-addressesContainer-rLe1C .AddressPanel-module-addressOptionContainer-X6wVB .AddressPanel-module-addressOptionSelected-HEp7f .AddressPanel-module-addressOptionBox-FP29q {
+  display: flex;
+  justify-content: space-between;
+}
+.AddressPanel-module-addressesContainer-rLe1C .AddressPanel-module-addressOptionContainer-X6wVB .AddressPanel-module-addressOption-DaanF .AddressPanel-module-addressOptionBox-FP29q .AddressPanel-module-addressOptionDefault-MctTn, .AddressPanel-module-addressesContainer-rLe1C .AddressPanel-module-addressOptionContainer-X6wVB .AddressPanel-module-addressOptionNotSelected-Ub4Go .AddressPanel-module-addressOptionBox-FP29q .AddressPanel-module-addressOptionDefault-MctTn, .AddressPanel-module-addressesContainer-rLe1C .AddressPanel-module-addressOptionContainer-X6wVB .AddressPanel-module-addressOptionSelected-HEp7f .AddressPanel-module-addressOptionBox-FP29q .AddressPanel-module-addressOptionDefault-MctTn {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1ea1d7;
+}
+.AddressPanel-module-addressesContainer-rLe1C .AddressPanel-module-addressOptionContainer-X6wVB .AddressPanel-module-addressOption-DaanF .AddressPanel-module-addressOptionBox-FP29q .AddressPanel-module-addressOptionDetails-AUI78, .AddressPanel-module-addressesContainer-rLe1C .AddressPanel-module-addressOptionContainer-X6wVB .AddressPanel-module-addressOptionNotSelected-Ub4Go .AddressPanel-module-addressOptionBox-FP29q .AddressPanel-module-addressOptionDetails-AUI78, .AddressPanel-module-addressesContainer-rLe1C .AddressPanel-module-addressOptionContainer-X6wVB .AddressPanel-module-addressOptionSelected-HEp7f .AddressPanel-module-addressOptionBox-FP29q .AddressPanel-module-addressOptionDetails-AUI78 {
+  font-size: 14px;
+}
+.AddressPanel-module-addressesContainer-rLe1C .AddressPanel-module-addressOptionContainer-X6wVB .AddressPanel-module-addressOption-DaanF .AddressPanel-module-addressOptionBox-FP29q .AddressPanel-module-addressOptionButtons-Ube7y, .AddressPanel-module-addressesContainer-rLe1C .AddressPanel-module-addressOptionContainer-X6wVB .AddressPanel-module-addressOptionNotSelected-Ub4Go .AddressPanel-module-addressOptionBox-FP29q .AddressPanel-module-addressOptionButtons-Ube7y, .AddressPanel-module-addressesContainer-rLe1C .AddressPanel-module-addressOptionContainer-X6wVB .AddressPanel-module-addressOptionSelected-HEp7f .AddressPanel-module-addressOptionBox-FP29q .AddressPanel-module-addressOptionButtons-Ube7y {
+  display: flex;
+  align-items: center;
+}
+.AddressPanel-module-addressesContainer-rLe1C .AddressPanel-module-addressOptionContainer-X6wVB .AddressPanel-module-addressOption-DaanF .AddressPanel-module-addressOptionBox-FP29q .AddressPanel-module-addressOptionButtons-Ube7y .AddressPanel-module-addressOptionButton-j3iEN, .AddressPanel-module-addressesContainer-rLe1C .AddressPanel-module-addressOptionContainer-X6wVB .AddressPanel-module-addressOptionNotSelected-Ub4Go .AddressPanel-module-addressOptionBox-FP29q .AddressPanel-module-addressOptionButtons-Ube7y .AddressPanel-module-addressOptionButton-j3iEN, .AddressPanel-module-addressesContainer-rLe1C .AddressPanel-module-addressOptionContainer-X6wVB .AddressPanel-module-addressOptionSelected-HEp7f .AddressPanel-module-addressOptionBox-FP29q .AddressPanel-module-addressOptionButtons-Ube7y .AddressPanel-module-addressOptionButton-j3iEN {
+  height: fit-content;
+}
+
+.AddressPanel-module-addressOptionSelected-HEp7f {
+  border: 1px solid #1ea1d7;
+  background-color: rgba(30, 161, 215, 0.2);
+}
+
+.AddressPanel-module-addressOptionNotSelected-Ub4Go {
+  background-color: #ffffff;
+  border: 1px solid #d2d2d2;
+}
+
+.AddressPanel-module-addressNoItemsText-rSO71 {
+  width: 100%;
+  color: #121212;
+  margin: 30px 0 !important;
+  text-wrap: nowrap;
+  font-weight: 600 !important;
+  text-align: center;
+}
+/*!*************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/AddAddressForm.module.scss (1) ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************/
+body {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+}
+
+p {
+  margin: 0;
+}
+
+.AddAddressForm-module-addAddressContainer-WrgOX, .AddAddressForm-module-addAddressContainerCheckout-Varcc, .AddAddressForm-module-addAddressContainerDetails-UzN_E {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  margin-top: 10px;
+  background-color: #ffffff;
+}
+.AddAddressForm-module-addAddressContainer-WrgOX .AddAddressForm-module-addAddressButtonContainer-yZyKr, .AddAddressForm-module-addAddressContainerCheckout-Varcc .AddAddressForm-module-addAddressButtonContainer-yZyKr, .AddAddressForm-module-addAddressContainerDetails-UzN_E .AddAddressForm-module-addAddressButtonContainer-yZyKr {
+  display: flex;
+  column-gap: 10px;
+  justify-content: end;
+}
+.AddAddressForm-module-addAddressContainer-WrgOX .AddAddressForm-module-addAddressButtonContainer-yZyKr .AddAddressForm-module-addAddressCancel-x15oC, .AddAddressForm-module-addAddressContainerCheckout-Varcc .AddAddressForm-module-addAddressButtonContainer-yZyKr .AddAddressForm-module-addAddressCancel-x15oC, .AddAddressForm-module-addAddressContainerDetails-UzN_E .AddAddressForm-module-addAddressButtonContainer-yZyKr .AddAddressForm-module-addAddressCancel-x15oC {
+  font-size: 14px;
+  font-weight: 600;
+  background-color: #ffffff;
+  color: #1ea1d7;
+  border: 1px solid #1ea1d7;
+  width: 80px;
+  height: fit-content;
+}
+.AddAddressForm-module-addAddressContainer-WrgOX .AddAddressForm-module-addAddressButtonContainer-yZyKr .AddAddressForm-module-addAddressSave-cy5zo, .AddAddressForm-module-addAddressContainerCheckout-Varcc .AddAddressForm-module-addAddressButtonContainer-yZyKr .AddAddressForm-module-addAddressSave-cy5zo, .AddAddressForm-module-addAddressContainerDetails-UzN_E .AddAddressForm-module-addAddressButtonContainer-yZyKr .AddAddressForm-module-addAddressSave-cy5zo {
+  font-size: 14px;
+  font-weight: 600;
+  background-color: #1ea1d7;
+  color: #ffffff;
+  width: 80px;
+  height: fit-content;
+}
+
+.AddAddressForm-module-addAddressContainerDetails-UzN_E {
+  border: none;
+  border-radius: 0;
+}
+
+.AddAddressForm-module-addAddressContainerCheckout-Varcc {
+  border: 1px solid #dbdbdb;
+  border-radius: 5px;
+}
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/Details/AddressPanel/EditAddressForm.module.scss (1) ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************/
+body {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+}
+
+p {
+  margin: 0;
+}
+
+.EditAddressForm-module-editAddressContainer-WSJ8m, .EditAddressForm-module-editAddressContainerCheckout-oWOD1, .EditAddressForm-module-editAddressContainerDetails-QXbHR {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  margin-top: 10px;
+  background-color: #ffffff;
+}
+.EditAddressForm-module-editAddressContainer-WSJ8m .EditAddressForm-module-editAddressSwitch-BG4XY, .EditAddressForm-module-editAddressContainerCheckout-oWOD1 .EditAddressForm-module-editAddressSwitch-BG4XY, .EditAddressForm-module-editAddressContainerDetails-QXbHR .EditAddressForm-module-editAddressSwitch-BG4XY {
+  width: fit-content;
+  margin: 0;
+  margin-bottom: 10px;
+}
+.EditAddressForm-module-editAddressContainer-WSJ8m .EditAddressForm-module-editAddressButtonContainer-ZTBG8, .EditAddressForm-module-editAddressContainerCheckout-oWOD1 .EditAddressForm-module-editAddressButtonContainer-ZTBG8, .EditAddressForm-module-editAddressContainerDetails-QXbHR .EditAddressForm-module-editAddressButtonContainer-ZTBG8 {
+  display: flex;
+  column-gap: 10px;
+  justify-content: end;
+}
+.EditAddressForm-module-editAddressContainer-WSJ8m .EditAddressForm-module-editAddressButtonContainer-ZTBG8 .EditAddressForm-module-editAddressCancel-Fup13, .EditAddressForm-module-editAddressContainerCheckout-oWOD1 .EditAddressForm-module-editAddressButtonContainer-ZTBG8 .EditAddressForm-module-editAddressCancel-Fup13, .EditAddressForm-module-editAddressContainerDetails-QXbHR .EditAddressForm-module-editAddressButtonContainer-ZTBG8 .EditAddressForm-module-editAddressCancel-Fup13 {
+  font-size: 14px;
+  font-weight: 600;
+  background-color: #ffffff;
+  color: #1ea1d7;
+  border: 1px solid #1ea1d7;
+  width: 80px;
+  height: fit-content;
+}
+.EditAddressForm-module-editAddressContainer-WSJ8m .EditAddressForm-module-editAddressButtonContainer-ZTBG8 .EditAddressForm-module-editAddressSave-XpC3s, .EditAddressForm-module-editAddressContainerCheckout-oWOD1 .EditAddressForm-module-editAddressButtonContainer-ZTBG8 .EditAddressForm-module-editAddressSave-XpC3s, .EditAddressForm-module-editAddressContainerDetails-QXbHR .EditAddressForm-module-editAddressButtonContainer-ZTBG8 .EditAddressForm-module-editAddressSave-XpC3s {
+  font-size: 14px;
+  font-weight: 600;
+  background-color: #1ea1d7;
+  color: #ffffff;
+  width: 80px;
+  height: fit-content;
+}
+
+.EditAddressForm-module-editAddressContainerDetails-QXbHR {
+  border: none;
+  border-radius: 0;
+}
+
+.EditAddressForm-module-editAddressContainerCheckout-oWOD1 {
+  border: 1px solid #dbdbdb;
+  border-radius: 5px;
+}
 /*!**************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/pages/CheckOut.module.scss (1) ***!
   \**************************************************************************************************************************************************************************************************************************************************************************/
@@ -1621,7 +1812,12 @@ p {
 .CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutForm-CBsOt .CheckOut-module-addressOptionContainer-liUjV .CheckOut-module-addressOption-DpV6f {
   border: 1px solid #d2d2d2;
   border-radius: 10px;
-  padding: 5px 15px;
+  padding: 5px 15px 5px 26px;
+}
+.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutForm-CBsOt .CheckOut-module-addressOptionContainer-liUjV .CheckOut-module-addressOption-DpV6f .CheckOut-module-addressOptionDefault-ET13r {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1ea1d7;
 }
 .CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutForm-CBsOt .CheckOut-module-addressOptionContainer-liUjV .CheckOut-module-addressOption-DpV6f .CheckOut-module-addressOptionDetails-wSPwT {
   font-size: 14px;
@@ -1629,37 +1825,6 @@ p {
 .CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutForm-CBsOt .CheckOut-module-addAddressButton-bOqQY {
   margin-top: 10px;
   width: 100%;
-}
-.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutForm-CBsOt .CheckOut-module-addAddressContainer-ZqKXx {
-  padding: 15px;
-  border: 1px solid #dbdbdb;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  row-gap: 10px;
-  margin-top: 10px;
-}
-.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutForm-CBsOt .CheckOut-module-addAddressContainer-ZqKXx .CheckOut-module-addAddressButtonContainer-z6Sol {
-  display: flex;
-  column-gap: 10px;
-  justify-content: end;
-}
-.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutForm-CBsOt .CheckOut-module-addAddressContainer-ZqKXx .CheckOut-module-addAddressButtonContainer-z6Sol .CheckOut-module-addAddressCancel-GaMkM {
-  font-size: 14px;
-  font-weight: 600;
-  background-color: #ffffff;
-  color: #1ea1d7;
-  border: 1px solid #1ea1d7;
-  width: 80px;
-  height: fit-content;
-}
-.CheckOut-module-page-mEjhO .CheckOut-module-checkOut-Uwg_k .CheckOut-module-checkOutForm-CBsOt .CheckOut-module-addAddressContainer-ZqKXx .CheckOut-module-addAddressButtonContainer-z6Sol .CheckOut-module-addAddressSave-be6O9 {
-  font-size: 14px;
-  font-weight: 600;
-  background-color: #1ea1d7;
-  color: #ffffff;
-  width: 80px;
-  height: fit-content;
 }
 /*!***********************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/Checkout/CheckOutSummary.module.scss (1) ***!

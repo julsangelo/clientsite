@@ -412,7 +412,7 @@ export default function AuthModal({
                             setShowPassword(false);
                         }}
                     >
-                        {isLogin ? "Sign in" : "Sign up"}
+                        {isLogin ? "Sign up" : "Sign in"}
                     </Link>
                 </Typography>
             </Box>

@@ -1,0 +1,69 @@
+@import "../../assets/scss/main.module.scss";
+
+.tabTitle {
+    font-weight: 800 !important;
+    font-size: 32px !important;
+}
+
+.addressesContainer {
+    background-color: $b_white;
+    height: fit-content;
+    padding: 20px;
+    margin-bottom: 10px;
+
+    .addressOptionContainer {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+
+        .addressOption {
+            border-radius: 10px;
+            padding: 5px 15px 5px 26px;
+
+            .addressOptionBox {
+                display: flex;
+                justify-content: space-between;
+
+                .addressOptionDefault {
+                    font-size: 13px;
+                    font-weight: 600;
+                    color: $t_red;
+                }
+
+                .addressOptionDetails {
+                    font-size: 14px;
+                }
+
+                .addressOptionButtons {
+                    display: flex;
+                    align-items: center;
+
+                    .addressOptionButton {
+                        height: fit-content;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.addressOptionSelected {
+    @extend .addressOption;
+    border: 1px solid $b_red;
+    background-color: rgba($b_red, 0.2);
+}
+
+.addressOptionNotSelected {
+    @extend .addressOption;
+    background-color: $b_white;
+    border: 1px solid $b_darkGrayLight;
+}
+
+.addressNoItemsText {
+    width: 100%;
+    color: $t_black;
+    margin: 30px 0 !important;
+    text-wrap: nowrap;
+    font-weight: 600 !important;
+    text-align: center;
+}

@@ -1,7 +1,7 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, useContext } from "react";
 import { getReferences } from "../ajax/backend";
 
-export const ReferenceContext = createContext();
+let referenceContext = createContext();
 
 export const ReferenceProvider = ({ children }) => {
     const [references, setReferences] = useState({});
@@ -13,8 +13,10 @@ export const ReferenceProvider = ({ children }) => {
     }, []);
 
     return (
-        <ReferenceContext.Provider value={{ references }}>
+        <referenceContext.Provider value={{ references }}>
             {children}
-        </ReferenceContext.Provider>
+        </referenceContext.Provider>
     );
 };
+
+export let useReference = () => useContext(referenceContext);

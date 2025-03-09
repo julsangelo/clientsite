@@ -22,12 +22,12 @@ import {
     ShoppingCartOutlined,
 } from "@mui/icons-material";
 import ProductCard from "../components/ProductCard";
-import { ReferenceContext } from "../context/ReferenceProvider";
+import { useReference } from "../context/ReferenceProvider";
 import { getProducts } from "../ajax/backend";
 
 export default function Main() {
     document.title = "MUX Moto Shop";
-    const { references } = useContext(ReferenceContext);
+    const { references } = useReference();
     const [products, setProducts] = useState();
     const [selectedProducts, setSelectedProducts] = useState();
     const [currentPage, setCurrentPage] = useState(1);

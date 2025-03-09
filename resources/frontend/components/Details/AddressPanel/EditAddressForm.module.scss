@@ -1,0 +1,53 @@
+@import "../../../assets/scss/main.module.scss";
+
+.editAddressContainer {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    margin-top: 10px;
+    background-color: $b_white;
+
+    .editAddressSwitch {
+        width: fit-content;
+        margin: 0;
+        margin-bottom: 10px;
+    }
+
+    .editAddressButtonContainer {
+        display: flex;
+        column-gap: 10px;
+        justify-content: end;
+
+        .editAddressCancel {
+            font-size: 14px;
+            font-weight: 600;
+            background-color: $t_white;
+            color: $b_red;
+            border: 1px solid $b_red;
+            width: 80px;
+            height: fit-content;
+        }
+
+        .editAddressSave {
+            font-size: 14px;
+            font-weight: 600;
+            background-color: $b_red;
+            color: $t_white;
+            width: 80px;
+            height: fit-content;
+        }
+    }
+}
+
+.editAddressContainerDetails {
+    @extend .editAddressContainer;
+    border: none;
+    border-radius: 0;
+}
+
+.editAddressContainerCheckout {
+    @extend .editAddressContainer;
+    border: 1px solid $b_gray;
+    border-radius: 5px;
+}

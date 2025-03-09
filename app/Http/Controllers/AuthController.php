@@ -64,13 +64,13 @@ class AuthController extends Controller
             Cookie::queue(Cookie::forget('cart'));
             
             return response()->json([
-                'message' => 'Login successful!',
+                'message' => 'Login successful',
                 'status' => 'success',
                 'user' => $customer,
             ])->cookie('auth_token', $token, 60 * 24, '/', null, false, true);
         } else {
             return response()->json([
-                'message' => "Email or password is incorrect.",
+                'message' => "Email or password is incorrect",
                 'status' => 'error'
             ]);
         }
@@ -102,7 +102,7 @@ class AuthController extends Controller
             Cookie::queue(Cookie::forget('cart'));
     
             return response()->json([
-                'message' => 'Sign up successful! Sign in to your account.',
+                'message' => 'Sign up successful',
                 'status' => 'success',
             ]);
         }

@@ -105,14 +105,40 @@ export function addAddress(data, callback) {
     });
 }
 
-export function getAddress(callback) {
-    axios.get("/getAddress").then((response) => {
+export function getAllAddress(callback) {
+    axios.get("/getAllAddress").then((response) => {
         callback(response.data);
     });
 }
 
 export function removeItem(productCode, callback) {
     axios.post("/removeItem", { code: productCode }).then((response) => {
+        callback(response.data);
+    });
+}
+
+export function deleteAddress(orderDeliveryID, callback) {
+    axios.post("/deleteAddress", { id: orderDeliveryID }).then((response) => {
+        callback(response.data);
+    });
+}
+
+export function editAddress(orderDeliveryID, data, callback) {
+    axios
+        .post("/editAddress", { id: orderDeliveryID, data: data })
+        .then((response) => {
+            callback(response.data);
+        });
+}
+
+export function getAddress(orderDeliveryID, callback) {
+    axios.post("/getAddress", { id: orderDeliveryID }).then((response) => {
+        callback(response.data.address[0]);
+    });
+}
+
+export function createInvoice(data, callback) {
+    axios.post("/createInvoice", { data: data }).then((response) => {
         callback(response.data);
     });
 }

@@ -34,7 +34,7 @@ import {
     ShoppingCart,
 } from "@mui/icons-material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { ReferenceContext } from "../context/ReferenceProvider";
+import { useReference } from "../context/ReferenceProvider";
 import { Link } from "react-router-dom";
 import { getCart, signOut, updateItemQuantity } from "../ajax/backend";
 import AuthModal from "./AuthModal";
@@ -51,7 +51,7 @@ export default function Navbar() {
     const [shop, setShop] = useState(null);
     const [settings, setSettings] = useState(null);
     const [modalOpen, setModalOpen] = useState(false);
-    const { references } = useContext(ReferenceContext);
+    const { references } = useReference();
     const [cartItem, setCartItem] = useState([]);
     const { isLoggedIn, user, setIsLoggedIn, setUser } = useAuth();
     const { setFlashMessage, setFlashStatus } = useFlashMessage();

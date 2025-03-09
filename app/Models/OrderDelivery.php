@@ -18,6 +18,7 @@ class OrderDelivery extends Model
         'deliveryPhoneNo',
         'deliveryAddress',
         'deliveryAddressExtra',
+        'deliveryPostalCode',
         'deliveryRegion',
         'deliveryProvince',
         'deliveryCity',

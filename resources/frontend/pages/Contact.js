@@ -11,12 +11,12 @@ import {
 } from "@mui/icons-material";
 import GoogleMapReact from "google-map-react";
 import Footer from "../components/Footer";
-import { ReferenceContext } from "../context/ReferenceProvider";
+import { useReference } from "../context/ReferenceProvider";
 import ContactIcon from "../components/ContactIcon";
 
 export default function Contact() {
     document.title = "MUX Moto Shop | Contact";
-    const { references } = useContext(ReferenceContext);
+    const { references } = useReference();
 
     const [value, setValue] = useState("0");
 

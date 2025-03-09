@@ -2,16 +2,14 @@
 
 namespace App\Http\Repositories;
 
-use App\Models\Branch;
 use App\Models\OrderDelivery;
-use App\Models\ProductCategory;
 use Illuminate\Support\Facades\DB;
 
 class Address
 {
-    public function getAddress($region, $province, $municipality, $barangay){
+    public function getAddressInfo($region, $province, $municipality, $barangay){
         $region = DB::table('region')
-            ->select("regionName")
+            ->select("regionDescription")
             ->where("regionID", $region)
             ->get();
         
@@ -41,16 +39,28 @@ class Address
     public function getAllAddress($customerID) {
         $allAddress = OrderDelivery::select()
             ->where('customerID', $customerID)
+            ->orderByDesc('deliveryIsDefault')
             ->get();
 
         $defaultAddress = OrderDelivery::select('orderDeliveryID')
-        ->where('customerID', $customerID)
-        ->where('deliveryIsDefault', '1')
-        ->get();
+            ->where('customerID', $customerID)
+            ->where('deliveryIsDefault', '1')
+            ->get();
 
         return [
             'allAddress' => $allAddress,
             'defaultAddress' => $defaultAddress
+        ];
+    }
+
+    public function getAddress($customerID, $orderDeliveryID) {
+        $address = OrderDelivery::select()
+            ->where('customerID', $customerID)
+            ->where("orderDeliveryID", $orderDeliveryID)
+            ->get();
+
+        return [
+            'address' => $address,
         ];
     }
 }
