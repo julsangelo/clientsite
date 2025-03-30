@@ -9,7 +9,10 @@ import { ChevronRight } from "@mui/icons-material";
 import ProductCard from "../components/ProductCard";
 import { useReference } from "../context/ReferenceProvider";
 
+localStorage.removeItem("item");
+
 export default function Shop() {
+    document.title = "Shop | Cliff Motorshop";
     const { category } = useParams();
     const { references } = useReference();
     const [products, setProducts] = useState();

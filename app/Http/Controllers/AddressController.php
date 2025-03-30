@@ -47,7 +47,8 @@ class AddressController extends Controller
             'deliveryProvince' => $validated['province'],
             'deliveryCity' => $validated['municipality'],
             'deliveryBarangay' => $validated['barangay'],
-            'deliveryIsDefault' => 1
+            'deliveryIsDefault' => 1,
+            'deliveryIsActive' => 1
         ]);
 
         return response()->json([
@@ -96,7 +97,7 @@ class AddressController extends Controller
 
         OrderDelivery::where('customerID', $customerID)
             ->where('orderDeliveryID', $orderDeliveryID)
-            ->delete();
+            ->first()?->update(['deliveryIsActive' => 0]);
 
         OrderDelivery::where('customerID', $customerID)
             ->orderByDesc('orderDeliveryID')

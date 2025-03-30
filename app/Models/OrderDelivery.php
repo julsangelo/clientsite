@@ -23,6 +23,7 @@ class OrderDelivery extends Model
         'deliveryProvince',
         'deliveryCity',
         'deliveryBarangay',
-        'deliveryIsDefault'
+        'deliveryIsDefault',
+        'deliveryIsActive'
     ];
 }

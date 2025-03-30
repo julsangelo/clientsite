@@ -12,6 +12,7 @@ import {
     Place,
     Remove,
     Search,
+    Settings,
     ShoppingCart,
 } from "@mui/icons-material";
 import {
@@ -31,6 +32,7 @@ import {
     Typography,
 } from "@mui/material";
 import { Link } from "react-router-dom";
+import Brand from "../Brand";
 
 export default function MobileNavbar({
     handleMenu,
@@ -46,7 +48,16 @@ export default function MobileNavbar({
     references,
     cartItem,
     total,
+    searchOpen,
+    searchQuery,
+    handleSearchQuery,
+    handleSearch,
+    filteredProducts,
 }) {
+    const handleProductClick = (productCode) => {
+        window.location.href = `/shop/product/${productCode}`;
+    };
+
     return (
         <>
             <IconButton onClick={handleMenu}>
@@ -154,13 +165,58 @@ export default function MobileNavbar({
                                 <ListItemText>Contact</ListItemText>
                             </ListItemButton>
                         </List>
-                        <Box className={styles.mobileNavbarSearchContainer}>
-                            <Search />
-                            <InputBase
-                                placeholder="Search products"
-                                className={styles.mobileNavbarSearchInput}
-                            />
-                        </Box>
+                        <div>
+                            <Box className={styles.mobileNavbarSearchContainer}>
+                                <Search />
+                                <InputBase
+                                    placeholder="Search products"
+                                    className={styles.mobileNavbarSearchInput}
+                                    value={searchQuery}
+                                    onChange={handleSearchQuery}
+                                />
+                            </Box>
+                            {searchOpen && filteredProducts && (
+                                <Box className={styles.searchOutputContainer}>
+                                    {filteredProducts.length != 0 ? (
+                                        filteredProducts.map((item, index) => (
+                                            <Box
+                                                key={index}
+                                                className={
+                                                    styles.searchOutputItem
+                                                }
+                                                component={Link}
+                                                onClick={() =>
+                                                    handleProductClick(
+                                                        item.productCode,
+                                                    )
+                                                }
+                                            >
+                                                <CardMedia
+                                                    component="img"
+                                                    image={`/hydrogen/${item.productImage}`}
+                                                    className={
+                                                        styles.searchOutputImage
+                                                    }
+                                                />
+                                                <Typography
+                                                    className={
+                                                        styles.searchOutputName
+                                                    }
+                                                >
+                                                    {item.productName}
+                                                </Typography>
+                                            </Box>
+                                        ))
+                                    ) : (
+                                        <Typography
+                                            className={styles.searchNoOutput}
+                                        >
+                                            No products found
+                                        </Typography>
+                                    )}
+                                </Box>
+                            )}
+                        </div>
                         {isLoggedIn ? (
                             <Box className={styles.mobileAccordion}>
                                 <Accordion
@@ -229,6 +285,26 @@ export default function MobileNavbar({
                                             </Button>
                                             <Button
                                                 startIcon={
+                                                    <Settings
+                                                        className={
+                                                            styles.settingsOption
+                                                        }
+                                                    />
+                                                }
+                                                component={Link}
+                                                to="/details"
+                                                state={{ value: 3 }}
+                                            >
+                                                <Typography
+                                                    className={
+                                                        styles.settingsOption
+                                                    }
+                                                >
+                                                    Profile Settings
+                                                </Typography>
+                                            </Button>
+                                            <Button
+                                                startIcon={
                                                     <Logout
                                                         className={
                                                             styles.settingsOption
@@ -260,7 +336,9 @@ export default function MobileNavbar({
                     </Box>
                 </Collapse>
             </Box>
-            <Typography className={styles.navbarBrand}>Cliff</Typography>
+            <Link to="/" className={styles.brandName}>
+                <Brand fontSize="44px" />
+            </Link>
             <IconButton onClick={handleCart}>
                 <ShoppingCart className={styles.mobileNavbarButton} />
             </IconButton>
@@ -327,7 +405,7 @@ export default function MobileNavbar({
                                                     <IconButton
                                                         onClick={() =>
                                                             handleMinus(
-                                                                item.productCode,
+                                                                item.productID,
                                                             )
                                                         }
                                                     >
@@ -337,7 +415,7 @@ export default function MobileNavbar({
                                                     <IconButton
                                                         onClick={() =>
                                                             handleMinus(
-                                                                item.productCode,
+                                                                item.productID,
                                                             )
                                                         }
                                                     >
@@ -350,7 +428,7 @@ export default function MobileNavbar({
                                                 <IconButton
                                                     onClick={() =>
                                                         handleAdd(
-                                                            item.productCode,
+                                                            item.productID,
                                                         )
                                                     }
                                                 >

@@ -4,6 +4,10 @@ let axiosClient = axios.create({
     withCredentials: true,
 });
 
+export function setCsrfToken(token) {
+    axios.defaults.headers.common["X-CSRF-TOKEN"] = token;
+}
+
 axios.defaults.headers.common["X-CSRF-TOKEN"] = document
     .querySelector('meta[name="csrf-token"]')
     .getAttribute("content");

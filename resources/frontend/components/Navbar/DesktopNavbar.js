@@ -22,9 +22,11 @@ import {
     Place,
     Remove,
     Search,
+    Settings,
     ShoppingCart,
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import Brand from "../Brand";
 
 export default function DesktopNavbar({
     handleCart,
@@ -42,10 +44,21 @@ export default function DesktopNavbar({
     references,
     cartItem,
     total,
+    searchOpen,
+    searchQuery,
+    handleSearchQuery,
+    handleSearch,
+    filteredProducts,
 }) {
+    const handleProductClick = (productCode) => {
+        window.location.href = `/shop/product/${productCode}`;
+    };
+
     return (
         <>
-            <Typography className={styles.navbarBrand}>Cliff</Typography>
+            <Link to="/" className={styles.brandName}>
+                <Brand fontSize="48px" />
+            </Link>
             <List className={styles.navLinkContainer}>
                 <ListItemButton to="/" className={styles.navLinkButton}>
                     <ListItemText>Home</ListItemText>
@@ -77,12 +90,6 @@ export default function DesktopNavbar({
                                             key={index}
                                             component={Link}
                                             to={`/shop/${item.productCategoryName.toLowerCase()}`}
-                                            state={{
-                                                categoryID:
-                                                    item.productCategoryID,
-                                                categoryName:
-                                                    item.productCategoryName,
-                                            }}
                                         >
                                             <ListItemText>
                                                 {item.productCategoryName}
@@ -101,13 +108,51 @@ export default function DesktopNavbar({
                     <ListItemText>Contact</ListItemText>
                 </ListItemButton>
             </List>
-            <Box className={styles.navbarSearchContainer}>
-                <Search />
-                <InputBase
-                    placeholder="Search products"
-                    className={styles.navbarSearchInput}
-                />
-            </Box>
+            <div className={styles.searhcContainer}>
+                <Box className={styles.navbarSearchContainer}>
+                    <Search />
+                    <InputBase
+                        placeholder="Search products"
+                        className={styles.navbarSearchInput}
+                        value={searchQuery}
+                        onChange={handleSearchQuery}
+                        onFocus={handleSearch}
+                        onMouseDown={handleSearch}
+                        tabIndex={0}
+                    />
+                </Box>
+                {searchOpen && filteredProducts && (
+                    <Box className={styles.searchOutputContainer}>
+                        {filteredProducts.length != 0 ? (
+                            filteredProducts.map((item, index) => (
+                                <Box
+                                    key={index}
+                                    className={styles.searchOutputItem}
+                                    component={Link}
+                                    onClick={() =>
+                                        handleProductClick(item.productCode)
+                                    }
+                                >
+                                    <CardMedia
+                                        component="img"
+                                        image={`/hydrogen/${item.productImage}`}
+                                        className={styles.searchOutputImage}
+                                    />
+                                    <Typography
+                                        className={styles.searchOutputName}
+                                    >
+                                        {item.productName}
+                                    </Typography>
+                                </Box>
+                            ))
+                        ) : (
+                            <Typography className={styles.searchNoOutput}>
+                                No products found
+                            </Typography>
+                        )}
+                    </Box>
+                )}
+            </div>
             <div className={styles.cart}>
                 <Button
                     startIcon={<ShoppingCart />}
@@ -152,7 +197,7 @@ export default function DesktopNavbar({
                                                 <IconButton
                                                     onClick={() =>
                                                         handleMinus(
-                                                            item.productCode,
+                                                            item.productID,
                                                         )
                                                     }
                                                 >
@@ -162,7 +207,7 @@ export default function DesktopNavbar({
                                                 <IconButton
                                                     onClick={() =>
                                                         handleMinus(
-                                                            item.productCode,
+                                                            item.productID,
                                                         )
                                                     }
                                                 >
@@ -174,7 +219,7 @@ export default function DesktopNavbar({
                                             </Typography>
                                             <IconButton
                                                 onClick={() =>
-                                                    handleAdd(item.productCode)
+                                                    handleAdd(item.productID)
                                                 }
                                             >
                                                 <Add />
@@ -262,6 +307,15 @@ export default function DesktopNavbar({
                                 state={{ value: 2 }}
                             >
                                 <Typography>Addresses</Typography>
+                            </Button>
+                            <Button
+                                startIcon={<Settings />}
+                                className={styles.settingsOption}
+                                component={Link}
+                                to="/details"
+                                state={{ value: 3 }}
+                            >
+                                <Typography>Profile Settings</Typography>
                             </Button>
                             <Button
                                 startIcon={<Logout />}

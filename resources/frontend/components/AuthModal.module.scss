@@ -6,7 +6,7 @@
     align-items: center;
 
     .form {
-        max-width: 530px;
+        width: 530px;
         height: fit-content;
         display: flex;
         flex-direction: column;
@@ -35,6 +35,10 @@
             color: $t_lightBlack;
         }
 
+        .formContainer {
+            justify-content: center;
+        }
+
         .formButton {
             width: 100%;
             color: $t_white;
@@ -45,6 +49,23 @@
             .progress {
                 color: $b_gray;
             }
+        }
+
+        .formButtonDisabled {
+            background-color: rgba($b_red, 0.7);
+            width: 100%;
+            color: $t_white;
+            padding: 10px 0;
+            margin-bottom: 5px;
+        }
+
+        .forgotButton {
+            text-decoration: none;
+            color: $t_red;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 14px;
+            text-align: center;
         }
 
         .formLink {

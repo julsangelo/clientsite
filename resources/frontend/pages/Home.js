@@ -26,7 +26,7 @@ import { useReference } from "../context/ReferenceProvider";
 import { getProducts } from "../ajax/backend";
 
 export default function Main() {
-    document.title = "MUX Moto Shop";
+    document.title = "Cliff Motorshop";
     const { references } = useReference();
     const [products, setProducts] = useState();
     const [selectedProducts, setSelectedProducts] = useState();
@@ -130,7 +130,9 @@ export default function Main() {
                                     <Card
                                         className={styles.categoriesSectionCard}
                                     >
-                                        <CardActionArea>
+                                        <CardActionArea
+                                            href={`/shop/${item.productCategoryName.toLowerCase()}`}
+                                        >
                                             <CardMedia
                                                 component="img"
                                                 image="/fjmoto/images/PAANO, JULIUS ANGELO A b-min.JPG"
@@ -194,7 +196,7 @@ export default function Main() {
                                             xl: 2,
                                         }}
                                         key={index}
-                                        className={styles.productGrid}
+                                        container
                                     >
                                         <ProductCard product={item} />
                                     </Grid2>

@@ -19,16 +19,18 @@ export default function CartPanel({
     handleAdd,
     handleMinus,
     setIsRemoveOpen,
-    setRemoveItemCode,
+    setRemoveItemID,
     setRemoveItemType,
 }) {
+    document.title = "Cart | Cliff Motorshop";
+
     return (
         <Grid2 container spacing={3}>
             <Typography className={styles.tabTitle}>My cart</Typography>
             <Grid2 size={{ xs: 12 }} container spacing={3}>
                 {cartItem && cartItem.length > 0 ? (
                     <>
-                        <Grid2 size={{ xs: 12, md: 8 }}>
+                        <Grid2 size={{ xs: 12, lg: 8 }}>
                             <Box className={styles.cartItemDetails}>
                                 {cartItem?.map((item, index) => (
                                     <Box key={index}>
@@ -80,7 +82,7 @@ export default function CartPanel({
                                                                 <IconButton
                                                                     onClick={() =>
                                                                         handleMinus(
-                                                                            item.productCode,
+                                                                            item.productID,
                                                                         )
                                                                     }
                                                                 >
@@ -90,7 +92,7 @@ export default function CartPanel({
                                                                 <IconButton
                                                                     onClick={() =>
                                                                         handleMinus(
-                                                                            item.productCode,
+                                                                            item.productID,
                                                                         )
                                                                     }
                                                                 >
@@ -103,7 +105,7 @@ export default function CartPanel({
                                                             <IconButton
                                                                 onClick={() =>
                                                                     handleAdd(
-                                                                        item.productCode,
+                                                                        item.productID,
                                                                     )
                                                                 }
                                                             >
@@ -121,8 +123,8 @@ export default function CartPanel({
                                                                 setRemoveItemType(
                                                                     "cart",
                                                                 );
-                                                                setRemoveItemCode(
-                                                                    item.productCode,
+                                                                setRemoveItemID(
+                                                                    item.productID,
                                                                 );
                                                             }}
                                                         >
@@ -161,7 +163,7 @@ export default function CartPanel({
                                                             <IconButton
                                                                 onClick={() =>
                                                                     handleMinus(
-                                                                        item.productCode,
+                                                                        item.productID,
                                                                     )
                                                                 }
                                                             >
@@ -171,7 +173,7 @@ export default function CartPanel({
                                                             <IconButton
                                                                 onClick={() =>
                                                                     handleMinus(
-                                                                        item.productCode,
+                                                                        item.productID,
                                                                     )
                                                                 }
                                                             >
@@ -184,13 +186,31 @@ export default function CartPanel({
                                                         <IconButton
                                                             onClick={() =>
                                                                 handleAdd(
-                                                                    item.productCode,
+                                                                    item.productID,
                                                                 )
                                                             }
                                                         >
                                                             <Add />
                                                         </IconButton>
                                                     </Box>
+                                                    <div
+                                                        className={
+                                                            styles.cardRemoveButton
+                                                        }
+                                                        onClick={() => {
+                                                            setIsRemoveOpen(
+                                                                true,
+                                                            );
+                                                            setRemoveItemType(
+                                                                "cart",
+                                                            );
+                                                            setRemoveItemID(
+                                                                item.productID,
+                                                            );
+                                                        }}
+                                                    >
+                                                        Remove
+                                                    </div>
                                                 </Box>
                                                 <Typography
                                                     className={

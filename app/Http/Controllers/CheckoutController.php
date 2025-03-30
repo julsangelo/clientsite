@@ -2,76 +2,117 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Repositories\Address;
+use App\Http\Services\XenditService;
+use App\Mail\OrderPlacedMail;
+use App\Models\Order;
+use App\Models\OrderItem;
+use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Session;
-use Stripe\PaymentIntent;
-use Stripe\Stripe;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Redis;
+use Illuminate\Validation\ValidationException;
+use Laravel\Sanctum\PersonalAccessToken;
 
 class CheckoutController extends Controller
 {
-    public $address;
+    public $xendit;
 
-    public function __construct(Address $address) {
-        $this->address = $address;
+    public function __construct(XenditService $xendit) {
+        $this->xendit = $xendit;
     }
 
-    public function paymentIntent (Request $request) {
-        Stripe::setApiKey(env("STRIPE_SECRET"));
+    public function placeOrder(Request $request){
+        $token = $request->cookie('auth_token');
+        $accessToken = PersonalAccessToken::findToken($token);
+        $customer = $accessToken->tokenable;
+        $customerID = $customer->customerID;
+        $invoiceUrl = null;
 
-        $paymentIntent = PaymentIntent::create([
-            'amount' => $request->amount * 100, // Amount in cents
-            'currency' => 'php',
-            'description' => $request->description,
-            'payment_method_types' => ["card"],
+        try {
+            $validated = $request->validate([
+                'orderDeliveryID' => 'required|integer',
+                'orderItems' => 'required|array',
+                'orderTotal' => 'required|numeric',
+                'orderPaymentMethod' => 'required|string'
+            ], [
+                'orderDeliveryID.required' => 'Select delivery address',
+                'orderPaymentMethod.required' => 'Select payment option'
+            ]);
+        } catch (ValidationException $e) {
+            return response()->json([
+                'message' => $e->validator->errors()->first(),
+                'status' => 'error'
+            ]);
+        }
+
+        $order = Order::create([
+            'customerID' => $customerID,
+            'orderPaymentStatus' => '2',
+            'orderFulfillmentStatus' => '2',
+            'orderStatus' => '1',
+            'orderDeliveryID' => $validated['orderDeliveryID'],
+            'orderTotal' => $validated['orderTotal'],
+            'orderDateTime' => now(),
+            'orderPaymentMethod' => $validated['orderPaymentMethod'],
         ]);
+
+        foreach ($validated['orderItems'] as $item) {
+            OrderItem::create([
+                'orderID' => $order->orderID,
+                'productID' => $item['productID'],
+                'orderItemPrice' => $item['productPrice'],
+                'orderItemQuantity' => $item['quantity'],
+                'orderItemTotal' => $item['productPrice'] * $item['quantity'],
+            ]);
+        }
+
+        $cartKey = "cart:$customerID";
+        Redis::select(1);
+        $cart = json_decode(Redis::get($cartKey), true) ?? [];
+
+        $updatedCart = array_filter($cart, function ($cartItem) use ($validated) {
+            return !in_array($cartItem['productID'], array_column($validated['orderItems'], 'productID'));
+        });
+
+        Redis::set($cartKey, json_encode(array_values($updatedCart)));
+
+        if ($validated['orderPaymentMethod'] === 'online') {
+            $invoiceItems = array_map(function ($item) {
+                return [
+                    'name' => $item['productName'],
+                    'price' => (float) $item['productPrice'],
+                    'quantity' => (int) $item['quantity'],
+                ];
+            }, $validated['orderItems']);
+
+            $invoice = $this->xendit->createInvoice(
+                'cliff_order_' . $order->orderID,
+                $validated['orderTotal'],
+                $customer->customerEmail,
+                'Order Invoice for Order ID: cliff_order_' . $order->orderID,
+                'PHP',
+                $invoiceItems
+            );
+
+            $order->update(['orderInvoiceID' => $invoice['id']]);
+            $invoiceUrl = $invoice['invoice_url'];
+
+            $message = 'Your order has been placed! <a href="' . $invoiceUrl . '" target="_blank" style="text-decoration: none; color: #1ea1d7;">Click here</a> to complete your online payment.';
+        } else {
+            $message = 'Your order has been successfully placed! Payment will be collected upon delivery.';
+        }
+
+        $orderItems = OrderItem::where('orderID', $order->orderID)
+            ->join('product', 'orderItem.productID', '=', 'product.productID')
+            ->select('orderItem.*', 'product.productName', 'product.productImage')
+            ->get();
+
+        Mail::to($customer->customerEmail)->send(new OrderPlacedMail($order, $customer, $orderItems, $invoiceUrl ?? null));
 
         return response()->json([
-            'clientSecret' => $paymentIntent->client_secret,
+            'message' => $message,
+            'status' => 'success',
+            'orderNumber' => $order->orderID
         ]);
-    }
-
-    public function placeOrder (Request $request) {
-        $validatedData = $request->validate([
-            'firstName' => 'required|string|max:255',
-            'lastName' => 'required|string|max:255',
-            'phoneNumber' => [
-                'required',
-                'regex:/^9\d{9}$/',
-            ],
-            'email' => 'required|email|max:255',
-            'address' => 'required|string|max:255',
-            'addressInfo' => 'nullable|string|max:255',
-            'postalCode' => [
-                'required',
-                'regex:/^\d{4}$/'
-            ],
-            'region' => 'required|string|max:255',
-            'province' => 'required|string|max:255',
-            'municipality' => 'required|string|max:255',
-            'barangay' => 'required|string|max:255',
-            'total' => 'required|numeric'
-        ]);
-
-        // $address = ;
-
-        // $placeOrder = DB::table('order')->insert([
-        //     'first_name' => $validatedData['firstName'],
-        //     'last_name' => $validatedData['lastName'],
-        //     'phone_number' => $validatedData['phoneNumber'],
-        //     'email' => $validatedData['email'],
-        //     'address' => $validatedData['address'],
-        //     'address_info' => $validatedData['addressInfo'],
-        //     'postal_code' => $validatedData['postalCode'],
-        //     'region' => $validatedData['region'],
-        //     'province' => $validatedData['province'],
-        //     'municipality' => $validatedData['municipality'],
-        //     'barangay' => $validatedData['barangay'],
-        //     'order' => 
-        //     'orderDateTime' => now(),
-        // ]);
-
-        return $validatedData;
     }
 }

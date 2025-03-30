@@ -6,9 +6,19 @@ use App\Models\Product;
 
 class Products
 {
-    public function products () {
-        $allProducts = Product::distinct('productCode')->get();
-        $categorized = Product::distinct('productCode')->get()->groupBy('productCategory');
+    public function products(){
+        $allProducts = Product::select('productID', 'branchID', 'productCode', 'productName', 'productCategory', 'productImage', 'productStockQuantity', 'productPrice')
+            ->with([
+                'reviews' => function ($query) {
+                    $query->select('productID')
+                        ->selectRaw('AVG(reviewRating) as reviewRating, COUNT(*) as reviewCount')
+                        ->groupBy('productID');
+                }
+            ])
+            ->distinct('productCode')
+            ->get();
+
+        $categorized = $allProducts->groupBy('productCategory');
 
         return [
             'allProducts' => $allProducts,
@@ -17,7 +27,16 @@ class Products
     }
 
     public function allProducts () {
-        $products = Product::distinct('productCode')->get();
+        $products = Product::select('productID', 'branchID', 'productCode', 'productName', 'productCategory', 'productImage', 'productStockQuantity', 'productPrice')
+        ->with([
+            'reviews' => function ($query) {
+                $query->select('productID')
+                    ->selectRaw('AVG(reviewRating) as reviewRating, COUNT(*) as reviewCount')
+                    ->groupBy('productID');
+            }
+        ])
+        ->distinct('productCode')
+        ->get();
 
         return [
             'products' => $products
@@ -25,7 +44,15 @@ class Products
     }
 
     public function categorizedProducts ($categoryID) {
-        $products = Product::select()->where('productCategory', $categoryID)->distinct('productCode')->get();
+        $products = Product::select('productID', 'branchID', 'productCode', 'productName', 'productCategory', 'productImage', 'productStockQuantity', 'productPrice')->where('productCategory', $categoryID)->with([
+            'reviews' => function ($query) {
+                $query->select('productID')
+                    ->selectRaw('AVG(reviewRating) as reviewRating, COUNT(*) as reviewCount')
+                    ->groupBy('productID');
+            }
+        ])
+        ->distinct('productCode')
+        ->get();;
 
         return [
             'products' => $products

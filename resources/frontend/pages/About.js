@@ -5,7 +5,7 @@ import styles from "./About.module";
 import Footer from "../components/Footer";
 
 export default function About() {
-    document.title = "MUX Moto Shop | About";
+    document.title = "About | Cliff Motorshop";
 
     return (
         <>

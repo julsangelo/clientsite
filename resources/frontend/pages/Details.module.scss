@@ -18,12 +18,12 @@
     align-items: center;
 
     .removeContainer {
-        max-width: 530px;
+        width: 530px;
         height: fit-content;
         display: flex;
         flex-direction: column;
         gap: 20px;
-        padding: 40px 25px;
+        padding: 40px 25px 25px;
         margin: 20px 20px;
         background-color: $b_white;
         position: relative;

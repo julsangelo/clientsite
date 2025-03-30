@@ -69,6 +69,10 @@
                 background-color: $b_red;
                 color: $t_white;
                 padding: 12px;
+
+                .progress {
+                    color: $b_gray;
+                }
             }
             .paymentAccordion {
                 border: 1px solid $b_gray;
@@ -129,6 +133,35 @@
                 margin-top: 10px;
                 width: 100%;
             }
+        }
+    }
+}
+
+.confirmationModal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .confirmationContainer {
+        max-width: 530px;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 40px 25px;
+        margin: 20px 20px;
+        background-color: $b_white;
+        position: relative;
+
+        .modalCloseButton {
+            width: fit-content;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .confirmationModalText {
+            text-align: center;
         }
     }
 }

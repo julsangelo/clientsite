@@ -3,7 +3,13 @@ import styles from "./Product.module";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useParams } from "react-router-dom";
-import { addToCart, getProductDetail } from "../ajax/backend";
+import {
+    addToCart,
+    getProductDetail,
+    getProductReview,
+    getProducts,
+    productReview,
+} from "../ajax/backend";
 import {
     Box,
     Button,
@@ -12,23 +18,38 @@ import {
     Divider,
     Grid2,
     IconButton,
+    Rating,
     Typography,
 } from "@mui/material";
 import { Add, Remove } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { useFlashMessage } from "../context/FlashMessage";
+import ProductCard from "../components/ProductCard";
 
 export default function Product() {
     const [productDetail, setProductDetail] = useState(null);
+    const [productReview, setProductReview] = useState();
     const [quantity, setQuantity] = useState(1);
     const { productCode } = useParams();
+    const [products, setProducts] = useState();
     const { setFlashMessage, setFlashStatus } = useFlashMessage();
 
     useEffect(() => {
         getProductDetail(productCode, (data) => {
             setProductDetail(data[0]);
         });
+        getProducts((data) => {
+            setProducts(data.allProducts);
+        });
     }, []);
+
+    useEffect(() => {
+        getProductReview(productDetail?.productID, (data) => {
+            setProductReview(data);
+        });
+
+        document.title = `${productDetail?.productName} | Cliff Motorshop`;
+    }, [productDetail]);
 
     const handleIncrement = () => {
         setQuantity((prev) => prev + 1);
@@ -41,26 +62,17 @@ export default function Product() {
     };
 
     const handleAddToCart = () => {
-        addToCart(productDetail?.productCode, quantity, (response) => {
+        addToCart(productDetail?.productID, quantity, (response) => {
             setFlashMessage(response.message);
             setFlashStatus(response.status);
         });
-    };
-
-    const handleCheckout = () => {
-        const item = JSON.stringify({
-            productCode: productDetail?.productCode,
-            quantity: quantity,
-        });
-
-        localStorage.setItem("item", item);
     };
 
     return (
         <div className={styles.page}>
             <Navbar />
             <div className={styles.productContainer}>
-                <Container maxWidth="xl">
+                <Container maxWidth="xl" className={styles.productContent}>
                     <Grid2 container size={12} spacing={4}>
                         <Grid2 size={{ xs: 12, md: 6 }}>
                             <Box className={styles.productGridBox}>
@@ -92,8 +104,16 @@ export default function Product() {
                                 </div>
                             </Box>
                         </Grid2>
-                        <Grid2 size={{ xs: 12, md: 6 }}>
-                            <Box className={styles.productGridBox}>
+                        <Grid2
+                            size={{ xs: 12, md: 6 }}
+                            spacing={4}
+                            container
+                            direction="column"
+                        >
+                            <Grid2
+                                size={{ xs: 12 }}
+                                className={styles.productGridBox}
+                            >
                                 <div className={styles.productDetails}>
                                     <div className={styles.productName}>
                                         {productDetail?.productName}
@@ -172,17 +192,85 @@ export default function Product() {
                                         </Button>
                                         <Button
                                             className={styles.checkoutButton}
-                                            onClick={handleCheckout}
                                             component={Link}
                                             to="/checkout"
+                                            state={{
+                                                productCode: productCode,
+                                                quantity: quantity,
+                                            }}
                                         >
                                             Checkout
                                         </Button>
                                     </div>
                                 </div>
-                            </Box>
+                            </Grid2>
+                            <Grid2
+                                size={{ xs: 12 }}
+                                className={styles.reviewGridBox}
+                            >
+                                <Typography className={styles.reviewTitle}>
+                                    Reviews
+                                </Typography>
+                                <Divider orientation="horizontal" />
+                                {productReview?.map((item, index) => (
+                                    <Box
+                                        className={styles.reviewBox}
+                                        key={index}
+                                    >
+                                        <Box className={styles.reviewItem}>
+                                            <Typography
+                                                className={styles.reviewName}
+                                            >
+                                                {item.customerUsername}
+                                            </Typography>
+                                            <Typography
+                                                className={styles.reviewDate}
+                                            >
+                                                {item.reviewDate.split(" ")[0]}
+                                            </Typography>
+                                        </Box>
+                                        <Rating
+                                            precision={0.5}
+                                            value={item.reviewRating}
+                                            readOnly
+                                            size="small"
+                                        />
+                                        {item.reviewFeedback && (
+                                            <Typography
+                                                className={
+                                                    styles.reviewFeedback
+                                                }
+                                            >
+                                                {item.reviewFeedback}
+                                            </Typography>
+                                        )}
+                                    </Box>
+                                ))}
+                            </Grid2>
                         </Grid2>
                     </Grid2>
+                    <Box>
+                        <Typography className={styles.recommendedTitle}>
+                            You may also like
+                        </Typography>
+                        <Grid2 container size={12} spacing={2}>
+                            {products?.map((item, index) => (
+                                <Grid2
+                                    size={{
+                                        xs: 6,
+                                        sm: 4,
+                                        md: 3,
+                                        lg: 2.4,
+                                        xl: 2,
+                                    }}
+                                    key={index}
+                                    container
+                                >
+                                    <ProductCard product={item} />
+                                </Grid2>
+                            ))}
+                        </Grid2>
+                    </Box>
                 </Container>
             </div>
             <Footer />

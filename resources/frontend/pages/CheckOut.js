@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./CheckOut.module";
 import Navbar from "../components/Navbar.js";
 import Footer from "../components/Footer.js";
@@ -14,57 +14,34 @@ import {
     FormControlLabel,
     Radio,
     Collapse,
-    List,
-    ListItem,
     Accordion,
     AccordionSummary,
     AccordionDetails,
+    Modal,
+    IconButton,
+    CircularProgress,
 } from "@mui/material";
 import {
-    createInvoice,
     getAllAddress,
     getCart,
     getProductDetail,
     placeOrder,
 } from "../ajax/backend";
-import { Elements, PaymentElement } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
-import { Add, CreditCard, Edit, ExpandMore } from "@mui/icons-material";
-
-import { useFlashMessage } from "../context/FlashMessage.js";
+import { Add, Close, Edit, ExpandMore } from "@mui/icons-material";
 import CheckOutSummary from "../components/Checkout/CheckOutSummary.js";
 import AddAddressForm from "../components/AddAddressForm.js";
-import { useAuth } from "../context/AuthContext.js";
-
-const navigation = performance.getEntriesByType("navigation")[0];
-const isReloaded = navigation && navigation.type === "reload";
-
-if (!isReloaded) {
-    localStorage.removeItem("item");
-}
-
-const paymentMethodDisplayNames = {
-    SHOPEEPAY: "ShopeePay",
-    GCASH: "GCash",
-    PAYMAYA: "Maya",
-    GRABPAY: "GrabPay",
-    BILLEASE: "BillEase",
-    CASHALO: "Cashalo",
-    QRPH: "QRPh",
-    "7ELEVEN": "7-Eleven",
-    CEBUANA: "Cebuana",
-    DP_MLHUILLIER: "M Lhuillier",
-    DP_ECPAY_LOAN: "ECPay Loan",
-    DP_PALAWAN: "Palawan Express",
-    LBC: "LBC",
-    DP_ECPAY_SCHOOL: "ECPay School",
-};
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useFlashMessage } from "../context/FlashMessage.js";
+import Brand from "../components/Brand.js";
 
 export default function CheckOut() {
-    const { user } = useAuth();
+    document.title = "Checkout | Cliff Motorshop";
+    const location = useLocation();
+    const navigate = useNavigate();
+    const { setFlashMessage, setFlashStatus } = useFlashMessage();
     const [selectedPayment, setSelectedPayment] = useState();
     const [selectedAddress, setSelectedAddress] = useState();
-    const [paymentInvoice, setPaymentInvoice] = useState();
     const [address, setAddress] = useState();
     const [items, setItems] = useState();
     const [allAddress, setAllAddress] = useState();
@@ -73,8 +50,12 @@ export default function CheckOut() {
     const [addAddressOpen, setAddAddressOpen] = useState(false);
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
-    const checkoutItem = JSON.parse(localStorage.getItem("item"));
+    const checkoutItem = location.state;
     const [expanded, setExpanded] = useState(false);
+    const [placeOrderResponse, setPlaceOrderResponse] = useState();
+    const [confirmationOpen, setConfirmationOpen] = useState(false);
+    const [orderNumber, setOrderNumber] = useState();
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleChangePayment = (event) => {
         setSelectedPayment(event.target.value);
@@ -103,22 +84,6 @@ export default function CheckOut() {
     }, [addressUpdated]);
 
     useEffect(() => {
-        if (!user || total <= 0) return;
-
-        const invoice = {
-            externalID: `cliff-${user.customerID}-${Date.now()}`,
-            amount: total,
-            email: user.customerEmail,
-            desc: `Cliff Motorshop Invoice for ${user.customerUsername} for order with date ${new Date().toISOString()}`,
-            duration: 86400,
-            currency: "PHP",
-        };
-        createInvoice(invoice, (response) => {
-            setPaymentInvoice(response);
-        });
-    }, [user, total]);
-
-    useEffect(() => {
         getAllAddress((response) => {
             setAllAddress(response.allAddress);
             setSelectedAddress(response.defaultAddress[0].orderDeliveryID);
@@ -145,6 +110,33 @@ export default function CheckOut() {
         setTotal(total);
     }, [items]);
 
+    const handleSubmitOrder = () => {
+        setIsLoading(true);
+        const orderData = {
+            orderDeliveryID: selectedAddress,
+            orderItems: items,
+            orderTotal: total,
+            orderPaymentMethod: selectedPayment,
+        };
+
+        placeOrder(orderData, (response) => {
+            if (response.status === "success") {
+                setPlaceOrderResponse(response.message);
+                setOrderNumber(response.orderNumber);
+            } else if (response.status === "error") {
+                setFlashMessage(response.message);
+                setFlashStatus(response.status);
+            }
+            setIsLoading(false);
+        });
+    };
+
+    useEffect(() => {
+        if (placeOrderResponse) {
+            setConfirmationOpen(true);
+        }
+    }, [placeOrderResponse]);
+
     return (
         <div className={styles.page}>
             <Navbar />
@@ -153,9 +145,7 @@ export default function CheckOut() {
                     <Grid2 container spacing={3}>
                         <Grid2 size={{ xs: 12 }}>
                             <Box className={styles.brandContainer}>
-                                <Typography className={styles.brandTitle}>
-                                    Cliff
-                                </Typography>
+                                <Brand fontSize="40px" />
                                 <Typography className={styles.brandSubtitle}>
                                     Motor Parts and Accesories
                                 </Typography>
@@ -383,327 +373,37 @@ export default function CheckOut() {
                                         <Box>
                                             <FormControlLabel
                                                 className={
-                                                    selectedPayment === "card"
+                                                    selectedPayment === "online"
                                                         ? `${styles.radioButtonSelected}`
                                                         : styles.radioButton
                                                 }
-                                                value="card"
+                                                value="online"
                                                 control={<Radio />}
-                                                label="Debit/Credit Card"
+                                                label="Pay Online"
                                             />
                                             <Collapse
-                                                in={selectedPayment === "card"}
+                                                in={
+                                                    selectedPayment === "online"
+                                                }
                                             >
                                                 <Box
                                                     className={
                                                         styles.paymentAccordion
                                                     }
                                                 >
-                                                    <List>
-                                                        <ListItem>
-                                                            <Button
-                                                                className={
-                                                                    styles.paymentOptions
-                                                                }
-                                                            >
-                                                                <CreditCard />
-                                                                <Typography>
-                                                                    Credit/Debit
-                                                                    Card
-                                                                </Typography>
-                                                            </Button>
-                                                        </ListItem>
-                                                    </List>
+                                                    <Typography
+                                                        className={
+                                                            styles.paymentText
+                                                        }
+                                                    >
+                                                        Pay online using card,
+                                                        direct debit, e-wallets,
+                                                        pay later options, QR,
+                                                        or retail outlets.
+                                                    </Typography>
                                                 </Box>
                                             </Collapse>
                                         </Box>
-
-                                        {paymentInvoice?.available_direct_debits
-                                            .length > 0 && (
-                                            <Box>
-                                                <FormControlLabel
-                                                    className={
-                                                        selectedPayment ===
-                                                        "directDebit"
-                                                            ? `${styles.radioButtonSelected}`
-                                                            : styles.radioButton
-                                                    }
-                                                    value="directDebit"
-                                                    control={<Radio />}
-                                                    label="Direct Debit"
-                                                />
-                                                <Collapse
-                                                    in={
-                                                        selectedPayment ===
-                                                        "directDebit"
-                                                    }
-                                                >
-                                                    <Box
-                                                        className={
-                                                            styles.paymentAccordion
-                                                        }
-                                                    >
-                                                        <List>
-                                                            <ListItem>
-                                                                <Button
-                                                                    className={
-                                                                        styles.paymentOptions
-                                                                    }
-                                                                >
-                                                                    <CreditCard />
-                                                                    <Typography>
-                                                                        Credit/Debit
-                                                                        Card
-                                                                    </Typography>
-                                                                </Button>
-                                                            </ListItem>
-                                                        </List>
-                                                    </Box>
-                                                </Collapse>
-                                            </Box>
-                                        )}
-
-                                        {paymentInvoice?.available_ewallets
-                                            .length > 0 && (
-                                            <Box>
-                                                <FormControlLabel
-                                                    className={
-                                                        selectedPayment ===
-                                                        "e-wallet"
-                                                            ? `${styles.radioButtonSelected}`
-                                                            : styles.radioButton
-                                                    }
-                                                    value="e-wallet"
-                                                    control={<Radio />}
-                                                    label="E-Wallet"
-                                                />
-                                                <Collapse
-                                                    in={
-                                                        selectedPayment ===
-                                                        "e-wallet"
-                                                    }
-                                                >
-                                                    <Box
-                                                        className={
-                                                            styles.paymentAccordion
-                                                        }
-                                                    >
-                                                        <List>
-                                                            {paymentInvoice?.available_ewallets.map(
-                                                                (
-                                                                    item,
-                                                                    index,
-                                                                ) => (
-                                                                    <ListItem
-                                                                        key={
-                                                                            index
-                                                                        }
-                                                                    >
-                                                                        <Button
-                                                                            className={
-                                                                                styles.paymentOptions
-                                                                            }
-                                                                        >
-                                                                            <CreditCard />
-                                                                            <Typography>
-                                                                                {
-                                                                                    paymentMethodDisplayNames[
-                                                                                        item
-                                                                                            .ewallet_type
-                                                                                    ]
-                                                                                }
-                                                                            </Typography>
-                                                                        </Button>
-                                                                    </ListItem>
-                                                                ),
-                                                            )}
-                                                        </List>
-                                                    </Box>
-                                                </Collapse>
-                                            </Box>
-                                        )}
-
-                                        {paymentInvoice?.available_paylaters
-                                            .length > 0 && (
-                                            <Box>
-                                                <FormControlLabel
-                                                    className={
-                                                        selectedPayment ===
-                                                        "paylaters"
-                                                            ? `${styles.radioButtonSelected}`
-                                                            : styles.radioButton
-                                                    }
-                                                    value="paylaters"
-                                                    control={<Radio />}
-                                                    label="Pay Later"
-                                                />
-                                                <Collapse
-                                                    in={
-                                                        selectedPayment ===
-                                                        "paylaters"
-                                                    }
-                                                >
-                                                    <Box
-                                                        className={
-                                                            styles.paymentAccordion
-                                                        }
-                                                    >
-                                                        <List>
-                                                            {paymentInvoice?.available_paylaters.map(
-                                                                (
-                                                                    item,
-                                                                    index,
-                                                                ) => (
-                                                                    <ListItem
-                                                                        key={
-                                                                            index
-                                                                        }
-                                                                    >
-                                                                        <Button
-                                                                            className={
-                                                                                styles.paymentOptions
-                                                                            }
-                                                                        >
-                                                                            <CreditCard />
-                                                                            <Typography>
-                                                                                {
-                                                                                    paymentMethodDisplayNames[
-                                                                                        item
-                                                                                            .paylater_type
-                                                                                    ]
-                                                                                }
-                                                                            </Typography>
-                                                                        </Button>
-                                                                    </ListItem>
-                                                                ),
-                                                            )}
-                                                        </List>
-                                                    </Box>
-                                                </Collapse>
-                                            </Box>
-                                        )}
-
-                                        {paymentInvoice?.available_qr_codes
-                                            .length > 0 && (
-                                            <Box>
-                                                <FormControlLabel
-                                                    className={
-                                                        selectedPayment ===
-                                                        "qrCode"
-                                                            ? `${styles.radioButtonSelected}`
-                                                            : styles.radioButton
-                                                    }
-                                                    value="qrCode"
-                                                    control={<Radio />}
-                                                    label="Pay With QR"
-                                                />
-                                                <Collapse
-                                                    in={
-                                                        selectedPayment ===
-                                                        "qrCode"
-                                                    }
-                                                >
-                                                    <Box
-                                                        className={
-                                                            styles.paymentAccordion
-                                                        }
-                                                    >
-                                                        <List>
-                                                            {paymentInvoice?.available_qr_codes.map(
-                                                                (
-                                                                    item,
-                                                                    index,
-                                                                ) => (
-                                                                    <ListItem
-                                                                        key={
-                                                                            index
-                                                                        }
-                                                                    >
-                                                                        <Button
-                                                                            className={
-                                                                                styles.paymentOptions
-                                                                            }
-                                                                        >
-                                                                            <CreditCard />
-                                                                            <Typography>
-                                                                                {
-                                                                                    paymentMethodDisplayNames[
-                                                                                        item
-                                                                                            .qr_code_type
-                                                                                    ]
-                                                                                }
-                                                                            </Typography>
-                                                                        </Button>
-                                                                    </ListItem>
-                                                                ),
-                                                            )}
-                                                        </List>
-                                                    </Box>
-                                                </Collapse>
-                                            </Box>
-                                        )}
-
-                                        {paymentInvoice
-                                            ?.available_retail_outlets.length >
-                                            0 && (
-                                            <Box>
-                                                <FormControlLabel
-                                                    className={
-                                                        selectedPayment ===
-                                                        "retailOutlets"
-                                                            ? `${styles.radioButtonSelected}`
-                                                            : styles.radioButton
-                                                    }
-                                                    value="retailOutlets"
-                                                    control={<Radio />}
-                                                    label="Retail Outlets"
-                                                />
-                                                <Collapse
-                                                    in={
-                                                        selectedPayment ===
-                                                        "retailOutlets"
-                                                    }
-                                                >
-                                                    <Box
-                                                        className={
-                                                            styles.paymentAccordion
-                                                        }
-                                                    >
-                                                        <List>
-                                                            {paymentInvoice?.available_retail_outlets.map(
-                                                                (
-                                                                    item,
-                                                                    index,
-                                                                ) => (
-                                                                    <ListItem
-                                                                        key={
-                                                                            index
-                                                                        }
-                                                                    >
-                                                                        <Button
-                                                                            className={
-                                                                                styles.paymentOptions
-                                                                            }
-                                                                        >
-                                                                            <CreditCard />
-                                                                            <Typography>
-                                                                                {
-                                                                                    paymentMethodDisplayNames[
-                                                                                        item
-                                                                                            .retail_outlet_name
-                                                                                    ]
-                                                                                }
-                                                                            </Typography>
-                                                                        </Button>
-                                                                    </ListItem>
-                                                                ),
-                                                            )}
-                                                        </List>
-                                                    </Box>
-                                                </Collapse>
-                                            </Box>
-                                        )}
-
                                         <Box>
                                             <FormControlLabel
                                                 className={
@@ -739,8 +439,18 @@ export default function CheckOut() {
                                         </Box>
                                     </RadioGroup>
                                 </Box>
-                                <Button className={styles.placeOrderButton}>
-                                    Place Order
+                                <Button
+                                    className={styles.placeOrderButton}
+                                    onClick={() => handleSubmitOrder()}
+                                >
+                                    {isLoading ? (
+                                        <CircularProgress
+                                            size="28px"
+                                            className={styles.progress}
+                                        />
+                                    ) : (
+                                        "Place Order"
+                                    )}
                                 </Button>
                             </Box>
                         </Grid2>
@@ -751,6 +461,29 @@ export default function CheckOut() {
                 </Container>
             </div>
             <Footer />
+            <Modal open={confirmationOpen} className={styles.confirmationModal}>
+                <Box className={styles.confirmationContainer}>
+                    <IconButton
+                        className={styles.modalCloseButton}
+                        onClick={() => {
+                            setConfirmationOpen(false);
+                            navigate("/details", {
+                                state: { value: 0, orderNo: orderNumber },
+                            });
+                        }}
+                    >
+                        <Close />
+                    </IconButton>
+                    <DotLottieReact
+                        src="https://lottie.host/22ec7a6a-9eb1-4a90-8a8a-b19155ef948d/Wq39rWzqPb.lottie"
+                        autoplay
+                    />
+                    <Typography
+                        className={styles.confirmationModalText}
+                        dangerouslySetInnerHTML={{ __html: placeOrderResponse }}
+                    />
+                </Box>
+            </Modal>
         </div>
     );
 }

@@ -22,6 +22,7 @@ export default function AddressPanel({
     setDeleteAddressID,
     setRemoveItemType,
 }) {
+    document.title = "Address | Cliff Motorshop";
     const [addAddressOpen, setAddAddressOpen] = useState(false);
     const [editAddressOpen, setEditAddressOpen] = useState(false);
     const [selectedAddress, setSelectedAddress] = useState();

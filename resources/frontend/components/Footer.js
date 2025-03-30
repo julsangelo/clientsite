@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import styles from "./Footer.module";
 import {
     Box,
@@ -15,11 +15,11 @@ import {
     Link,
     Grid2,
     Container,
-    ListItemButton,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useReference } from "../context/ReferenceProvider";
 import ContactIcon from "./ContactIcon";
+import Brand from "./Brand";
 
 const FooterSection = ({ title, data, prefix }) => (
     <Box>
@@ -100,9 +100,9 @@ export default function Footer() {
                 {isMobile ? (
                     <>
                         <Box>
-                            <Typography className={styles.footerSectionBrand}>
-                                MUX
-                            </Typography>
+                            <Link to="/" className={styles.brandName}>
+                                <Brand fontSize="40px" />
+                            </Link>
                             <div className={styles.footerSectionIconContainer}>
                                 {references?.socialMedia?.map((item, index) => (
                                     <a
@@ -196,11 +196,9 @@ export default function Footer() {
                     <Grid2 container spacing={4}>
                         <Grid2 size={{ md: 3, lg: 4, xl: 5 }}>
                             <Box>
-                                <Typography
-                                    className={styles.footerSectionBrand}
-                                >
-                                    MUX
-                                </Typography>
+                                <Link to="/" className={styles.brandName}>
+                                    <Brand fontSize="40px" />
+                                </Link>
                                 <div
                                     className={
                                         styles.footerSectionIconContainer

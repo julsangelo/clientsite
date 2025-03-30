@@ -29,6 +29,7 @@ import OrdersPanel from "../components/Details/OrderPanel";
 import CartPanel from "../components/Details/CartPanel";
 import { useFlashMessage } from "../context/FlashMessage";
 import AddressPanel from "../components/Details/AddressPanel";
+import SettingsPanel from "../components/Details/SettingsPanel";
 
 export default function Cart() {
     const location = useLocation();
@@ -37,13 +38,12 @@ export default function Cart() {
     const [cartItem, setCartItem] = useState();
     const [addressItem, setAddressItem] = useState();
     const [addressUpdated, setAddressUpdated] = useState(false);
-    const [removeItemCode, setRemoveItemCode] = useState();
+    const [removeItemID, setRemoveItemID] = useState();
     const [deleteAddressID, setDeleteAddressID] = useState();
     const [isRemoveOpen, setIsRemoveOpen] = useState(false);
     const [removeItemType, setRemoveItemType] = useState("");
     const theme = useTheme();
-    const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
-    const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+    const isMobile = useMediaQuery(theme.breakpoints.down("md"));
     const { setFlashMessage, setFlashStatus } = useFlashMessage();
 
     const handleChange = (event, newValue) => {
@@ -74,21 +74,21 @@ export default function Cart() {
         });
     }, [addressUpdated]);
 
-    const handleAdd = (productCode) => {
+    const handleAdd = (productID) => {
         const updatedcart = cartItem.map((item) =>
-            item.productCode === productCode
+            item.productID === productID
                 ? { ...item, quantity: item.quantity + 1 }
                 : item,
         );
         setCartItem(updatedcart);
-        updateItemQuantity(productCode, "increment");
+        updateItemQuantity(productID, "increment");
     };
 
-    const handleMinus = (productCode) => {
+    const handleMinus = (productID) => {
         setCartItem((prevcart) => {
             const updatedcart = prevcart
                 .map((item) =>
-                    item.productCode === productCode
+                    item.productID === productID
                         ? { ...item, quantity: item.quantity - 1 }
                         : item,
                 )
@@ -97,12 +97,12 @@ export default function Cart() {
             return [...updatedcart];
         });
 
-        updateItemQuantity(productCode, "decrement");
+        updateItemQuantity(productID, "decrement");
     };
 
     const handleRemoveItem = () => {
         if (removeItemType === "cart") {
-            removeItem(removeItemCode, (response) => {
+            removeItem(removeItemID, (response) => {
                 setFlashMessage(response.message);
                 setFlashStatus(response.status);
                 if (response.status === "success") {
@@ -144,19 +144,21 @@ export default function Cart() {
                                 <TabList
                                     onChange={handleChange}
                                     orientation={
-                                        isSmallScreen
-                                            ? "horizontal"
-                                            : "vertical"
+                                        isMobile ? "horizontal" : "vertical"
                                     }
                                 >
                                     <Tab label="My Orders" value="0" />
                                     <Tab label="My Cart" value="1" />
                                     <Tab label="My Addresses" value="2" />
+                                    <Tab label="Profile Settings" value="3" />
                                 </TabList>
                             </Grid2>
                             <Grid2 size={{ xs: 12, md: 10 }}>
                                 <TabPanel value="0">
-                                    <OrdersPanel orderItem={orderItem} />
+                                    <OrdersPanel
+                                        orderItem={orderItem}
+                                        isMobile={isMobile}
+                                    />
                                 </TabPanel>
                                 <TabPanel value="1">
                                     <CartPanel
@@ -166,7 +168,7 @@ export default function Cart() {
                                         handleAdd={handleAdd}
                                         handleMinus={handleMinus}
                                         setIsRemoveOpen={setIsRemoveOpen}
-                                        setRemoveItemCode={setRemoveItemCode}
+                                        setRemoveItemID={setRemoveItemID}
                                         setRemoveItemType={setRemoveItemType}
                                     />
                                 </TabPanel>
@@ -177,6 +179,12 @@ export default function Cart() {
                                         setIsRemoveOpen={setIsRemoveOpen}
                                         setDeleteAddressID={setDeleteAddressID}
                                         setRemoveItemType={setRemoveItemType}
+                                    />
+                                </TabPanel>
+                                <TabPanel value="3">
+                                    <SettingsPanel
+                                        orderItem={orderItem}
+                                        isMobile={isMobile}
                                     />
                                 </TabPanel>
                             </Grid2>

@@ -60,19 +60,6 @@
             border: 1px solid $b_gray;
         }
 
-        .cardRemoveButton {
-            width: 100%;
-            display: block;
-            text-align: center;
-            margin-top: 5px;
-            cursor: pointer;
-            color: $t_lighterBlack;
-        }
-
-        .cardRemoveButton:hover {
-            color: $t_red;
-        }
-
         .cartItemPrice {
             color: $t_black;
             text-wrap: nowrap;
@@ -106,6 +93,19 @@
             font-size: 14px;
         }
     }
+}
+
+.cardRemoveButton {
+    width: 100%;
+    display: block;
+    text-align: center;
+    margin-top: 5px;
+    cursor: pointer;
+    color: $t_lighterBlack;
+}
+
+.cardRemoveButton:hover {
+    color: $t_red;
 }
 
 .totalContainer {

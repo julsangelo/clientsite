@@ -12,7 +12,7 @@ use Laravel\Sanctum\PersonalAccessToken;
 class CartController extends Controller
 {
     public function addToCart(Request $request) {
-        $code = $request->input('code');
+        $productID = $request->input('productID');
         $quantity = $request->input('quantity');
         $token = $request->cookie('auth_token');
 
@@ -27,7 +27,7 @@ class CartController extends Controller
     
             $found = false;
             foreach ($cart as &$item) {
-                if ($item['productCode'] === $code) {
+                if ($item['productID'] === $productID) {
                     $item['quantity'] += $quantity;
                     $found = true;
                     break;
@@ -35,7 +35,7 @@ class CartController extends Controller
             }
     
             if (!$found) {
-                $cart[] = ['productCode' => $code, 'quantity' => $quantity];
+                $cart[] = ['productID' => $productID, 'quantity' => $quantity];
             }
     
             Redis::set($cartKey, json_encode($cart));
@@ -45,7 +45,7 @@ class CartController extends Controller
     
             $found = false;
             foreach ($cart as &$item) {
-                if ($item['productCode'] === $code) {
+                if ($item['productID'] === $productID) {
                     $item['quantity'] += $quantity;
                     $found = true;
                     break;
@@ -53,7 +53,7 @@ class CartController extends Controller
             }
     
             if (!$found) {
-                $cart[] = ['productCode' => $code, 'quantity' => $quantity];
+                $cart[] = ['productID' => $productID, 'quantity' => $quantity];
             }
     
             Cookie::queue('cart', json_encode($cart), 525600);
@@ -86,12 +86,12 @@ class CartController extends Controller
         }
 
         $cartItems = array_map(function ($item) {
-            $product = Product::where('productCode', $item['productCode'])
-                ->select('productCode', 'productName', 'productImage', 'productPrice')
+            $product = Product::where('productID', $item['productID'])
+                ->select('productID', 'productName', 'productImage', 'productPrice')
                 ->first();
 
             return [
-                'productCode' => $item['productCode'],
+                'productID' => $item['productID'],
                 'quantity' => $item['quantity'],
                 'productName' => $product ? $product->productName : null,
                 'productImage' => $product ? $product->productImage : null,
@@ -103,7 +103,7 @@ class CartController extends Controller
     }
 
     public function updateItemQuantity(Request $request) {
-        $code = $request->input('code');
+        $productID = $request->input('productID');
         $action = $request->input('action');
         $token = $request->cookie('auth_token');
         
@@ -120,13 +120,13 @@ class CartController extends Controller
         }
     
         foreach ($cart as &$item) {
-            if ($item['productCode'] === $code) {
+            if ($item['productID'] === $productID) {
                 if ($action === 'increment') {
                     $item['quantity'] += 1;
                 } elseif ($action === 'decrement') {
                     $item['quantity'] -= 1;
                     if ($item['quantity'] <= 0) {
-                        $cart = array_filter($cart, fn($i) => $i['productCode'] !== $code);
+                        $cart = array_filter($cart, fn($i) => $i['productID'] !== $productID);
                     }
                 }
                 break;
@@ -138,10 +138,12 @@ class CartController extends Controller
         } else {
             Cookie::queue('cart', json_encode(array_values($cart)), 525600);
         }
+
+        return $action;
     }
 
     public function removeItem(Request $request) {
-        $code = $request->input('code');
+        $productID = $request->input('productID');
         $token = $request->cookie('auth_token');
         $accessToken = PersonalAccessToken::findToken($token);
         $customer = $accessToken->tokenable;
@@ -151,8 +153,8 @@ class CartController extends Controller
         $cartKey = "cart:$customerID";
         $cart = json_decode(Redis::get($cartKey), true) ?? [];
 
-        $cart = array_filter($cart, function ($item) use ($code) {
-            return !isset($item['productCode']) || $item['productCode'] !== $code;
+        $cart = array_filter($cart, function ($item) use ($productID) {
+            return !isset($item['productID']) || $item['productID'] !== $productID;
         });
     
         $cart = array_values($cart);

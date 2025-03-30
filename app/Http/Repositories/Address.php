@@ -39,6 +39,7 @@ class Address
     public function getAllAddress($customerID) {
         $allAddress = OrderDelivery::select()
             ->where('customerID', $customerID)
+            ->where('deliveryIsActive', '1')
             ->orderByDesc('deliveryIsDefault')
             ->get();
 

@@ -89,6 +89,7 @@
 
 .productSection {
     padding: 70px 0px;
+    background-color: $b_gLight;
 
     .productSectionHeader {
         display: flex;
@@ -100,10 +101,6 @@
             font-weight: bold;
             color: $t_black;
         }
-    }
-
-    .productGrid {
-        display: flex;
     }
 
     .productNoProduct {
@@ -122,6 +119,7 @@
 
 .featureSection {
     padding: 50px 0;
+    background-color: $b_gLight;
 
     .featureSectionCard {
         padding: 20px;

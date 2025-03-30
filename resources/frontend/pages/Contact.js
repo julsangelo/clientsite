@@ -15,7 +15,7 @@ import { useReference } from "../context/ReferenceProvider";
 import ContactIcon from "../components/ContactIcon";
 
 export default function Contact() {
-    document.title = "MUX Moto Shop | Contact";
+    document.title = "Contact | Cliff Motorshop";
     const { references } = useReference();
 
     const [value, setValue] = useState("0");

@@ -8,6 +8,8 @@ class Order extends Model
 {
     protected $table = 'order';
 
+    protected $primaryKey = 'orderID';
+
     public $timestamps = false;
 
     public function orderItems() {
@@ -28,4 +30,25 @@ class Order extends Model
     {
         return $this->belongsTo(OrderStatus::class, 'orderStatus', 'orderStatusID');
     }
+
+    public function orderDeliveryDetails() {
+        return $this->belongsTo(OrderDelivery::class, 'orderDeliveryID', 'orderDeliveryID');
+    }
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class, 'customerID');
+    }
+
+    protected $fillable = [
+        'customerID',
+        'orderPaymentStatus',
+        'orderFulfillmentStatus',
+        'orderStatus',
+        'orderDeliveryID',
+        'orderPaymentMethod',
+        'orderInvoiceID',
+        'orderDateTime',
+        'orderTotal'
+    ];
 }

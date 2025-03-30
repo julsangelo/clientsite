@@ -13,11 +13,15 @@ import {
 import { Link } from "react-router-dom";
 
 export default function ProductCard({ product }) {
+    const handleProductClick = (productCode) => {
+        window.location.href = `/shop/product/${productCode}`;
+    };
+
     return (
         <Card variant="outlined" className={styles.productCard}>
             <CardActionArea
                 component={Link}
-                to={`/shop/product/${product.productCode}`}
+                onClick={() => handleProductClick(product.productCode)}
                 className={styles.productCardButton}
             >
                 <div className={styles.productCardButtonContent}>
@@ -33,14 +37,14 @@ export default function ProductCard({ product }) {
                         <div>
                             <div className={styles.productCardRating}>
                                 <Rating
-                                    defaultValue={2.5}
-                                    precision={0.5}
+                                    defaultValue={product.reviews.reviewRating}
+                                    precision={0.1}
                                     readOnly
                                 />
                                 <Typography
                                     className={styles.productCardRatingText}
                                 >
-                                    1 review
+                                    {product.reviews.reviewCount} review/s
                                 </Typography>
                             </div>
                             <div>

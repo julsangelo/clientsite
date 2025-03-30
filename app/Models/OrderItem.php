@@ -10,7 +10,15 @@ class OrderItem extends Model
 
     public $timestamps = false;
 
-    public function product(){
-        return $this->belongsTo(Product::class, 'productID');
+    public function product() {
+        return $this->belongsTo(Product::class, 'productID', 'productID');
     }
+
+    protected $fillable = [
+        'orderID',
+        'productID',
+        'orderItemPrice',
+        'orderItemQuantity',
+        'orderItemTotal'
+    ];
 }

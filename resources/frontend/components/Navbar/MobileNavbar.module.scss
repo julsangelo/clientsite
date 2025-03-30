@@ -78,6 +78,36 @@
             font-size: 15px;
         }
 
+        .searchOutputContainer {
+            background-color: $b_gLight;
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            row-gap: 10px;
+
+            .searchOutputItem {
+                display: flex;
+                align-items: center;
+                column-gap: 20px;
+                text-decoration: none;
+
+                .searchOutputImage {
+                    height: 50px;
+                    width: 50px;
+                }
+                .searchOutputName {
+                    color: $t_black;
+                    font-size: 14px;
+                }
+            }
+
+            .searchNoOutput {
+                color: $t_black;
+                text-align: center;
+            }
+        }
+
         .mobileNavbarLoginButton {
             width: 250px;
             background-color: $t_red;
@@ -204,8 +234,6 @@
     }
 }
 
-.navbarBrand {
-    color: $t_red;
-    font-size: 32px !important;
-    font-weight: 900 !important;
+.brandName {
+    text-decoration: none;
 }

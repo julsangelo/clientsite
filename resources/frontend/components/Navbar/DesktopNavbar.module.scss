@@ -1,9 +1,8 @@
 @import "../../assets/scss/main.module.scss";
 
-.navbarBrand {
-    color: $t_red;
-    font-size: 32px !important;
-    font-weight: 900 !important;
+.brandName {
+    text-decoration: none;
+    margin-right: 10px;
 }
 
 .navLinkContainer {
@@ -32,19 +31,55 @@
     }
 }
 
-.navbarSearchContainer {
-    background-color: $b_darkGray;
-    padding: 0 20px;
-    display: flex;
-    align-items: center;
-    column-gap: 10px;
+.searhcContainer {
     width: 100%;
-    font-size: 15px;
+    position: relative;
 
-    .navbarSearchInput {
-        height: 100%;
-        color: $t_white;
+    .navbarSearchContainer {
+        background-color: $b_darkGray;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+        column-gap: 10px;
         width: 100%;
+        font-size: 15px;
+        height: 100%;
+
+        .navbarSearchInput {
+            height: 100%;
+            color: $t_white;
+            width: 100%;
+        }
+    }
+
+    .searchOutputContainer {
+        position: absolute;
+        background-color: $b_white;
+        width: 100%;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+
+        .searchOutputItem {
+            display: flex;
+            align-items: center;
+            column-gap: 20px;
+            text-decoration: none;
+
+            .searchOutputImage {
+                height: 50px;
+                width: 50px;
+            }
+            .searchOutputName {
+                color: $t_black;
+            }
+        }
+
+        .searchNoOutput {
+            color: $t_black;
+            text-align: center;
+        }
     }
 }
 

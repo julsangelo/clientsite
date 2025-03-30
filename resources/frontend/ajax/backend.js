@@ -34,9 +34,9 @@ export function getProductDetail(productCode, callback) {
         });
 }
 
-export function addToCart(productCode, quantity, callback) {
+export function addToCart(productID, quantity, callback) {
     axios
-        .post("/addToCart", { code: productCode, quantity: quantity })
+        .post("/addToCart", { productID: productID, quantity: quantity })
         .then((response) => {
             callback(response.data);
         });
@@ -48,8 +48,8 @@ export function getCart(callback) {
     });
 }
 
-export function updateItemQuantity(productCode, action) {
-    axios.post("/updateItemQuantity", { code: productCode, action: action });
+export function updateItemQuantity(productID, action) {
+    axios.post("/updateItemQuantity", { productID: productID, action: action });
 }
 
 export function getClientIntent(amount, callback) {
@@ -111,8 +111,8 @@ export function getAllAddress(callback) {
     });
 }
 
-export function removeItem(productCode, callback) {
-    axios.post("/removeItem", { code: productCode }).then((response) => {
+export function removeItem(productID, callback) {
+    axios.post("/removeItem", { productID: productID }).then((response) => {
         callback(response.data);
     });
 }
@@ -137,8 +137,50 @@ export function getAddress(orderDeliveryID, callback) {
     });
 }
 
-export function createInvoice(data, callback) {
-    axios.post("/createInvoice", { data: data }).then((response) => {
+export function getResetCode(data, callback) {
+    axios.post("/getResetCode", data).then((response) => {
+        callback(response.data);
+    });
+}
+
+export function checkResetCode(data, callback) {
+    axios.post("/checkResetCode", data).then((response) => {
+        callback(response.data);
+    });
+}
+
+export function resetPassword(token, data, callback) {
+    axios.post("/resetPassword", { token, data }).then((response) => {
+        callback(response.data);
+    });
+}
+
+export function productReview(data, callback) {
+    axios.post("/productReview", { data }).then((response) => {
+        callback(response.data);
+    });
+}
+
+export function getReview(callback) {
+    axios.post("/getReview").then((response) => {
+        callback(response.data);
+    });
+}
+
+export function getAllReview(callback) {
+    axios.get("/getAllReview").then((response) => {
+        callback(response.data);
+    });
+}
+
+export function getProductReview(productID, callback) {
+    axios.post("/getProductReview", { productID }).then((response) => {
+        callback(response.data.productReview);
+    });
+}
+
+export function updateProfile(data, callback) {
+    axios.post("/updateProfile", { data }).then((response) => {
         callback(response.data);
     });
 }

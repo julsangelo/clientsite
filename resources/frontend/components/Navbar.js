@@ -36,7 +36,12 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import { useReference } from "../context/ReferenceProvider";
 import { Link } from "react-router-dom";
-import { getCart, signOut, updateItemQuantity } from "../ajax/backend";
+import {
+    getCart,
+    getProducts,
+    signOut,
+    updateItemQuantity,
+} from "../ajax/backend";
 import AuthModal from "./AuthModal";
 import { useAuth } from "../context/AuthContext";
 import { useFlashMessage } from "../context/FlashMessage";
@@ -49,11 +54,15 @@ export default function Navbar() {
     const [menu, setMenu] = useState(null);
     const [cart, setCart] = useState(null);
     const [shop, setShop] = useState(null);
+    const [search, setSearch] = useState(null);
     const [settings, setSettings] = useState(null);
     const [modalOpen, setModalOpen] = useState(false);
     const { references } = useReference();
     const [cartItem, setCartItem] = useState([]);
-    const { isLoggedIn, user, setIsLoggedIn, setUser } = useAuth();
+    const [searchQuery, setSearchQuery] = useState("");
+    const [product, setProduct] = useState();
+    const [filteredProducts, setFilteredProducts] = useState();
+    const { isLoggedIn, user, toggleUpdate } = useAuth();
     const { setFlashMessage, setFlashStatus } = useFlashMessage();
 
     const handleMenu = (event) => {
@@ -61,6 +70,7 @@ export default function Navbar() {
         setCart(null);
         setShop(null);
         setSettings(null);
+        setSearch(null);
     };
 
     const handleShop = (event) => {
@@ -68,6 +78,7 @@ export default function Navbar() {
         setCart(null);
         setMenu(null);
         setSettings(null);
+        setSearch(null);
     };
 
     const handleCart = (event) => {
@@ -75,6 +86,7 @@ export default function Navbar() {
         setMenu(null);
         setShop(null);
         setSettings(null);
+        setSearch(null);
     };
 
     const handleSettings = (event) => {
@@ -82,6 +94,15 @@ export default function Navbar() {
         setMenu(null);
         setCart(null);
         setShop(null);
+        setSearch(null);
+    };
+
+    const handleSearch = (event) => {
+        setSearch((prev) => (prev ? null : event.currentTarget));
+        setMenu(null);
+        setCart(null);
+        setShop(null);
+        setSettings(null);
     };
 
     const handleModalOpen = () => setModalOpen(true);
@@ -90,16 +111,40 @@ export default function Navbar() {
     const shopOpen = Boolean(shop);
     const cartOpen = Boolean(cart);
     const settingsOpen = Boolean(settings);
+    const searchOpen = Boolean(search);
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            const navbar = document.querySelector(`.${styles.navbar}`);
+            if (navbar && !navbar.contains(event.target)) {
+                setMenu(null);
+                setCart(null);
+                setShop(null);
+                setSettings(null);
+                setSearch(null);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
 
     const handleSignOut = () => {
         signOut((response) => {
             setFlashMessage(response.message);
             setFlashStatus(response.status);
-            setIsLoggedIn(false);
-            setUser(null);
-            window.location.reload();
+            toggleUpdate();
+            window.location.href = "/";
         });
     };
+
+    useEffect(() => {
+        getProducts((response) => {
+            setProduct(response.allProducts);
+        });
+    }, []);
 
     useEffect(() => {
         if (cartOpen) {
@@ -109,21 +154,39 @@ export default function Navbar() {
         }
     }, [cartOpen, handleMinus]);
 
-    const handleAdd = (productCode) => {
+    const handleSearchQuery = (event) => {
+        const query = event.target.value.toLowerCase();
+        setSearchQuery(query);
+
+        if (!query.trim()) {
+            setSearch(null);
+            setFilteredProducts([]);
+        } else {
+            setSearch(event.currentTarget);
+            const filteredProducts = product.filter((item) =>
+                item.productName.toLowerCase().includes(query),
+            );
+            setFilteredProducts(filteredProducts);
+        }
+    };
+
+    const handleAdd = (productID) => {
         const updatedCart = cartItem.map((item) =>
-            item.productCode === productCode
+            item.productID === productID
                 ? { ...item, quantity: item.quantity + 1 }
                 : item,
         );
+
         setCartItem(updatedCart);
-        updateItemQuantity(productCode, "increment");
+        updateItemQuantity(productID, "increment");
     };
 
-    const handleMinus = (productCode) => {
+    const handleMinus = (productID) => {
+        console.log(cartOpen);
         setCartItem((prevCart) => {
             const updatedCart = prevCart
                 .map((item) =>
-                    item.productCode === productCode
+                    item.productID === productID
                         ? { ...item, quantity: item.quantity - 1 }
                         : item,
                 )
@@ -132,7 +195,7 @@ export default function Navbar() {
             return [...updatedCart];
         });
 
-        updateItemQuantity(productCode, "decrement");
+        updateItemQuantity(productID, "decrement");
     };
 
     const total = (cartItem || [])
@@ -160,6 +223,11 @@ export default function Navbar() {
                         user={user}
                         isLoggedIn={isLoggedIn}
                         references={references}
+                        searchOpen={searchOpen}
+                        searchQuery={searchQuery}
+                        handleSearchQuery={handleSearchQuery}
+                        filteredProducts={filteredProducts}
+                        handleSearch={handleSearch}
                     />
                 ) : (
                     <DesktopNavbar
@@ -170,6 +238,7 @@ export default function Navbar() {
                         handleMinus={handleMinus}
                         handleModalOpen={handleModalOpen}
                         handleSignOut={handleSignOut}
+                        handleSearch={handleSearch}
                         cartOpen={cartOpen}
                         shopOpen={shopOpen}
                         settingsOpen={settingsOpen}
@@ -178,15 +247,18 @@ export default function Navbar() {
                         user={user}
                         isLoggedIn={isLoggedIn}
                         references={references}
+                        searchOpen={searchOpen}
+                        searchQuery={searchQuery}
+                        handleSearchQuery={handleSearchQuery}
+                        filteredProducts={filteredProducts}
                     />
                 )}
             </Container>
             <AuthModal
                 isOpen={modalOpen}
                 setModalOpen={setModalOpen}
-                setIsLoggedIn={setIsLoggedIn}
-                setUser={setUser}
                 setMenu={setMenu}
+                toggleUpdate={toggleUpdate}
             />
         </AppBar>
     );

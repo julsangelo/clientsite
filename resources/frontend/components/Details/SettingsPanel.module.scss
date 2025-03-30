@@ -1,0 +1,32 @@
+@import "../../assets/scss/main.module.scss";
+
+.tabTitle {
+    font-weight: 800 !important;
+    font-size: 32px !important;
+}
+
+.settingsContainer {
+    background-color: $b_white;
+    height: fit-content;
+    padding: 20px;
+    margin-bottom: 10px;
+
+    .editPasswordBox {
+        width: 100%;
+        border: 1px solid $b_gray;
+        border-radius: 5px;
+        padding: 15px;
+        margin-top: 15px;
+
+        .editPasswordCancel {
+            font-size: 14px !important;
+            font-weight: 600 !important;
+            background-color: $b_red !important;
+            color: $t_white !important;
+            height: fit-content;
+            margin-top: 10px !important;
+            display: flex !important;
+            justify-self: end !important;
+        }
+    }
+}

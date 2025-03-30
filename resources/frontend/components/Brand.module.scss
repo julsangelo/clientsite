@@ -1,0 +1,11 @@
+@import "../assets/scss/main.module.scss";
+
+.brandName {
+    font-weight: 900 !important;
+    background: #065477;
+    background: linear-gradient(to bottom, #065477 40%, #ecc232 60%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: "Chivo", sans-serif !important;
+    font-style: italic !important;
+}
