@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/getReferences', [ReferenceController::class, 'getReferences']);
 Route::get('/getProducts', [HomeController::class, 'getProducts']);
+Route::get('/featuredProduct', [HomeController::class, 'featuredProduct']);
 Route::get('/getAllProducts', [ShopController::class, 'getAllProducts']);
 Route::post('/getCategorizedProducts', [ShopController::class, 'getCategorizedProducts']);
 Route::post('/getProductDetail', [ShopController::class, 'getProductDetail']);

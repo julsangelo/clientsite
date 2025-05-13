@@ -36,16 +36,26 @@ export default function ProductCard({ product }) {
                         </Typography>
                         <div>
                             <div className={styles.productCardRating}>
-                                <Rating
-                                    defaultValue={product.reviews.reviewRating}
-                                    precision={0.1}
-                                    readOnly
-                                />
-                                <Typography
-                                    className={styles.productCardRatingText}
-                                >
-                                    {product.reviews.reviewCount} review/s
-                                </Typography>
+                                {product.reviews && (
+                                    <Rating
+                                        value={product.reviews.reviewRating}
+                                        precision={0.1}
+                                        readOnly
+                                    />
+                                )}
+                                {product.reviews ? (
+                                    <Typography
+                                        className={styles.productCardRatingText}
+                                    >
+                                        {product.reviews.reviewCount} review/s
+                                    </Typography>
+                                ) : (
+                                    <Typography
+                                        className={styles.productCardRatingText}
+                                    >
+                                        No reviews
+                                    </Typography>
+                                )}
                             </div>
                             <div>
                                 <Typography className={styles.productCardPrice}>

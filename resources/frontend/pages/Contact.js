@@ -62,7 +62,7 @@ export default function Contact() {
                                                     styles.contactInfoSectionBoxContent
                                                 }
                                             >
-                                                MUX Automotive Parts Trading -{" "}
+                                                Cliff Automotive Parts Trading -{" "}
                                                 {item.branchLocation}
                                                 {item.contacts.map(
                                                     (item, index) => (

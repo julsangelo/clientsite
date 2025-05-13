@@ -23,12 +23,13 @@ import {
 } from "@mui/icons-material";
 import ProductCard from "../components/ProductCard";
 import { useReference } from "../context/ReferenceProvider";
-import { getProducts } from "../ajax/backend";
+import { getFeaturedProduct, getProducts } from "../ajax/backend";
 
 export default function Main() {
     document.title = "Cliff Motorshop";
     const { references } = useReference();
     const [products, setProducts] = useState();
+    const [featuredProduct, setFeaturedProduct] = useState();
     const [selectedProducts, setSelectedProducts] = useState();
     const [currentPage, setCurrentPage] = useState(1);
     const productsPerPage = 6;
@@ -37,6 +38,9 @@ export default function Main() {
         getProducts((data) => {
             setProducts(data);
             setSelectedProducts(data.allProducts);
+        });
+        getFeaturedProduct((data) => {
+            setFeaturedProduct(data.featuredProduct[0]);
         });
     }, []);
 
@@ -68,22 +72,17 @@ export default function Main() {
                         spacing={5}
                         className={styles.heroSectionContainer}
                     >
-                        <Grid2 container size={{ lg: 12, xl: 5 }} spacing={4}>
+                        <Grid2 container size={{ lg: 12, xl: 5 }} spacing={2}>
                             <Typography className={styles.heroSectionTitle}>
                                 Cliff Automotive Part Trading
                             </Typography>
                             <Typography className={styles.heroSectionHeading}>
-                                COIDO VACUUM CLEANER DC 12V
+                                Featured Product
                             </Typography>
                             <Typography
                                 className={styles.heroSectionSubheading}
                             >
-                                Get more done with cyclonic power and a
-                                high-performance motor that maximizes suction.
-                                Our vacuum’s easy-to-empty, clear dust cup and
-                                changeable air filter keep it running smoothly,
-                                while LED lighting helps you spot every last bit
-                                of dust.
+                                {featuredProduct?.productName}
                             </Typography>
                         </Grid2>
                         <Grid2
@@ -93,7 +92,7 @@ export default function Main() {
                         >
                             <CardMedia
                                 component="img"
-                                image="/fjmoto/images/61Ov4yDCYEL._AC_UF1000,1000_QL80_.jpg"
+                                image={`/hydrogen/${featuredProduct?.productImage}`}
                                 className={styles.heroSectionImage}
                             />
                         </Grid2>
@@ -135,7 +134,7 @@ export default function Main() {
                                         >
                                             <CardMedia
                                                 component="img"
-                                                image="/fjmoto/images/PAANO, JULIUS ANGELO A b-min.JPG"
+                                                image={`/hydrogen/${item.productCategoryImage}`}
                                                 height="200"
                                                 width="200"
                                             />

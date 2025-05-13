@@ -10,12 +10,12 @@ class Product extends Model
 
     protected $primaryKey = 'productID';
 
-    public function reviews()
-{
-    return $this->hasOne(ProductReview::class, 'productID', 'productID')
-        ->select('productID')
-        ->selectRaw('AVG(reviewRating) as reviewRating, COUNT(*) as reviewCount')
-        ->groupBy('productID');
-}
+    public $timestamps = false;
 
+    public function reviews(){
+        return $this->hasOne(ProductReview::class, 'productID', 'productID')
+            ->select('productID')
+            ->selectRaw('AVG(reviewRating) as reviewRating, COUNT(*) as reviewCount')
+            ->groupBy('productID');
+    }
 }

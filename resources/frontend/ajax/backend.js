@@ -184,3 +184,9 @@ export function updateProfile(data, callback) {
         callback(response.data);
     });
 }
+
+export function getFeaturedProduct(callback) {
+    axios.get("/featuredProduct").then((response) => {
+        callback(response.data);
+    });
+}

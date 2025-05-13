@@ -198,6 +198,8 @@ p {
   font-size: 32px !important;
   color: #1ea1d7;
   font-weight: 900 !important;
+  height: fit-content;
+  align-self: end;
 }
 .Home-module-heroSection-Xhl_d .Home-module-heroSectionContainer-Tk9C5 .Home-module-heroSectionHeading-HmmpK {
   width: 100%;
@@ -207,10 +209,11 @@ p {
   line-height: 1;
 }
 .Home-module-heroSection-Xhl_d .Home-module-heroSectionContainer-Tk9C5 .Home-module-heroSectionSubheading-FkIM_ {
-  font-size: 18px !important;
+  font-size: 30px !important;
   color: #373737;
   font-weight: normal !important;
   line-height: 1.5;
+  width: 100%;
 }
 .Home-module-heroSection-Xhl_d .Home-module-heroSectionContainer-Tk9C5 .Home-module-heroSectionImageContainer-z6f9h {
   max-height: 350px;
@@ -451,6 +454,7 @@ p {
   font-size: 14px;
   display: flex;
   column-gap: 5px;
+  justify-content: center;
 }
 .AuthModal-module-modalContainer-GaZtW .AuthModal-module-form-tQLO4 .AuthModal-module-formLink-Nc1Mf .AuthModal-module-formLinkButton-wbNsc {
   text-decoration: none;

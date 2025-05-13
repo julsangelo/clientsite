@@ -66,6 +66,9 @@ class CheckoutController extends Controller
             ]);
         }
 
+        Product::where('productID', $item['productID'])
+            ->decrement('productStockQuantity', $item['quantity']);
+
         $cartKey = "cart:$customerID";
         Redis::select(1);
         $cart = json_decode(Redis::get($cartKey), true) ?? [];

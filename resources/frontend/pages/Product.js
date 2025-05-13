@@ -183,70 +183,87 @@ export default function Product() {
                                             </Box>
                                         </div>
                                     </div>
-                                    <div className={styles.buttonContainer}>
-                                        <Button
-                                            className={styles.addToCartButton}
-                                            onClick={handleAddToCart}
-                                        >
-                                            Add to cart
-                                        </Button>
-                                        <Button
-                                            className={styles.checkoutButton}
-                                            component={Link}
-                                            to="/checkout"
-                                            state={{
-                                                productCode: productCode,
-                                                quantity: quantity,
-                                            }}
-                                        >
-                                            Checkout
-                                        </Button>
-                                    </div>
+                                    {productDetail?.productStockQuantity !=
+                                        0 && (
+                                        <div className={styles.buttonContainer}>
+                                            <Button
+                                                className={
+                                                    styles.addToCartButton
+                                                }
+                                                onClick={handleAddToCart}
+                                            >
+                                                Add to cart
+                                            </Button>
+                                            <Button
+                                                className={
+                                                    styles.checkoutButton
+                                                }
+                                                component={Link}
+                                                to="/checkout"
+                                                state={{
+                                                    productCode: productCode,
+                                                    quantity: quantity,
+                                                }}
+                                            >
+                                                Checkout
+                                            </Button>
+                                        </div>
+                                    )}
                                 </div>
                             </Grid2>
-                            <Grid2
-                                size={{ xs: 12 }}
-                                className={styles.reviewGridBox}
-                            >
-                                <Typography className={styles.reviewTitle}>
-                                    Reviews
-                                </Typography>
-                                <Divider orientation="horizontal" />
-                                {productReview?.map((item, index) => (
-                                    <Box
-                                        className={styles.reviewBox}
-                                        key={index}
-                                    >
-                                        <Box className={styles.reviewItem}>
-                                            <Typography
-                                                className={styles.reviewName}
-                                            >
-                                                {item.customerUsername}
-                                            </Typography>
-                                            <Typography
-                                                className={styles.reviewDate}
-                                            >
-                                                {item.reviewDate.split(" ")[0]}
-                                            </Typography>
+                            {productReview?.length > 0 && (
+                                <Grid2
+                                    size={{ xs: 12 }}
+                                    className={styles.reviewGridBox}
+                                >
+                                    <Typography className={styles.reviewTitle}>
+                                        Reviews
+                                    </Typography>
+                                    <Divider orientation="horizontal" />
+                                    {productReview?.map((item, index) => (
+                                        <Box
+                                            className={styles.reviewBox}
+                                            key={index}
+                                        >
+                                            <Box className={styles.reviewItem}>
+                                                <Typography
+                                                    className={
+                                                        styles.reviewName
+                                                    }
+                                                >
+                                                    {item.customerUsername}
+                                                </Typography>
+                                                <Typography
+                                                    className={
+                                                        styles.reviewDate
+                                                    }
+                                                >
+                                                    {
+                                                        item.reviewDate.split(
+                                                            " ",
+                                                        )[0]
+                                                    }
+                                                </Typography>
+                                            </Box>
+                                            <Rating
+                                                precision={0.5}
+                                                value={item.reviewRating}
+                                                readOnly
+                                                size="small"
+                                            />
+                                            {item.reviewFeedback && (
+                                                <Typography
+                                                    className={
+                                                        styles.reviewFeedback
+                                                    }
+                                                >
+                                                    {item.reviewFeedback}
+                                                </Typography>
+                                            )}
                                         </Box>
-                                        <Rating
-                                            precision={0.5}
-                                            value={item.reviewRating}
-                                            readOnly
-                                            size="small"
-                                        />
-                                        {item.reviewFeedback && (
-                                            <Typography
-                                                className={
-                                                    styles.reviewFeedback
-                                                }
-                                            >
-                                                {item.reviewFeedback}
-                                            </Typography>
-                                        )}
-                                    </Box>
-                                ))}
-                            </Grid2>
+                                    ))}
+                                </Grid2>
+                            )}
                         </Grid2>
                     </Grid2>
                     <Box>

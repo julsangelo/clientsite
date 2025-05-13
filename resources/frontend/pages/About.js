@@ -30,26 +30,27 @@ export default function About() {
                                             styles.aboutSectionLBoxSubheading
                                         }
                                     >
-                                        Welcome to MUX – where innovation meets
-                                        simplicity. Founded in 2020, MUX began
-                                        with a vision to provide an effortless
-                                        and reliable shopping experience. Our
-                                        team set out to bring quality products
-                                        and top-notch customer service straight
-                                        to your fingertips, with a focus on
-                                        accessibility and technology.
+                                        Welcome to Cliff – where innovation
+                                        meets simplicity. Founded in 2020, Cliff
+                                        began with a vision to provide an
+                                        effortless and reliable shopping
+                                        experience. Our team set out to bring
+                                        quality products and top-notch customer
+                                        service straight to your fingertips,
+                                        with a focus on accessibility and
+                                        technology.
                                     </Typography>
                                     <Typography
                                         className={
                                             styles.aboutSectionLBoxSubheading
                                         }
                                     >
-                                        Today, MUX is more than just a store;
+                                        Today, Cliff is more than just a store;
                                         we’re a community driven by trust and
                                         continuous improvement. Our commitment
                                         to secure transactions, fast delivery,
                                         and a wide selection keeps us growing.
-                                        Thank you for being part of the MUX
+                                        Thank you for being part of the Cliff
                                         journey—let’s make shopping simple and
                                         satisfying.
                                     </Typography>

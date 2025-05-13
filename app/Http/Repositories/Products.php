@@ -66,4 +66,12 @@ class Products
             'product' => $product
         ];
     }
+
+    public function featuredProduct () {
+        $product = Product::where('isFeatured', '1')->get();
+
+        return [
+            'featuredProduct' => $product
+        ];
+    }
 }

@@ -17,4 +17,10 @@ class HomeController extends Controller
 
         return response()->json($data);
     }
+
+    public function featuredProduct () {
+        $data = $this->products->featuredProduct();
+
+        return response()->json($data);
+    }
 }

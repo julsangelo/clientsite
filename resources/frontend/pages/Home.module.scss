@@ -12,6 +12,8 @@
             font-size: 32px !important;
             color: $t_red;
             font-weight: 900 !important;
+            height: fit-content;
+            align-self: end;
         }
 
         .heroSectionHeading {
@@ -23,10 +25,11 @@
         }
 
         .heroSectionSubheading {
-            font-size: 18px !important;
+            font-size: 30px !important;
             color: $t_lightBlack;
             font-weight: normal !important;
             line-height: 1.5;
+            width: 100%;
         }
 
         .heroSectionImageContainer {
