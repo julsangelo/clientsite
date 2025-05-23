@@ -13,7 +13,7 @@ class XenditService
     }
 
     public function createInvoice($externalID, $amount, $email, $desc, $currency, $items) {
-        $response = Http::withBasicAuth($this->apiKey, '')
+        $response = Http::withBasicAuth(env('XENDIT_SECRET_KEY'), '')
             ->post("https://api.xendit.co/v2/invoices", [
                 'external_id' => $externalID,
                 'amount' => $amount,

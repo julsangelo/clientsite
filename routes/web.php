@@ -10,7 +10,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReferenceController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ShopController;
-use App\Http\Controllers\XenditWebhookController;
+use App\Http\Controllers\WebhookController;
 use GlennRaya\Xendivel\Xendivel;
 use Illuminate\Support\Facades\Route;
 
@@ -40,10 +40,12 @@ Route::post('/removeItem', [CartController::class, 'removeItem']);
 Route::post('/deleteAddress', [AddressController::class, 'deleteAddress']);
 Route::post('/editAddress', [AddressController::class, 'editAddress']);
 Route::post('/getAddress', [AddressController::class, 'getAddress']);
-Route::post('/webhook/xendit', [XenditWebhookController::class, 'handleWebhook']);
 Route::post('/productReview', [ReviewController::class, 'productReview']);
 Route::post('/getReview',[ReviewController::class, 'getReview']);
 Route::get('/getAllReview',[ReviewController::class, 'getAllReview']);
 Route::post('/getProductReview',[ReviewController::class, 'getProductReview']);
+
+Route::post('/webhook/xendit', [WebhookController::class, 'handleXendit']);
+Route::post('/webhook/dialogflow', [WebhookController::class, 'handleDialogflow']);
 
 Route::view('/{path?}', 'index')->where('path', '.*');

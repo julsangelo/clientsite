@@ -3,6 +3,7 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import styles from "./About.module";
 import Footer from "../components/Footer";
+import Bot from "../components/Bot";
 
 export default function About() {
     document.title = "About | Cliff Motorshop";
@@ -127,6 +128,7 @@ export default function About() {
                 </Container>
             </div>
             <Footer />
+            <Bot />
         </>
     );
 }

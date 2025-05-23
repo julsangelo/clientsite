@@ -190,3 +190,22 @@ export function getFeaturedProduct(callback) {
         callback(response.data);
     });
 }
+
+export function sendMessage(query, callback) {
+    axios.post("/webhook/dialogflow", { query }).then((res) => {
+        const mainMessage =
+            res.data?.fulfillmentMessages?.[0]?.text?.text?.[0] ||
+            res.data?.fulfillmentText ||
+            "Sorry, I didn’t get that.";
+
+        const cards = res.data?.data || [];
+
+        const messages = [{ type: "text", text: mainMessage, from: "bot" }];
+
+        if (cards.length) {
+            messages.push({ type: "cards", items: cards, from: "bot" });
+        }
+
+        callback(messages);
+    });
+}

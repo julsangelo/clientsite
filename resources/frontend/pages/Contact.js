@@ -13,6 +13,7 @@ import GoogleMapReact from "google-map-react";
 import Footer from "../components/Footer";
 import { useReference } from "../context/ReferenceProvider";
 import ContactIcon from "../components/ContactIcon";
+import Bot from "../components/Bot";
 
 export default function Contact() {
     document.title = "Contact | Cliff Motorshop";
@@ -126,6 +127,7 @@ export default function Contact() {
                 </Container>
             </div>
             <Footer />
+            <Bot />
         </>
     );
 }

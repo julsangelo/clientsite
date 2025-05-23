@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "google/auth": "^1.47",
         "laravel/cashier": "^15.6",
         "laravel/framework": "^11.9",
         "laravel/sanctum": "^4.0",

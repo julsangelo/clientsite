@@ -24,6 +24,7 @@ import {
 import ProductCard from "../components/ProductCard";
 import { useReference } from "../context/ReferenceProvider";
 import { getFeaturedProduct, getProducts } from "../ajax/backend";
+import Bot from "../components/Bot";
 
 export default function Main() {
     document.title = "Cliff Motorshop";
@@ -336,6 +337,7 @@ export default function Main() {
                 </Container>
             </div>
             <Footer />
+            <Bot />
         </>
     );
 }

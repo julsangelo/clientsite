@@ -37,6 +37,7 @@ export default function OrdersPanel({ orderItem, isMobile }) {
     const [expanded, setExpanded] = useState(orderNo);
     const { setFlashMessage, setFlashStatus } = useFlashMessage();
     const [review, setReview] = useState();
+    const shippingFee = 79;
 
     const totalPages = Math.ceil((orderItem?.length || 0) / itemsPerPage);
 
@@ -535,15 +536,18 @@ export default function OrdersPanel({ orderItem, isMobile }) {
                                                         >
                                                             <Typography>
                                                                 Subtotal: ₱{" "}
-                                                                {
-                                                                    order.orderTotal
-                                                                }
+                                                                {(
+                                                                    parseFloat(
+                                                                        order.orderTotal,
+                                                                    ) -
+                                                                    parseFloat(
+                                                                        shippingFee,
+                                                                    )
+                                                                ).toFixed(2)}
                                                             </Typography>
                                                             <Typography>
                                                                 Shipping fee: ₱{" "}
-                                                                {
-                                                                    order.orderTotal
-                                                                }
+                                                                {shippingFee}
                                                             </Typography>
                                                             <Divider
                                                                 orientation="horizontal"

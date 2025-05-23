@@ -70,6 +70,14 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/ProductCard.module.scss (1) ***!
   \**********************************************************************************************************************************************************************************************************************************************************************************/
 @import url(https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&display=swap);
+/*!**********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/Bot.module.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************/
+@import url(https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap);
+/*!**************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/Bot.module.scss (1) ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************/
+@import url(https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&display=swap);
 /*!******************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/pages/Shop.module.scss ***!
   \******************************************************************************************************************************************************************************************************************************************************************/
@@ -1134,6 +1142,101 @@ p {
   .ProductCard-module-productCardRating-eQMFw {
     display: block !important;
   }
+}
+/*!**************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/components/Bot.module.scss (2) ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************/
+body {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+}
+
+p {
+  margin: 0;
+}
+
+.Bot-module-botButton-BFbhN {
+  position: fixed !important;
+  bottom: 20px;
+  right: 20px;
+  background-color: #1ea1d7 !important;
+  color: #ffffff !important;
+  padding: 15px !important;
+}
+
+.Bot-module-chatbox-NxuMf {
+  position: fixed !important;
+  bottom: 20px;
+  right: 20px;
+  background-color: #ffffff !important;
+  padding: 15px !important;
+  border-radius: 8px;
+  border: 1px solid #dbdbdb;
+  width: 350px;
+  height: 450px;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+.Bot-module-chatbox-NxuMf .Bot-module-botName-b6CPx {
+  font-size: 15px;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 8px;
+}
+.Bot-module-chatbox-NxuMf .Bot-module-minimizeButton-A5TTI {
+  position: absolute;
+  top: 0;
+  right: 15px;
+}
+.Bot-module-chatbox-NxuMf .Bot-module-messageBox-_GfZk {
+  flex-grow: 1;
+  row-gap: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  padding-bottom: 5px;
+}
+.Bot-module-chatbox-NxuMf .Bot-module-messageBox-_GfZk .Bot-module-cardsContainer-zEIIm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: left;
+}
+.Bot-module-chatbox-NxuMf .Bot-module-messageBox-_GfZk .Bot-module-cardsContainer-zEIIm .Bot-module-card-Hr8jM {
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #f8f8f8;
+  width: 120px;
+}
+.Bot-module-chatbox-NxuMf .Bot-module-messageBox-_GfZk .Bot-module-cardsContainer-zEIIm .Bot-module-card-Hr8jM .Bot-module-cardName-m6AlP {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 120px;
+  font-size: 15px;
+  font-weight: 500;
+}
+.Bot-module-chatbox-NxuMf .Bot-module-messageBox-_GfZk .Bot-module-botMessages-b67PZ {
+  font-size: 14px;
+  width: fit-content;
+  padding: 5px 13px;
+  border-radius: 10px;
+  color: #ffffff;
+  max-width: 250px;
+}
+.Bot-module-chatbox-NxuMf .Bot-module-botInput-QNATD {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+.Bot-module-chatbox-NxuMf .Bot-module-botInput-QNATD .Bot-module-botInputField-u9g6Y {
+  font-size: 13px;
+  width: 100%;
+}
+.Bot-module-chatbox-NxuMf .Bot-module-botInput-QNATD .Bot-module-botInputSend-MiyVL {
+  color: #1ea1d7;
 }
 /*!**********************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./resources/frontend/pages/Shop.module.scss (2) ***!

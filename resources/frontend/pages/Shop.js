@@ -8,6 +8,7 @@ import { Container, Grid2, Pagination, Typography } from "@mui/material";
 import { ChevronRight } from "@mui/icons-material";
 import ProductCard from "../components/ProductCard";
 import { useReference } from "../context/ReferenceProvider";
+import Bot from "../components/Bot";
 
 localStorage.removeItem("item");
 
@@ -109,6 +110,7 @@ export default function Shop() {
                 </Container>
             </div>
             <Footer />
+            <Bot />
         </div>
     );
 }

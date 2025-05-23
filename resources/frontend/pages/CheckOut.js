@@ -34,6 +34,7 @@ import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useFlashMessage } from "../context/FlashMessage.js";
 import Brand from "../components/Brand.js";
+import Bot from "../components/Bot.js";
 
 export default function CheckOut() {
     document.title = "Checkout | Cliff Motorshop";
@@ -47,6 +48,7 @@ export default function CheckOut() {
     const [allAddress, setAllAddress] = useState();
     const [addressUpdated, setAddressUpdated] = useState(false);
     const [total, setTotal] = useState();
+    const [subtotal, setSubtotal] = useState();
     const [addAddressOpen, setAddAddressOpen] = useState(false);
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
@@ -56,6 +58,7 @@ export default function CheckOut() {
     const [confirmationOpen, setConfirmationOpen] = useState(false);
     const [orderNumber, setOrderNumber] = useState();
     const [isLoading, setIsLoading] = useState(false);
+    const shippingFee = 79;
 
     const handleChangePayment = (event) => {
         setSelectedPayment(event.target.value);
@@ -97,7 +100,7 @@ export default function CheckOut() {
     }, [address, allAddress]);
 
     useEffect(() => {
-        const total = Array.isArray(items)
+        const subtotal = Array.isArray(items)
             ? items
                   .reduce(
                       (sum, item) =>
@@ -107,7 +110,7 @@ export default function CheckOut() {
                   .toFixed(2)
             : "0.00";
 
-        setTotal(total);
+        setSubtotal(subtotal);
     }, [items]);
 
     const handleSubmitOrder = () => {
@@ -152,7 +155,11 @@ export default function CheckOut() {
                             </Box>
                         </Grid2>
                         {isSmallScreen ? (
-                            <CheckOutSummary items={items} total={total} />
+                            <CheckOutSummary
+                                items={items}
+                                subtotal={subtotal}
+                                setTotal={setTotal}
+                            />
                         ) : null}
                         <Grid2 size={{ xs: 12, md: 7 }}>
                             <Box className={styles.checkOutForm}>
@@ -455,7 +462,11 @@ export default function CheckOut() {
                             </Box>
                         </Grid2>
                         {isSmallScreen ? null : (
-                            <CheckOutSummary items={items} total={total} />
+                            <CheckOutSummary
+                                items={items}
+                                subtotal={subtotal}
+                                setTotal={setTotal}
+                            />
                         )}
                     </Grid2>
                 </Container>
@@ -484,6 +495,7 @@ export default function CheckOut() {
                     />
                 </Box>
             </Modal>
+            <Bot />
         </div>
     );
 }

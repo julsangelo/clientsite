@@ -1,0 +1,96 @@
+@import "../assets/scss/main.module.scss";
+
+.botButton {
+    position: fixed !important;
+    bottom: 20px;
+    right: 20px;
+    background-color: $b_red !important;
+    color: $t_white !important;
+    padding: 15px !important;
+}
+
+.chatbox {
+    position: fixed !important;
+    bottom: 20px;
+    right: 20px;
+    background-color: $b_white !important;
+    padding: 15px !important;
+    border-radius: 8px;
+    border: 1px solid $b_gray;
+    width: 350px;
+    height: 450px;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+
+    .botName {
+        font-size: 15px;
+        font-weight: 800;
+        text-align: center;
+        margin-bottom: 8px;
+    }
+
+    .minimizeButton {
+        position: absolute;
+        top: 0;
+        right: 15px;
+    }
+
+    .messageBox {
+        flex-grow: 1;
+        row-gap: 10px;
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+        padding-bottom: 5px;
+
+        .cardsContainer {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            justify-content: left;
+
+            .card {
+                padding: 5px;
+                border-radius: 5px;
+                background-color: $b_gLight;
+                width: 120px;
+
+                .cardName {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    max-width: 120px;
+                    font-size: 15px;
+                    font-weight: 500;
+                }
+            }
+        }
+
+        .botMessages {
+            font-size: 14px;
+            width: fit-content;
+            padding: 5px 13px;
+            border-radius: 10px;
+            color: $t_white;
+            max-width: 250px;
+        }
+    }
+
+    .botInput {
+        display: flex;
+        align-items: center;
+        column-gap: 10px;
+
+        .botInputField {
+            font-size: 13px;
+            width: 100%;
+        }
+
+        .botInputSend {
+            color: $b_red;
+        }
+    }
+}
+

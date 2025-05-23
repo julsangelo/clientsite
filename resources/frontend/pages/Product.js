@@ -25,6 +25,7 @@ import { Add, Remove } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { useFlashMessage } from "../context/FlashMessage";
 import ProductCard from "../components/ProductCard";
+import Bot from "../components/Bot";
 
 export default function Product() {
     const [productDetail, setProductDetail] = useState(null);
@@ -291,6 +292,7 @@ export default function Product() {
                 </Container>
             </div>
             <Footer />
+            <Bot />
         </div>
     );
 }

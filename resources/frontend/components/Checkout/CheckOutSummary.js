@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./CheckOutSummary.module";
 import { Box, CardMedia, Divider, Grid2, Typography } from "@mui/material";
 
-export default function CheckOutSummary({ items, total }) {
+export default function CheckOutSummary({ items, subtotal, setTotal }) {
+    const shippingFee = "79.00";
+
+    const total = (parseFloat(subtotal) + parseFloat(shippingFee)).toFixed(2);
+
+    useEffect(() => {
+        setTotal(total);
+    }, [total]);
+
     return (
         <Grid2 size={{ xs: 12, md: 5 }}>
             <Box className={styles.checkOutItems}>
@@ -34,13 +42,13 @@ export default function CheckOutSummary({ items, total }) {
                     <Box className={styles.total}>
                         <Typography>Subtotal</Typography>
                         <Typography className={styles.totalText}>
-                            ₱ {total}
+                            ₱ {subtotal}
                         </Typography>
                     </Box>
                     <Box className={styles.total}>
                         <Typography>Shipping Fee</Typography>
                         <Typography className={styles.totalText}>
-                            ₱ {total}
+                            ₱ {parseFloat(shippingFee).toFixed(2)}
                         </Typography>
                     </Box>
                     <Box className={styles.total}>

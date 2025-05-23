@@ -30,6 +30,7 @@ import CartPanel from "../components/Details/CartPanel";
 import { useFlashMessage } from "../context/FlashMessage";
 import AddressPanel from "../components/Details/AddressPanel";
 import SettingsPanel from "../components/Details/SettingsPanel";
+import Bot from "../components/Bot";
 
 export default function Cart() {
     const location = useLocation();
@@ -232,6 +233,7 @@ export default function Cart() {
                     </Box>
                 </Box>
             </Modal>
+            <Bot />
         </div>
     );
 }
